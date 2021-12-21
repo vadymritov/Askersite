@@ -1,0 +1,175 @@
+@import "settings";
+@import "mixins";
+@import "import-fonts";
+
+
+* {
+  outline: none !important;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  min-width: 375px;
+  height: 100%;
+  scroll-behavior: smooth;
+
+  @include media-max($xxs-break) {
+    min-width: 320px;
+  }
+
+  &.no-scroll {
+    body {
+      overflow: hidden;
+    }
+  }
+}
+
+body {
+  overflow-x: hidden;
+  height: 100%;
+  min-width: 375px;
+  color: #000;
+  font-family: $main-font !important;
+  //font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  scroll-behavior: smooth;
+  @include media-max($xxs-break) {
+    min-width: 320px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+    width: 1440px;
+    //@include media-max(1600) {
+    //    padding: 0 30px;
+    //}
+    //@include media-max($xs-break) {
+    //    padding: 0 25px;
+    //}
+    //@include media-max($xxs-break) {
+    //    padding: 0 20px;
+    //}
+  }
+
+  a {
+    text-decoration: underline;
+    //color: $black;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.content-wrapper {
+  position: relative;
+  background-image: linear-gradient(25deg, #D6FEC0, #D0CDEB 80%);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 19px;
+}
+
+#root {
+  min-height: 100vh;
+  height: 100%;
+  color: #000;
+  font-family: $main-font;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+
+h1 {
+  font-size: 29px;
+  padding: 50px 0 10px 0;
+  @include media-max($sm-break) {
+    font-size: 25px;
+  }
+  @include media-max($xs-break) {
+    font-size: 23px;
+  }
+}
+
+h3 {
+  @include media-max($xs-break) {
+    font-size: 18px;
+  }
+}
+
+.row {
+  margin: 0;
+  //height: 100%;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  color: $themeColorText !important;
+  //font-size: 16px!important;
+}
+
+input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disabled::placeholder {
+  -webkit-text-fill-color: $themeColorText; /* 1. sets text fill to current `color` for safari */
+  opacity: 1; /* 2. correct opacity on iOS */
+}
+
+.main-container {
+  //width: 1440px;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.main-row {
+  height: 100%;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-col {
+  width: 45%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.static-col {
+  width: 54%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  border-radius: 19px;
+}
+
+.col-padding {
+  padding-left: 6px;
+}

@@ -1,0 +1,102 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+@keyframes hometiltjs {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(5px, 10px);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  75% {
+    transform: translate(5px, -10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.askerWrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 115px;
+  //padding: 5vw 0 15vw;
+
+  .askerRow {
+    display: flex;
+    width: 100%;
+    max-height: 532px;
+    height: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .askerCol {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    border-radius: 26px;
+    position: relative;
+  }
+
+  .imgWrap {
+    display: flex;
+    position: relative;
+    border-radius: 26px;
+    background-image: url("../../image/svg/AskerPhone.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    left: 30px;
+    height: 100%;
+    width: 50%;
+    padding: 0 22px;
+    min-width: 300px;
+    @include media-max($lg-break) {
+      min-width: 280px;
+    }
+    @include media-max($md-break) {
+      min-width: 260px;
+    }
+
+    .shadow {
+      position: absolute;
+      //width: 252.12px;
+      top: 80px;
+      width: 16em;
+      height: 115px;
+      background: rgba(173, 184, 250, 0.3);
+      filter: blur(7px)
+    }
+  }
+
+  .listingImg {
+    position: absolute;
+    left: -26px;
+    top: 62px;
+    z-index: 1;
+    width: 18em;
+    height: 150px;
+  }
+
+  .iconImg {
+    background-image: url("../../image/svg/ListingImg.svg");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    transform: translateZ(10px);
+    animation-name: hometiltjs;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+  }
+}

@@ -1,0 +1,34 @@
+@import 'import-fonts';
+
+//// fonts --------------------------------------------------//
+
+//$fontText: 'HK Grotesk';
+$main-font: 'HK Grotesk', sans-serif;
+$fontRoboto: "Roboto", sans-serif;
+
+// break points (px)
+$lg-break: 1199;
+$md-break: 991;
+$sm-break: 767;
+$xs-break: 575;
+$l-break: 426;
+$xxs-break: 359;
+
+// --------------------------------------------------//
+
+
+// colors --------------------------------------------------//
+
+/*
+    THEME : START =>
+    FOR -- Color, ColorYellow, ColorRed, ColorGreen, ColorText;
+*/
+$themeColor: #5468FF;
+$themeColorSimilar: #7686ff;
+$themeColorBase: #00D9CD;
+$themeColorOrange: #FF5A00;
+$themeColorText: #4B494B;
+
+$themeBootstrapContainer: 1440px;
+$themeBootstrapRow: -6px;
+$themeBootstrapCol: 6px;
