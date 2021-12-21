@@ -32,7 +32,7 @@
   .askerRow {
     display: flex;
     width: 100%;
-    max-height: 532px;
+    //max-height: 532px;
     height: 100%;
     flex-wrap: nowrap;
   }
@@ -58,6 +58,7 @@
     width: 50%;
     padding: 0 22px;
     min-width: 300px;
+    max-height: 532px;
     @include media-max($lg-break) {
       min-width: 280px;
     }
@@ -98,5 +99,28 @@
     animation-iteration-count: infinite;
     animation-duration: 20s;
     animation-timing-function: ease-in-out;
+  }
+
+  .imgWrapStatic {
+    display: flex;
+    position: absolute;
+    border-radius: 26px;
+    background-image: url("../../image/svg/AskerPhoneStatic.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    left: 67px;
+    top: 20px;
+    height: 100%;
+    width: 50%;
+    padding: 0 22px;
+    min-width: 315px;
+    max-height: 622px;
+    @include media-max($lg-break) {
+      min-width: 305px;
+    }
+    @include media-max($md-break) {
+      min-width: 260px;
+    }
   }
 }
