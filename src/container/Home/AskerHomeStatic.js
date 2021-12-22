@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Home.module.scss'
+import QuestionTop from "../../components/UI/icons/QuestionTop";
 
 const AskerHomeStatic = (props) => {
   return (
@@ -14,7 +15,13 @@ const AskerHomeStatic = (props) => {
           </div>
         </div>
         <div className={`${styles.askerCol}`}>
-          <div className={styles.imgWrapStatic}>
+          <div className={styles.question}>
+            <div className={styles.iconTop}/>
+          </div>
+          <div className={styles.imgWrapStatic}/>
+          <div className={`${styles.questionBottom}`}>
+            <div className={`${styles.iconBottom}`}/>
+          </div>
 
           {/*<div className="home-tilt-inner lft">*/}
             {/*<div className="img-wrapper">*/}
@@ -28,7 +35,7 @@ const AskerHomeStatic = (props) => {
             {/*<div className="img pos-abs listing-img tilt-js">*/}
             {/*    <img alt="" src={tilt04} />*/}
             {/*</div>*/}
-          </div>
+
         </div>
       </div>
       {/*</div>*/}

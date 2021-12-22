@@ -43,27 +43,36 @@
     height: 100%;
     border-radius: 26px;
     position: relative;
+    //z-index: 2;
   }
 
   .imgWrap {
     display: flex;
     position: relative;
+    z-index: 3;
     border-radius: 26px;
     background-image: url("../../image/svg/AskerPhone.svg");
-    background-size: cover;
+    background-size: contain;
+    //background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
     left: 30px;
-    height: 100%;
+    height: 57vh;
+    //height: 100%;
+    //height: 532px;
     width: 50%;
     padding: 0 22px;
     min-width: 300px;
     max-height: 532px;
     @include media-max($lg-break) {
-      min-width: 280px;
+      min-width: 14em;
+      left: 20px;
+      padding: 0 15px;
+      //min-width: 280px;
     }
     @include media-max($md-break) {
       min-width: 260px;
+      left: 15px;
     }
 
     .shadow {
@@ -73,7 +82,13 @@
       width: 16em;
       height: 115px;
       background: rgba(173, 184, 250, 0.3);
-      filter: blur(7px)
+      filter: blur(7px);
+
+      @include media-max($lg-break) {
+        top: 60px;
+        width: 11.5em;
+        height: 5em;
+      }
     }
   }
 
@@ -81,9 +96,15 @@
     position: absolute;
     left: -26px;
     top: 62px;
-    z-index: 1;
+    //z-index: 1;
     width: 18em;
     height: 150px;
+    @include media-max($lg-break) {
+      left: -12px;
+      top: 47px;
+      width: 12em;
+      height: 105px;
+    }
   }
 
   .iconImg {
@@ -106,21 +127,110 @@
     position: absolute;
     border-radius: 26px;
     background-image: url("../../image/svg/AskerPhoneStatic.svg");
-    background-size: cover;
+    //background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-    left: 67px;
-    top: 20px;
-    height: 100%;
+    left: 5em;
+    //left: 67px;
+    top: 27px;
+    //height: 622px;
+    height: 74vh;
     width: 50%;
     padding: 0 22px;
     min-width: 315px;
     max-height: 622px;
     @include media-max($lg-break) {
-      min-width: 305px;
+      min-width: 15em;
+      min-height: 21em;
+      max-height: auto;
+      //width: 16em;
+      //min-width: 305px;
     }
     @include media-max($md-break) {
       min-width: 260px;
+    }
+  }
+
+  .question {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 63px;
+
+
+
+    .iconTop {
+      display: flex;
+      position: absolute;
+      border-radius: 4px;
+      background-image: url("../../image/svg/QuestionTop.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      left: -6em;
+      top: -8em;
+      height: 11em;
+      width: 25em;
+      //height: 11em;
+      //width: 17em;
+      padding: 0;
+
+      transform: translateZ(10px);
+      animation-name: hometiltjs;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-duration: 20s;
+      animation-timing-function: ease-in-out;
+
+      @include media-max($lg-break) {
+        top: -7em;
+        height: 9em;
+        width: 21em;
+      }
+    }
+  }
+  .questionBottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 3;
+    width: 100%;
+    height: 63px;
+
+    .iconBottom {
+      display: flex;
+      position: absolute;
+      border-radius: 4px;
+      top: -14em;
+      background-image: url("../../image/svg/QuestionBottom.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      left: -18vw;
+      height: 11em;
+      width: 25em;
+      //left: -183px;
+      //height: 11em;
+      //width: 18em;
+      padding: 0;
+
+      transform: translateZ(10px);
+      animation-name: hometiltjs;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-duration: 20s;
+      animation-timing-function: ease-in-out;
+
+      @include media-max($lg-break) {
+        top: -16em;
+        left: -18vw;
+        height: 9em;
+        width: 21em;
+      }
+
     }
   }
 }
