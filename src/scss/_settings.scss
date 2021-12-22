@@ -24,12 +24,37 @@ $xxs-break: 359;
     FOR -- Color, ColorYellow, ColorRed, ColorGreen, ColorText;
 */
 
+@keyframes hometiltjs {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(5px, 10px);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  75% {
+    transform: translate(5px, -10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 $themeColor: #5468FF;
 $themeColorSimilar: #7686ff;
 $themeColorBase: #00D9CD;
 $themeColorOrange: #FF5A00;
 $themeColorText: #4B494B;
+$themeBlue: #1F47D6;
 
 $themeBootstrapContainer: 1440px;
 $themeBootstrapRow: -6px;
 $themeBootstrapCol: 6px;
+
+$animationJs: hometiltjs

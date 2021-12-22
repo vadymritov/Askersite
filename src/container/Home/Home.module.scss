@@ -1,27 +1,27 @@
 @import "../../scss/settings";
 @import "../../scss/mixins";
 
-@keyframes hometiltjs {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  25% {
-    transform: translate(5px, 10px);
-  }
-
-  50% {
-    transform: translate(0, 0);
-  }
-
-  75% {
-    transform: translate(5px, -10px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
+//@keyframes hometiltjs {
+//  0% {
+//    transform: translate(0, 0);
+//  }
+//
+//  25% {
+//    transform: translate(5px, 10px);
+//  }
+//
+//  50% {
+//    transform: translate(0, 0);
+//  }
+//
+//  75% {
+//    transform: translate(5px, -10px);
+//  }
+//
+//  100% {
+//    transform: translate(0, 0);
+//  }
+//}
 
 .askerWrapper {
   width: 100%;
@@ -64,6 +64,8 @@
     padding: 0 22px;
     min-width: 300px;
     max-height: 532px;
+
+
     @include media-max($lg-break) {
       min-width: 14em;
       left: 20px;
@@ -78,7 +80,7 @@
     .shadow {
       position: absolute;
       //width: 252.12px;
-      top: 80px;
+      top: 77px;
       width: 16em;
       height: 115px;
       background: rgba(173, 184, 250, 0.3);
@@ -115,11 +117,13 @@
     background-repeat: no-repeat;
     background-position: center top;
     transform: translateZ(10px);
-    animation-name: hometiltjs;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
-    animation-duration: 20s;
-    animation-timing-function: ease-in-out;
+    @include animationJS();
+    //animation-name: $animationJs;
+    ////animation-name: hometiltjs;
+    //animation-fill-mode: both;
+    //animation-iteration-count: infinite;
+    //animation-duration: 20s;
+    //animation-timing-function: ease-in-out;
   }
 
   .imgWrapStatic {
@@ -177,13 +181,13 @@
       //height: 11em;
       //width: 17em;
       padding: 0;
-
-      transform: translateZ(10px);
-      animation-name: hometiltjs;
-      animation-fill-mode: both;
-      animation-iteration-count: infinite;
-      animation-duration: 20s;
-      animation-timing-function: ease-in-out;
+      //transform: translateZ(10px);
+      @include animationJS();
+      //animation-name: $animationJs;
+      //animation-fill-mode: both;
+      //animation-iteration-count: infinite;
+      //animation-duration: 20s;
+      //animation-timing-function: ease-in-out;
 
       @include media-max($lg-break) {
         top: -7em;
@@ -209,20 +213,21 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      left: -18vw;
+      //left: -18vw;
       height: 11em;
       width: 25em;
-      //left: -183px;
+      left: -209px;
       //height: 11em;
       //width: 18em;
       padding: 0;
 
-      transform: translateZ(10px);
-      animation-name: hometiltjs;
-      animation-fill-mode: both;
-      animation-iteration-count: infinite;
-      animation-duration: 20s;
-      animation-timing-function: ease-in-out;
+      @include animationJS();
+      //transform: translateZ(10px);
+      //animation-name: $animationJs;
+      //animation-fill-mode: both;
+      //animation-iteration-count: infinite;
+      //animation-duration: 20s;
+      //animation-timing-function: ease-in-out;
 
       @include media-max($lg-break) {
         top: -16em;

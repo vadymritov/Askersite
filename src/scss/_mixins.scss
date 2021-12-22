@@ -39,3 +39,12 @@
   align-items: center;
   border-radius: 20px;
 }
+
+@mixin animationJS {
+  transform: translateZ(10px);
+  animation-name: $animationJs;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+}
