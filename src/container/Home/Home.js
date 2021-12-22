@@ -7,7 +7,7 @@ const Home = (props) => {
 
   return (
     <>
-      {!LoginStatus ? <HomeCreateQuestion/> : <HomeStart/>}
+      {LoginStatus ? <HomeCreateQuestion/> : <HomeStart/>}
     </>
   )
 };
