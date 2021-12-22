@@ -1,5 +1,7 @@
 @import 'import-fonts';
 
+$transition: 600ms;
+
 //// fonts --------------------------------------------------//
 
 //$fontText: 'HK Grotesk';
@@ -52,6 +54,7 @@ $themeColorBase: #00D9CD;
 $themeColorOrange: #FF5A00;
 $themeColorText: #4B494B;
 $themeBlue: #1F47D6;
+$text: #626262;
 
 $themeBootstrapContainer: 1440px;
 $themeBootstrapRow: -6px;

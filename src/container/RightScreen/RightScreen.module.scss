@@ -6,8 +6,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  //align-items: center;
-  //justify-content: center;
   height: 100%;
   width: 100%;
   max-width: 100%;
@@ -48,7 +46,6 @@
   right: 72px;
   background-image: url("../../image/RightScree/QuestionGreen.png");
   background-size: contain;
-  //background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   @include animationJS();
@@ -109,6 +106,11 @@
     color: #ffffff;
     justify-content: center;
     align-items: center;
+
+    &:hover, &:active {
+      opacity: 0.8;
+      transition: $transition;
+    }
   }
 }
 
@@ -127,6 +129,11 @@
     background-repeat: no-repeat;
     background-position: left;
     cursor: pointer;
+
+    &:hover, &:active {
+      opacity: 0.8;
+      transition: $transition;
+    }
   }
 
   .appStore {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.module.scss'
 
-const AskerHomeStatic = (props) => {
+const HomeStart = (props) => {
   return (
     <div className={styles.askerWrapper} id="homeTiltWrapper">
       <div className={`${styles.askerRow}`}>
@@ -29,4 +29,4 @@ const AskerHomeStatic = (props) => {
 
 };
 
-export default AskerHomeStatic;
+export default HomeStart;

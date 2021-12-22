@@ -30,7 +30,7 @@ const App = () => {
 
         {/*/!* other Routes Start *!/*/}
         {/*/!* Home Tab*!/*/}
-        {/*<Route path={"/PromotionVideo"} component={LayoutTwo}/>*/}
+        {/*<Route path={"/HomeCreateQuestion"} component={LayoutTwo}/>*/}
         {/*<Route path={"/HomeStatic"} component={LayoutTwo}/>*/}
 
         {/*/!* Ask Tab *!/*/}

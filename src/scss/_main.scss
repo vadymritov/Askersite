@@ -68,7 +68,6 @@ body {
   align-content: center;
   justify-content: center;
   height: 100%;
-  //overflow: hidden;
   border-radius: 19px;
 }
 
@@ -79,7 +78,6 @@ body {
   font-family: $main-font;
   font-weight: bold;
   display: flex;
-  //flex-direction: column;
   justify-content: center;
   position: relative;
   z-index: 1;
@@ -128,6 +126,21 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
   -webkit-text-fill-color: $themeColorText; /* 1. sets text fill to current `color` for safari */
   opacity: 1; /* 2. correct opacity on iOS */
 }
+
+/*
+  Removing arrows on the right of the input type number
+*/
+// for firefox
+input[type='number'] {
+  -moz-appearance:textfield!important;
+}
+// for others
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none!important;
+  margin: 0;
+}
+
 
 .main-container {
   //width: 1440px;

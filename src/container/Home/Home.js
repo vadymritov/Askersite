@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import AskerHomeStatic from "./AskerHomeStatic";
-import PromotionVideo from "./PromotionVideo";
+import HomeStart from "./HomeStart";
+import HomeCreateQuestion from "./HomeCreateQuestion";
 
 const Home = (props) => {
   const [LoginStatus, setLoginStatus] = useState(false);
 
   return (
     <>
-      {LoginStatus ? <PromotionVideo/> : <AskerHomeStatic/>}
+      {!LoginStatus ? <HomeCreateQuestion/> : <HomeStart/>}
     </>
   )
 };

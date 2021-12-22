@@ -1,241 +1,308 @@
 @import "../../scss/settings";
 @import "../../scss/mixins";
 
-//@keyframes hometiltjs {
-//  0% {
-//    transform: translate(0, 0);
-//  }
-//
-//  25% {
-//    transform: translate(5px, 10px);
-//  }
-//
-//  50% {
-//    transform: translate(0, 0);
-//  }
-//
-//  75% {
-//    transform: translate(5px, -10px);
-//  }
-//
-//  100% {
-//    transform: translate(0, 0);
-//  }
-//}
-
 .askerWrapper {
   width: 100%;
   height: 100%;
   padding-top: 115px;
-  //padding: 5vw 0 15vw;
+}
 
-  .askerRow {
-    display: flex;
-    width: 100%;
-    //max-height: 532px;
-    height: 100%;
-    flex-wrap: nowrap;
+
+.askerRow {
+  display: flex;
+  width: 100%;
+  //max-height: 532px;
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+.askerCol {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  border-radius: 26px;
+  position: relative;
+  //z-index: 2;
+}
+.withPadding {
+  padding-top: 115px;
+}
+
+.imgWrap {
+  display: flex;
+  position: relative;
+  z-index: 3;
+  border-radius: 26px;
+  background-image: url("../../image/svg/AskerPhone.svg");
+  background-size: contain;
+  //background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  left: 30px;
+  height: 57vh;
+  //height: 100%;
+  //height: 532px;
+  width: 50%;
+  padding: 0 22px;
+  min-width: 300px;
+  max-height: 532px;
+
+
+  @include media-max($lg-break) {
+    min-width: 14em;
+    left: 20px;
+    padding: 0 15px;
+    //min-width: 280px;
+  }
+  @include media-max($md-break) {
+    min-width: 260px;
+    left: 15px;
   }
 
-  .askerCol {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    border-radius: 26px;
-    position: relative;
-    //z-index: 2;
-  }
-
-  .imgWrap {
-    display: flex;
-    position: relative;
-    z-index: 3;
-    border-radius: 26px;
-    background-image: url("../../image/svg/AskerPhone.svg");
-    background-size: contain;
-    //background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-    left: 30px;
-    height: 57vh;
-    //height: 100%;
-    //height: 532px;
-    width: 50%;
-    padding: 0 22px;
-    min-width: 300px;
-    max-height: 532px;
-
-
-    @include media-max($lg-break) {
-      min-width: 14em;
-      left: 20px;
-      padding: 0 15px;
-      //min-width: 280px;
-    }
-    @include media-max($md-break) {
-      min-width: 260px;
-      left: 15px;
-    }
-
-    .shadow {
-      position: absolute;
-      //width: 252.12px;
-      top: 77px;
-      width: 16em;
-      height: 115px;
-      background: rgba(173, 184, 250, 0.3);
-      filter: blur(7px);
-
-      @include media-max($lg-break) {
-        top: 60px;
-        width: 11.5em;
-        height: 5em;
-      }
-    }
-  }
-
-  .listingImg {
+  .shadow {
     position: absolute;
-    left: -26px;
-    top: 62px;
-    //z-index: 1;
-    width: 18em;
-    height: 150px;
+    top: 77px;
+    width: 16em;
+    height: 115px;
+    background: rgba(173, 184, 250, 0.3);
+    filter: blur(7px);
+
     @include media-max($lg-break) {
-      left: -12px;
-      top: 47px;
-      width: 12em;
-      height: 105px;
+      top: 60px;
+      width: 11.5em;
+      height: 5em;
     }
   }
+}
 
-  .iconImg {
-    background-image: url("../../image/svg/ListingImg.svg");
-    width: 100%;
-    height: 100%;
+.listingImg {
+  position: absolute;
+  left: -26px;
+  top: 62px;
+  //z-index: 1;
+  width: 18em;
+  height: 16vh;
+  //height: 150px;
+  @include media-max($lg-break) {
+    left: -12px;
+    top: 47px;
+    width: 12em;
+    height: 13vh;
+    //height: 105px;
+  }
+}
+
+.iconImg {
+  background-image: url("../../image/svg/ListingImg.svg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  transform: translateZ(10px);
+  @include animationJS();
+}
+
+.imgWrapStatic {
+  display: flex;
+  position: absolute;
+  border-radius: 26px;
+  background-image: url("../../image/svg/AskerPhoneStatic.svg");
+  //background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  left: 5em;
+  //left: 67px;
+  top: 27px;
+  //height: 622px;
+  height: 74vh;
+  width: 50%;
+  padding: 0 22px;
+  min-width: 315px;
+  max-height: 622px;
+  @include media-max($lg-break) {
+    min-width: 15em;
+    min-height: 21em;
+    max-height: auto;
+    //width: 16em;
+    //min-width: 305px;
+  }
+  @include media-max($md-break) {
+    min-width: 260px;
+  }
+}
+
+.question {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 63px;
+
+  .iconTop {
+    display: flex;
+    position: absolute;
+    border-radius: 4px;
+    background-image: url("../../image/svg/QuestionTop.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center top;
-    transform: translateZ(10px);
+    background-position: center;
+    left: -6em;
+    top: -8em;
+    height: 11em;
+    width: 25em;
+    padding: 0;
     @include animationJS();
-    //animation-name: $animationJs;
-    ////animation-name: hometiltjs;
-    //animation-fill-mode: both;
-    //animation-iteration-count: infinite;
-    //animation-duration: 20s;
-    //animation-timing-function: ease-in-out;
-  }
 
-  .imgWrapStatic {
+    @include media-max($lg-break) {
+      top: -7em;
+      height: 9em;
+      width: 21em;
+    }
+  }
+}
+
+.questionBottom {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 3;
+  width: 100%;
+  height: 63px;
+
+  .iconBottom {
     display: flex;
     position: absolute;
-    border-radius: 26px;
-    background-image: url("../../image/svg/AskerPhoneStatic.svg");
-    //background-size: cover;
+    border-radius: 4px;
+    top: -14em;
+    background-image: url("../../image/svg/QuestionBottom.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center top;
-    left: 5em;
-    //left: 67px;
-    top: 27px;
-    //height: 622px;
-    height: 74vh;
-    width: 50%;
-    padding: 0 22px;
-    min-width: 315px;
-    max-height: 622px;
+    background-position: center;
+    //left: -18vw;
+    height: 11em;
+    width: 25em;
+    left: -209px;
+    padding: 0;
+
+    @include animationJS();
+
     @include media-max($lg-break) {
-      min-width: 15em;
-      min-height: 21em;
-      max-height: auto;
-      //width: 16em;
-      //min-width: 305px;
+      top: -16em;
+      left: -18vw;
+      height: 9em;
+      width: 21em;
     }
-    @include media-max($md-break) {
-      min-width: 260px;
-    }
+
+  }
+}
+
+.imgCreatePhone {
+  background-image: url("../../image/svg/CreatePhone.svg");
+  left: 3em;
+}
+
+.questionsWrap {
+  overflow-y: hidden;
+  overflow-x: visible;
+  height: calc(100vh - 24px);
+  left: 29px;
+  width: calc(50% + 95px);
+  top: -115px;
+  position: relative;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+.questionsCol {
+  width: 100%;
+  overflow-x: visible;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.questionBox {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  width: 100%;
+  //width: 304px;
+  height: 74px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  margin-bottom: 1em;
+  @include media-max($lg-break) {
+    width: 100%;
+    min-width: 250px;
   }
 
-  .question {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
-    width: 100%;
-    height: 63px;
-
-
-
-    .iconTop {
-      display: flex;
-      position: absolute;
-      border-radius: 4px;
-      background-image: url("../../image/svg/QuestionTop.svg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      left: -6em;
-      top: -8em;
-      height: 11em;
-      width: 25em;
-      //height: 11em;
-      //width: 17em;
-      padding: 0;
-      //transform: translateZ(10px);
-      @include animationJS();
-      //animation-name: $animationJs;
-      //animation-fill-mode: both;
-      //animation-iteration-count: infinite;
-      //animation-duration: 20s;
-      //animation-timing-function: ease-in-out;
-
-      @include media-max($lg-break) {
-        top: -7em;
-        height: 9em;
-        width: 21em;
-      }
-    }
+  .questionIcon {
+    width: 26px;
+    min-width: 26px;
+    height: 28px;
+    margin-right: 15px;
   }
-  .questionBottom {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    z-index: 3;
-    width: 100%;
-    height: 63px;
 
-    .iconBottom {
-      display: flex;
-      position: absolute;
-      border-radius: 4px;
-      top: -14em;
-      background-image: url("../../image/svg/QuestionBottom.svg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      //left: -18vw;
-      height: 11em;
-      width: 25em;
-      left: -209px;
-      //height: 11em;
-      //width: 18em;
-      padding: 0;
+  .clockIcon {
+    width: 52px;
+    min-width: 52px;
+    height: 49px;
+    position: relative;
+    //right: -5px
+  }
 
-      @include animationJS();
-      //transform: translateZ(10px);
-      //animation-name: $animationJs;
-      //animation-fill-mode: both;
-      //animation-iteration-count: infinite;
-      //animation-duration: 20s;
-      //animation-timing-function: ease-in-out;
+  .questionText {
+    font-family: $main-font;
+    font-weight: 400;
+    color: $text;
+    font-size: 15px;
+    width: 191px;
+  }
 
-      @include media-max($lg-break) {
-        top: -16em;
-        left: -18vw;
-        height: 9em;
-        width: 21em;
-      }
+}
+.createBox {
+  @include btn-reset();
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 51px;
+  padding-right: 15px;
+  //width: 284px;
+  width: calc(100% - 14px);
+  height: 54px;
+  min-height: 54px;
+  background: $themeColor;
+  border-radius: 15px;
+ margin: 0px 0 17px;
 
-    }
+  &:hover, &:active {
+    opacity: 0.8;
+    transition: $transition;
+  }
+
+  .questionText {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  .addIcon {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
   }
 }
