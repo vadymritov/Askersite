@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
+import RightScreen from "../../../container/RightScreen/RightScreen";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
@@ -17,7 +18,7 @@ const Layout = ({children}) => {
           </div>
         </div>
         <div className="col col-md-6 col-xl-7 static-col">
-          {/*<StaticScreen/>*/}
+          <RightScreen />
         </div>
       </div>
     </div>

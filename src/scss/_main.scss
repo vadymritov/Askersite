@@ -147,6 +147,8 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 }
 
 .main-col {
+  position: relative;
+  z-index: 2;
   width: 41%;
   padding: 0;
   display: flex;
@@ -154,6 +156,8 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 }
 
 .static-col {
+  position: relative;
+  z-index: 1;
   width: 58%;
   padding: 0;
   display: flex;
@@ -164,4 +168,21 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 
 .col-padding {
   padding-left: 6px;
+}
+
+.activeTyped {
+  transition: 0.3s ease;
+  overflow: hidden;
+  padding: 0 5px;
+  background-color: #b6fffb;
+}
+
+h2 {
+  font-size: 41px;
+  span {
+    color: #0F0222;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+  }
 }

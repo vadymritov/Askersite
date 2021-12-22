@@ -1,0 +1,78 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  //height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 31px 0 43px;
+}
+
+.logo {
+  height: 94px;
+  width: 75px;
+}
+
+.tabBox {
+  display: flex;
+  align-items: center;
+}
+
+.linkWrap {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 40px;
+  text-decoration: none;
+  color: #ABABAB;
+
+  .itemLink {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+
+  }
+
+  &:hover, &.active{
+    color: $themeColor;
+  }
+
+}
+
+.joinWrap {
+  background-image: linear-gradient(90deg, #01EBDE, #5468FF);
+  border-radius: 22px;
+  padding: 1px;
+  overflow: hidden;
+  text-decoration: none;
+  //background-color: #fff;
+
+  .joinLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 51px;
+    height: 28px;
+    //padding: 12px 20px;
+    background-color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 22px;
+    color: #ABABAB;
+    line-height: 1;
+
+  }
+
+  &:hover {
+    .joinLink {
+      background-color: transparent;
+      color: #fff;
+    }
+  }
+}

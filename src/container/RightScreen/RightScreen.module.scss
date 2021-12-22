@@ -1,0 +1,141 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+
+.rightContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  //justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 19px;
+  background-color: #f8faff;
+
+}
+
+.rightContent {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tellmeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  max-width: 100%;
+  width: 430px;
+  margin-left: 30px;
+  //align-items: center;
+}
+
+.greenIcon {
+  width: 105px;
+  height: 120px;
+  position: absolute;
+  top: 80px;
+  right: 72px;
+  background-image: url("../../image/RightScree/QuestionGreen.png");
+  background-size: contain;
+  //background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+
+.wrapIcon{
+  position: relative;
+  width: 100%;
+}
+.violetIcon {
+  position: absolute;
+  top: -42px;
+  right: -8px;
+  width: 105px;
+  height: 120px;
+  background-image: url("../../image/RightScree/QuestionViolet.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.typedTextWrap {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  height: 280px;
+
+  .typedText {
+    width: 430px;
+    font-size: 55px;
+    color: #0F0222;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}
+
+.btnLine {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+
+  .btnCreate {
+    @include btn-reset();
+    font-size: 20px;
+    line-height: 1;
+    background: #FF5A00;
+    height: 57px;
+    width: 197px;
+    border-radius: 45px;;
+    border: none;
+    display: flex;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.linkBlock {
+  display: flex;
+  align-items: center;
+  //width: 100%;
+  width: 430px;
+  margin-left: 30px;
+
+  .iconLink {
+    @include btn-reset();
+    width: 169px;
+    height: 66px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    cursor: pointer;
+
+  }
+
+  .appStore {
+    background-image: url("../../image/svg/AppStore.svg");
+    margin-right: 15px;
+  }
+
+  .googlePay {
+    width: 200px;
+    height: 113px;
+    background-image: url("../../image/svg/GooglePlay.svg");
+  }
+}
