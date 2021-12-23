@@ -1,26 +1,46 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Input.module.scss'
+import {isTouchEnabled} from "../../../utils/helpers";
 
-const Input = ({inputStyles,
-                 wrapStyle,
+const Input = ({
+                 register,
+                 onClick,
+                 placeholder,
+                 defaultValue,
+                 disabled,
+                 errors,
                  type,
+                 maxLength,
+                 name,
+                 onChange,
+                 wrapStyle,
                  children,
                  addPadding,
-                 // control,
-                 // rules,
-                 defaultValue,
-                 name,
-                 disabled,
-                 ...props}) => {
+                 inputStyles,
+                 ...props
+               }) => {
   const [isShow, setIsShow] = useState(false)
-  // const {field} = useController({
-  //   control,
-  //   defaultValue: defaultValue || '',
-  //   name,
-  //   rules
-  // })
-
+  const [isError, setIsError] = useState(false);
+  const [inputType, setInputType] = useState('text');
   // console.log('custom', inputStyles, name, defaultValue);
+
+  useEffect(() => {
+    if (errors && errors[name]) {
+      setIsError(true);
+    } else {
+      setIsError(null);
+    }
+  }, [errors]);
+
+
+  useEffect(() => {
+    if (type === 'number' && !isTouchEnabled()) {
+      setInputType('text');
+    } else {
+      setInputType(type || 'text');
+    }
+  }, [type]);
+
 
   const handleChange = (event) => {
     console.log(event.target.value);
@@ -28,7 +48,7 @@ const Input = ({inputStyles,
       props.onChange(event);
     }
 
-    if (props.name === 'email' ) {
+    if (props.name === 'email') {
       event.target.value = event.target.value.trim();
     }
 
@@ -42,44 +62,49 @@ const Input = ({inputStyles,
   }
 
 
-  // const renderError = () => {
-  //   if (isError && errors && errorObj) {
-  //     switch (errorObj.type) {
-  //       case 'required':
-  //         return <span className={cn(styles['error-message'], customErrorClass)}>{errorObj.message || 'Required field'}</span>;
-  //       case 'validate':
-  //         return <div className={cn(styles['error-message'], customErrorClass)}>{errorObj.message || 'Invalid format'}</div>;
-  //       case 'maxLength':
-  //         return <div className={cn(styles['error-message'], customErrorClass)}>{errorObj.message || 'Max length exceeded'}</div>;
-  //       case 'minLength':
-  //         return <div className={cn(styles['error-message'], customErrorClass)}>{errorObj.message || 'Incorrect amount of characters'}</div>;
-  //       case 'pattern':
-  //         return <div className={cn(styles['error-message'], customErrorClass)}>{errorObj.message || 'Invalid format'}</div>;
-  //       default:
-  //         return null;
-  //     }
-  //   }
-  //
-  //   return null;
-  // };
+  const renderError = () => {
+    if (errors && errors[name]) {
+      switch (errors[name].type) {
+        case 'required':
+          return errors[name].message || 'Required field';
+        case 'maxLength':
+          return errors[name].message || 'Max length exceeded';
+        case 'minLength':
+          return errors[name].message || 'Incorrect amount of characters';
+        case 'validate':
+          return errors[name].message || 'Invalid format';
+        case 'pattern':
+          return errors[name].message || 'Invalid format';
+        default:
+          return null;
+      }
+    }
 
+    return null;
+  }
 
+console.log('eroor', errors, errors[name]);
   return (
-    <div className={`${wrapStyle ? wrapStyle : ''} ${addPadding != null ? styles.addPading : ''} ${styles.Input}`}>
-      <div className={styles.iconBox}>{children}</div>
-      <input
-        role={'input'}
-        {...props}
-        name={name}
-        className={`${styles.Input} ${inputStyles ? inputStyles : ''}`}
-        type={type === 'password' && isShow ? 'text' : type}
-        onClick={props.onClick}
-        onChange={handleChange}
-        disabled={disabled}
-      />
-      {type === 'password' ?
-        <button type='button' className={styles.showText} onClick={changeShow}>{!isShow ? 'Show' : "Hide"}</button>
-        : null}
+    <div className={`${styles.inputWrap} ${addPadding != null ? styles.addPading : ''} `}>
+      <div className={`${wrapStyle ? wrapStyle : ''} ${styles.Input}`}>
+        <div className={styles.iconBox}>{children}</div>
+        <input
+          role={'input'}
+          {...props}
+          type={inputType}
+          onChange={handleChange}
+          name={name}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          maxLength={maxLength}
+          onClick={onClick}
+          disabled={disabled}
+        />
+        {type === 'password' ?
+          <button type='button' className={styles.showText} onClick={changeShow}>{!isShow ? 'Show' : "Hide"}</button>
+          : null}
+      </div>
+      {errors[name] != null ? <div className={styles['error-message']}>{renderError()}</div> : null}
     </div>
   )
 };

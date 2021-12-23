@@ -29,13 +29,15 @@ const Header = (props) => {
       <div className={styles.tabBox}>
         {
           blockLinks.map((link, index) =>
-            <NavLink key={index} className={styles.linkWrap} exact to={link.href} activeclassname={styles.active} >
+            <NavLink key={index} className={styles.linkWrap} to={link.href} activeclassname={styles.active} >
+            {/*<NavLink key={index} className={styles.linkWrap} exact to={link.href} activeclassname={styles.active} >*/}
               <span className={styles.itemLink}>{link.text}</span>
             </NavLink>
           )
         }
 
-        <NavLink className={styles.joinWrap} exact to={'/sign-up'} activeclassname={styles.active} >
+        <NavLink className={styles.joinWrap} to={'/sign-up'} activeclassname={styles.active} >
+        {/*<NavLink className={styles.joinWrap} exact to={'/sign-up'} activeclassname={styles.active} >*/}
           <span className={styles.joinLink}>Join</span>
         </NavLink>
 

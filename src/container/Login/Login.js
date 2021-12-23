@@ -36,6 +36,7 @@ const Login = (props) => {
                 <Input
                   name='email'
                   type='email'
+                  errors={errors}
                   placeholder='Email'
                   register={register("email", {required: true, maxLength: 128, pattern: regexEmail})}
                   addPadding={true}
@@ -43,6 +44,7 @@ const Login = (props) => {
                 <Input
                   name='password'
                   type='password'
+                  errors={errors}
                   placeholder='Password'
                 ><LockIcon className={styles.lockIcon}/></Input>
               </div>
