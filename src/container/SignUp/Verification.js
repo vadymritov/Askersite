@@ -13,6 +13,7 @@ import LinePhone from "../../components/UI/icons/LinePhone";
 const Verification = ({...props}) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const [verifyCode, setVerifyCode] = useState("");
+  const [focusInput, setFocusInput] = useState(false);
 
   const onSubmit = (data) => {
     console.log('onSubmit', data);
@@ -28,6 +29,8 @@ const Verification = ({...props}) => {
     props.onStepChange();
   };
 
+  console.log('hhh', focusInput,  verifyCode.length > 0, verifyCode.length);
+
   return (
     <>
       <div className={`fade-in ${styles.content}`}>
@@ -40,35 +43,33 @@ const Verification = ({...props}) => {
           <div className={styles.title}>Verification</div>
           <div className={styles.text}>We’ve texted you a code to verify your number.</div>
           <div className={styles.inputBox}>
-            {/*<Input*/}
-            {/*  name='name'*/}
-            {/*  type='text'*/}
-            {/*  defaultValue={null}*/}
-            {/*  placeholder='Full name'*/}
-            {/*  addPadding={true}*/}
-            {/*  errors={errors}*/}
-            {/*  register={register("name", {required: true})}*/}
-            {/*  // required*/}
-            {/*  onChange={(e) =>*/}
-            {/*    console.log('Full name', e.target.value)*/}
-            {/*  }*/}
-            {/*><EmailIcon className={styles.emailIcon}/></Input>*/}
             <div className={`${styles.codeBox}`}>
               <input
                 type="text"
                 maxLength="4"
                 id="OtpVerfication"
                 name="verification_code"
+                onBlur={(e) => {
+                  if(e.target.value.length === 0) {
+                    setFocusInput(false)
+                  }
+                  console.log('blue', e.target.value);
+                }}
+                onFocus={(e) => {
+                  setFocusInput(true)
+                }}
                 onChange={(e) => {
-                  setVerifyCode(e.target.value)
-                  console.log('setVerifyCode',e.target.value, verifyCode, e.target.value.length);
+                    setVerifyCode(e.target.value)
+                  // if (e.target.value.length === 4) {
+                  // }
+                  console.log('setVerifyCode', e.target.value, verifyCode, e.target.value.length);
                 }}
               />
-              <div className={`otp-bg ${styles.codeItems}`} >
-                <span/>
-                <span/>
-                <span/>
-                <span/>
+              <div className={`otp-bg ${styles.codeItems}`}>
+                <span className={focusInput || (!focusInput && verifyCode.length > 0) ? '' :  styles.opacity}/>
+                <span className={(focusInput && verifyCode.length >= 1) || (!focusInput && verifyCode.length > 1) ? '' :  styles.opacity}/>
+                <span className={(focusInput && verifyCode.length >= 2) || (!focusInput && verifyCode.length > 2) ? '' :  styles.opacity}/>
+                <span className={(focusInput && verifyCode.length >= 3) || (!focusInput && verifyCode.length > 3) ? '' :  styles.opacity}/>
               </div>
             </div>
           </div>
