@@ -1,12 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Input.module.scss'
-import QuestionSmall from "../icons/QuestionSmall";
 
-const Input = ({customStyle, type, children, ...props}) => {
+const Input = ({inputStyles,
+                 wrapStyle,
+                 type,
+                 children,
+                 addPadding,
+                 // control,
+                 // rules,
+                 defaultValue,
+                 name,
+                 disabled,
+                 ...props}) => {
+  const [isShow, setIsShow] = useState(false)
+  // const {field} = useController({
+  //   control,
+  //   defaultValue: defaultValue || '',
+  //   name,
+  //   rules
+  // })
 
-  console.log('custom', customStyle);
+  // console.log('custom', inputStyles, name, defaultValue);
 
   const handleChange = (event) => {
+    console.log(event.target.value);
     if (props.onChange != null) {
       props.onChange(event);
     }
@@ -19,6 +36,11 @@ const Input = ({customStyle, type, children, ...props}) => {
       props?.register.onChange(event);
     }
   }
+
+  const changeShow = () => {
+    setIsShow(prevState => !prevState);
+  }
+
 
   // const renderError = () => {
   //   if (isError && errors && errorObj) {
@@ -41,29 +63,23 @@ const Input = ({customStyle, type, children, ...props}) => {
   //   return null;
   // };
 
-  const computedProps = {
-    type: type,
-    value: props.value,
-    onChange: props.handleChange,
-    onFocus: props.onFocus,
-    onBlur: props.onBlur,
-    name: props.name,
-    id: props.name,
-    placeholder: props.placeholder,
-    maxLength: props.maxLength,
-    minLength: props.minLength,
-    onClick: props.onClick,
-    disabled: props.disabled,
-    defaultValue: props.defaultValue,
-    autoComplete: props?.autoComplete,
-    readOnly: props?.readonly,
-    ref: props.register?.ref
-  }
 
   return (
-    <div className={`${customStyle ? customStyle : ''} ${props.addPadding != null ? styles.addPading : ''} ${styles.Input}`}>
+    <div className={`${wrapStyle ? wrapStyle : ''} ${addPadding != null ? styles.addPading : ''} ${styles.Input}`}>
       <div className={styles.iconBox}>{children}</div>
-      <input type={type} {...computedProps}/>
+      <input
+        role={'input'}
+        {...props}
+        name={name}
+        className={`${styles.Input} ${inputStyles ? inputStyles : ''}`}
+        type={type === 'password' && isShow ? 'text' : type}
+        onClick={props.onClick}
+        onChange={handleChange}
+        disabled={disabled}
+      />
+      {type === 'password' ?
+        <button type='button' className={styles.showText} onClick={changeShow}>{!isShow ? 'Show' : "Hide"}</button>
+        : null}
     </div>
   )
 };

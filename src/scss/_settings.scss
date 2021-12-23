@@ -1,4 +1,5 @@
 @import 'import-fonts';
+@import "animation";
 
 $transition: 600ms;
 
@@ -26,27 +27,6 @@ $xxs-break: 359;
     FOR -- Color, ColorYellow, ColorRed, ColorGreen, ColorText;
 */
 
-@keyframes hometiltjs {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  25% {
-    transform: translate(5px, 10px);
-  }
-
-  50% {
-    transform: translate(0, 0);
-  }
-
-  75% {
-    transform: translate(5px, -10px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
 
 $themeColor: #5468FF;
 $themeColorSimilar: #7686ff;
@@ -55,9 +35,10 @@ $themeColorOrange: #FF5A00;
 $themeColorText: #4B494B;
 $themeBlue: #1F47D6;
 $text: #626262;
+$white: #ffffff;
 
 $themeBootstrapContainer: 1440px;
 $themeBootstrapRow: -6px;
 $themeBootstrapCol: 6px;
 
-$animationJs: hometiltjs
+$homeAnimation: homeAnimation

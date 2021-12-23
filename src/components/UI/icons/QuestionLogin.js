@@ -8,10 +8,10 @@ const QuestionLogin = ({className}) => (
     <path style={{fillRule: "evenodd", clipRule: "evenodd", fill: "white"}} d="M20.722 16.4788C19.1123 17.6499 19.0827 18.4671 19.0827 19.8834C19.0827 20.401 18.7902 21 17.3559 21C16.1561 21 15.7464 20.5915 15.7464 19.1752C15.7464 16.8327 16.8587 15.7159 17.7072 15.035C18.6731 14.2724 20.3121 13.428 20.3121 11.9573C20.3121 10.7044 19.1416 10.1051 17.6779 10.1051C14.6927 10.1051 15.3366 12.2023 13.7561 12.2023C12.9659 12.2023 12 11.7121 12 10.6497C12 9.17918 13.8147 7 17.7661 7C21.5122 7 24 8.93397 24 11.4941C24 14.0544 21.5122 15.9068 20.722 16.4788ZM20.0227 24.4822C20.0227 25.5989 19.0182 26.5797 17.7478 26.5797C16.4779 26.5797 15.5029 25.5989 15.5029 24.4822C15.5029 23.3379 16.5074 22.3845 17.7478 22.3845C18.9886 22.3845 20.0227 23.3379 20.0227 24.4822Z" />
     <defs>
       <radialGradient id="paint0_radial_1860_6364" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(27.455 33.8119) rotate(180) scale(37.0464 37.043)">
-        <stop stop-color="#0B9F97"/>
-        <stop offset="0.6098" stop-color="#00D9CD"/>
-        <stop offset="0.9348" stop-color="#06FBED"/>
-        <stop offset="1" stop-color="#92FFF2"/>
+        <stop style={{stopColor:"#0B9F97"}}/>
+        <stop offset="0.6098"  style={{stopColor:"#00D9CD"}}/>
+        <stop offset="0.9348" style={{stopColor:"#06FBED"}} />
+        <stop offset="1" style={{stopColor:"#92FFF2"}}/>
       </radialGradient>
     </defs>
   </svg>

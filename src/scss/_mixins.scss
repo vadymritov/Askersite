@@ -42,7 +42,7 @@
 
 @mixin animationJS {
   transform: translateZ(10px);
-  animation-name: $animationJs;
+  animation-name: $homeAnimation;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-duration: 20s;

@@ -4,6 +4,7 @@ import Layout from "./components/hoc/Layout/Layout";
 import Home from "./container/Home/Home";
 import './App.scss';
 import Login from "./container/Login/Login";
+import SignUp from "./container/SignUp/SignUp";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         {/* Log in Routes start*/}
         <Route path={"/"} element={<Home />}/>
         <Route path="/log-in" element={<Login />}/>
+        <Route path="/sign-up" element={<SignUp />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
