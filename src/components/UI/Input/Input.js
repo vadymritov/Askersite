@@ -57,8 +57,17 @@ const Input = ({
     }
   }
 
+  useEffect(() => {
+    if (type === 'password' && isShow) {
+      setInputType('text')
+    } else if (type === 'password' && !isShow) {
+      setInputType('password')
+    }
+  }, [type, isShow])
+
   const changeShow = () => {
     setIsShow(prevState => !prevState);
+
   }
 
 
@@ -83,7 +92,6 @@ const Input = ({
     return null;
   }
 
-console.log('eroor', errors, errors[name]);
   return (
     <div className={`${styles.inputWrap} ${addPadding != null ? styles.addPading : ''} `}>
       <div className={`${wrapStyle ? wrapStyle : ''} ${styles.Input}`}>

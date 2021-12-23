@@ -13,6 +13,7 @@ import LinePhone from "../../components/UI/icons/LinePhone";
 import {regexEmail} from "../../utils/helpers";
 import CreateAccount from "./CreateAccount";
 import Verification from "./Verification";
+import CreatePassword from "./CreatePassword";
 
 const SignUp = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
@@ -46,7 +47,7 @@ const SignUp = (props) => {
       case 'verification':
         return <Verification nextStep={nextStep} onStepChange={prevStep}/>;
       case 'password':
-        return <CreateAccount />;
+        return <CreatePassword nextStep={nextStep} onStepChange={prevStep}/>;
 
       default:
         return null
