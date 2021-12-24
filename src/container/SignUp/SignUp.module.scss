@@ -86,7 +86,7 @@
       bottom: 0;
       width: calc(100% + 85px);
       height: 100%;
-      color: #344356;
+      color: $darkText;
       font-size: 25px;
       font-weight: bold;
       z-index: 1;
@@ -236,7 +236,7 @@
   }
 
   .selectBox {
-    border-right: 1px solid #344356;
+    border-right: 1px solid $darkText;
     opacity: .2;
     width: 50px;
     display: flex;
@@ -254,7 +254,7 @@ input {
   font-size: 14px;
   line-height: 1;
   text-align: start;
-  color: #344356;
+  color: $darkText;
   font-weight: 400;
   font-family: $main-font;
   padding-right: 15px;

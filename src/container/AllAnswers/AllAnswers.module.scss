@@ -1,0 +1,143 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding: 10px 28px;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.infoBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 205px;
+  height: 46px;
+  padding: 2px;
+  background: rgba(243, 245, 249, 0.8);
+  box-shadow: 0px 17.7273px 18.9091px rgba(0, 20, 170, 0.03);
+  border-radius: 26px;
+margin-bottom: 37px;
+}
+
+.infoBlockSmall {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 2px;
+  box-shadow: 0px 17.7273px 18.9091px rgba(0, 20, 170, 0.03);
+  z-index: 2;
+  background: transparent;
+  width: 65px;
+  height: 13px;
+  border-radius: 0;
+}
+
+.infoIcon {
+  position: relative;
+  top: 2px;
+  left: -5px;
+  min-width: 53px;
+  height: 52px;
+}
+
+.infoIconSmall {
+  position: relative;
+  top: 2px;
+  left: -5px;
+  min-width: 13px;
+  height: 10px;
+}
+
+.infoText {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 100%;
+  width: calc(100% - 53px);
+  font-size: 12px;
+  line-height: 1.2;
+  color: $darkText;
+
+}
+
+.infoTextSmall {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 100%;
+  width: calc(100% - 53px);
+  line-height: 1.2;
+  font-size: 3px;
+  color: $white;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 100%;
+  overflow: auto;
+}
+
+.cardWrap {
+  display: block;
+  padding: 0 6px;
+  margin-bottom: 10px;
+}
+.answersContainer {
+  display: flex;
+  //flex-direction: column;
+  //justify-content: flex-start;
+  //align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.answerCard {
+  position: relative;
+  //margin-bottom: 21px;
+  display: flex;
+  flex-direction: column;
+  height: 211px;
+  width: 110px;
+  z-index: 1;
+  border-radius: 8px;
+  background-image: url("../../image/svg/BgCardFull.svg");
+  //background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  //&:before {
+  //  content: "";
+  //  position: absolute;
+  //  z-index: 1;
+  //  top: 3px;
+  //  left: 1px;
+  //  bottom: 0;
+  //  right: 0;
+  //  width: calc(100% - 2px);
+  //  height: calc(100% - 13px);
+  //  border-radius: 11px;
+  //  background-image: url("../../image/svg/BgCardFull.svg");
+  //  background-size: cover;
+  //  background-repeat: no-repeat;
+  //  //background-size: 100% 100%;
+  //}
+}

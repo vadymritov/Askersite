@@ -4,13 +4,10 @@ import ArrowBack from "../../components/UI/icons/ArrowBack";
 import QuestionLogin from "../../components/UI/icons/QuestionLogin";
 import LogoWhite from "../../components/UI/icons/LogoWhite";
 import Input from "../../components/UI/Input/Input";
-import EmailIcon from "../../components/UI/icons/EmailIcon";
-import LockIcon from "../../components/UI/icons/LockIcon";
 import {NavLink, useHistory} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import LinePhone from "../../components/UI/icons/LinePhone";
 import {useForm} from "react-hook-form";
-import QuestionSmall from "../../components/UI/icons/QuestionSmall";
 import {SelectPicker} from "rsuite";
 import MenIcon from "../../components/UI/icons/MenIcon";
 
@@ -22,7 +19,7 @@ const CreateAccount = ({...props}) => {
   const [value, setValue] = useState("");
   const [Phone, setPhone] = useState("");
   const [Name, setName] = useState("");
-  const [CountryData, setCountryData] = useState([a]);
+  // const [CountryData, setCountryData] = useState([a]);
 
   const changeHandler = async (value) => {
     let val = value.split(",");
@@ -32,6 +29,54 @@ const CreateAccount = ({...props}) => {
     // $(".flag").find("img").attr("src", resultObject.unicode);
     // $(".rs-picker-toggle").find(".rs-picker-toggle-value").text(val[1]);
   };
+
+  const CountryData = [
+    {
+      "label": "Eugenia",
+      "value": "Eugenia",
+      "role": "Master"
+    },
+    {
+      "label": "Kariane",
+      "value": "Kariane",
+      "role": "Master"
+    },
+    {
+      "label": "Louisa",
+      "value": "Louisa",
+      "role": "Master"
+    },
+    {
+      "label": "Marty",
+      "value": "Marty",
+      "role": "Master"
+    },
+    {
+      "label": "Kenya",
+      "value": "Kenya",
+      "role": "Master"
+    },
+    {
+      "label": "Hal",
+      "value": "Hal",
+      "role": "Developer"
+    },
+    {
+      "label": "Julius",
+      "value": "Julius",
+      "role": "Developer"
+    },
+    {
+      "label": "Travon",
+      "value": "Travon",
+      "role": "Developer"
+    },
+    {
+      "label": "Vincenza",
+      "value": "Vincenza",
+      "role": "Developer"
+    },
+]
 
   // function search(nameKey, myArray) {
   //   let finddata = parseInt(nameKey);
@@ -79,6 +124,7 @@ const CreateAccount = ({...props}) => {
               }
             ><MenIcon className={styles.menIcon}/>
             </Input>
+
             <div className={`text-filled with-icon select-filled mobile-filled ${styles.inputPhoneWrap} `}>
                 <div className={styles.iconSelectWrap}/>
               <div className={styles.selectBox}>
@@ -87,6 +133,7 @@ const CreateAccount = ({...props}) => {
                   data={CountryData}
                   defaultValue={"+1"}
                   // defaultValue={"254,+1"}
+                  disabledItemValues={['Eugenia', 'Travon', 'Vincenza']}
                   onChange={(value) =>
                     changeHandler(value)
                   }

@@ -5,6 +5,7 @@ import Home from "./container/Home/Home";
 import './App.scss';
 import Login from "./container/Login/Login";
 import SignUp from "./container/SignUp/SignUp";
+import AllAnswers from "./container/AllAnswers/AllAnswers";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path={"/"} element={<Home />}/>
         <Route path="/log-in" element={<Login />}/>
         <Route path="/sign-up" element={<SignUp />}/>
+        <Route path="/all-answers" element={<AllAnswers />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
