@@ -6,6 +6,8 @@ import './App.scss';
 import Login from "./container/Login/Login";
 import SignUp from "./container/SignUp/SignUp";
 import AllAnswers from "./container/AllAnswers/AllAnswers";
+import WatchAnswer from "./container/WatchAnswer/WatchAnswer";
+import ContactCard from "./components/ContactCard/ContactCard";
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/log-in" element={<Login />}/>
         <Route path="/sign-up" element={<SignUp />}/>
         <Route path="/all-answers" element={<AllAnswers />}/>
+        <Route path="/view-answer" element={<WatchAnswer />}/>
+        <Route path="/contact-card" element={<ContactCard />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}

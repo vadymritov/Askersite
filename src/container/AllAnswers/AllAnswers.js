@@ -22,11 +22,6 @@ const AllAnswers = (props) => {
         })
       }
       </div>
-      {/*<div className={styles.cardWrap}>*/}
-      {/*  <div className={styles.answersContainer}>*/}
-      {/*    <div className={styles.answerCard}/>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
     </div>
   )
 };
