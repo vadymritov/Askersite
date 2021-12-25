@@ -1,24 +1,30 @@
-import React, {useEffect, useRef,} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from "./WatchAnswer.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
+import {useNavigate} from "react-router-dom";
+
+
 
 const WatchAnswer = (props) => {
-
+  let navigate = useNavigate();
   const cardRef = useRef(null);
 
   useEffect(async () => {
 
     if(cardRef?.current?.classList.contains("start-rotate")){
-      console.log('true');
       cardRef?.current?.classList.remove("start-rotate")
     }
 
     const timer = setTimeout(() => {
       cardRef?.current?.classList.add("start-rotate")
-    }, 5);
+    }, 1);
 
     return () => clearTimeout(timer);
   }, [props]);
+
+  const showContact = () => {
+    navigate('/contact-card')
+  }
 
     return (
       <div className={styles.mainContainer}>
@@ -33,7 +39,7 @@ const WatchAnswer = (props) => {
           </div>
           {/*<div className={styles.contentWrapLogin }>*/}
           {/*</div>*/}
-          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`} onClick={showContact}>
             <div className={styles.cardContainer}>
             </div>
           </div>

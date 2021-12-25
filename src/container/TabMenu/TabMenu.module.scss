@@ -1,0 +1,23 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+.tabContainerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  bottom: 29px;
+}
+
+.tabContainer {
+  width: 368px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  backdrop-filter: blur(30px);
+  border-radius: 30px 30px 0px 0px;
+}

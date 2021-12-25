@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
+import TabMenu from "../../../container/TabMenu/TabMenu";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
@@ -26,9 +27,9 @@ const Layout = ({children}) => {
           <div className="content-wrapper">
             {children}
 
-            {/*{pathname !== '/' ?*/}
-            {/*  <BottomTab/>*/}
-              {/*: null}*/}
+            {!smallView ?
+              <TabMenu />
+              : null}
           </div>
         </div>
         <div className={`static-col ${smallView ?  'static-col-small' : 'static-col'}`}>

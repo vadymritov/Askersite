@@ -9,10 +9,12 @@ import ContactName from "../UI/icons/Contact/ContactName";
 import ContactEmail from "../UI/icons/Contact/ContactEmail";
 import ContactPhone from "../UI/icons/Contact/ContactPhone";
 import ContactLink from "../UI/icons/Contact/ContactLink";
+import {useNavigate} from "react-router-dom";
 // import
 
 const ContactCard = (props) => {
     const cardRef = useRef(null);
+    let navigate = useNavigate()
 
     useEffect(async () => {
 
@@ -23,10 +25,15 @@ const ContactCard = (props) => {
 
       const timer = setTimeout(() => {
         cardRef?.current?.classList.add("start-rotate")
-      }, 5);
+      }, 1);
 
       return () => clearTimeout(timer);
     }, [props]);
+
+    const showViewAnswer = () => {
+      console.log('onc');
+      navigate('/view-answer')
+    }
 
     return (
       <div className={styles.mainContainer}>
@@ -39,7 +46,7 @@ const ContactCard = (props) => {
             <div className={styles.cardContainer}>
             </div>
           </div>
-          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
+          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`} onClick={showViewAnswer}>
             <div className={styles.cardContainerContact}>
               <div className={styles.blur}/>
               <div className={styles.contentBox}>
@@ -58,7 +65,7 @@ const ContactCard = (props) => {
                       <span className={styles.textInfo}>Antonio Pérez</span>
                     </div>
                     <div className={styles.linkIconWrap}>
-                    <ContactLink className={styles.linkIcon}/>
+                      <ContactLink className={styles.linkIcon}/>
                     </div>
                   </div>
                   <div className={styles.infoLine}>
