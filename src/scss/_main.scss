@@ -109,7 +109,7 @@ h3 {
 }
 
 .text-truncate {
-  display: block!important;
+  display: block !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -140,12 +140,13 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 */
 // for firefox
 input[type='number'] {
-  -moz-appearance:textfield!important;
+  -moz-appearance: textfield !important;
 }
+
 // for others
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none!important;
+  -webkit-appearance: none !important;
   margin: 0;
 }
 
@@ -175,6 +176,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
 }
+
 .main-col-small {
   position: relative;
   z-index: 2;
@@ -194,6 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #fafafa;
   border-radius: 19px;
 }
+
 .static-col-small {
   position: relative;
   z-index: 1;
@@ -218,6 +221,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 h2 {
   font-size: 41px;
+
   span {
     color: #0F0222;
     font-family: "Roboto", sans-serif;
@@ -254,6 +258,10 @@ h2 {
     opacity: .8;
     transition: $transition
   }
+
+  &:disabled {
+    opacity: .5;
+  }
 }
 
 .fade-in {
@@ -270,8 +278,8 @@ h2 {
 }
 
 .ease-out-effect {
-  animation: dissolveInRight 1.5s ease-in-out;
-  -webkit-animation: dissolveInRight 1.5s ease-in-out;
+  animation: dissolveInRight 0.5s ease-in-out;
+  -webkit-animation: dissolveInRight 0.5s ease-in-out;
 }
 
 
@@ -337,10 +345,11 @@ h2 {
 }
 
 .arrow-btn {
-  isplay: flex;
+  display: flex;
   position: absolute;
   min-width: 30px;
   height: 30px;
   top: 14px;
-  right: 14px
+  right: 14px;
+  fill: "#324ADD";
 }

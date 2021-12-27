@@ -1,6 +1,17 @@
 @import "../../scss/settings";
 @import "../../scss/mixins";
 
+.createContainerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  max-width: 100%;
+}
+
 .createContainer {
   display: flex;
   align-items: center;
@@ -8,6 +19,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   max-width: 100%;
   padding: 0 20px;
 }
@@ -28,43 +40,6 @@
   border-radius: 20px;
   padding: 12px;
 }
-
-
-//
-//.borderBx {
-//  position: relative;
-//  padding: 10px;
-//  width: 100%;
-//  max-width: 338px;
-//  height: 610px;
-//  margin: auto;
-//  background-image: linear-gradient(
-//      239.12deg,
-//      #5468ff -90.88%,
-//      #f8f9ff 261.21%
-//  );
-//  border-radius: 30px;
-//
-//  &:before {
-//    content: "";
-//    position: absolute;
-//    bottom: 0;
-//    left: 0;
-//    right: 0;
-//    margin: auto;
-//    width: 0;
-//    height: 0;
-//    border-width: 30px 30px 0 30px;
-//    border-color: #a1acff transparent transparent transparent;
-//    border-style: solid;
-//    z-index: 1;
-//    border-radius: 0px 0px 0px 0px;
-//    transition: 1s ease;
-//    transform: translate(0, 0);
-//    visibility: hidden;
-//    opacity: 0;
-//  }
-//}
 
 .rotate {
   transform: rotate(180deg);
@@ -111,13 +86,32 @@
   &.questionItemSolid {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0px 3px 19px rgba(60, 128, 209, 0.09);
-    height: 50px;
+    min-height: 50px;
   }
+
   &.questionItemDash {
     background: rgba(173, 184, 250, 0.1);
     border: 1px dashed rgba(173, 184, 250, 0.5);
     box-sizing: border-box;
-    height: 65px;
+    min-height: 65px;
+  }
+}
+
+.timesBox {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 2;
+  span {
+    color: #ADB8FA;
+
+    &.active {
+      color: #7685FE;
+    }
   }
 }
 
@@ -127,7 +121,31 @@
   flex-direction: column;
   justify-content: center;
   //padding: 11px 14px;
+  width: calc(100% - 5px);
   color: rgba(96, 111, 129, 0.9);
+
+  input {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    //min-height: 52px;
+    //height: 60px;
+    font-size: 12px;
+    line-height: 1;
+    text-align: start;
+    color: $darkText;
+    font-weight: 400;
+    border: none;
+    background: none;
+    appearance: none;
+    min-height: 10px;
+    padding: 3px 5px 3px 0;
+
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .title {
@@ -139,6 +157,8 @@
   line-height: 1.1;
 }
 
+
+
 .text {
   display: flex;
   align-items: center;
@@ -147,21 +167,446 @@
   font-size: 12px;
   line-height: 1.1;
 }
+
 .iconWrap {
+  @include btn-reset();
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 31px;
-  height: 31px;
   background: #7685FE;
+  min-width: 31px;
+  height: 31px;
   box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
   border-radius: 7.31429px;
+
+  &:hover, &:active {
+    opacity: 0.8;
+    transition: $transition;
+  }
 }
+
+.iconWrapCheck {
+  background-color: #00D9CD;
+  margin-right: 10px;
+}
+
 .editIcon {
-min-width: 16px;
+  min-width: 16px;
   height: 15px;
+}
+
+.checkIcon {
+  min-width: 12px;
+  height: 10px;
 }
 
 .buttonBox {
   margin-top: 10px;
+  width: 100%;
+}
+
+.buttonStyle  {
+  background: #5468FF;
+  width: 100%;
+}
+
+.buttonStylePublich  {
+  background: #00D9CD;
+  width: 100%;
+}
+
+.plusIconBox {
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3D56F0;
+  border-radius: 50%;
+
+  .plusIcon {
+    min-width: 26px;
+    height: 16px;
+  }
+}
+
+.arrowTop {
+  transform: rotate(-90deg);
+  fill: "#324ADD";
+}
+.arrowTopGreen {
+  transform: rotate(-90deg);
+  fill: #44BCB6;
+}
+
+// reatetwo ----------//
+
+
+.askerWrapper {
+  width: 100%;
+  height: 100%;
+  //padding-top: 115px;
+
+  .askerRow {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: nowrap;
+    padding: 0 0 0 12px;
+  }
+
+
+  .askerCol {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    //max-height: 325px;
+    //border-radius: 26px;
+    position: relative;
+    margin-right: 14px;
+  }
+
+  .contantWrapTwo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    //align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
+    //justify-content: center;
+    max-width: 100%;
+    width: 340px;
+    max-height: 325px;
+    min-height: 200px;
+    background-color: #FDFDFD;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 12px;
+  }
+
+
+  .withPadding {
+    padding-top: 115px;
+  }
+
+  .imgWrap {
+    display: flex;
+    position: relative;
+    z-index: 3;
+    border-radius: 26px;
+    background-image: url("../../image/svg/AskerPhone.svg");
+    background-size: contain;
+    //background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    left: 30px;
+    height: 57vh;
+    //height: 100%;
+    //height: 532px;
+    width: 50%;
+    padding: 0 22px;
+    min-width: 300px;
+    max-height: 532px;
+
+
+    @include media-max($lg-break) {
+      min-width: 14em;
+      left: 20px;
+      padding: 0 15px;
+      //min-width: 280px;
+    }
+    @include media-max($md-break) {
+      min-width: 260px;
+      left: 15px;
+    }
+
+    .shadow {
+      position: absolute;
+      top: 77px;
+      width: 16em;
+      height: 115px;
+      background: rgba(173, 184, 250, 0.3);
+      filter: blur(7px);
+
+      @include media-max($lg-break) {
+        top: 60px;
+        width: 11.5em;
+        height: 5em;
+      }
+    }
+  }
+
+  .listingImg {
+    position: absolute;
+    left: -26px;
+    top: 62px;
+    //z-index: 1;
+    width: 18em;
+    height: 16vh;
+    //height: 150px;
+    @include media-max($lg-break) {
+      left: -12px;
+      top: 47px;
+      width: 12em;
+      height: 13vh;
+      //height: 105px;
+    }
+  }
+
+  .iconImg {
+    background-image: url("../../image/svg/ListingImg.svg");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    transform: translateZ(10px);
+    @include animationJS();
+  }
+
+  .imgWrapStatic {
+    display: flex;
+    position: absolute;
+    border-radius: 26px;
+    background-image: url("../../image/svg/AskerPhoneStatic.svg");
+    //background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    left: 5em;
+    //left: 67px;
+    top: 27px;
+    //height: 622px;
+    height: 74vh;
+    width: 50%;
+    padding: 0 22px;
+    min-width: 315px;
+    max-height: 622px;
+    @include media-max($lg-break) {
+      min-width: 15em;
+      min-height: 21em;
+      max-height: auto;
+      //width: 16em;
+      //min-width: 305px;
+    }
+    @include media-max($md-break) {
+      min-width: 260px;
+    }
+  }
+
+  .question {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 63px;
+
+    .iconTop {
+      display: flex;
+      position: absolute;
+      border-radius: 4px;
+      background-image: url("../../image/svg/QuestionTop.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      left: -6em;
+      top: -8em;
+      height: 11em;
+      width: 25em;
+      padding: 0;
+      @include animationJS();
+
+      @include media-max($lg-break) {
+        top: -7em;
+        height: 9em;
+        width: 21em;
+      }
+    }
+  }
+
+  .questionBottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 3;
+    width: 100%;
+    height: 63px;
+
+    .iconBottom {
+      display: flex;
+      position: absolute;
+      border-radius: 4px;
+      top: -14em;
+      background-image: url("../../image/svg/QuestionBottom.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      //left: -18vw;
+      height: 11em;
+      width: 25em;
+      left: -209px;
+      padding: 0;
+
+      @include animationJS();
+
+      @include media-max($lg-break) {
+        top: -16em;
+        left: -18vw;
+        height: 9em;
+        width: 21em;
+      }
+
+    }
+  }
+
+  .imgCreatePhone {
+    background-image: url("../../image/svg/CreatePhone.svg");
+    left: 3em;
+  }
+
+  .askerScrol {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: calc(100vh - 24px);
+    left: 0;
+    //width: calc(50%);
+    width: calc(50% + 15px);
+    top: 0;
+    position: relative;
+
+    &:hover {
+      width: calc(50%);
+      overflow-y: auto;
+
+      .questionsWrap {
+        width: calc(100% );
+      }
+    }
+  }
+
+
+  .questionsWrap {
+    //width: calc(100% - 12px);
+    width: calc(100% - 15px);
+    height: 100%;
+    max-width: 341px;
+
+  }
+
+  .questionsCol {
+    width: 100%;
+    overflow-x: visible;
+    min-height: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+  }
+
+  .questionBoxList {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    width: 100%;
+    //width: 304px;
+    height: 74px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 14px;
+    margin-bottom: 1em;
+    @include media-max($lg-break) {
+      width: 100%;
+      min-width: 250px;
+    }
+
+    .questionIcon {
+      width: 26px;
+      min-width: 26px;
+      height: 28px;
+      margin-right: 15px;
+    }
+
+    .clockIcon {
+      width: 52px;
+      min-width: 52px;
+      height: 49px;
+      position: relative;
+    }
+
+    .questionText {
+      font-family: $main-font;
+      font-weight: 400;
+      color: $text;
+      font-size: 15px;
+      width: 191px;
+    }
+
+  }
+
+  .createBox {
+    @include btn-reset();
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 51px;
+    padding-right: 15px;
+    //width: 284px;
+    width: calc(100% - 14px);
+    height: 54px;
+    min-height: 54px;
+    background: $themeColor;
+    border-radius: 15px;
+    margin: 0px 0 17px;
+
+    &:hover, &:active {
+      opacity: 0.8;
+      transition: $transition;
+    }
+
+    .questionText {
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1.2;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .addIcon {
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.questionItemEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 14px;
+  width: 100%;
+  padding-left: 21px;
+  min-height: 74px;
+  //margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 3px 19px rgba(60, 128, 209, 0.09);
+
+
+  .iconClock {
+    width: 52px;
+    min-width: 52px;
+    height: 49px;
+    position: relative;
+  }
+
 }
