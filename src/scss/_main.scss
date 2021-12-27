@@ -327,3 +327,20 @@ h2 {
   backdrop-filter: blur(4px);
 }
 
+// button ---------------------//
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.arrow-btn {
+  isplay: flex;
+  position: absolute;
+  min-width: 30px;
+  height: 30px;
+  top: 14px;
+  right: 14px
+}

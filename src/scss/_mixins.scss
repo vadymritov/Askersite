@@ -48,3 +48,67 @@
   animation-duration: 20s;
   animation-timing-function: ease-in-out;
 }
+
+
+@mixin triangle($size: 2rem, $background: red, $radius: true) {
+  &,
+  &::before,
+  &::after {
+    width: $size;
+    height: $size;
+  }
+
+  position: relative;
+  overflow: hidden;
+  transform: translateY(50%) rotate(30deg) skewY(30deg) scaleX(0.866);
+  pointer-events: none;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: $background;
+    pointer-events: auto;
+  }
+
+  &::before {
+    // prettier-ignore
+    transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) skewX(30deg) scaleY(0.866) translateX(-24%);
+  }
+
+  &::after {
+    // prettier-ignore
+    transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) skewX(-30deg) scaleY(0.866) translateX(24%);
+  }
+
+  @if ($radius) {
+    border-radius: 20%;
+
+    &::before {
+      border-radius: 20% 20% 20% 55%;
+
+    }
+
+    &::after {
+      border-radius: 20% 20% 55% 20%;
+
+    }
+  }
+}
+
+/**
+ * Usage:
+ */
+.triangle {
+  //&-1 {
+  //  // prettier-ignore
+  //  @include triangle(20rem, linear-gradient(to bottom, red 0%, blue 100%), true);
+  //}
+
+  &-2 {
+    @include triangle(40px, $white, true);
+    //transform: translate(0, 90%);
+  }
+
+}
+

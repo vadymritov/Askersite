@@ -174,10 +174,10 @@ const CreateAccount = ({...props}) => {
           </div>
           <div className={`${styles.text} ${styles.paddingTop}`}>Already have an account?</div>
           <NavLink to={'/sign-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
-          <div className={`${styles.buttonBox}`}>
+          <div className={`button-box `}>
             <button type="button" className={`continue-btn`} onClick={onSendData}>
               <span>Continue</span>
-              <ArrowBtn className={styles.arrowBtn}/>
+              <ArrowBtn className={`arrow-btn ${styles.arrowBtn}`}/>
             </button>
             <LinePhone className={styles.linePhone}/>
           </div>

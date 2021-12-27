@@ -17,7 +17,6 @@ const ContactCard = (props) => {
     let navigate = useNavigate()
 
     useEffect(async () => {
-
       if (cardRef?.current?.classList.contains("start-rotate")) {
         console.log('true');
         cardRef?.current?.classList.remove("start-rotate")
@@ -32,7 +31,7 @@ const ContactCard = (props) => {
 
     const showViewAnswer = () => {
       console.log('onc');
-      navigate('/view-answer')
+      navigate('/watch-answer')
     }
 
     return (

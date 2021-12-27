@@ -8,6 +8,7 @@ import SignUp from "./container/SignUp/SignUp";
 import AllAnswers from "./container/AllAnswers/AllAnswers";
 import WatchAnswer from "./container/WatchAnswer/WatchAnswer";
 import ContactCard from "./components/ContactCard/ContactCard";
+import CreateAsker from "./container/CreateAsker/CreateAsker";
 
 const App = () => {
   return (
@@ -19,8 +20,9 @@ const App = () => {
         <Route path="/log-in" element={<Login />}/>
         <Route path="/sign-up" element={<SignUp />}/>
         <Route path="/all-answers" element={<AllAnswers />}/>
-        <Route path="/view-answer" element={<WatchAnswer />}/>
+        <Route path="/watch-answer" element={<WatchAnswer />}/>
         <Route path="/contact-card" element={<ContactCard />}/>
+        <Route path="/create-asker" element={<CreateAsker />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}

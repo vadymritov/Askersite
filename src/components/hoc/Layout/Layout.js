@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
-import TabMenu from "../../../container/TabMenu/TabMenu";
+import TabMenu from "../../TabMenu/TabMenu";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
