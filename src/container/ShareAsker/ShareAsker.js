@@ -78,7 +78,7 @@ const ShareAsker = (props) => {
             </div>
           </div>
           <div className={styles.rotate}>
-            <div className="triangle-1"/>
+            <div className="triangle-violet"/>
           </div>
         </div>
         <div className={`${styles.cardWrap} ${styles.cardRight}`}>

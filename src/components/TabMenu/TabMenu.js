@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './TabMenu.module.scss'
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import TabWatch from "../UI/icons/TabMenu/TabWatch";
 import TabAsk from "../UI/icons/TabMenu/TabAsk";
 import TabAnswer from "../UI/icons/TabMenu/TabAnswer";
 import TabSettings from "../UI/icons/TabMenu/TabSettings";
 
 const TabMenu = (props) => {
+  const {pathname} = useLocation();
+  const [askTabActive, setAskTabActive] = useState(false);
+  const [watchTabActive, setWatchTabActive] = useState(false);
+  const [answerTabActive, setAnswerTabActive] = useState(false);
+  const [askSettingsActive, setSettingsTabActive] = useState(false);
+
+  useEffect(() => {
+    if (pathname === '/create-asker' || pathname === '/share-asker' || pathname === '/view-asker') {
+      setAskTabActive(true)
+    }
+  })
 
   return (
     <div className={styles.tabContainerWrap}>
@@ -15,7 +26,7 @@ const TabMenu = (props) => {
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>
+        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive || askTabActive ? styles.activeTab : ''}  `)}>
           <TabAsk className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>

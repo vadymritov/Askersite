@@ -91,7 +91,7 @@ const CreateAskerTwo = (props) => {
               </button>
             </div>
             <div className={styles.rotate}>
-              <div className="triangle-2"/>
+              <div className="triangle-white"/>
             </div>
           </div>
         </div>

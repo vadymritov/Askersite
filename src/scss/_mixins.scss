@@ -101,12 +101,13 @@
  */
 .triangle {
 
-  &-2 {
+  &-white {
     @include triangle(40px, $white, true);
+    opacity: .78;
     //transform: translate(0, 90%);
   }
 
-  &-1 {
+  &-violet {
     @include triangle(40px, rgba(84, 104, 255, 0.95), true);
   }
 

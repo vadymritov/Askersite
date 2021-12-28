@@ -11,6 +11,7 @@ import ContactCard from "./components/ContactCard/ContactCard";
 import CreateAsker from "./container/CreateAsker/CreateAsker";
 import ShapeCard from "./components/UI/icons/ShapeCard";
 import ShareAsker from "./container/ShareAsker/ShareAsker";
+import ViewAsker from "./container/ViewAsker/ViewAsker";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/contact-card" element={<ContactCard />}/>
         <Route path="/create-asker" element={<CreateAsker />}/>
         <Route path="/share-asker" element={<ShareAsker />}/>
+        <Route path="/view-asker" element={<ViewAsker />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
