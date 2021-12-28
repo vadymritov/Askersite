@@ -187,12 +187,12 @@
   }
 }
 
-//.buttonBox {
-//  display: flex;
-//  flex-direction: column;
-//  justify-content: center;
-//  max-width: 100%;
-//}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+}
 
 .linePhone {
   min-width: 148px;
@@ -216,13 +216,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  //flex-wrap: nowrap;
   background-color: $white;
   height: 64px;
   max-width: 100%;
   border-radius: 15px!important;
-  //overflow: hidden;
-  //padding: 17px 0;
 
   .iconSelectWrap {
     min-width: 30px;

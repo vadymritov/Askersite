@@ -1,13 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './ViewAsker.module.scss'
 import {useNavigate} from "react-router-dom";
-import LetterIcon from "../../components/UI/icons/LetterIcon";
-import ShareIcon from "../../components/UI/icons/ShareIcon";
-import ContactLink from "../../components/UI/icons/Contact/ContactLink";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
-import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
-import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
 

@@ -27,6 +27,7 @@ const CreateAskerThird = (props) => {
     return timer;
   };
 
+
   return (
     <div ref={elRef} className={`ease-in-effect  ${styles.createContainer}`}>
       <div className={styles.contantWrap}>
@@ -38,9 +39,9 @@ const CreateAskerThird = (props) => {
                 <span className={styles.title}>Brighton Art Gallery</span>
                 {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
               </div>
-              <div className={`${styles.iconWrap}`}>
+              <button className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
-              </div>
+              </button>
             </div>
             <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
               <div className={styles.textBox}>

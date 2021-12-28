@@ -24,6 +24,8 @@ const Input = ({
   const [inputType, setInputType] = useState('text');
   // console.log('custom', inputStyles, name, defaultValue);
 
+  console.log('input', name);
+
   useEffect(() => {
     if (errors && errors[name]) {
       setIsError(true);

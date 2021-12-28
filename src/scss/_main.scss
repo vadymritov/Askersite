@@ -296,7 +296,7 @@ h2 {
 }
 
 .contentWrap-login {
-  overflow: hidden;
+  //overflow: hidden;
   z-index: 1;
   max-width: 100%;
   width: 514px;
@@ -315,6 +315,7 @@ h2 {
     right: 0;
     width: 100%;
     height: 100%;
+    border-radius: 40px;
     background-image: url("../image/login/Men.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
