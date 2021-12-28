@@ -136,7 +136,7 @@ const CreateAccount = ({...props}) => {
               placeholder='Full name'
               errors={errors}
               addPadding={true}
-              register={register("name", {required: true})}
+              register={register("name", )}
               // required
               onChange={(e) =>
                 console.log('Full name', e.target.value)

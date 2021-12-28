@@ -8,6 +8,8 @@ import PlayIcon from "../../components/UI/icons/PlayIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
+import ArrowBtn from "../../components/UI/icons/ArrowBtn";
+import ShareIcon from "../../components/UI/icons/ShareIcon";
 
 const EditAsker = (props) => {
   const [editField, setEditField] = useState(null)
@@ -122,13 +124,16 @@ const EditAsker = (props) => {
               </div>
 
               <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                  <span>VIEW ANSWERS </span>
+                <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} >
+                  <span>SAVE CHANGES</span>
                   <div className={styles.plusIconBox}>
-                    <PlayIcon className={`${styles.shareIcon}`}/>
+                    <CheckIcon className={`${styles.shareIcon}`}/>
                   </div>
                 </button>
               </div>
+              {/*<div className={styles.rotate}>*/}
+              {/*  <div className="triangle-white"/>*/}
+              {/*</div>*/}
             </div>
           </div>
           <div className={styles.rotate}>

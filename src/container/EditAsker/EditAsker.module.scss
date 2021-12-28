@@ -220,6 +220,7 @@
   justify-content: center;
   max-width: 100%;
   width: 100%;
+  margin-bottom: 10px;
   //width: 231px;
 }
 
@@ -357,8 +358,8 @@
   width: 100%;
 }
 
-.buttonStyle {
-  background: $themeColor;
+.buttonStylePublich  {
+  background: #00D9CD;
   width: 100%;
 }
 
@@ -371,16 +372,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #3D56F0;
+  background: #44BCB6;
   border-radius: 50%;
 
   .shareIcon {
-    min-width: 16px;
-    height: 15px;
-    position: relative;
-    margin-left: 1px;
+    min-width: 11px;
+    height: 9px;
   }
 }
+
 
 .contentBlock {
   display: flex;
