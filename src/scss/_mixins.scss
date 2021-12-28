@@ -100,14 +100,14 @@
  * Usage:
  */
 .triangle {
-  //&-1 {
-  //  // prettier-ignore
-  //  @include triangle(20rem, linear-gradient(to bottom, red 0%, blue 100%), true);
-  //}
 
   &-2 {
     @include triangle(40px, $white, true);
     //transform: translate(0, 90%);
+  }
+
+  &-1 {
+    @include triangle(40px, rgba(84, 104, 255, 0.95), true);
   }
 
 }

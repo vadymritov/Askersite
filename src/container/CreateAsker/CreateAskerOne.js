@@ -55,7 +55,7 @@ const CreateAskerOne = ({...props}) => {
           <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={removeEffect}>
             <span>ADD QUESTIONS</span>
             <div className={styles.plusIconBox}>
-            <PlusIcon className={` ${styles.plusIcon}`}/>
+              <PlusIcon className={` ${styles.plusIcon}`}/>
             </div>
           </button>
         </div>
@@ -65,6 +65,6 @@ const CreateAskerOne = ({...props}) => {
       </div>
     </div>
   )
-  };
+};
 
 export default CreateAskerOne;
