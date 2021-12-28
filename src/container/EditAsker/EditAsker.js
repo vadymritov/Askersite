@@ -1,17 +1,12 @@
 import React, {useEffect, useRef} from 'react';
-import styles from './ViewAsker.module.scss'
 import {useNavigate} from "react-router-dom";
-import LetterIcon from "../../components/UI/icons/LetterIcon";
-import ShareIcon from "../../components/UI/icons/ShareIcon";
-import ContactLink from "../../components/UI/icons/Contact/ContactLink";
-import PlayIcon from "../../components/UI/icons/PlayIcon";
+import styles from "./EditAsker.module.scss";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
-import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
-import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
+import PlayIcon from "../../components/UI/icons/PlayIcon";
 
-const ViewAsker = (props) => {
+const EditAsker = (props) => {
   let navigate = useNavigate();
   const cardRef = useRef(null);
 
@@ -35,13 +30,11 @@ const ViewAsker = (props) => {
     <div className={styles.mainContainer}>
       <div className={`${styles.contentContainer}`}>
         <div className={`${styles.cardWrap} ${styles.cardLeft}`}>
-          <div className={`${styles.cardBg} `}>
-            <div className={` ${styles.cardBgSide}`}>
-              <div className={styles.cardContainer}/>
+          <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
+            <div className={styles.cardContainer}>
             </div>
           </div>
         </div>
-
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
             <div className={styles.cardContainer}>
@@ -82,25 +75,23 @@ const ViewAsker = (props) => {
                   </div>
                 </div>
               </div>
-            <div className={`button-box ${styles.buttonBox}`}>
-              <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                <span>VIEW ANSWERS </span>
-                <div className={styles.plusIconBox}>
-                  <PlayIcon className={`${styles.shareIcon}`}/>
-                </div>
-              </button>
-            </div>
+              <div className={`button-box ${styles.buttonBox}`}>
+                <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
+                  <span>VIEW ANSWERS </span>
+                  <div className={styles.plusIconBox}>
+                    <PlayIcon className={`${styles.shareIcon}`}/>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div className={styles.rotate}>
             <div className="triangle-white"/>
           </div>
         </div>
-
         <div className={`${styles.cardWrap} ${styles.cardRight}`}>
-          <div className={`${styles.cardBg} `}>
-            <div className={` ${styles.cardBgSide}`}>
-              <div className={styles.cardContainer}/>
+          <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
+            <div className={styles.cardContainer}>
             </div>
           </div>
         </div>
@@ -111,6 +102,6 @@ const ViewAsker = (props) => {
       </div>
     </div>
   )
-};
+  };
 
-export default ViewAsker;
+export default EditAsker;

@@ -13,18 +13,6 @@
   height: 100%;
 }
 
-.contentContainer {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-
 //.infoBlock {
 //  display: flex;
 //  justify-content: space-between;
@@ -84,16 +72,16 @@
 //
 //}
 
-//.contentContainer {
-//  position: relative;
-//  z-index: 5;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  height: 100%;
-//  width: 100%;
-//  overflow: hidden;
-//}
+.contentContainer {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
 .cardWrap {
   width: 338px;
@@ -119,21 +107,18 @@
   height: 100%;
   border-radius: 40px;
   overflow: hidden;
-  background-color: $white;
+  background: $white;
   //background: linear-gradient(196.51deg, rgba(123, 139, 255, 0.95) 3.21%, rgba(84, 104, 255, 0.95) 94.01%);
   background-size: cover;
   backdrop-filter: blur(20px);
 }
 
 .cardBgSide {
-  position: absolute;
-  top: 0;
-  left: 0;
   background-image: url("../../image/svg/ShareAsker/shareBgWhite.svg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: calc(100% + 61px);
+  height: 100%;
   background-position: center;
 }
 
@@ -165,14 +150,13 @@
 .cardContainer {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
   height: 100%;
-  padding: 27px;
+  padding: 20px 22px;
 }
-
 
 
 .rotate {

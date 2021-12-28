@@ -81,6 +81,7 @@ const ShareAsker = (props) => {
             <div className="triangle-violet"/>
           </div>
         </div>
+
         <div className={`${styles.cardWrap} ${styles.cardRight}`}>
           <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
             <div className={styles.cardContainer}>
