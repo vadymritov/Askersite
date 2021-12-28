@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "../../../../container/CreateAsker/CreateAsker.module.scss";
 import CreateAskerIcon from "./CreateAskerIcon";
 import EditCreateBtn from "./EditCreateBtn";
@@ -6,21 +6,29 @@ import CheckIcon from "./CheckIcon";
 import PlusIcon from "./PlusIcon";
 import ClockIcon from "../ClockIcon";
 import ArrowBtn from "../ArrowBtn";
+import {useNavigate} from "react-router-dom";
 
 const CreateAskerThird = (props) => {
   const elRef = useRef();
+  let navigate = useNavigate();
+  const [timer, setTimer] = useState()
+
+
+  const showContact = () => {
+    navigate('/contact-card')
+  }
 
 
   const removeEffect = () => {
     elRef.current?.classList.add("ease-out-effect")
     const timer = setTimeout(() => {
-      props.nextStep()
+      navigate('/share-asker')
     }, 300);
     return timer;
   };
 
   return (
-    <div ref={elRef} className={` ease-in-effect ${styles.createContainer}`}>
+    <div ref={elRef} className={`ease-in-effect  ${styles.createContainer}`}>
       <div className={styles.contantWrap}>
         <div className={` ${styles.questionBlock}`}>
           <CreateAskerIcon className={styles.createLogo}/>
