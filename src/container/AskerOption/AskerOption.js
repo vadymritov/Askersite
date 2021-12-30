@@ -53,64 +53,64 @@ const AskerOption = (props) => {
                   <QuestionOption className={styles.questionOption}/>
                   Asker Options
                 </div>
-              <div className={styles.btnBox}>
-                <button className={styles.contentBox}>
-                  <div className={`${styles.optionBlock} `}>
-                    <div className={styles.iconWrap}>
-                      <EditCreateBtn className={styles.linkIcon}/>
+                <div className={styles.btnBox}>
+                  <button className={styles.contentBox}>
+                    <div className={`${styles.optionBlock} `}>
+                      <div className={styles.iconWrap}>
+                        <EditCreateBtn className={styles.linkIcon}/>
+                      </div>
+                      <div className={styles.textBox}>
+                        <span className={styles.title}>Edit</span>
+                        <span className={styles.text}>Edit this Asker</span>
+                      </div>
                     </div>
-                    <div className={styles.textBox}>
-                      <span className={styles.title}>Edit</span>
-                      <span className={styles.text}>Edit this Asker</span>
-                    </div>
-                  </div>
-                </button>
+                  </button>
 
-                <button className={styles.contentBox}>
-                  <div className={`${styles.optionBlock} `}>
-                    <div className={styles.iconWrap}>
-                      <ShareIcon className={styles.linkIcon}/>
+                  <button className={styles.contentBox}>
+                    <div className={`${styles.optionBlock} `}>
+                      <div className={styles.iconWrap}>
+                        <ShareIcon className={styles.linkIcon}/>
+                      </div>
+                      <div className={styles.textBox}>
+                        <span className={styles.title}>Publish & Share</span>
+                        <span className={styles.text}>Invite people to answer</span>
+                      </div>
                     </div>
-                    <div className={styles.textBox}>
-                      <span className={styles.title}>Publish & Share</span>
-                      <span className={styles.text}>Invite people to answer</span>
+                  </button>
+                  <button className={styles.contentBox}>
+                    <div className={`${styles.optionBlock} `}>
+                      <div className={styles.iconWrap}>
+                        <MessageIcon className={styles.linkIcon}/>
+                      </div>
+                      <div className={styles.textBox}>
+                        <span className={styles.title}>Contact</span>
+                        <span className={styles.text}>Respond to your answers</span>
+                      </div>
                     </div>
-                  </div>
-                </button>
-                <button className={styles.contentBox}>
-                  <div className={`${styles.optionBlock} `}>
-                    <div className={styles.iconWrap}>
-                      <MessageIcon className={styles.linkIcon}/>
+                  </button>
+                  <button className={styles.contentBox}>
+                    <div className={`${styles.optionBlock} `}>
+                      <div className={styles.iconWrap}>
+                        <BellIcon className={styles.linkIcon}/>
+                      </div>
+                      <div className={styles.textBox}>
+                        <span className={styles.title}>Notifications</span>
+                        <span className={styles.text}>Stay updated with this Asker</span>
+                      </div>
                     </div>
-                    <div className={styles.textBox}>
-                      <span className={styles.title}>Contact</span>
-                      <span className={styles.text}>Respond to your answers</span>
-                    </div>
-                  </div>
-                </button>
-                <button className={styles.contentBox}>
-                  <div className={`${styles.optionBlock} `}>
-                    <div className={styles.iconWrap}>
-                      <BellIcon className={styles.linkIcon}/>
-                    </div>
-                    <div className={styles.textBox}>
-                      <span className={styles.title}>Notifications</span>
-                      <span className={styles.text}>Stay updated with this Asker</span>
-                    </div>
-                  </div>
-                </button>
-                <button className={styles.contentBox}>
-                  <div className={`${styles.optionBlock} `}>
-                    {/*<div className={styles.iconWrap}>*/}
+                  </button>
+                  <button className={styles.contentBox}>
+                    <div className={`${styles.optionBlock} `}>
+                      {/*<div className={styles.iconWrap}>*/}
                       <TwoMenIcon className={styles.menIcon}/>
-                    {/*</div>*/}
-                    <div className={styles.textBox}>
-                      <span className={styles.title}>Collaborate</span>
-                      <span className={styles.text}>Share Admin Access to this Asker</span>
+                      {/*</div>*/}
+                      <div className={styles.textBox}>
+                        <span className={styles.title}>Collaborate</span>
+                        <span className={styles.text}>Share Admin Access to this Asker</span>
+                      </div>
                     </div>
-                  </div>
-                </button>
-            </div>
+                  </button>
+                </div>
                 <div className={`${styles.deactivateBlock}`}>
                   <div className={styles.switchWrap}>
                     {/*< className={styles.linkIcon}/>*/}
