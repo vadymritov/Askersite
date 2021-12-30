@@ -18,6 +18,7 @@ import Dashboard from "./container/Dashboard/Dashboard";
 import AskerSearch from "./container/AskerSearch/AskerSearch";
 import StartAsker from "./container/StartAsker/StartAsker";
 import NextQuestion from "./container/NextQuestion/NextQuestion";
+import RecordAgain from "./container/RecordAgain/RecordAgain";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/asker-search" element={<AskerSearch />}/>
         <Route path="/start-asker" element={<StartAsker />}/>
         <Route path="/next-question" element={<NextQuestion />}/>
+        <Route path="/record-again" element={<RecordAgain />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}

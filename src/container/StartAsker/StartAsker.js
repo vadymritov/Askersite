@@ -61,8 +61,10 @@ const StartAsker = (props) => {
     <div className={styles.mainContainer}>
       <div className={styles.infoBlockHead}>
         <AllAnswerIcon className={styles.infoIcon}/>
-        <div className={styles.infoText}>Brighton Art Gallery<br/> Cleaner Job in Brighton</div>
+        <div className={styles.infoText}>
+          <span className={styles.smallText}>Brighton Art Gallery</span> Cleaner Job in Brighton</div>
       </div>
+
 
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>

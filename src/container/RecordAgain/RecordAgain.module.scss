@@ -14,6 +14,7 @@
   height: 100%;
 }
 
+
 .infoBlockHead {
   display: flex;
   justify-content: space-between;
@@ -59,7 +60,6 @@
 
 }
 
-
 .contentContainer {
   position: relative;
   z-index: 5;
@@ -72,6 +72,7 @@
   height: calc(100% - 52px);
   overflow: hidden;
 }
+
 .cardWrap {
   width: 338px;
   height: 475px;
@@ -79,7 +80,7 @@
   z-index: 3;
   max-width: 100%;
   max-height: 625px;
-  text-align: left!important;
+  text-align: left !important;
   min-height: 200px;
 
 }
@@ -127,6 +128,7 @@
   }
 
 }
+
 .cardRight {
   position: absolute;
   right: -16em;
@@ -149,7 +151,6 @@
   height: 100%;
   padding: 27px;
 }
-
 
 
 .rotate {
@@ -192,6 +193,7 @@
   width: 100%;
   //width: 231px;
 }
+
 .createLogo {
   min-width: 122px;
   height: 122px;
@@ -220,6 +222,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 2;
+
   span {
     color: #ADB8FA;
 
@@ -303,6 +306,7 @@
   &:last-of-type {
     //margin-bottom: 15px;
   }
+
   .circleBox {
     display: flex;
     justify-content: center;
@@ -310,6 +314,7 @@
     min-width: 52px;
     height: 30px;
   }
+
   .point {
     min-width: 8px;
     height: 8px;
@@ -328,7 +333,7 @@
   line-height: 1;
   color: #ADB8FA;
 
-  span{
+  span {
     position: relative;
     top: - 9px
   }
@@ -340,7 +345,7 @@
   font-family: $main-font;
   font-weight: 500;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.2;
   color: $darkText;
   width: 196px;
   opacity: .8;
@@ -359,7 +364,7 @@
   width: 100%;
 }
 
-.buttonStyle  {
+.buttonStyle {
   background: $themeColor;
   width: 100%;
 }
@@ -378,8 +383,83 @@
 
   .shareIcon {
     min-width: 16px;
-    height: 31px;
+    height: 15px;
     position: relative;
     margin-left: 1px;
+  }
+}
+
+.iconReload {
+  min-width: 21px;
+  height: 20px;
+  position: relative;
+}
+
+.checkIcon {
+  min-width: 25px;
+  height: 25px;
+}
+
+
+.recordItem {
+  background: #F7F8FF;
+  opacity: 0.95;
+  border: 1px solid rgba(173, 184, 250, 0.1);
+  box-sizing: border-box;
+  border-radius: 14px;
+  padding: 22px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: -10px;
+  position: relative;
+  width: calc(100% + 20px);
+}
+
+.iconsBoxRecord {
+  display: flex;
+  align-items: center;
+}
+
+.closeBtn {
+  @include btn-reset();
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00D9CD;
+  box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
+  border-radius: 7.31429px;
+  margin-right: 4px;
+  &:hover {
+    opacity: 0.8;
+    transition: $transition;
+  }
+
+  .closeIcon {
+    min-width: 10px;
+    height: 10px;
+  }
+}
+
+.yesBtn {
+  @include btn-reset();
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D90000;
+  box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
+  border-radius: 7.31429px;
+
+  &:hover {
+    opacity: 0.8;
+    transition: $transition;
+  }
+  .checkIconYes {
+    min-width: 11px;
+    height: 9px;
   }
 }
