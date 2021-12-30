@@ -16,6 +16,7 @@ import EditAsker from "./container/EditAsker/EditAsker";
 import AskerOption from "./container/AskerOption/AskerOption";
 import Dashboard from "./container/Dashboard/Dashboard";
 import AskerSearch from "./container/AskerSearch/AskerSearch";
+import StartAsker from "./container/StartAsker/StartAsker";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/asker-option" element={<AskerOption />}/>
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/asker-search" element={<AskerSearch />}/>
+        <Route path="/start-asker" element={<StartAsker />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
