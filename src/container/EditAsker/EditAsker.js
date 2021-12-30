@@ -2,14 +2,9 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import styles from "./EditAsker.module.scss";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
-import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
-import PlayIcon from "../../components/UI/icons/PlayIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
-import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
-import ArrowBtn from "../../components/UI/icons/ArrowBtn";
-import ShareIcon from "../../components/UI/icons/ShareIcon";
 
 const EditAsker = (props) => {
   const [editField, setEditField] = useState(null)

@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './SelectPickerPhone.module.scss';
-// import * as cn from "classnames";
+import * as cn from "classnames";
 
 
 const SelectPickerPhone = ({onChange, data, placeholder, defaultValue, inputRegister}) => {
   const [searchCodeShown, setSearchCodeShown] = useState(false);
   const searchFieldRef = useRef();
   const isSearching = useRef(false);
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState({});
   const [currentCountryCode, setCurrentCountryCode] = useState(defaultValue);
 
   const [optionsList, setOptionsList] = useState(data);
@@ -52,23 +52,23 @@ const SelectPickerPhone = ({onChange, data, placeholder, defaultValue, inputRegi
     <div className={styles.selectPickerWrapper}>
       <div className={styles.pickerWrapper}>
         <div className={styles.countryCodeField} onClick={() => setSearchCodeShown(prevState => !prevState)}>
-          <div className={styles.iconWrapper}/>
+          <div className={styles.iconWrapper} style={{'background-image': `url(${selectedItem.unicode || "https://flagcdn.com/w40/us.png"})`}}/>
           <span>{currentCountryCode}</span>
         </div>
         <input type="number" className={styles.phoneNumberField} placeholder={"Mobile Number"} {...inputRegister}/>
       </div>
-      <div ref={searchFieldRef} className={`${styles.searchWrapper} ${searchCodeShown ? styles.searchWrapper_active : ''}`}>
+      <div ref={searchFieldRef} className={cn(styles.searchWrapper, {[styles.searchWrapper_active]: searchCodeShown})}>
         <div className={styles.searchFieldWrapper}>
           <input className={styles.searchField} type="text" placeholder={"Search"} onChange={OnChange} />
         </div>
         <div className={styles.countryCodeList}>
           {optionsList?.length > 0 ? optionsList?.map((el, index) => {
             return <span onClick={() => {
-              setSelectedItem(el.label);
+              setSelectedItem(el);
               setSearchCodeShown(false);
               setCurrentCountryCode(el.value);
               onChange(el.value);
-            }} className={`${styles.countryCodeOption} ${isSearching.current && index === 0 ? styles.countryCodeOption_active : ''} ${ el.label === selectedItem ? styles.countryCodeOption_selected : ''}`} key={index}>{el.label}</span>
+            }} className={cn(styles.countryCodeOption, {[styles.countryCodeOption_active]: isSearching.current && index === 0, [styles.countryCodeOption_selected]: el.label === selectedItem.label})} key={index}>{el.label}</span>
           }) : <span className={styles.noResult}>No results found</span>}
         </div>
       </div>

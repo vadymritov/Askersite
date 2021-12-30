@@ -7,6 +7,7 @@ import ShareIcon from "../../components/UI/icons/ShareIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import ContactLink from "../../components/UI/icons/Contact/ContactLink";
 import LetterIcon from "../../components/UI/icons/LetterIcon";
+import CloseIcon from "../../components/UI/icons/CloseIcon";
 
 const ShareAsker = (props) => {
   let navigate = useNavigate();
@@ -39,6 +40,9 @@ const ShareAsker = (props) => {
         </div>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
+            <button className={styles.btnClose}>
+              <CloseIcon className={styles.closeIcon}/>
+            </button>
             <div className={styles.cardContainer}>
               <div className={styles.logoBox}>
                 <LetterIcon className={styles.letterIcon}/>

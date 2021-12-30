@@ -2,10 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
 import TabMenu from "../../TabMenu/TabMenu";
+import AccountSettings from "../../../container/AccountSettings/AccountSettings";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
   const [smallView, setSmallView] = useState(true)
+  const [isSettingsActive, setIsSettingsActive] = useState(false);
+
+
+  const onClick = (buttonName) => {
+    setIsSettingsActive(buttonName === 'settings')
+  };
 
   useEffect(() => {
     if (pathname === '/'
@@ -28,8 +35,12 @@ const Layout = ({children}) => {
             {children}
 
             {!smallView ?
-              <TabMenu />
+              <TabMenu onClick={onClick}/>
               : null}
+            {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
+            {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
+            {/*  <AccountSettings isActive={isSettingsActive}/>*/}
+            {/*</div>*/}
           </div>
         </div>
         <div className={`static-col ${smallView ?  'static-col-small' : 'static-col'}`}>
