@@ -99,9 +99,6 @@ margin-bottom: 37px;
 }
 .answersContainer {
   display: flex;
-  //flex-direction: column;
-  //justify-content: flex-start;
-  //align-items: flex-start;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -111,7 +108,6 @@ margin-bottom: 37px;
 
 .answerCard {
   position: relative;
-  //margin-bottom: 21px;
   display: flex;
   flex-direction: column;
   height: 211px;
@@ -119,25 +115,8 @@ margin-bottom: 37px;
   z-index: 1;
   border-radius: 8px;
   background-image: url("../../image/svg/BgCardFull.svg");
-  //background-size: contain;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
 
-  //&:before {
-  //  content: "";
-  //  position: absolute;
-  //  z-index: 1;
-  //  top: 3px;
-  //  left: 1px;
-  //  bottom: 0;
-  //  right: 0;
-  //  width: calc(100% - 2px);
-  //  height: calc(100% - 13px);
-  //  border-radius: 11px;
-  //  background-image: url("../../image/svg/BgCardFull.svg");
-  //  background-size: cover;
-  //  background-repeat: no-repeat;
-  //  //background-size: 100% 100%;
-  //}
 }

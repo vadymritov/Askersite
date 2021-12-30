@@ -205,14 +205,6 @@
   width: calc(100% - 85px);
 }
 
-.createLogo {
-  min-width: 122px;
-  height: 122px;
-  //position: relative;
-  position: absolute;
-  top: 15px;
-  left: 9px;
-}
 
 .questionBox {
   display: flex;
@@ -222,6 +214,14 @@
   max-width: 100%;
   width: 100%;
   //width: 231px;
+}
+.createLogo {
+  min-width: 122px;
+  height: 122px;
+  //position: relative;
+  position: absolute;
+  top: 15px;
+  left: 9px;
 }
 
 .questionItem {
