@@ -19,6 +19,7 @@ import AskerSearch from "./container/AskerSearch/AskerSearch";
 import StartAsker from "./container/StartAsker/StartAsker";
 import NextQuestion from "./container/NextQuestion/NextQuestion";
 import RecordAgain from "./container/RecordAgain/RecordAgain";
+import Progress from "./container/Progress/Progress";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/start-asker" element={<StartAsker />}/>
         <Route path="/next-question" element={<NextQuestion />}/>
         <Route path="/record-again" element={<RecordAgain />}/>
+        <Route path="/progress" element={<Progress />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}

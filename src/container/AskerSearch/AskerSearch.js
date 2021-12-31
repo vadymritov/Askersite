@@ -54,10 +54,6 @@ const AskerSearch = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      {/*<div className={styles.infoBlock}>*/}
-      {/*  <AllAnswerIcon className={styles.infoIcon}/>*/}
-      {/*  <div className={styles.infoText}>Brighton Art Gallery<br/> Cleaner Job in Brighton</div>*/}
-      {/*</div>*/}
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`} >
           <div className={styles.cardContainerContact}>
