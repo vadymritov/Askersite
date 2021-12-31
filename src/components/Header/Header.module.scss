@@ -19,6 +19,12 @@
 .tabBox {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  @include media-max($md-break) {
+    margin-left: 20px;
+
+  }
 }
 
 .linkWrap {
@@ -28,6 +34,9 @@
   margin-right: 40px;
   text-decoration: none;
   color: #ABABAB;
+  @include media-max($xs-break) {
+     display: none;
+  }
 
   .itemLink {
     font-family: 'Work Sans', sans-serif;
@@ -63,7 +72,9 @@
     border-radius: 22px;
     color: #ABABAB;
     line-height: 1;
-
+    @include media-max($xs-break) {
+      width: 120px;
+    }
   }
 
   &:hover {

@@ -23,6 +23,9 @@
   overflow: hidden;
   max-width: 100%;
   padding: 0 20px;
+  @include media-max($sm-break) {
+   padding: 100px
+  }
 }
 
 .contantWrap {
@@ -55,6 +58,9 @@
   align-items: center;
   max-width: 100%;
   width: calc(100% - 85px);
+  @include media-max($sm-break) {
+    width: 100%;
+  }
 }
 
 .createLogo {
@@ -63,6 +69,9 @@
   position: absolute;
   top: 18px;
   left: 0;
+  @include media-max($sm-break) {
+    display: none;
+  }
 }
 
 .questionBox {
@@ -187,16 +196,19 @@
 .iconWrapCheck {
   background-color: #00D9CD;
   margin-right: 10px;
+  @include media-max($sm-break) {
+    //margin-right: 0;
+  }
 }
 .checkIcon {
   min-width: 12px;
   height: 10px;
+
 }
 
 .editIcon {
   min-width: 16px;
   height: 15px;
-  fill: $white;
 }
 
 
@@ -230,7 +242,6 @@
   .plusIcon {
     min-width: 26px;
     height: 16px;
-    fill: $white;
   }
 }
 
@@ -245,6 +256,7 @@
 .askerWrapper {
   width: 100%;
   height: 100%;
+  //padding-top: 115px;
 
   .askerRow {
     display: flex;
@@ -252,6 +264,9 @@
     height: 100%;
     flex-wrap: nowrap;
     padding: 0 0 0 12px;
+    @include media-max($sm-break) {
+      padding: 15px;
+    }
   }
 
 
@@ -260,6 +275,8 @@
     align-items: center;
     width: 50%;
     height: 100%;
+    //max-height: 325px;
+    //border-radius: 26px;
     position: relative;
     margin-right: 14px;
   }
@@ -268,8 +285,10 @@
     position: relative;
     z-index: 1;
     display: flex;
+    //align-items: center;
     flex-direction: column;
     align-items: flex-end;
+    //justify-content: center;
     max-width: 100%;
     width: 340px;
     max-height: 325px;
@@ -292,10 +311,13 @@
     border-radius: 26px;
     background-image: url("../../image/svg/AskerPhone.svg");
     background-size: contain;
+    //background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
     left: 30px;
     height: 57vh;
+    //height: 100%;
+    //height: 532px;
     width: 50%;
     padding: 0 22px;
     min-width: 300px;
@@ -306,6 +328,7 @@
       min-width: 14em;
       left: 20px;
       padding: 0 15px;
+      //min-width: 280px;
     }
     @include media-max($md-break) {
       min-width: 260px;
@@ -332,14 +355,18 @@
     position: absolute;
     left: -26px;
     top: 62px;
+    //z-index: 1;
     width: 18em;
     height: 16vh;
+    //height: 150px;
     @include media-max($lg-break) {
       left: -12px;
       top: 47px;
       width: 12em;
       height: 13vh;
+      //height: 105px;
     }
+
   }
 
   .iconImg {
@@ -365,6 +392,7 @@
     left: 5em;
     //left: 67px;
     top: 27px;
+    //height: 622px;
     height: 74vh;
     width: 50%;
     padding: 0 22px;
@@ -374,6 +402,8 @@
       min-width: 15em;
       min-height: 21em;
       max-height: auto;
+      //width: 16em;
+      //min-width: 305px;
     }
     @include media-max($md-break) {
       min-width: 260px;
@@ -473,6 +503,7 @@
 
 
   .questionsWrap {
+    //width: calc(100% - 12px);
     width: calc(100% - 15px);
     height: 100%;
     max-width: 341px;
@@ -495,13 +526,16 @@
     justify-content: space-between;
     padding-left: 20px;
     width: 100%;
+    //width: 304px;
     height: 74px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 14px;
     margin-bottom: 1em;
     @include media-max($lg-break) {
-      width: 100%;
       min-width: 250px;
+    }
+    @include media-max($sm-break) {
+      min-width: 200px;
     }
 
     .questionIcon {
@@ -536,6 +570,7 @@
     justify-content: space-between;
     padding-left: 51px;
     padding-right: 15px;
+    //width: 284px;
     width: calc(100% - 14px);
     height: 54px;
     min-height: 54px;
@@ -576,6 +611,7 @@
   width: 100%;
   padding-left: 21px;
   min-height: 74px;
+  //margin-bottom: 5px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 3px 19px rgba(60, 128, 209, 0.09);
 
@@ -588,4 +624,3 @@
   }
 
 }
-

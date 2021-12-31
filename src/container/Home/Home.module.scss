@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   padding-top: 115px;
+
 }
 
 
@@ -129,6 +130,17 @@
   @include media-max($md-break) {
     min-width: 260px;
   }
+  @include media-max($md-break) {
+    min-width: 200px;
+    top:0;
+    height: 20vh;
+    left: 0;
+    padding: 0;
+  }
+  @include media-max($l-break) {
+   display: none;
+  }
+
 }
 
 .question {
@@ -157,8 +169,11 @@
     @include media-max($lg-break) {
       top: -7em;
       height: 9em;
-      width: 21em;
+      width: 13em;
     }
+    //@include media-max($l-break) {
+    //  width: 13em;
+    //}
   }
 }
 
@@ -193,7 +208,11 @@
       height: 9em;
       width: 21em;
     }
-
+    @include media-max($md-break) {
+      top: -20em;
+      left: 3vw;
+      display: none;
+    }
   }
 }
 

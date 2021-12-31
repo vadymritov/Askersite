@@ -105,6 +105,7 @@
   text-align: left !important;
   min-height: 200px;
 
+
 }
 
 .cardBg {
@@ -123,6 +124,7 @@
   //background: linear-gradient(196.51deg, rgba(123, 139, 255, 0.95) 3.21%, rgba(84, 104, 255, 0.95) 94.01%);
   background-size: cover;
   backdrop-filter: blur(20px);
+
 }
 
 .cardBgSide {
@@ -191,10 +193,12 @@
   margin-bottom: 14px;
   margin-top: 20px;
 
+
   .letterIcon {
     min-width: 125px;
     height: 120px;
   }
+
 }
 
 .createLogo {
