@@ -10,6 +10,7 @@ import Logo from "../../components/UI/icons/Logo";
 const Answer = (props) => {
   const [loaderActive, setLoaderActive] = useState(false);
   const [finishAnswer, setFinishAnswer] = useState(false);
+  const [timer, setTimer] = useState(30)
 
   let navigate = useNavigate();
   const cardRef = useRef(null);
@@ -29,7 +30,18 @@ const Answer = (props) => {
 
   const beginAnswer = () => {
     setLoaderActive(true);
-    setTimeout(() => setFinishAnswer(true), 3)
+    setTimeout(() => setFinishAnswer(true), 3);
+
+    if (finishAnswer) {
+      setInterval(() => setTimer(prevState => {
+        if (prevState > 0) {
+          return prevState - 1;
+        } else {
+          return 0
+        }
+      }), 1000)
+    }
+
   }
 
   return (
@@ -55,7 +67,8 @@ const Answer = (props) => {
 
                 <div className={styles.redCircleWrap}>
                 <div className={styles.timer}>
-                  35
+                  {/*35*/}
+                  {timer}
                 </div>
                 </div>
                 <div className={styles.line}/>
