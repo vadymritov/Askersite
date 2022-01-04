@@ -22,6 +22,7 @@ import RecordAgain from "./container/RecordAgain/RecordAgain";
 import Progress from "./container/Progress/Progress";
 import AccountSettings from "./container/AccountSettings/AccountSettings";
 import Settings from "./container/Settings/Settings";
+import Answer from "./container/Answer/Answer";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/record-again" element={<RecordAgain />}/>
         <Route path="/progress" element={<Progress />}/>
         <Route path="/settings" element={<Settings />}/>
+        <Route path="/answer" element={<Answer />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
