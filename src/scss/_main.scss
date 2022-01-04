@@ -164,6 +164,24 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0;
 }
 
+.main-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @include media-max($sm-break) {
+    flex-direction: column-reverse;
+  }
+
+  .header-block {
+    display: none;
+    @include media-max($sm-break) {
+      display: flex;
+      width: 100%;
+    }
+  }
+}
+
 .main-row {
   height: 100%;
   width: 100%;

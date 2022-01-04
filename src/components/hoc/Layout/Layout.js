@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
 import TabMenu from "../../TabMenu/TabMenu";
 import AccountSettings from "../../../container/AccountSettings/AccountSettings";
+import Header from "../../Header/Header";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
@@ -29,22 +30,28 @@ const Layout = ({children}) => {
 
   return (
     <div className='container main-container'>
-      <div className="main-row">
-        <div className={`main-col ${smallView ?  'main-col-small' : null}`}>
-          <div className="content-wrapper">
-            {children}
+      <div className="main-wrapper">
+      <div className="header-block">
+        <Header />
+      </div>
 
-            {!smallView ?
-              <TabMenu onClick={onClick}/>
-              : null}
-            {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
-            {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
-            {/*  <AccountSettings isActive={isSettingsActive}/>*/}
-            {/*</div>*/}
+        <div className="main-row">
+          <div className={`main-col ${smallView ? 'main-col-small' : null}`}>
+            <div className="content-wrapper">
+              {children}
+
+              {!smallView ?
+                <TabMenu onClick={onClick}/>
+                : null}
+              {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
+              {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
+              {/*  <AccountSettings isActive={isSettingsActive}/>*/}
+              {/*</div>*/}
+            </div>
           </div>
-        </div>
-        <div className={`static-col ${smallView ?  'static-col-small' : 'static-col'}`}>
-          <RightScreen />
+          <div className={`static-col ${smallView ? 'static-col-small' : 'static-col'}`}>
+            <RightScreen/>
+          </div>
         </div>
       </div>
     </div>
