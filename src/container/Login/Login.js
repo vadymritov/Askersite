@@ -11,28 +11,19 @@ import {NavLink, useNavigate} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import LinePhone from "../../components/UI/icons/LinePhone";
 import {regexEmail} from "../../utils/helpers";
+import {http} from "../../http/http";
 
 const Login = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    const parameter =
-      "&email=" +
-      encodeURIComponent(data.email) +
-      "&password=" +
-      encodeURIComponent(data.password);
+    const form = new FormData();
+    form.append('email', data.email);
+    form.append('password', data.password);
 
-    fetch(process.env.REACT_APP_API_URL + "loginEmail", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type":
-          "application/x-www-form-urlencoded;charset=UTF-8",
-      },
-      body: parameter,
-    })
-      .then((resp) => resp.json())
+    http.post("loginEmail", form)
+      .then((resp) => resp.data)
       .then((respJson) => {
         localStorage.setItem("UserProfile", respJson.status);
         console.log("login details", respJson);
@@ -45,7 +36,9 @@ const Login = (props) => {
           alert(respJson.message);
         }
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log('error', err);
+      });
   };
 
   return (
