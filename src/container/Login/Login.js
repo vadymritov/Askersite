@@ -7,16 +7,45 @@ import {useForm} from "react-hook-form";
 import Input from "../../components/UI/Input/Input";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
 import LockIcon from "../../components/UI/icons/LockIcon";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import LinePhone from "../../components/UI/icons/LinePhone";
 import {regexEmail} from "../../utils/helpers";
 
 const Login = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log('onSubmit', data);
+    const parameter =
+      "&email=" +
+      encodeURIComponent(data.email) +
+      "&password=" +
+      encodeURIComponent(data.password);
+
+    fetch(process.env.REACT_APP_API_URL + "loginEmail", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type":
+          "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: parameter,
+    })
+      .then((resp) => resp.json())
+      .then((respJson) => {
+        localStorage.setItem("UserProfile", respJson.status);
+        console.log("login details", respJson);
+        if (respJson.status === true) {
+          localStorage.setItem("UserID", respJson.user.id);
+          localStorage.setItem("User", JSON.stringify(respJson.user));
+          // dispatch(setUserProfile(respJson));
+          navigate('/PromotionVideo');
+        } else {
+          alert(respJson.message);
+        }
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -29,7 +58,7 @@ const Login = (props) => {
               <QuestionLogin className={styles.questionIcon}/>
               <LogoWhite className={styles.logo}/>
             </div>
-            <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)} role={'form'} >
+            <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit, (err) => {console.log('error', err);})}>
               <div className={styles.title}>Log in</div>
               <div className={styles.text}>Enter your login details.</div>
               <div className={styles.inputBox}>
@@ -38,7 +67,7 @@ const Login = (props) => {
                   type='email'
                   errors={errors}
                   placeholder='Email'
-                  register={register("email", {required: true, maxLength: 128, pattern: regexEmail})}
+                  register={register("email", {required: true, maxLength: 255, pattern: regexEmail})}
                   addPadding={true}
                 ><EmailIcon className={styles.emailIcon}/></Input>
                 <Input
@@ -46,6 +75,7 @@ const Login = (props) => {
                   type='password'
                   errors={errors}
                   placeholder='Password'
+                  register={register("password", {required: true, maxLength: 255})}
                 ><LockIcon className={styles.lockIcon}/></Input>
               </div>
               <NavLink to={'/'} className={`${styles.text} ${styles.paddingTop}`}>No account?</NavLink>

@@ -99,7 +99,6 @@ const Input = ({
       <div className={`${wrapStyle ? wrapStyle : ''} ${styles.Input}`}>
         <div className={styles.iconBox}>{children}</div>
         <input
-          role={'input'}
           {...props}
           type={inputType}
           onChange={handleChange}
@@ -109,6 +108,7 @@ const Input = ({
           maxLength={maxLength}
           onClick={onClick}
           disabled={disabled}
+          {...register}
         />
         {type === 'password' ?
           <button type='button' className={styles.showText} onClick={changeShow}>{!isShow ? 'Show' : "Hide"}</button>
