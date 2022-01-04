@@ -34,6 +34,12 @@ let url = window.location.href.split('/').slice(-1)[0]
       || pathname === '/view-asker') {
       setAskTabActive(true)
     }
+
+    if (pathname === '/answer'
+      || pathname === '/answer'
+      ) {
+      setAnswerTabActive(true)
+    }
   })
 
 
@@ -49,7 +55,7 @@ let url = window.location.href.split('/').slice(-1)[0]
           <TabAsk className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
-        <NavLink onClick={() => props.onClick('answer')} to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => props.onClick('answer')} to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive || answerTabActive ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>

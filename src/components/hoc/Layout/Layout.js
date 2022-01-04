@@ -48,8 +48,8 @@ const Layout = ({children}) => {
               {showSettings ?
                 <>
                   <div className='blur-box'>
-                  <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
-                </div>
+                    <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
+                  </div>
                 </> : null}
             </div>
           </div>
