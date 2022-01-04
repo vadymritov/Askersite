@@ -88,7 +88,6 @@ const Settings = (props) => {
                 </div>
                 <button type='button' className={styles.arrowBtn}><ArrowDropdown className={styles.arrowIcon}/></button>
               </div>
-
             </div>
           </div>
           <div className={`${styles.infoCard} `}>
@@ -105,7 +104,6 @@ const Settings = (props) => {
             </div>
           </div>
         </div>
-
       </div>
     )
   }
