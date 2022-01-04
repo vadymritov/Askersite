@@ -20,28 +20,20 @@ const SelectPickerPhone = ({onChange, data, placeholder, defaultValue, inputRegi
     }
   }
 
-  useEffect(() => {
-    console.log(optionsList);
-  }, [optionsList])
-
   const OnChange = e => {
     isSearching.current = e.target.value.length > 0;
     const regex = new RegExp(e.target.value || '.+', 'i');
     setOptionsList(prevState => {
       return data.map(el => {
-        if(el.label){
-          const candidate =  el.label.match(regex);
-          if(candidate && candidate[0] !== ''){
-            console.log(candidate.input);
-            return {label: candidate.input, value: el.value};
+        if (el.countryName) {
+          const candidate = el.countryName.match(regex);
+          if (candidate && candidate[0] !== '') {
+            return {countryName: candidate.input, phonecode: el.phonecode};
           }
         }
       }).filter(el => el != null)
     })
-
   }
-
-
 
   useEffect(() => {
     document.addEventListener('click', checkWindowClick)
@@ -52,23 +44,25 @@ const SelectPickerPhone = ({onChange, data, placeholder, defaultValue, inputRegi
     <div className={styles.selectPickerWrapper}>
       <div className={styles.pickerWrapper}>
         <div className={styles.countryCodeField} onClick={() => setSearchCodeShown(prevState => !prevState)}>
-          <div className={styles.iconWrapper} style={{'background-image': `url(${selectedItem.unicode || "https://flagcdn.com/w40/us.png"})`}}/>
+          <div className={styles.iconWrapper} style={{backgroundImage: `url(${selectedItem.unicode || "https://flagcdn.com/us.svg"})`}}/>
           <span>{currentCountryCode}</span>
         </div>
         <input type="number" className={styles.phoneNumberField} placeholder={"Mobile Number"} {...inputRegister}/>
       </div>
       <div ref={searchFieldRef} className={cn(styles.searchWrapper, {[styles.searchWrapper_active]: searchCodeShown})}>
         <div className={styles.searchFieldWrapper}>
-          <input className={styles.searchField} type="text" placeholder={"Search"} onChange={OnChange} />
+          <input className={styles.searchField} type="text" placeholder={"Search"} onChange={OnChange}/>
         </div>
         <div className={styles.countryCodeList}>
           {optionsList?.length > 0 ? optionsList?.map((el, index) => {
             return <span onClick={() => {
               setSelectedItem(el);
               setSearchCodeShown(false);
-              setCurrentCountryCode(el.value);
-              onChange(el.value);
-            }} className={cn(styles.countryCodeOption, {[styles.countryCodeOption_active]: isSearching.current && index === 0, [styles.countryCodeOption_selected]: el.label === selectedItem.label})} key={index}>{el.label}</span>
+              setCurrentCountryCode(el.phonecode);
+              onChange(el.phonecode);
+            }} className={cn(styles.countryCodeOption, {[styles.countryCodeOption_active]: isSearching.current && index === 0, [styles.countryCodeOption_selected]: el.CountryId === selectedItem.CountryId})} key={index}>
+              {el?.countryName + " " + el?.phonecode}
+            </span>
           }) : <span className={styles.noResult}>No results found</span>}
         </div>
       </div>
