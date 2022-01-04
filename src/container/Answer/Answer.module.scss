@@ -206,9 +206,104 @@
   background-position: center;
   border-radius: 28px;
 
-  @include media-max($lg-break) {
-    //width: 318px;
-    //height: 581px
+}
+
+.content {
+  @include btn-reset();
+  //width: 400px;
+  height: 58px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(84, 104, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(84, 104, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  span {
+    position: relative;
+    z-index: 10;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: HK Grotesk, sans-serif;
+    color: $white;
+    letter-spacing: 1px;
+  }
+
+  .redCircleWrap{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    z-index: 10;
+    background: rgba(255, 0, 0, 0.5);
+    right: 10px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after{
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .timer {
+      osition: relative;
+      z-index: 10;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: $main-font;
+      color: $white;
+      letter-spacing: 1px;
+    }
   }
 }
 
+.content .line {
+  height: 100%;
+  background: #1ABFB6;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 10px 25px rgba(84, 104, 255, 0.3);
+  font-weight: 700;
+  font-family: HK Grotesk, sans-serif;
+  color: $white;
+  letter-spacing: 1px;
+  padding: 20px 0;
+  top: 0;
+  left: 0;
+  -webkit-animation: dude 30s 1 forwards;
+  animation: dude 30s 1 forwards;
+  animation-delay: 3s;
+}
+
+@-webkit-keyframes dude {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes dude {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

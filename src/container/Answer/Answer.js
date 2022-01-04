@@ -9,6 +9,7 @@ import Logo from "../../components/UI/icons/Logo";
 
 const Answer = (props) => {
   const [loaderActive, setLoaderActive] = useState(false);
+  const [finishAnswer, setFinishAnswer] = useState(false);
 
   let navigate = useNavigate();
   const cardRef = useRef(null);
@@ -28,6 +29,7 @@ const Answer = (props) => {
 
   const beginAnswer = () => {
     setLoaderActive(true);
+    setTimeout(() => setFinishAnswer(true), 3)
   }
 
   return (
@@ -42,12 +44,26 @@ const Answer = (props) => {
           <Loader className={styles.loader} isActive={loaderActive} setIsActive={setLoaderActive}/>
           <div className={styles.cardInfo}>
             <span>Tell me what you’d like to know about this role?</span>
-            <button className={styles.beginBtn} onClick={() => {
-              beginAnswer();
-            }}>
-              {loaderActive ? 'finish answer' : 'begin answer'}
-              <div/>
-            </button>
+            {!finishAnswer  ? <button className={`${styles.beginBtn} `} onClick={() => {beginAnswer()}}>
+                begin answer
+                {/*{loaderActive ? 'finish answer' : 'begin answer'}*/}
+                <div/>
+              </button>
+              :
+              <div className={styles.content}>
+                <span>finish answer</span>
+
+                <div className={styles.redCircleWrap}>
+                <div className={styles.timer}>
+                  35
+                </div>
+                </div>
+                <div className={styles.line}/>
+              </div>
+            }
+
+            {/*<div className={`${styles.geeksk} ${loaderActive ? styles.beginBtnFinish : styles.geeks}`}/>*/}
+            {/*</div>*/}
           </div>
           <div className={styles.cardContainer}>
           </div>
