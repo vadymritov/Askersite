@@ -401,7 +401,13 @@ h2 {
   fill: "#324ADD";
 }
 
-content-wrapper {
+.blur-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.content-wrapper {
   position: relative;
   flex-direction: column;
   background-image: linear-gradient(25deg, #D6FEC0, #D0CDEB 80%);
@@ -413,6 +419,7 @@ content-wrapper {
   border-radius: 19px;
   overflow: hidden;
 
+}
   .blur-back{
     position: absolute;
     z-index: 10;
@@ -443,4 +450,3 @@ content-wrapper {
     overflow: visible;
     right: 0;
   }
-}

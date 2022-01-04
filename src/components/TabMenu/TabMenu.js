@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styles from './TabMenu.module.scss'
-import {NavLink, useLocation} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import TabWatch from "../UI/icons/TabMenu/TabWatch";
 import TabAsk from "../UI/icons/TabMenu/TabAsk";
 import TabAnswer from "../UI/icons/TabMenu/TabAnswer";
 import TabSettings from "../UI/icons/TabMenu/TabSettings";
+import {getQueryParams} from "../../utils/helpers";
 
 const TabMenu = (props) => {
   const {pathname} = useLocation();
@@ -12,6 +13,18 @@ const TabMenu = (props) => {
   const [watchTabActive, setWatchTabActive] = useState(false);
   const [answerTabActive, setAnswerTabActive] = useState(false);
   const [askSettingsActive, setSettingsTabActive] = useState(false);
+
+  const {search} = useLocation();
+  const targetUrl = getQueryParams(search);
+  let navigate = useNavigate();
+let url = window.location.href.split('/').slice(-1)[0]
+
+  const openSettings = () => {
+    // navigate(`/${url}&settings`)
+    props.setShowSettings(!props.showSettings)
+  }
+
+  console.log('search', search, targetUrl, url);
 
   useEffect(() => {
     if (pathname === '/create-asker'
@@ -40,10 +53,11 @@ const TabMenu = (props) => {
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
-        <NavLink to={'/settings'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>
+        <button type='button'  className={`${styles.tabItem}`} onClick={() => openSettings()}>
+        {/*<NavLink to={'/settings'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>*/}
           <TabSettings className={`${styles.taIcon}`}/>
           <span>Settings</span>
-        </NavLink>
+        </button>
 
       </div>
     </div>

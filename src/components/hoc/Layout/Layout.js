@@ -4,11 +4,13 @@ import RightScreen from "../../../container/RightScreen/RightScreen";
 import TabMenu from "../../TabMenu/TabMenu";
 import AccountSettings from "../../../container/AccountSettings/AccountSettings";
 import Header from "../../Header/Header";
+import Settings from "../../../container/Settings/Settings";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
   const [smallView, setSmallView] = useState(true)
   const [isSettingsActive, setIsSettingsActive] = useState(false);
+  const [showSettings, setShowSettings] = useState(false)
 
 
   const onClick = (buttonName) => {
@@ -26,14 +28,14 @@ const Layout = ({children}) => {
     }
   }, [pathname])
 
-  console.log('pathname', pathname, pathname === '/log-in', smallView);
+  console.log('pathname', pathname, pathname, showSettings);
 
   return (
     <div className='container main-container'>
       <div className="main-wrapper">
-      <div className="header-block">
-        <Header />
-      </div>
+        <div className="header-block">
+          <Header/>
+        </div>
 
         <div className="main-row">
           <div className={`main-col ${smallView ? 'main-col-small' : null}`}>
@@ -41,12 +43,14 @@ const Layout = ({children}) => {
               {children}
 
               {!smallView ?
-                <TabMenu onClick={onClick}/>
+                <TabMenu onClick={onClick} setShowSettings={setShowSettings} showSettings={showSettings}/>
                 : null}
-              {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
-              {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
-              {/*  <AccountSettings isActive={isSettingsActive}/>*/}
-              {/*</div>*/}
+              {showSettings ?
+                <>
+                  <div className='blur-box'>
+                  <Settings/>
+                </div>
+                </> : null}
             </div>
           </div>
           <div className={`static-col ${smallView ? 'static-col-small' : 'static-col'}`}>
