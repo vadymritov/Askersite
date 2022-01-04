@@ -1,0 +1,204 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+.settingsContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: auto;
+}
+
+.settingsBackdrop {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  //padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(90, 109, 254, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+
+.settingsBar {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  z-index: 3;
+  height: 100%;
+  background: rgba(84, 104, 255, 0.8);
+  opacity: 0.9;
+  backdrop-filter: blur(100px);
+  border-radius: 0px 20px 20px 0px;
+  width: calc(100% - 12em);
+  min-width: 400px;
+  padding: 0 40px 0 60px;
+}
+
+.settingsTitle {
+  margin-top: 40px;
+  display: flex;
+  opacity: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  height: 21px;
+  margin-bottom: 29px;
+
+  .text {
+    color: $white;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1x;
+    margin-left: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+  .icon {
+    fill: $white;
+    min-width: 21px;
+    height: 21px;
+    margin-bottom: 5px;
+  }
+
+}
+
+.infoCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background: rgba(88, 108, 255, 0.95);
+  box-shadow: 0px 12px 19px rgba(60, 128, 209, 0.09);
+  border-radius: 16px;
+  padding: 20px 13px 13px;
+  margin-bottom: 23px;
+
+  .accountIcon {
+    width: 120px;
+    height: 120px;
+    border: 9px solid white;
+    border-radius: 50%;
+    //margin: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../image/svg/SettingsBg.svg");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2);
+    margin-bottom: 47px;
+    margin-top: 20px;
+  }
+
+}
+
+.infoBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.infoLine {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  margin-bottom: 21px;
+
+  .iconWrap {
+    position: relative;
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #ADB8FA;
+  }
+
+  .lockIcon {
+    min-width: 17px;
+    height: 20px;
+    fill: $white;
+  }
+  .pazlIcon {
+    min-width: 14px;
+    height: 15px;
+    fill: $white;
+  }
+  .twoMenIcon {
+    position: absolute;
+    min-width: 23px;
+    height: 29px;
+    top: 2px;
+    left: 0;
+    fill: $white;
+  }
+
+  .arrowBtn {
+    position: absolute;
+    right: 5px;
+    top: calc(50% - 15px);
+    @include btn-reset();
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrowIcon {
+    min-width: 7px;
+    height: 11px;
+    fill: $white;
+  }
+
+  .infoIcon {
+    min-width: 30px;
+    height: 38px;
+    fill: $white;
+  }
+
+  .contactBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 21px;
+    min-width: 165px;
+    max-width: 100%;
+
+
+    .titleInfo {
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.1;
+      text-align: center;
+      color: #FFFFFF;
+    }
+    .textInfo {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #FFFFFF;
+    }
+  }
+
+}

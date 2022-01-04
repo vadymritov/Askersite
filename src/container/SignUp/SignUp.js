@@ -1,16 +1,5 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import styles from "./SignUp.module.scss";
-import ArrowBack from "../../components/UI/icons/ArrowBack";
-import QuestionLogin from "../../components/UI/icons/QuestionLogin";
-import LogoWhite from "../../components/UI/icons/LogoWhite";
-import Input from "../../components/UI/Input/Input";
-import EmailIcon from "../../components/UI/icons/EmailIcon";
-import LockIcon from "../../components/UI/icons/LockIcon";
-import {NavLink} from "react-router-dom";
-import ArrowBtn from "../../components/UI/icons/ArrowBtn";
-import LinePhone from "../../components/UI/icons/LinePhone";
-import {regexEmail} from "../../utils/helpers";
 import CreateAccount from "./CreateAccount";
 import Verification from "./Verification";
 import CreatePassword from "./CreatePassword";

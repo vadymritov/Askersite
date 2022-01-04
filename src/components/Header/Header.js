@@ -10,11 +10,11 @@ const Header = (props) => {
       text: 'Inspiration'
     },
     {
-      href: '/integration',
+      href: '/',
       text: 'Integration'
     },
     {
-      href: '/support',
+      href: '/',
       text: 'Support'
     },
     {

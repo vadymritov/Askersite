@@ -1,26 +1,45 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
 
+.settingsContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
 
-.settingsWrapper{
+.settingsWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   padding: 0 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(90, 109, 254, 0.2);
+  backdrop-filter: blur(20px);
+  /* Note: backdrop-filter has minimal browser support */
 
-  .card{
+  border-radius: 20px;
+
+  .card {
     margin-top: 30px;
     background: rgba(88, 108, 255, 0.95);
     box-shadow: 0px 12px 19px rgba(60, 128, 209, 0.09);
     padding: 40px 13px 30px;
     border-radius: 10px;
 
-    .option{
+    .option {
       color: white;
       display: flex;
       margin-top: 20px;
       align-items: flex-start;
       position: relative;
 
-      &__icon{
+      &__icon {
         width: 30px;
         height: 30px;
         background-image: url("../../image/svg/CircleContact.svg");
@@ -28,39 +47,45 @@
         background-position: center;
         border-radius: 50%;
       }
-      &__info{
+
+      &__info {
         margin-left: 20px;
         display: flex;
         flex-direction: column;
-        &__title{
+
+        &__title {
           font-size: 20px;
           line-height: 18px;
         }
-        &__text{
+
+        &__text {
           font-size: 14px;
           line-height: 16px;
           font-weight: 400;
         }
       }
-      &_disabled{
+
+      &_disabled {
         opacity: .5;
       }
     }
   }
-  .settingsTitle{
+
+  .settingsTitle {
     margin-top: 40px;
     display: flex;
     align-items: flex-end;
     margin-left: -40px;
 
-    & h6{
+    & h6 {
       color: white;
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
       margin-left: 5px;
     }
-    &__icon{
+
+    &__icon {
       width: 30px;
       height: 30px;
       background-image: url("../../image/svg/CircleContact.svg");
@@ -69,8 +94,8 @@
     }
   }
 
-  .accountWrapper{
-    .accountIcon{
+  .accountWrapper {
+    .accountIcon {
       width: 120px;
       height: 120px;
       border: 9px solid white;
@@ -81,26 +106,29 @@
       background-size: cover;
       box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2);
     }
-    .accountInfo{
+
+    .accountInfo {
 
     }
 
   }
 
-  .functionalityWrapper{
+  .functionalityWrapper {
     width: 100%;
     padding-top: 0;
-    .option{
+
+    .option {
 
     }
   }
-  .someComponent{
+
+  .someComponent {
     width: 100%;
     height: 30px;
   }
 
 
-  .arrow{
+  .arrow {
     border: solid white;
     border-width: 0 1px 1px 0;
     display: inline-block;

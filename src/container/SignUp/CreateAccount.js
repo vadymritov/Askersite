@@ -179,7 +179,7 @@ const CreateAccount = ({...props}) => {
 
           </div>
           <div className={`${styles.text} ${styles.paddingTop}`}>Already have an account?</div>
-          <NavLink to={'/sign-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
+          <NavLink to={'/log-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
           <div className={`${styles.buttonBox}`}>
             <button type="submit" className={`continue-btn`}>
               <span>Continue</span>

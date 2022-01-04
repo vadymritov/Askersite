@@ -40,7 +40,7 @@ const TabMenu = (props) => {
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
-        <NavLink to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>
+        <NavLink to={'/settings'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>
           <TabSettings className={`${styles.taIcon}`}/>
           <span>Settings</span>
         </NavLink>

@@ -74,7 +74,7 @@ const Verification = ({...props}) => {
             </div>
           </div>
           <div className={`${styles.text} ${styles.paddingTop}`}>Already have an account?</div>
-          <NavLink to={'/sign-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
+          <NavLink to={'/log-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
           <div className={`${styles.buttonBox}`}>
             <button type="button" className={`continue-btn`} onClick={onSendData}>
               <span>Continue</span>
