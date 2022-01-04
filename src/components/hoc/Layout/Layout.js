@@ -48,7 +48,7 @@ const Layout = ({children}) => {
               {showSettings ?
                 <>
                   <div className='blur-box'>
-                  <Settings/>
+                  <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
                 </div>
                 </> : null}
             </div>

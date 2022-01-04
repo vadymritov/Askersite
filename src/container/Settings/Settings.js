@@ -11,9 +11,14 @@ import PazlIcon from "../../components/UI/icons/PazlIcon";
 import ArrowDropdown from "../../components/UI/icons/ArrowDropdown";
 
 const Settings = (props) => {
+  const toggleSettings = () => {
+    // navigate(`/${url}&settings`)
+    props.setShowSettings(!props.showSettings)
+  }
+
     return (
       <div className={styles.settingsContainer}>
-        <div className={styles.settingsBackdrop}/>
+        <div className={styles.settingsBackdrop} onClick={() => toggleSettings()}/>
         <div className={styles.settingsBar}>
           <div className={styles.settingsTitle}>
             <TabSettings className={`${styles.icon}`}/>

@@ -19,7 +19,7 @@ const TabMenu = (props) => {
   let navigate = useNavigate();
 let url = window.location.href.split('/').slice(-1)[0]
 
-  const openSettings = () => {
+  const toggleSettings = () => {
     // navigate(`/${url}&settings`)
     props.setShowSettings(!props.showSettings)
   }
@@ -53,7 +53,7 @@ let url = window.location.href.split('/').slice(-1)[0]
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
-        <button type='button'  className={`${styles.tabItem}`} onClick={() => openSettings()}>
+        <button type='button'  className={`${styles.tabItem}`} onClick={() => toggleSettings()}>
         {/*<NavLink to={'/settings'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>*/}
           <TabSettings className={`${styles.taIcon}`}/>
           <span>Settings</span>
