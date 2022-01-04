@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import styles from './RightScreen.module.scss';
 import Typed from "typed.js";
 import Header from "../../components/Header/Header";
+import {ReactComponent as QuestionGreen}  from '../../image/svg/QuestionGreen.svg';
 
 const RightScreen = (props) => {
   const el = useRef(null);
@@ -36,7 +37,8 @@ const RightScreen = (props) => {
     <div className={styles.rightContainer}>
       <Header />
       <div className={styles.rightContent}>
-        <div className={styles.greenIcon}/>
+        <QuestionGreen className={styles.greenIcon}/>
+        {/*<div className={styles.greenIcon}/>*/}
         <div className={styles.tellmeContent}>
           <div className={styles.typedTextWrap}>
             <h2>

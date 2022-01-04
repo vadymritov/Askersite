@@ -44,11 +44,11 @@
   position: absolute;
   top: 80px;
   right: 72px;
-  //background-image: url("../../image/svg/MessageQuestionGreen.svg");
-  background-image: url("../../image/RightScree/QuestionGreen.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center top;
+  //background-image: url("../../image/svg/QuestionGreen.svg");
+  //background-image: url("../../image/RightScree/QuestionGreen.png");
+  //background-size: contain;
+  //background-repeat: no-repeat;
+  //background-position: center top;
   @include animationJS();
 }
 

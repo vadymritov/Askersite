@@ -31,7 +31,7 @@ const Login = (props) => {
           localStorage.setItem("UserID", respJson.user.id);
           localStorage.setItem("User", JSON.stringify(respJson.user));
           // dispatch(setUserProfile(respJson));
-          navigate('/PromotionVideo');
+          navigate('/dashboard');
         } else {
           alert(respJson.message);
         }

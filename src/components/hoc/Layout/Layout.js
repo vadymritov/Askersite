@@ -33,7 +33,7 @@ const Layout = ({children}) => {
 
   return (
     <>
-      <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu/>} right />
+      <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu />} right />
     <div className='container main-container' id={"page-wrap"}>
       <div className="main-wrapper">
       <div className="header-block" >
