@@ -14,7 +14,7 @@ import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 
 const Dashboard = (props) => {
   const [timer, setTimer] = useState()
-  const arr = [1, 2, 3, 4, 5, 6, 7]
+  const arr = [1, 2, 3, 4, ]
   let navigate = useNavigate();
   const cardRef = useRef(null);
 
@@ -69,41 +69,45 @@ const Dashboard = (props) => {
             </div>
 
             <div className={styles.row}>
-              {
-                arr.map((item, index) => {
-                  return <div key={index} className={styles.cardWrap}>
-                    <div className={styles.answersContainer}>
-                      <DashbordLogoIcon className={styles.createLogo}/>
-                      <div className={` ${styles.questionBlock}`}>
-                        <div className={styles.textBox}>
-                          <div className={styles.title}>Cleaner job in Brighton</div>
-                          <div className={styles.text}>Brighton Art Gallery</div>
-                        </div>
-                      </div>
-                      <div className={`${styles.buttonBox}`}>
-                        <button type="submit" className={`continue-btn ${styles.buttonItem}`}>
-                          <span>12 NEW ANSWERS</span>
-                          <div className={styles.plusIconBox}>
-                            <ArrowBtn className={`${styles.shareIcon}`}/>
+              <div className={styles.rowAnswers}>
+                {
+                  arr.map((item, index) => {
+                    return <div key={index} className={styles.cardWrap}>
+                      <div className={styles.answersContainer}>
+                        <DashbordLogoIcon className={styles.createLogo}/>
+                        <div className={` ${styles.questionBlock}`}>
+                          <div className={styles.textBox}>
+                            <div className={styles.title}>Cleaner job in Brighton</div>
+                            <div className={styles.text}>Brighton Art Gallery</div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                        <div className={`${styles.buttonBox}`}>
+                          <button type="submit" className={`continue-btn ${styles.buttonItem}`}>
+                            <span>12 NEW ANSWERS</span>
+                            <div className={styles.plusIconBox}>
+                              <ArrowBtn className={`${styles.shareIcon}`}/>
+                            </div>
+                          </button>
+                        </div>
 
+                      </div>
                     </div>
-                  </div>
-                })
-              }
-              <div className={styles.cardWrap}>
-                <button type='button' className={styles.addAskerBtn}>
-                  <PlusIcon className={styles.plusIcon}/>
-                </button>
+                  })
+                }
+                <div className={styles.cardWrap}>
+                  <button type='button' className={styles.addAskerBtn}>
+                    <PlusIcon className={styles.plusIcon}/>
+                  </button>
+                </div>
               </div>
+
+
             </div>
           </div>
 
           <div className={`${styles.buttonBox}`}>
             <button type="submit" className={`continue-btn  ${styles.buttonStyle}`} onClick={createAsker}>
-              <span>CREATE ASKER</span>
+              <span className={styles.buttonStyleText}>CREATE ASKER</span>
               <AddQuestion className={styles.arrowBtn}/>
             </button>
             <LinePhone className={styles.linePhone}/>
