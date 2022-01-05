@@ -103,7 +103,7 @@
 
   &-white {
     @include triangle(40px, $white, true);
-    opacity: .78;
+    opacity: .9;
     //transform: translate(0, 90%);
   }
 

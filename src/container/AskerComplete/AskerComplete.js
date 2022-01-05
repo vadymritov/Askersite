@@ -111,14 +111,7 @@ const AskerComplete = (props) => {
                   <ArrowBtn className={`arrow-btn ${styles.arrowTopGreen}`}/>
                 </button>
               </div>
-              {/*<div className={`button-box ${styles.buttonBox}`}>*/}
-              {/*  <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>*/}
-              {/*    <span>SEND RESPONSES</span>*/}
-              {/*    <div className={styles.plusIconBox}>*/}
-              {/*      <ArrowBtn className={`${styles.shareIcon}`}/>*/}
-              {/*    </div>*/}
-              {/*  </button>*/}
-              {/*</div>*/}
+
             </div>
           </div>
           <div className={styles.rotate}>

@@ -71,6 +71,9 @@
   width: 100%;
   height: calc(100% - 52px);
   overflow: hidden;
+  @include media-max($sm-break) {
+    height: calc(100% - 100px);
+  }
 }
 .cardWrap {
   width: 338px;
@@ -94,7 +97,7 @@
   max-width: 100%;
   width: 100%;
   height: 100%;
-  border-radius: 40px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: $white;
   //background: linear-gradient(196.51deg, rgba(123, 139, 255, 0.95) 3.21%, rgba(84, 104, 255, 0.95) 94.01%);
@@ -142,7 +145,7 @@
 .cardContainer {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
