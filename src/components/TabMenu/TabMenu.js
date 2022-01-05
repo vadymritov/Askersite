@@ -36,7 +36,12 @@ let url = window.location.href.split('/').slice(-1)[0]
     }
 
     if (pathname === '/answer'
-      || pathname === '/answer'
+      || pathname === '/asker-search'
+      || pathname === '/start-asker'
+      || pathname === '/next-question'
+      || pathname === '/record-again'
+      || pathname === '/progress'
+      || pathname === '/asker-complete'
       ) {
       setAnswerTabActive(true)
     }

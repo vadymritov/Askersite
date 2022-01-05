@@ -23,6 +23,7 @@ import Progress from "./container/Progress/Progress";
 import AccountSettings from "./container/AccountSettings/AccountSettings";
 import Settings from "./container/Settings/Settings";
 import Answer from "./container/Answer/Answer";
+import AskerComplete from "./container/AskerComplete/AskerComplete";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/asker-search" element={<AskerSearch />}/>
         <Route path="/start-asker" element={<StartAsker />}/>
         <Route path="/next-question" element={<NextQuestion />}/>
+        <Route path="/asker-complete" element={<AskerComplete />}/>
         <Route path="/record-again" element={<RecordAgain />}/>
         <Route path="/progress" element={<Progress />}/>
         <Route path="/settings" element={<Settings />}/>
