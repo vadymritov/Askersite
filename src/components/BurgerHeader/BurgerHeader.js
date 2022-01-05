@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import { slide as Menu } from 'react-burger-menu'
 import styles from './BurgerHeader.module.scss'
-import Logo from "../UI/icons/Logo";
 import {NavLink} from "react-router-dom";
-import {ReactComponent as BurgerMenu} from '../../image/svg/burger-menu.svg';
 
 
 const BurgerHeader = (props) => {
@@ -35,7 +33,11 @@ const BurgerHeader = (props) => {
   const closeSideBar = () => {
     setOpen(false)
   }
-
+  let token = localStorage.getItem('UserID');
+  const logoutFn = () => {
+    localStorage.clear()
+    closeSideBar()
+  }
   return (
     <Menu {...props} height={'100%'}  className={styles.burgerMenu} isOpen={isOpen} onOpen={handleIsOpen} onClose={handleIsOpen}  >
       <div className={styles.containerBurgerMenu} >
@@ -47,12 +49,11 @@ const BurgerHeader = (props) => {
               </NavLink>
             )
           }
-          <NavLink className={styles.joinWrapBurgerMenu} to={'/sign-up'} onClick={()=>closeSideBar()} activeclassname={styles.active} >
+          {!token ? <NavLink className={styles.joinWrapBurgerMenu} to={'/sign-up'} activeclassname={styles.active}>
             <span className={styles.joinLinkBurgerMenu}>Join</span>
-          </NavLink>
-        </div>
-        <div>
-
+          </NavLink>  :  <NavLink className={styles.joinWrapBurgerMenu} to={'/logout'} activeclassname={styles.active} onClick={logoutFn} >
+            <span className={styles.joinLinkBurgerMenu}>Logout</span>
+          </NavLink> }
         </div>
       </div>
 

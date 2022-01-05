@@ -420,11 +420,15 @@ h2 {
   position: absolute;
   width: 36px;
   height: 30px;
-  top: 20px;
+  top: 15px;
   right: 35px;
   fill: rgba(84, 104, 255, 0.85);
-  @include media-max($md-break) {
 
+  @include media-max($md-break) {
     display: block;
+    top: 25px;
+  }
+  @include media-max($sm-break) {
+    top: 15px;
   }
 }

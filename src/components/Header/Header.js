@@ -22,7 +22,10 @@ const Header = (props) => {
       text: 'Log In'
     },
   ]
-
+  let token = localStorage.getItem('UserID');
+  const logoutFn = () => {
+    localStorage.clear()
+  }
   return (
     <div className={styles.container}>
       <NavLink to={'/'}><Logo className={styles.logo}/></NavLink>
@@ -36,10 +39,11 @@ const Header = (props) => {
           )
         }
 
-        <NavLink className={styles.joinWrap} to={'/sign-up'} activeclassname={styles.active} >
-        {/*<NavLink className={styles.joinWrap} exact to={'/sign-up'} activeclassname={styles.active} >*/}
+        {!token ? <NavLink className={styles.joinWrap} to={'/sign-up'} activeclassname={styles.active}>
           <span className={styles.joinLink}>Join</span>
-        </NavLink>
+        </NavLink>  :  <NavLink className={styles.joinWrap} to={'/logout'} activeclassname={styles.active} onClick={logoutFn} >
+          <span className={styles.joinLink}>Logout</span>
+        </NavLink> }
 
       </div>
 
