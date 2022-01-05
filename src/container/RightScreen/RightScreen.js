@@ -36,7 +36,9 @@ const RightScreen = (props) => {
 
   return (
     <div className={styles.rightContainer}>
+      <div className={styles.homeWrap}>
       <Header />
+      </div>
       <div className={styles.rightContent}>
         <QuestionGreen className={styles.greenIcon}/>
         <div className={styles.tellmeContent}>

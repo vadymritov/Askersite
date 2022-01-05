@@ -14,6 +14,13 @@
 
 }
 
+.homeWrap {
+  width: 100%;
+  @include media-max($sm-break) {
+    display: none;
+  }
+}
+
 .rightContent {
   height: 100%;
   width: 100%;
@@ -24,6 +31,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @include media-max($sm-break) {
+    padding-top: 60px;
+  }
 }
 
 .tellmeContent {
@@ -55,6 +65,12 @@
     width: 79px;
     height: 84px;
   }
+  @include media-max($sm-break) {
+    top: 10px;
+  }
+  @include media-max($xs-break) {
+    display: none;
+  }
 }
 
 
@@ -79,6 +95,9 @@
     width: 76px;
     height: 93px;
   }
+  @include media-max($xs-break) {
+    display: none;
+  }
 }
 
 .typedTextWrap {
@@ -89,6 +108,10 @@
   @include media-max($lg-break) {
     min-height: 240px;
     height: 38vh;
+  }
+  @include media-max($sm-break) {
+    min-height: 220px;
+    height: 220px;
   }
 
 
@@ -101,6 +124,9 @@
     line-height: 1.2;
     @include media-max($lg-break) {
       font-size: 45px;
+    }
+    @include media-max($md-break) {
+      font-size: 40px;
     }
   }
 }
@@ -145,8 +171,17 @@
   align-items: center;
   width: 430px;
   margin-left: 30px;
+  justify-content: center;
+
   @include media-max($lg-break) {
     width: 100%;
+  }
+  @include media-max($sm-break) {
+    justify-content: center;
+    margin-top: 30px;
+  }
+  @include media-max($sm-break) {
+    margin-left: 0;
   }
 
   .iconLink {
@@ -167,6 +202,14 @@
       width: 148px;
       height: 55px;
     }
+    @include media-max($sm-break) {
+      width: 169px;
+      height: 60px;
+    }
+    @include media-max($xs-break) {
+      width: 148px;
+      height: 55px;
+    }
   }
 
   .appStore {
@@ -179,6 +222,14 @@
     height: 113px;
     background-image: url("../../image/svg/GooglePlay.svg");
     @include media-max($lg-break) {
+      width: 144px;
+      height: 95px;
+    }
+    @include media-max($sm-break) {
+      width: 200px;
+      height: 105px;
+    }
+    @include media-max($xs-break) {
       width: 144px;
       height: 95px;
     }
