@@ -44,12 +44,10 @@
   position: absolute;
   top: 80px;
   right: 72px;
-  //background-image: url("../../image/svg/QuestionGreen.svg");
-  //background-image: url("../../image/RightScree/QuestionGreen.png");
-  //background-size: contain;
-  //background-repeat: no-repeat;
-  //background-position: center top;
   @include animationJS();
+  @include media-max($lg-break) {
+    top: 0;
+  }
 }
 
 
@@ -63,10 +61,6 @@
   right: -8px;
   width: 105px;
   height: 120px;
-  background-image: url("../../image/RightScree/QuestionViolet.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center top;
   @include animationJS();
 }
 

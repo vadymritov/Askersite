@@ -3,6 +3,7 @@ import styles from './RightScreen.module.scss';
 import Typed from "typed.js";
 import Header from "../../components/Header/Header";
 import {ReactComponent as QuestionGreen}  from '../../image/svg/QuestionGreen.svg';
+import {ReactComponent as QuestionViolet}  from '../../image/svg/QuestionViolet.svg';
 
 const RightScreen = (props) => {
   const el = useRef(null);
@@ -49,7 +50,8 @@ const RightScreen = (props) => {
             <button type="button" className={styles.btnCreate}>Create Asker</button>
           </div>
           <div className={styles.wrapIcon}>
-            <div className={styles.violetIcon}/>
+          <QuestionViolet className={styles.violetIcon}/>
+            {/*<div className={styles.violetIcon}/>*/}
           </div>
         </div>
         <div className={styles.linkBlock}>
