@@ -37,7 +37,6 @@ body {
   min-width: 375px;
   color: #000;
   font-family: $main-font !important;
-  //font-family: 'Roboto', sans-serif;
   font-weight: bold;
   scroll-behavior: smooth;
   @include media-max($xxs-break) {
@@ -53,7 +52,6 @@ body {
 
   a {
     text-decoration: underline;
-    //color: $black;
 
     &:hover {
       cursor: pointer;
