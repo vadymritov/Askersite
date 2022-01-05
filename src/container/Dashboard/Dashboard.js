@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
@@ -13,28 +13,39 @@ import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 
 const Dashboard = (props) => {
-  const elRef = useRef();
-  let navigate = useNavigate();
   const [timer, setTimer] = useState()
   const arr = [1, 2, 3, 4, ]
+  let navigate = useNavigate();
+  const cardRef = useRef(null);
 
+  useEffect(async () => {
 
-  const showContact = () => {
-    navigate('/contact-card')
+    if(cardRef?.current?.classList.contains("start-rotate")){
+      cardRef?.current?.classList.remove("start-rotate")
+    }
+
+    const timer = setTimeout(() => {
+      cardRef?.current?.classList.add("start-rotate")
+    }, 1);
+
+    return () => clearTimeout(timer);
+  }, [props]);
+
+  const createAsker = () => {
+    navigate('/create-asker')
   }
 
-
-  const removeEffect = () => {
-    elRef.current?.classList.add("ease-out-effect")
-    const timer = setTimeout(() => {
-      navigate('/share-asker')
-    }, 300);
-    return timer;
-  };
+  // const removeEffect = () => {
+  //   elRef.current?.classList.add("ease-out-effect")
+  //   const timer = setTimeout(() => {
+  //     navigate('/share-asker')
+  //   }, 300);
+  //   return timer;
+  // };
 
 
   return (
-    <div ref={elRef} className={`ease-in-effect  ${styles.createContainer}`}>
+    <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.createContainer}`}>
       <div className={styles.bgContainer}>
         <div className={styles.contantWrap}>
           <div className={styles.topBox}>
@@ -91,7 +102,7 @@ const Dashboard = (props) => {
           </div>
 
           <div className={`${styles.buttonBox}`}>
-            <button type="submit" className={`continue-btn  ${styles.buttonStyle}`}>
+            <button type="submit" className={`continue-btn  ${styles.buttonStyle}`} onClick={createAsker}>
               <span>CREATE ASKER</span>
               <AddQuestion className={styles.arrowBtn}/>
             </button>
