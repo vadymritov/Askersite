@@ -47,9 +47,11 @@
   margin-right: 40px;
   text-decoration: none;
   color: #ABABAB;
+  @include media-max(1550) {
+    margin-right: 3vw;
+  }
   @include media-max($lg-break) {
     margin-right: 2vw;
-     //display: none;
   }
 
   .itemLink {

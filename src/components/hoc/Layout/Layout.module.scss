@@ -36,6 +36,7 @@
   padding: 12px;
   display: flex;
   justify-content: space-between;
+  min-height: 560px;
   @include media-max($sm-break) {
     flex-direction: column;
     padding: 0 12px 12px;
@@ -49,6 +50,8 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  border-radius: 19px;
+  //overflow: hidden;
   @include media-max($sm-break) {
     width: 100%;
     height: calc(100vh - 60px);
@@ -57,10 +60,10 @@
   }
 
   @include media-max($xs-break) {
-    width: 100%;
-    height: calc(100vh - 60px);
-    max-height: 600px;
-    min-height: 500px;
+    //width: 100%;
+    //height: calc(100vh - 60px);
+    //max-height: 600px;
+    //min-height: 500px;
   }
 
 }
@@ -92,6 +95,7 @@
   flex-direction: column;
   background-color: #fafafa;
   border-radius: 19px;
+  overflow: hidden;
   @include media-max($sm-break) {
     width: 100%;
     margin-top: 12px;
@@ -130,8 +134,9 @@
   height: 100%;
   min-height: 560px;
   border-radius: 19px;
+
   @include media-max($md-break) {
-    padding: 30px 10px;
+    padding: 30px 0;
     min-height: 460px;
   }
 }

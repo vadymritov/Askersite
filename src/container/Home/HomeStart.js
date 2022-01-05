@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Home.module.scss'
 
 const HomeStart = (props) => {
+
+
   return (
     <div className={styles.askerWrapper} id="homeTiltWrapper">
       <div className={`${styles.askerRow}`}>

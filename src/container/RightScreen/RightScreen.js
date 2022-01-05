@@ -4,9 +4,12 @@ import Typed from "typed.js";
 import Header from "../../components/Header/Header";
 import {ReactComponent as QuestionGreen}  from '../../image/svg/QuestionGreen.svg';
 import {ReactComponent as QuestionViolet}  from '../../image/svg/QuestionViolet.svg';
+import {useNavigate} from "react-router-dom";
 
 const RightScreen = (props) => {
   const el = useRef(null);
+  let navigate = useNavigate();
+  let token = localStorage.getItem('UserID');
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -34,6 +37,14 @@ const RightScreen = (props) => {
     };
   }, []);
 
+  const onCreateAsker = () => {
+    if (token) {
+      navigate('/create-asker')
+    } else {
+      navigate('/log-in')
+    }
+  }
+
   return (
     <div className={styles.rightContainer}>
       <div className={styles.homeWrap}>
@@ -48,7 +59,7 @@ const RightScreen = (props) => {
             </h2>
           </div>
           <div className={styles.btnLine}>
-            <button type="button" className={styles.btnCreate}>Create Asker</button>
+            <button type="button" className={styles.btnCreate} onClick={onCreateAsker}>Create Asker</button>
           </div>
           <div className={styles.wrapIcon}>
           <QuestionViolet className={styles.violetIcon}/>
