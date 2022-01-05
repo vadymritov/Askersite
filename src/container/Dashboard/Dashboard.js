@@ -14,7 +14,7 @@ import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 
 const Dashboard = (props) => {
   const [timer, setTimer] = useState()
-  const arr = [1, 2, 3, 4, ]
+  const arr = [1, 2, 3, 4, 5, 6, 7]
   let navigate = useNavigate();
   const cardRef = useRef(null);
 

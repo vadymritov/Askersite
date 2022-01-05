@@ -39,7 +39,6 @@ const RightScreen = (props) => {
       <Header />
       <div className={styles.rightContent}>
         <QuestionGreen className={styles.greenIcon}/>
-        {/*<div className={styles.greenIcon}/>*/}
         <div className={styles.tellmeContent}>
           <div className={styles.typedTextWrap}>
             <h2>
@@ -51,7 +50,6 @@ const RightScreen = (props) => {
           </div>
           <div className={styles.wrapIcon}>
           <QuestionViolet className={styles.violetIcon}/>
-            {/*<div className={styles.violetIcon}/>*/}
           </div>
         </div>
         <div className={styles.linkBlock}>

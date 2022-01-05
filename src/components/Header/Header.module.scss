@@ -9,6 +9,9 @@
   width: 100%;
   max-width: 100%;
   padding: 0 31px 0 43px;
+  @include media-max($lg-break) {
+    padding: 0 24px;
+  }
 }
 
 .logoLink {
@@ -45,7 +48,7 @@
   text-decoration: none;
   color: #ABABAB;
   @include media-max($lg-break) {
-    margin-right: 2.5vw;
+    margin-right: 2vw;
      //display: none;
   }
 

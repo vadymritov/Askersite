@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
 import TabMenu from "../../TabMenu/TabMenu";
+import styles from './Layout.module.scss'
 import AccountSettings from "../../../container/AccountSettings/AccountSettings";
 import Header from "../../Header/Header";
 // import BurgerHeader from "../../BurgerHeader/BurgerHeader";
@@ -34,15 +35,15 @@ const Layout = ({children}) => {
   return (
     <>
       <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu />} right />
-    <div className='container main-container' id={"page-wrap"}>
-      <div className="main-wrapper">
-      <div className="header-block" >
+    <div className={`container ${styles.mainContainer}`} id={"page-wrap"}>
+      <div className={styles.mainWrapper}>
+      <div className={styles.headerBlock} >
         <Header />
       </div>
 
-        <div className="main-row" >
-          <div className={`main-col ${smallView ? 'main-col-small' : null}`}>
-            <div className="content-wrapper">
+        <div className={styles.mainRow} >
+          <div className={`${styles.mainCol} ${smallView ? styles.mainColSmall : null}`}>
+            <div className={styles.contentWrapper}>
               {children}
 
               {!smallView ?
@@ -54,7 +55,7 @@ const Layout = ({children}) => {
               {/*</div>*/}
             </div>
           </div>
-          <div className={`static-col ${smallView ? 'static-col-small' : 'static-col'}`}>
+          <div className={`${styles.staticCol} ${smallView ? styles.staticColSmall : styles.staticCol}`}>
             <RightScreen/>
           </div>
         </div>
