@@ -11,6 +11,12 @@
   padding: 0 31px 0 43px;
 }
 
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .logo {
   height: 94px;
   width: 75px;
@@ -38,7 +44,8 @@
   margin-right: 40px;
   text-decoration: none;
   color: #ABABAB;
-  @include media-max($xs-break) {
+  @include media-max($lg-break) {
+    margin-right: 2.5vw;
      //display: none;
   }
 
@@ -67,7 +74,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 51px;
+    min-width: 49px;
+    padding: 0 10px;
     height: 28px;
     background-color: #fff;
     font-family: 'Work Sans', sans-serif;
