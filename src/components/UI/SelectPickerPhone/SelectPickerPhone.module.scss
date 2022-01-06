@@ -8,6 +8,7 @@
   .pickerWrapper{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     border-radius: 15px;
     z-index: 1000;
@@ -15,7 +16,7 @@
     .countryCodeField{
       display: flex;
       align-items: center;
-      margin-right: 40px;
+      margin-right: 14px;
       padding: 20px 0 20px 20px;
       cursor: pointer;
       .iconWrapper{
@@ -36,6 +37,9 @@
     }
     .phoneNumberField{
       min-height: 10px;
+      height: 30px;
+      padding-left: 20px;
+      border-left: 1px solid rgba(192,192,192, 0.7);
     }
   }
   .searchWrapper{
