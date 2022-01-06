@@ -150,6 +150,12 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 5px;
   background-color: #b6fffb;
 }
+.activeTypedViolet {
+  transition: 0.3s ease;
+  overflow: hidden;
+  padding: 0 5px;
+  background-color: #ADB8FA;
+}
 
 h2 {
   font-size: 41px;
