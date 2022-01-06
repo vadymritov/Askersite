@@ -34,7 +34,7 @@ const CreateAsker = (props) => {
     // };
 
   const nextStep = () => {
-    console.log('nextStepLOG');
+    // console.log('nextStepLOG');
     const currentStep = path.indexOf(step);
     setStep(path[(currentStep != null && path[currentStep + 1] != null) ? (currentStep + 1) : currentStep]);
   }

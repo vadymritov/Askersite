@@ -32,12 +32,12 @@ const Layout = ({children}) => {
     }
   }, [pathname])
 
-  console.log('pathname', pathname, pathname === '/log-in', smallView);
+  // console.log('pathname', pathname, pathname === '/log-in', smallView);
 
   return (
     <>
-      <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu />} right />
-    <div className={`container ${styles.mainContainer}`} id={"page-wrap"}>
+      <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu />} right  />
+    <div className={`container ${styles.mainContainer}`} id={"page-wrap"} >
       <div className={styles.mainWrapper}>
       <div className={styles.headerBlock} >
         <Header />
@@ -64,8 +64,15 @@ const Layout = ({children}) => {
               {/*</div>*/}
             </div>
           </div>
-          <div className={`${styles.staticCol} ${smallView ? styles.staticColSmall : styles.staticCol}`}>
-            <RightScreen/>
+          <div className={`${styles.staticCol} ${smallView ? styles.staticColSmall : styles.staticCol}`}
+
+          //      onClick={()=>{
+          //   if(showSettings){
+          //     setShowSettings(false)
+          //   }
+          // }}
+          >
+            <RightScreen />
           </div>
         </div>
       </div>

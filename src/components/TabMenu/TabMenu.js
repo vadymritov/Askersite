@@ -8,6 +8,7 @@ import TabSettings from "../UI/icons/TabMenu/TabSettings";
 import {getQueryParams} from "../../utils/helpers";
 
 const TabMenu = (props) => {
+  // console.log('props',props)
   const {pathname} = useLocation();
   const [askTabActive, setAskTabActive] = useState(false);
   const [watchTabActive, setWatchTabActive] = useState(false);
@@ -17,9 +18,10 @@ const TabMenu = (props) => {
   const {search} = useLocation();
   const targetUrl = getQueryParams(search);
   let navigate = useNavigate();
-let url = window.location.href.split('/').slice(-1)[0]
+  let url = window.location.href.split('/').slice(-1)[0]
 
   const toggleSettings = () => {
+    // navigate(`/${url}&settings`)
     props.setShowSettings(!props.showSettings)
   }
 
@@ -44,7 +46,7 @@ let url = window.location.href.split('/').slice(-1)[0]
     }
   })
 
-  console.log('props.showSettings', props.showSettings);
+  // console.log('props.showSettings', props.showSettings);
 
 
   return (
@@ -58,11 +60,14 @@ let url = window.location.href.split('/').slice(-1)[0]
           <TabAsk className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
-        <NavLink onClick={() => props.onClick('answer')} to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive || answerTabActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => {
+          props.onClick('answer')
+        }} to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive || answerTabActive ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
-        <button type='button'  className={`${styles.tabItem} ${!!props.showSettings ? styles.activeTab : ''}`} onClick={() => toggleSettings()}>
+        <button type='button' onClick={() => toggleSettings()}
+          className={`${styles.tabItem} ${!!props.showSettings ? styles.activeTab : ''}`} >
           <TabSettings className={`${styles.taIcon} `}/>
           <span>Settings</span>
         </button>
