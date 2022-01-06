@@ -20,11 +20,8 @@ const TabMenu = (props) => {
 let url = window.location.href.split('/').slice(-1)[0]
 
   const toggleSettings = () => {
-    // navigate(`/${url}&settings`)
     props.setShowSettings(!props.showSettings)
   }
-
-  console.log('search', search, targetUrl, url);
 
   useEffect(() => {
     if (pathname === '/create-asker'
@@ -47,6 +44,8 @@ let url = window.location.href.split('/').slice(-1)[0]
     }
   })
 
+  console.log('props.showSettings', props.showSettings);
+
 
   return (
     <div className={styles.tabContainerWrap}>
@@ -56,7 +55,6 @@ let url = window.location.href.split('/').slice(-1)[0]
           <span>Watch</span>
         </NavLink>
         <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive || askTabActive ? styles.activeTab : ''}  `)}>
-        {/*<NavLink onClick={() => props.onClick('ask')} to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>*/}
           <TabAsk className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
@@ -64,9 +62,8 @@ let url = window.location.href.split('/').slice(-1)[0]
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
-        <button type='button'  className={`${styles.tabItem}`} onClick={() => toggleSettings()}>
-        {/*<NavLink to={'/settings'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)} onClick={() => props.onClick('settings')}>*/}
-          <TabSettings className={`${styles.taIcon}`}/>
+        <button type='button'  className={`${styles.tabItem} ${!!props.showSettings ? styles.activeTab : ''}`} onClick={() => toggleSettings()}>
+          <TabSettings className={`${styles.taIcon} `}/>
           <span>Settings</span>
         </button>
 

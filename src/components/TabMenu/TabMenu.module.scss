@@ -65,7 +65,7 @@
 
 
   &:hover {
-    @include btn-reset();
+    //@include btn-reset();
     //opacity: .8;
     color: #5468FF;
     transition: $transition;
@@ -76,7 +76,7 @@
   }
 
   &.activeTab {
-    @include btn-reset();
+    //@include btn-reset();
     color: #5468FF;
     transition: $transition;
     .taIcon {
