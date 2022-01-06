@@ -81,7 +81,7 @@ const ViewAsker = (props) => {
               </div>
             <div className={`button-box ${styles.buttonBox}`}>
               <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                <span>VIEW ANSWERS </span>
+                <span>VIEW ANSWERS</span>
                 <div className={styles.plusIconBox}>
                   <PlayIcon className={`${styles.shareIcon}`}/>
                 </div>
