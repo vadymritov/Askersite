@@ -56,13 +56,12 @@ const TabMenu = (props) => {
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive || askTabActive ? styles.activeTab : ''}  `)}>
-          <TabAsk className={`${styles.taIcon}`}/>
+        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive || isActive ? styles.activeTab : ''}  `)}>
+          <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
-        <NavLink onClick={() => {
-          props.onClick('answer')
-        }} to={'/'} className={({isActive}) => (`${styles.tabItem} ${isActive || answerTabActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => {props.onClick('answer')
+        }} to={'/answer'} className={({isActive}) => (`${styles.tabItem} ${isActive || isActive ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
