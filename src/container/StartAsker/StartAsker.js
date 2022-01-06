@@ -111,7 +111,7 @@ const StartAsker = (props) => {
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
                 <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                  <span>START ASKER </span>
+                  <span>START ASKER</span>
                   <div className={styles.plusIconBox}>
                     <ArrowBtn className={`${styles.shareIcon}`}/>
                   </div>

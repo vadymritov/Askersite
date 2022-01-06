@@ -111,7 +111,7 @@ const RecordAgain = (props) => {
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
                 <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                  <span>NEXT QUESTION </span>
+                  <span>NEXT QUESTION</span>
                   <div className={styles.plusIconBox}>
                     <PlayIcon className={`${styles.shareIcon}`}/>
                   </div>

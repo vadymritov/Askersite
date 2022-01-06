@@ -20,9 +20,9 @@ html {
   height: 100%;
   scroll-behavior: smooth;
 
-  @include media-max($xxs-break) {
-    min-width: 320px;
-  }
+  //@include media-max($xxs-break) {
+  //  min-width: 320px;
+  //}
 
   &.no-scroll {
     body {
