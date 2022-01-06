@@ -9,6 +9,7 @@ import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import ReloadIcon from "../../components/UI/icons/ReloadIcon";
 import CheckNextIcon from "../../components/UI/icons/CheckNextIcon";
+import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 
 const NextQuestion = (props) => {
   const cardRef = useRef(null);
@@ -68,6 +69,7 @@ const NextQuestion = (props) => {
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
+            <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>

@@ -10,6 +10,7 @@ import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
+import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 
 const StartAsker = (props) => {
   const cardRef = useRef(null);
@@ -69,6 +70,7 @@ const StartAsker = (props) => {
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
+            <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>

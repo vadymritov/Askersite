@@ -5,6 +5,7 @@ import PlayIcon from "../../components/UI/icons/PlayIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
+import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 
 const ViewAsker = (props) => {
   let navigate = useNavigate();
@@ -39,6 +40,7 @@ const ViewAsker = (props) => {
 
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
+            <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>

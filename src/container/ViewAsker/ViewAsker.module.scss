@@ -385,3 +385,13 @@
     margin-left: 1px;
   }
 }
+
+.grayBg {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  width: 90%;
+  height: auto;
+  bottom: 0;
+}
