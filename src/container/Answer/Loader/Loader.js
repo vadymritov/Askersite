@@ -18,6 +18,7 @@ const Loader = ({className, isActive, setIsActive}) => {
           return prevState - 1;
         });
       }, 1000)
+      // clearInterval(begin);
     }
   }, [isActive])
 

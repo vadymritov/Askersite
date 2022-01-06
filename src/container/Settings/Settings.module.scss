@@ -41,9 +41,21 @@
   border-radius: 0px 20px 20px 0px;
   width: calc(100% - 12em);
   min-width: 400px;
-  padding: 0 40px 0 60px;
+  padding: 0 40px 50px 60px;
   overflow-y: auto;
   overflow-x: hidden;
+  @include media-max($md-break) {
+    min-width: 310px;
+    padding: 0 20px 40px;
+  }
+  @include media-max($sm-break) {
+    min-width: 400px;
+    padding: 0 40px 40px 60px;
+  }
+  @include media-max($xs-break) {
+    min-width: 270px;
+    padding: 0 20px 40px;
+  }
 }
 
 .settingsTitle {
@@ -124,6 +136,7 @@
 
   .iconWrap {
     position: relative;
+    //position: relative;
     min-width: 30px;
     height: 30px;
     display: flex;
@@ -131,12 +144,37 @@
     justify-content: center;
     border-radius: 50%;
     background-color: #ADB8FA;
+    @include media-max($xs-break) {
+      min-width: 25px;
+      height: 25px;
+    }
   }
 
   .lockIcon {
     min-width: 17px;
-    height: 20px;
+    height: 18px;
     fill: $white;
+    @include media-max($xs-break) {
+      height: 15px;
+
+    }
+  }
+  .menIcon {
+    min-width: 15px;
+    height: 16px;
+    fill: $white;
+    @include media-max($xs-break) {
+      height: 13px;
+
+    }
+  }
+  .emailIcon {
+    min-width: 12px;
+    height: 12px;
+    fill: $white;
+    @include media-max($xs-break) {
+      height: 11px;
+    }
   }
   .pazlIcon {
     min-width: 14px;
@@ -150,6 +188,9 @@
     top: 2px;
     left: 0;
     fill: $white;
+    @include media-max($xs-break) {
+      height: 23px;
+    }
   }
 
   .arrowBtn {
@@ -172,6 +213,7 @@
 
   .infoIcon {
     min-width: 30px;
+    width: 30px;
     height: 38px;
     fill: $white;
   }
@@ -193,6 +235,15 @@
       line-height: 1.1;
       text-align: center;
       color: #FFFFFF;
+      @include media-max($md-break) {
+        font-size: 18px;
+      }
+      @include media-max($sm-break) {
+        font-size: 20px;
+      }
+      @include media-max($xs-break) {
+        font-size: 18px;
+      }
     }
     .textInfo {
       font-family: "Roboto", sans-serif;
@@ -200,6 +251,15 @@
       font-size: 14px;
       line-height: 1.2;
       color: #FFFFFF;
+      @include media-max($md-break) {
+        font-size: 13px;
+      }
+      @include media-max($sm-break) {
+        font-size: 14px;
+      }
+      @include media-max($xs-break) {
+        font-size: 13px;
+      }
     }
   }
 

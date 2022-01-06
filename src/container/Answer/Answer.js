@@ -26,22 +26,31 @@ const Answer = (props) => {
     }, 1);
 
     return () => clearTimeout(timer);
-  }, [props]);
+  }, [loaderActive]);
+
+  useEffect(() => {
+    if (finishAnswer) {
+      const count = setInterval(() => {setTimer(prevState => {
+          console.log('prevst', prevState);
+          if (prevState > 0) {
+            return prevState - 1;
+          } else {
+            clearInterval(count)
+            return 0
+          }
+        }
+      )}, 1000)
+    }
+  }, [finishAnswer])
+    console.log('setInterva', finishAnswer, loaderActive);
 
   const beginAnswer = () => {
     setLoaderActive(true);
-    setTimeout(() => setFinishAnswer(true), 3);
+    setTimeout(() => {
+      setFinishAnswer(true)
+    }, 3);
 
-    if (finishAnswer) {
-      setInterval(() => setTimer(prevState => {
-        if (prevState > 0) {
-          return prevState - 1;
-        } else {
-          return 0
-        }
-      }), 1000)
-    }
-
+   // clearTimeout(t);
   }
 
   return (
@@ -51,32 +60,29 @@ const Answer = (props) => {
         <div className={styles.infoText}>Brighton Art Gallery<br/> Cleaner Job in Brighton</div>
       </div>
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardWrap}`} >
+        <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardWrap}`}>
           <Logo className={styles.logo}/>
           <Loader className={styles.loader} isActive={loaderActive} setIsActive={setLoaderActive}/>
           <div className={styles.cardInfo}>
             <span>Tell me what you’d like to know about this role?</span>
-            {!finishAnswer  ? <button className={`${styles.beginBtn} `} onClick={() => {beginAnswer()}}>
+            {!finishAnswer ? <button className={`${styles.beginBtn} `} onClick={() => {
+                beginAnswer()
+              }}>
                 begin answer
-                {/*{loaderActive ? 'finish answer' : 'begin answer'}*/}
                 <div/>
               </button>
               :
-              <div className={styles.content}>
+              <button type='button' className={styles.content}>
                 <span>finish answer</span>
 
                 <div className={styles.redCircleWrap}>
-                <div className={styles.timer}>
-                  {/*35*/}
-                  {timer}
-                </div>
+                  <div className={styles.timer}>
+                    {timer}
+                  </div>
                 </div>
                 <div className={styles.line}/>
-              </div>
+              </button>
             }
-
-            {/*<div className={`${styles.geeksk} ${loaderActive ? styles.beginBtnFinish : styles.geeks}`}/>*/}
-            {/*</div>*/}
           </div>
           <div className={styles.cardContainer}>
           </div>

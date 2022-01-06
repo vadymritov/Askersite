@@ -29,6 +29,12 @@
   box-shadow: 0px 17.7273px 18.9091px rgb(0 20 170 / 3%);
   border-radius: 26px;
   margin-top: 10px;
+  @include media-max($md-break) {
+    top: -10px;
+  }
+  @include media-max($xs-break) {
+    top: -24px;
+  }
 }
 
 .infoIcon {
@@ -71,6 +77,13 @@
   width: 100%;
   height: calc(100% - 52px);
   overflow: hidden;
+  @include media-max($lg-break) {
+    margin-bottom: 60px;
+  }
+  @include media-max($sm-break) {
+    margin-bottom: 0;
+    align-items: flex-start;
+  }
 }
 
 .cardWrap {
@@ -82,6 +95,10 @@
   max-height: 625px;
   text-align: left !important;
   min-height: 200px;
+  @include media-max($lg-break) {
+    width: 312px;
+    height: 410px;
+  }
 
 }
 
@@ -150,6 +167,9 @@
   width: 100%;
   height: 100%;
   padding: 27px;
+  @include media-max($lg-break) {
+    padding: 20px;
+  }
 }
 
 
@@ -181,6 +201,9 @@
   align-items: center;
   max-width: 100%;
   width: calc(100% - 85px);
+  @include media-max($lg-break) {
+    width: calc(100% - 70px);
+  }
 }
 
 
@@ -201,6 +224,13 @@
   position: absolute;
   top: 15px;
   left: 9px;
+  @include media-max($lg-break) {
+    min-width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 18px;
+    left: 6px;
+  }
 }
 
 .questionItem {
@@ -275,6 +305,9 @@
   font-size: 20px;
   line-height: 1.2;
   color: $darkText;
+  @include media-max($lg-break) {
+    font-size: 18px;
+  }
 }
 
 .text {
@@ -286,6 +319,9 @@
   line-height: 1.2;
   color: #344356;
   opacity: .8;
+  @include media-max($lg-break) {
+    font-size: 13px;
+  }
 }
 
 .infoBlock {
@@ -302,6 +338,9 @@
   align-items: center;
   width: 100%;
   margin-bottom: 27px;
+  @include media-max($lg-break) {
+    margin-bottom: 10px;
+  }
 
   &:last-of-type {
     //margin-bottom: 15px;
@@ -349,6 +388,9 @@
   color: $darkText;
   width: 196px;
   opacity: .8;
+  @include media-max($lg-break) {
+    line-height: 1.4;
+  }
 }
 
 .iconClock {

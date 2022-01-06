@@ -8,11 +8,13 @@ import Header from "../../Header/Header";
 // import BurgerHeader from "../../BurgerHeader/BurgerHeader";
 import {ReactComponent as BurgerMenu} from '../../../image/svg/burger-menu.svg';
 import BurgerHeader from "../../BurgerHeader/BurgerHeader";
+import Settings from "../../../container/Settings/Settings";
 
 const Layout = ({children}) => {
   const {pathname} = useLocation();
   const [smallView, setSmallView] = useState(true)
   const [isSettingsActive, setIsSettingsActive] = useState(false);
+  const [showSettings, setShowSettings] = useState(false)
 
 
   const onClick = (buttonName) => {
@@ -47,8 +49,15 @@ const Layout = ({children}) => {
               {children}
 
               {!smallView ?
-                <TabMenu onClick={onClick}/>
+                <TabMenu onClick={onClick} setShowSettings={setShowSettings} showSettings={showSettings}/>
+                // <TabMenu onClick={onClick}/>
                 : null}
+              {showSettings ?
+                <>
+                  <div className='blur-box'>
+                    <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
+                  </div>
+                </> : null}
               {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
               {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
               {/*  <AccountSettings isActive={isSettingsActive}/>*/}

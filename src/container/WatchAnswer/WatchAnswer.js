@@ -26,7 +26,7 @@ const WatchAnswer = (props) => {
     }
 
     return (
-      <div className={styles.mainWrap}>
+      // <div className={styles.mainWrap}>
         <div className={styles.mainContainer}>
           <div className={styles.infoBlock}>
             <AllAnswerIcon className={styles.infoIcon}/>
@@ -50,7 +50,7 @@ const WatchAnswer = (props) => {
 
           </div>
         </div>
-      </div>
+      // </div>
     )
   }
 ;

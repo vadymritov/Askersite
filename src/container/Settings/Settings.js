@@ -9,6 +9,9 @@ import BellIcon from "../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../components/UI/icons/TwoMenIcon";
 import PazlIcon from "../../components/UI/icons/PazlIcon";
 import ArrowDropdown from "../../components/UI/icons/ArrowDropdown";
+import EmailIcon from "../../components/UI/icons/EmailIcon";
+import {ReactComponent as PhoneSvg} from '../../image/svg/PhoneSvg.svg';
+import SelectPickerPhone from "../../components/UI/SelectPickerPhone/SelectPickerPhone";
 
 const Settings = (props) => {
   const toggleSettings = () => {
@@ -28,28 +31,39 @@ const Settings = (props) => {
             <div className={styles.accountIcon}/>
             <div className={`${styles.infoBox}`}>
               <div className={styles.infoLine}>
-                <ContactName className={styles.infoIcon}/>
+                <div className={styles.iconWrap}>
+                  <TabSettings className={styles.menIcon}/>
+                {/*<ContactName className={styles.infoIcon}/>*/}
+                </div>
                 <div className={styles.contactBlock}>
                   <span className={styles.titleInfo}>Name</span>
                   <span className={styles.textInfo}>Antonio Pérez</span>
                 </div>
               </div>
               <div className={styles.infoLine}>
-                <ContactEmail className={styles.infoIcon}/>
+                <div className={styles.iconWrap}>
+                  <EmailIcon className={styles.emailIcon}/>
+                {/*<ContactEmail className={styles.infoIcon}/>*/}
+                </div>
                 <div className={styles.contactBlock}>
                   <span className={styles.titleInfo}>Email</span>
                   <span className={styles.textInfo}>antonio.p@gmail.com</span>
                 </div>
               </div>
               <div className={styles.infoLine}>
-                <div className={styles.iconWrap}><LockIcon className={`${styles.lockIcon}`}/></div>
+                <div className={styles.iconWrap}>
+                  <LockIcon className={`${styles.lockIcon}`}/>
+                </div>
                 <div className={styles.contactBlock}>
                   <span className={styles.titleInfo}>Password</span>
                   <span className={styles.textInfo}>updated 2 weeks ago</span>
                 </div>
               </div>
               <div className={styles.infoLine}>
-                <ContactPhone className={styles.infoIcon}/>
+                <div className={styles.iconWrap}>
+                  <PhoneSvg className={`${styles.lockIcon}`}/>
+                {/*<ContactPhone className={styles.infoIcon}/>*/}
+                </div>
                 <div className={styles.contactBlock}>
                   <span className={styles.titleInfo}>Phone number</span>
                   <span className={styles.textInfo}>07432932937</span>
