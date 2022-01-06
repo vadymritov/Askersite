@@ -28,7 +28,6 @@
   backdrop-filter: blur(15px);
   border-radius: 20px;
 }
-
 .settingsBar {
   display: flex;
   position: relative;
@@ -57,6 +56,10 @@
     padding: 0 20px 40px;
   }
 }
+.settingsBar{
+  animation:settingsBar 0.25s cubic-bezier(.25,.46,.45,.94) both;
+}
+@keyframes settingsBar{0%{transform:translateX(350px)}100%{transform:translateX(0)}}
 
 .settingsTitle {
   margin-top: 40px;
