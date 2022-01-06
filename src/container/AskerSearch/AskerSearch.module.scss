@@ -163,6 +163,9 @@
   position: relative;
   z-index: 3;
   padding: 37px 48px;
+  @include media-max($lg-break) {
+    bottom: 26px;
+  }
 }
 
 .titleBox {
