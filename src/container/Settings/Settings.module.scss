@@ -38,7 +38,8 @@
   opacity: 0.9;
   backdrop-filter: blur(100px);
   border-radius: 0px 20px 20px 0px;
-  width: calc(100% - 12em);
+  width: 417px;
+  //width: calc(100% - 12em);
   min-width: 400px;
   padding: 0 40px 50px 60px;
   overflow-y: auto;
@@ -52,6 +53,7 @@
     padding: 0 40px 40px 60px;
   }
   @include media-max($xs-break) {
+    width: calc(100% - 10em);
     min-width: 270px;
     padding: 0 20px 40px;
   }

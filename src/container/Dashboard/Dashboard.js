@@ -57,15 +57,15 @@ const Dashboard = (props) => {
               </button>
             </div>
             <div className={styles.headBox}>
-              <div className={`${styles.tabBox} ${styles.tabLeft}`}>
+              <button type='button' className={`${styles.tabBox} ${styles.tabLeft}`}>
                 All
-              </div>
-              <div className={`${styles.tabBox} ${styles.active}`}>
+              </button>
+              <button type='button' className={`${styles.tabBox} ${styles.active}`}>
                 ACTIVE
-              </div>
-              <div className={`${styles.tabBox} ${styles.tabright}`}>
+              </button>
+              <button type='button' className={`${styles.tabBox} ${styles.tabright}`}>
                 INACTIVE
-              </div>
+              </button>
             </div>
 
             <div className={styles.row}>
