@@ -17,7 +17,7 @@ const Dashboard = (props) => {
   const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7])
   let navigate = useNavigate();
   const cardRef = useRef(null);
-  const [userProfile, setUserProfile] = useState([]);
+  const [userProfile, setUserProfile] = useState();
 
   useEffect(async () => {
 
@@ -35,8 +35,6 @@ const Dashboard = (props) => {
   const createAsker = () => {
     navigate('/create-asker')
   }
-
-  console.log('user', userProfile);
 
   useEffect(() => {
     const user = localStorage.getItem("User");
