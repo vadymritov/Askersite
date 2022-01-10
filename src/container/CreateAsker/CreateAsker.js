@@ -16,7 +16,7 @@ const CreateAsker = (props) => {
   const [step, setStep] = useState('oneStep');
   const [path, setPath] = useState(['oneStep', 'twoStep', 'thirdStep']);
   const [currentAsker,setCurrentAsker]=useState({});
-  // console.log('currentAsker',currentAsker)
+  const [activeAskerId,setActiveAskerId]=useState('');
 
     const elRef = useRef();
     let navigate = useNavigate();
@@ -53,11 +53,11 @@ const CreateAsker = (props) => {
   const renderCreateAsker = () => {
     switch (step) {
       case 'oneStep':
-        return <CreateAskerOne setCurrentAsker={setCurrentAsker} nextStep={nextStep}/>;
+        return <CreateAskerOne setCurrentAsker={setCurrentAsker} setActiveAskerId={setActiveAskerId} nextStep={nextStep}/>;
       case 'twoStep':
-        return <CreateAskerTwo currentAsker={currentAsker} nextStep={nextStep} onStepChange={prevStep}/>;
+        return <CreateAskerTwo activeAskerId={activeAskerId} currentAsker={currentAsker}  nextStep={nextStep} onStepChange={prevStep}/>;
       case 'thirdStep':
-        return <CreateAskerThird nextStep={nextStep} onStepChange={prevStep}/>;
+        return <CreateAskerThird activeAskerId={activeAskerId} currentAsker={currentAsker} nextStep={nextStep} onStepChange={prevStep}/>;
 
       default:
         return null
