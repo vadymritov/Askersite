@@ -5,39 +5,41 @@ import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
+import {http} from "../../http/http";
 
 const CreateAskerOne = ({...props}) => {
   const elRef = useRef();
+  const userID = localStorage.getItem('UserID')
 
-  const handleContinue = () => {
-    // request axios
-
-  };
 
   const removeEffect = () => {
     props.setCurrentAsker(asker)
+    handleContinue()
     elRef.current?.classList.add("ease-out-effect")
     const timer = setTimeout(() => {
       props.nextStep()
     }, 300);
     return timer;
-
-
-
   };
   const [asker,setAsker] =useState({
-    name:'',
-    description:''
+    job_title:'',
+    job_author:'',
   })
-  // console.log(asker)
-  // const [nameAsker,setNameAsker] =useState('')
-  // const [description,setDescription] =useState('')
+
   const handleChange = e => {
     const { name, value } = e.target;
     setAsker(prevState => ({
       ...prevState,
       [name]: value
     }));
+  };
+  const bodyFormData = new FormData();
+  bodyFormData.append('job_title', asker.job_title)
+  bodyFormData.append('job_author', asker.job_author)
+  bodyFormData.append('user_id',userID)
+  const handleContinue = () => {
+   http.post('createAsker',bodyFormData).then(res=>res.data).then(askerId => props.setActiveAskerId(askerId.asker.id))
+
   };
 
   return (
@@ -50,7 +52,7 @@ const CreateAskerOne = ({...props}) => {
               <div className={styles.textBox}>
                 <label className={styles.title}>Who’s Asking?</label>
                 {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
-                <input name='name'  placeholder='e.g Recruitment Agency' onChange={handleChange}/>
+                <input name='job_title'  placeholder='e.g Recruitment Agency' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
@@ -61,7 +63,7 @@ const CreateAskerOne = ({...props}) => {
               <div className={styles.textBox}>
                 <label className={styles.title}>What’s it About?</label>
                 {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
-                <input name='description' placeholder='e.g Questions for Candidates' onChange={handleChange}/>
+                <input name='job_author' placeholder='e.g Questions for Candidates' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>
                 <CheckIcon className={styles.checkIcon}/>

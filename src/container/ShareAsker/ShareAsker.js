@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import styles from "./ShareAsker.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
@@ -10,9 +10,10 @@ import LetterIcon from "../../components/UI/icons/LetterIcon";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 
 const ShareAsker = (props) => {
+  const location = useLocation();
+  let { sharedAskerId } = location.state;
   let navigate = useNavigate();
   const cardRef = useRef(null);
-
   useEffect(async () => {
 
     if (cardRef?.current?.classList.contains("start-rotate")) {
@@ -40,8 +41,8 @@ const ShareAsker = (props) => {
         </div>
         <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
-            <button className={styles.btnClose}>
-              <CloseIcon className={styles.closeIcon}/>
+            <button className={styles.btnClose} onClick={()=>navigate('/dashboard')}>
+              <CloseIcon className={styles.closeIcon} />
             </button>
             <div className={styles.cardContainer}>
               <div className={styles.logoBox}>
@@ -56,7 +57,7 @@ const ShareAsker = (props) => {
               <div className={styles.inputBox}>
                 <div className={`${styles.inputBlock} `}>
                   <div className={styles.textBox}>
-                    <input name={'name'} placeholder='VG6A8WH'/>
+                    <input name={'name'} readonly="readonly" defaultValue={sharedAskerId}/>
                   </div>
                   <div className={styles.linkIconWrap}>
                     <ContactLink className={styles.linkIcon}/>
@@ -64,7 +65,7 @@ const ShareAsker = (props) => {
                 </div>
                 <div className={`${styles.inputBlock} `}>
                   <div className={styles.textBox}>
-                    <input name={'name'} placeholder='askerapp.com/VG6A8WH'/>
+                    <input name={'name'} readonly="readonly"  placeholder={`askerapp.com/${sharedAskerId}`}/>
                   </div>
                   <div className={styles.linkIconWrap}>
                     <ContactLink className={styles.linkIcon}/>

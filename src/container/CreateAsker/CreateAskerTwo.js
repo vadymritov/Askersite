@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "./CreateAsker.module.scss";
 import QuestionSmall from "../../components/UI/icons/QuestionSmall";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
@@ -7,16 +7,24 @@ import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
+import {http} from "../../http/http";
 
 const CreateAskerTwo = (props) => {
+  const [questions,setQuestions] = useState([]);
+  const [activeQuestion,setActiveQuestion]=useState('');
   const elRef = useRef();
-
+  const userID = localStorage.getItem('UserID')
+  const bodyFormData = new FormData();
+  bodyFormData.append('user_id', userID)
+  bodyFormData.append('asker_id', props.activeAskerId)
+  bodyFormData.append('question', activeQuestion)
   const handleContinue = () => {
-    // request axios
+    http.post('askerQuestion',bodyFormData)
 
   };
 
   const removeEffect = () => {
+    handleContinue()
     elRef.current?.classList.add("ease-out-effect")
     const timer = setTimeout(() => {
       props.nextStep()
@@ -40,6 +48,10 @@ const CreateAskerTwo = (props) => {
     'Tell me what you’d like to ask about the position'
   ]
 
+  useEffect(()=>{
+    http.post('questionList').then(res=>res.data).then(questionData=>setQuestions(questionData.question))
+
+  },[])
   // const renderQuestionList = (text) => {
   //   re
   // }
@@ -58,7 +70,7 @@ const CreateAskerTwo = (props) => {
                 <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
                   <div className={styles.textBox}>
                     <label className={styles.title}>Who’s Asking?</label>
-                    <input name={'name-3'} defaultValue={props.currentAsker.name} placeholder='e.g Recruitment Agency'/>
+                    <input name={'name-3'} defaultValue={props.currentAsker.job_title} placeholder='e.g Recruitment Agency'/>
                     {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
                   </div>
                   <div className={styles.iconWrap}>
@@ -68,7 +80,7 @@ const CreateAskerTwo = (props) => {
                 <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
                   <div className={styles.textBox}>
                     <label className={styles.title}>What’s it About?</label>
-                    <input name={'name-4'} defaultValue={props.currentAsker.description} placeholder='e.g Questions for Candidates'/>
+                    <input name={'name-4'} defaultValue={props.currentAsker.job_author} placeholder='e.g Questions for Candidates'/>
                     {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
                   </div>
                   <div className={styles.iconWrap}>
@@ -81,11 +93,12 @@ const CreateAskerTwo = (props) => {
                 <button type="button" className={styles.iconWrap} onClick={removeEffect}>
                   <PlusIcon className={styles.editIcon}/>
                 </button>
+                <div className={styles.questionText}>{activeQuestion}</div>
                 <ClockIcon className={styles.iconClock}/>
               </div>
 
             <div className={`button-box ${styles.buttonBox}`}>
-              <button type="button" className={`continue-btn ${styles.buttonStyle}`} onClick={removeEffect} disabled={true}>
+              <button type="button" className={`continue-btn ${styles.buttonStyle}`} onClick={removeEffect} disabled={activeQuestion === ''? true : false}>
                 <span>PUBLISH ASKER</span>
                 <ArrowBtn className={`arrow-btn ${styles.arrowTop}`}/>
               </button>
@@ -100,10 +113,10 @@ const CreateAskerTwo = (props) => {
           <div className={`${styles.questionsWrap}`}>
             <div className={`${styles.questionsCol}`}>
               {
-                firstBlockQuestions.map((item, index) =>
-                  <div key={index} className={styles.questionBoxList}>
+                questions.map((item, index) =>
+                  <div key={index} className={styles.questionBoxList} onClick={()=>setActiveQuestion(item.question)}>
                     <QuestionSmall className={styles.questionIcon}/>
-                    <div className={styles.questionText}>{item}</div>
+                    <div className={styles.questionText}>{item.question}</div>
                     <ClockIcon className={styles.clockIcon}/>
                   </div>
                 )
@@ -112,16 +125,16 @@ const CreateAskerTwo = (props) => {
                 <div className={styles.questionText}>CREATE QUESTION</div>
                 <AddQuestion className={styles.addIcon}/>
               </button>
-              {
-                secondBlockQuestions.map((item, index) =>
-                  <div key={index} className={styles.questionBoxList}>
-                    <QuestionSmall className={styles.questionIcon}/>
-                    <div className={styles.questionText}>{item}</div>
-                    <ClockIcon className={styles.clockIcon}/>
-                    {/*<ClockIcon className={styles.clockIcon}/>*/}
-                  </div>
-                )
-              }
+              {/*{*/}
+              {/*  secondBlockQuestions.map((item, index) =>*/}
+              {/*    <div key={index} className={styles.questionBoxList}>*/}
+              {/*      <QuestionSmall className={styles.questionIcon}/>*/}
+              {/*      <div className={styles.questionText}>{item}</div>*/}
+              {/*      <ClockIcon className={styles.clockIcon}/>*/}
+              {/*      /!*<ClockIcon className={styles.clockIcon}/>*!/*/}
+              {/*    </div>*/}
+              {/*  )*/}
+              {/*}*/}
 
             </div>
           </div>
