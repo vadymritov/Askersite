@@ -5,6 +5,7 @@ import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
 import SearchIcon from "../../components/UI/icons/SearchIcon";
+import {http} from "../../http/http";
 
 const AskerSearch = (props) => {
   const cardRef = useRef(null);
@@ -32,6 +33,19 @@ const AskerSearch = (props) => {
     //       history.push({ pathname: "/SatrtAnswer", state: respJson });
     //     }
     //   });
+
+    http.post('askerCode', `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`)
+      .then(resp => resp.data)
+      .then(res => {
+          console.log('res', res);
+        if (res != null) {
+          // navigate('/start-asker')
+          // setArrAsker(askersData.asker)
+          // if (respJson.status === true) {
+          //   history.push({ pathname: "/SatrtAnswer", state: respJson });
+          // }
+        }
+      })
   };
 
   useEffect(async () => {

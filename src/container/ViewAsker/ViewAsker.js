@@ -1,15 +1,26 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './ViewAsker.module.scss'
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
+import {http} from "../../http/http";
+import QuestionSmall from "../../components/UI/icons/QuestionSmall";
 
 const ViewAsker = (props) => {
   let navigate = useNavigate();
+  const [viewAsker, setViewAsker] = useState()
+  const [nextQuestionList, setNextQuestionList] = useState([]);
   const cardRef = useRef(null);
+  const location = useLocation();
+
+
+  console.log('location.state',location?.state,  location?.state?.asker_id, nextQuestionList)
+  // useEffect(() => {
+  //   console.log('data = await props.data;', props.data);
+  // })
 
   useEffect(async () => {
 
@@ -21,8 +32,44 @@ const ViewAsker = (props) => {
       cardRef?.current?.classList.add("start-rotate")
     }, 1);
 
+    if (location?.state) {
+      // setViewAnswerData(data);
+      getNextQuestionList(location?.state.asker_id, location?.state.user_id);
+      ViewAnswer(location?.state.asker_id,location?.state.user_id);
+    }
+
     return () => clearTimeout(timer);
-  }, [props]);
+  }, [location]);
+
+  const getNextQuestionList = async (asker_id, user_id) => {
+
+    http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
+      .then(resp => resp.data)
+      .then((res) => {
+        console.log('getNextQuestionLi', res);
+        if (res.status === true) {
+          setNextQuestionList(res?.question_list)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
+
+  const ViewAnswer = async (asker_id, user_id) => {
+
+    http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
+      .then(resp => resp.data)
+      .then((res) => {
+        console.log('ViewAns', res);
+        if (res.status === true) {
+          setViewAsker(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
 
   const showContact = () => {
     navigate('/contact-card')
@@ -47,37 +94,25 @@ const ViewAsker = (props) => {
                   <div className={`${styles.questionItem}`}>
                     <CreateAskerIcon className={styles.createLogo}/>
                     <div className={styles.textBox}>
-                      <div className={styles.text}>Brighton Art Gallery</div>
-                      <div className={styles.title}>Cleaner job in Brighton</div>
+                      <div className={styles.text}>{viewAsker?.asker_title}</div>
+                      <div className={styles.title}>{viewAsker?.asker_author}</div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className={`${styles.infoBlock}`}>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>What are your strengths and weaknesses?</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>What’s your idea of the perfect flatmate?</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>Tell me what makes you perfect for this role</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
+                {
+                  nextQuestionList?.map((item, index) =>
+                    <div key={index} className={`${styles.infoItem}`}>
+                      <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
+                      <div className={styles.textInfo}>{item?.title}</div>
+                      <div className={styles.iconsBox}>
+                        <ClockIcon className={styles.iconClock}/>
+                        <span>{item?.time}s</span>
+                      </div>
+                    </div>
+                )
+                }
               </div>
             <div className={`button-box ${styles.buttonBox}`}>
               <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>

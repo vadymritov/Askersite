@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {NavLink, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import Logo from "../../components/UI/icons/Logo";
@@ -12,13 +12,13 @@ import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import {http} from "../../http/http";
 
 const Dashboard = (props) => {
-  const [timer, setTimer] = useState();
   const [typeTab, setTypeTab] = useState('all');
-  const arr = [1, 2, 3, 4, 5, 6, 7];
   const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7])
   let navigate = useNavigate();
   const cardRef = useRef(null);
   const [userProfile, setUserProfile] = useState('');
+
+
 
 
   useEffect(async () => {
@@ -45,6 +45,17 @@ const Dashboard = (props) => {
     }
   }, []);
 
+  const handleLink = (e, item) => {
+    e.preventDefault();
+    navigate(
+      "/view-asker",
+      {state: {
+        asker_id: item.asker_id,
+        user_id: localStorage.getItem("UserID"),
+      }
+    })
+  }
+
   const handleTabChange = (e, type) => {
     e.preventDefault();
     setTypeTab(type)
@@ -52,7 +63,9 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     if (typeTab === 'active') {
-      http.post('activeAsker', `user_id=${localStorage.getItem("UserID")}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker))
+      http.post('activeAsker', `user_id=${localStorage.getItem("UserID")}`)
+        .then(resp => resp.data)
+        .then(askersData => setArrAsker(askersData.asker))
     } else if (typeTab === 'inactive') {
       http.post('archivedAsker', `user_id=${localStorage.getItem("UserID")}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker))
     } else if (typeTab === 'all') {
@@ -108,7 +121,7 @@ const Dashboard = (props) => {
                           </div>
                         </div>
                         <div className={`${styles.buttonBox}`}>
-                          <button type="submit" className={`continue-btn ${styles.buttonItem}`}>
+                          <button type="submit" className={`continue-btn ${styles.buttonItem}`} onClick={(e) => handleLink(e, item)}>
                             <span>12 NEW ANSWERS</span>
                             <div className={styles.plusIconBox}>
                               <ArrowBtn className={`${styles.shareIcon}`}/>

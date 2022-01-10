@@ -44,6 +44,12 @@ const TabMenu = (props) => {
       ) {
       setAnswerTabActive(true)
     }
+    if (pathname === '/contact-card'
+      || pathname === '/watch-answer'
+      || pathname === '/all-answers'
+      ) {
+      setWatchTabActive(true)
+    }
   }, [pathname])
 
   // console.log('props.showSettings', props.showSettings);
@@ -52,7 +58,7 @@ const TabMenu = (props) => {
   return (
     <div className={styles.tabContainerWrap}>
       <div className={styles.tabContainer}>
-        <NavLink onClick={() => props.onClick('watch')} to={'/watch-answer'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => props.onClick('watch')} to={'/watch-answer'} className={({isActive}) => (`${styles.tabItem} ${isActive|| watchTabActive ? styles.activeTab : ''} `)}>
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>

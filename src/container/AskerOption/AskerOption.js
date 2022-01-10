@@ -1,23 +1,25 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import styles from "./AskerOption.module.scss";
 import LetterIcon from "../../components/UI/icons/LetterIcon";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
 import ContactLink from "../../components/UI/icons/Contact/ContactLink";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
-import EditAsker from "../EditAsker/EditAsker";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import MessageIcon from "../../components/UI/icons/MessageIcon";
 import BellIcon from "../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../components/UI/icons/TwoMenIcon";
+import {http} from "../../http/http";
 
 const AskerOption = (props) => {
     let navigate = useNavigate();
     const cardRef = useRef(null);
+    const [selectprivate, setSelectPrivate] = useState("");
+    let chbox = document.getElementById('user');
+  // const {companyId} = useParams();
 
     useEffect(async () => {
-
       if (cardRef?.current?.classList.contains("start-rotate")) {
         cardRef?.current?.classList.remove("start-rotate")
       }
@@ -28,6 +30,52 @@ const AskerOption = (props) => {
 
       return () => clearTimeout(timer);
     }, [props]);
+
+    const onChangePrivate = (e) => {
+      if (chbox?.checked) {
+        activeAsker("a");
+        setSelectPrivate("checked");
+      } else {
+        setSelectPrivate("");
+        activeAsker("i");
+      }
+    };
+
+    const activeAsker = (status) => {
+      // var parameter =
+      //   "&user_id=" +
+      //   encodeURIComponent(UserProfile.id) +
+      //   "&asker_id=" +
+      //   encodeURIComponent(props.data.ViewAnswerData.asker_id) +
+      //   "&asker_status=" +
+      //   encodeURIComponent(status);
+      http.post('inactiveAsker', `user_id=${localStorage.getItem("UserID")}`)
+      // http.post('inactiveAsker', `user_id=${localStorage.getItem("UserID")}&asker_id=${}&asker_status=${}`)
+        .then(resp => resp.data)
+        .then((res) => {
+          console.log('res', res);
+          // if (res.status === true) {
+          // setCountryData(res?.country);
+          // }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+
+      // fetch(SITEURL.FULLBASE_API + "inactiveAsker", {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      //   },
+      //   body: parameter,
+      // })
+      //   .then((response) => response.json())
+      //   .then((responseJson) => {
+      //   })
+      //   .catch((error) => {});
+    };
 
     const showContact = () => {
       navigate('/contact-card')
@@ -112,8 +160,20 @@ const AskerOption = (props) => {
                   </button>
                 </div>
                 <div className={`${styles.deactivateBlock}`}>
-                  <div className={styles.switchWrap}>
-                    {/*< className={styles.linkIcon}/>*/}
+                  {/*<div className={styles.switchWrap}>*/}
+                  {/*< className={styles.linkIcon}/>*/}
+                  {/*</div>*/}
+                  <div className={`${styles.acdcToogler}`}>
+                    <input
+                      type="checkbox"
+                      className="toggle-switch-checkbox"
+                      name="toggleSwitchPrivateuser"
+                      id={"user"}
+                      onChange={(e) => onChangePrivate(e)}
+                      value={"private"}
+                      checked={selectprivate}
+                    />
+                    <span></span>
                   </div>
                   <div className={styles.textBox}>
                     <span className={styles.title}>Deactivate Asker</span>
