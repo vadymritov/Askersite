@@ -95,17 +95,17 @@ const Settings = (props) => {
                 <span className={styles.textInfo}>Keep updated</span>
               </div>
             </div>
-            <div className={styles.infoLine}>
+            <div className={`${styles.infoLine} ${styles.disabled}`}>
               <div className={styles.iconWrap}>
                 <TwoMenIcon className={`${styles.twoMenIcon}`}/>
               </div>
-              <div className={styles.contactBlock}>
+              <div className={`${styles.contactBlock}`}>
                 <span className={styles.titleInfo}>Collaborate</span>
                 <span className={styles.textInfo}>For your teams</span>
               </div>
               <button type='button' className={styles.arrowBtn}><ArrowDropdown className={styles.arrowIcon}/></button>
             </div>
-            <div className={styles.infoLine}>
+            <div className={`${styles.infoLine} ${styles.disabled}`}>
               <div className={styles.iconWrap}>
                 <PazlIcon className={`${styles.pazlIcon}`}/>
               </div>
