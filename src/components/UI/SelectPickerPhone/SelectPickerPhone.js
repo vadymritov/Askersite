@@ -38,7 +38,7 @@ const SelectPickerPhone = ({onChange, data, placeholder, defaultValue, inputRegi
   useEffect(() => {
     document.addEventListener('click', checkWindowClick)
     return () => document.removeEventListener('click', checkWindowClick)
-  })
+  }, [])
 
   return (
     <div className={styles.selectPickerWrapper}>

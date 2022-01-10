@@ -44,7 +44,7 @@ const TabMenu = (props) => {
       ) {
       setAnswerTabActive(true)
     }
-  })
+  }, [pathname])
 
   // console.log('props.showSettings', props.showSettings);
 

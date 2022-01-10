@@ -6,17 +6,18 @@ import Logo from "../../components/UI/icons/Logo";
 import GrayyTringleIcon from "../../components/UI/icons/GrayyTrangleIcon";
 import MenuBurgerIcon from "../../components/UI/icons/MenuBurgerIcon";
 import LinePhone from "../../components/UI/icons/LinePhone";
-import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import DashbordLogoIcon from "../../components/UI/icons/DashbordLogoIcon";
-import ShareIcon from "../../components/UI/icons/ShareIcon";
 import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 
 const Dashboard = (props) => {
-  const [timer, setTimer] = useState()
-  const arr = [1, 2, 3, 4, ]
+  const [timer, setTimer] = useState();
+  const [typeTab, setTypeTab] = useState('all');
+  const arr = [1, 2, 3, 4, 5, 6, 7];
+  const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7])
   let navigate = useNavigate();
   const cardRef = useRef(null);
+  const [userProfile, setUserProfile] = useState([]);
 
   useEffect(async () => {
 
@@ -29,11 +30,35 @@ const Dashboard = (props) => {
     }, 1);
 
     return () => clearTimeout(timer);
-  }, [props]);
+  }, []);
 
   const createAsker = () => {
     navigate('/create-asker')
   }
+
+  console.log('user', userProfile);
+
+  useEffect(() => {
+    const user = localStorage.getItem("User");
+    if (user) {
+      setUserProfile(user);
+    }
+  }, []);
+
+  const handleTabChange = (e, type) => {
+    e.preventDefault();
+    setTypeTab(type)
+  }
+
+  useEffect(() => {
+    if (typeTab === 'active') {
+      setArrAsker([1, 2, 3, 4])
+    } else if (typeTab === 'inactive') {
+      setArrAsker([1, 2,])
+    } else if (typeTab === 'all') {
+      setArrAsker([1, 2, 3, 4, 5, 6, 7])
+    }
+  }, [typeTab])
 
   // const removeEffect = () => {
   //   elRef.current?.classList.add("ease-out-effect")
@@ -57,13 +82,13 @@ const Dashboard = (props) => {
               </button>
             </div>
             <div className={styles.headBox}>
-              <button type='button' className={`${styles.tabBox} ${styles.tabLeft}`}>
+              <button type='button' className={`${styles.tabBox} ${styles.tabLeft} ${typeTab === 'all' ? styles.active : ''}`} onClick={(event) => handleTabChange(event, 'all')}>
                 All
               </button>
-              <button type='button' className={`${styles.tabBox} ${styles.active}`}>
+              <button type='button' className={`${styles.tabBox} ${typeTab === 'active' ? styles.active : ''}`} onClick={(event) => handleTabChange(event, 'active')}>
                 ACTIVE
               </button>
-              <button type='button' className={`${styles.tabBox} ${styles.tabright}`}>
+              <button type='button' className={`${styles.tabBox} ${styles.tabright} ${typeTab === 'inactive' ? styles.active : ''}`} onClick={(event) => handleTabChange(event, 'inactive')}>
                 INACTIVE
               </button>
             </div>
@@ -71,7 +96,7 @@ const Dashboard = (props) => {
             <div className={styles.row}>
               <div className={styles.rowAnswers}>
                 {
-                  arr.map((item, index) => {
+                  arrAsker.map((item, index) => {
                     return <div key={index} className={styles.cardWrap}>
                       <div className={styles.answersContainer}>
                         <DashbordLogoIcon className={styles.createLogo}/>
