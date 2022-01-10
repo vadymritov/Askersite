@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from "./CreateAsker.module.scss";
 import QuestionSmall from "../../components/UI/icons/QuestionSmall";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
@@ -58,7 +58,7 @@ const CreateAskerTwo = (props) => {
                 <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
                   <div className={styles.textBox}>
                     <label className={styles.title}>Who’s Asking?</label>
-                    <input name={'name-3'} placeholder='e.g Recruitment Agency'/>
+                    <input name={'name-3'} defaultValue={props.currentAsker.name} placeholder='e.g Recruitment Agency'/>
                     {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
                   </div>
                   <div className={styles.iconWrap}>
@@ -68,7 +68,7 @@ const CreateAskerTwo = (props) => {
                 <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
                   <div className={styles.textBox}>
                     <label className={styles.title}>What’s it About?</label>
-                    <input name={'name-4'} placeholder='e.g Questions for Candidates'/>
+                    <input name={'name-4'} defaultValue={props.currentAsker.description} placeholder='e.g Questions for Candidates'/>
                     {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
                   </div>
                   <div className={styles.iconWrap}>

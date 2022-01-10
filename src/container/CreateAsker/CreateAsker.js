@@ -15,10 +15,11 @@ import CreateAskerThird from "../../components/UI/icons/Create/CreateAskerThird"
 const CreateAsker = (props) => {
   const [step, setStep] = useState('oneStep');
   const [path, setPath] = useState(['oneStep', 'twoStep', 'thirdStep']);
-
+  const [currentAsker,setCurrentAsker]=useState({});
+  // console.log('currentAsker',currentAsker)
 
     const elRef = useRef();
-    let navigate = useNavigate()
+    let navigate = useNavigate();
 
     const handleContinue = () => {
       // request axios
@@ -52,9 +53,9 @@ const CreateAsker = (props) => {
   const renderCreateAsker = () => {
     switch (step) {
       case 'oneStep':
-        return <CreateAskerOne nextStep={nextStep}/>;
+        return <CreateAskerOne setCurrentAsker={setCurrentAsker} nextStep={nextStep}/>;
       case 'twoStep':
-        return <CreateAskerTwo nextStep={nextStep} onStepChange={prevStep}/>;
+        return <CreateAskerTwo currentAsker={currentAsker} nextStep={nextStep} onStepChange={prevStep}/>;
       case 'thirdStep':
         return <CreateAskerThird nextStep={nextStep} onStepChange={prevStep}/>;
 

@@ -16,7 +16,6 @@ import {http} from "../../http/http";
 const Login = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const navigate = useNavigate();
-
   const onSubmit = (data) => {
     const form = new FormData();
     form.append('email', data.email);

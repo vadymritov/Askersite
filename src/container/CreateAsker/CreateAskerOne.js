@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import styles from "./CreateAsker.module.scss";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
@@ -15,11 +15,29 @@ const CreateAskerOne = ({...props}) => {
   };
 
   const removeEffect = () => {
+    props.setCurrentAsker(asker)
     elRef.current?.classList.add("ease-out-effect")
     const timer = setTimeout(() => {
       props.nextStep()
     }, 300);
     return timer;
+
+
+
+  };
+  const [asker,setAsker] =useState({
+    name:'',
+    description:''
+  })
+  // console.log(asker)
+  // const [nameAsker,setNameAsker] =useState('')
+  // const [description,setDescription] =useState('')
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setAsker(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
@@ -32,7 +50,7 @@ const CreateAskerOne = ({...props}) => {
               <div className={styles.textBox}>
                 <label className={styles.title}>Who’s Asking?</label>
                 {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
-                <input name={'name'} placeholder='e.g Recruitment Agency'/>
+                <input name='name'  placeholder='e.g Recruitment Agency' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
@@ -43,7 +61,7 @@ const CreateAskerOne = ({...props}) => {
               <div className={styles.textBox}>
                 <label className={styles.title}>What’s it About?</label>
                 {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
-                <input name={'name-2'} placeholder='e.g Questions for Candidates'/>
+                <input name='description' placeholder='e.g Questions for Candidates' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>
                 <CheckIcon className={styles.checkIcon}/>
@@ -52,7 +70,7 @@ const CreateAskerOne = ({...props}) => {
           </div>
         </div>
         <div className={`button-box ${styles.buttonBox}`}>
-          <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={removeEffect}>
+          <button type="button" className={`continue-btn  ${styles.buttonStyle}`}  onClick={removeEffect}>
             <span>ADD QUESTIONS</span>
             <div className={styles.plusIconBox}>
               <PlusIcon className={` ${styles.plusIcon}`}/>

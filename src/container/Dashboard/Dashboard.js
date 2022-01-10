@@ -9,6 +9,7 @@ import LinePhone from "../../components/UI/icons/LinePhone";
 import DashbordLogoIcon from "../../components/UI/icons/DashbordLogoIcon";
 import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
+import {http} from "../../http/http";
 
 const Dashboard = (props) => {
   const [timer, setTimer] = useState();
@@ -17,11 +18,12 @@ const Dashboard = (props) => {
   const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7])
   let navigate = useNavigate();
   const cardRef = useRef(null);
-  const [userProfile, setUserProfile] = useState([]);
+  const [userProfile, setUserProfile] = useState('');
+
 
   useEffect(async () => {
 
-    if(cardRef?.current?.classList.contains("start-rotate")){
+    if (cardRef?.current?.classList.contains("start-rotate")) {
       cardRef?.current?.classList.remove("start-rotate")
     }
 
@@ -35,8 +37,6 @@ const Dashboard = (props) => {
   const createAsker = () => {
     navigate('/create-asker')
   }
-
-  console.log('user', userProfile);
 
   useEffect(() => {
     const user = localStorage.getItem("User");
@@ -52,12 +52,13 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     if (typeTab === 'active') {
-      setArrAsker([1, 2, 3, 4])
+      http.post('activeAsker', `user_id=${localStorage.getItem("UserID")}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker))
     } else if (typeTab === 'inactive') {
-      setArrAsker([1, 2,])
+      http.post('archivedAsker', `user_id=${localStorage.getItem("UserID")}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker))
     } else if (typeTab === 'all') {
-      setArrAsker([1, 2, 3, 4, 5, 6, 7])
+      http.post('allAsker', `user_id=${localStorage.getItem("UserID")}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker))
     }
+
   }, [typeTab])
 
   // const removeEffect = () => {
@@ -102,8 +103,8 @@ const Dashboard = (props) => {
                         <DashbordLogoIcon className={styles.createLogo}/>
                         <div className={` ${styles.questionBlock}`}>
                           <div className={styles.textBox}>
-                            <div className={styles.title}>Cleaner job in Brighton</div>
-                            <div className={styles.text}>Brighton Art Gallery</div>
+                            <div className={styles.title}>{item.title}</div>
+                            <div className={styles.text}>{item.author}</div>
                           </div>
                         </div>
                         <div className={`${styles.buttonBox}`}>
