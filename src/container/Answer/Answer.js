@@ -5,6 +5,7 @@ import Loader from "./Loader/Loader";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import {useNavigate} from "react-router-dom";
 import Logo from "../../components/UI/icons/Logo";
+import ButtonAnswer from "./ButtonAnswer";
 
 
 const Answer = (props) => {
@@ -16,7 +17,6 @@ const Answer = (props) => {
   const cardRef = useRef(null);
 
   useEffect(async () => {
-
     if (cardRef?.current?.classList.contains("start-rotate")) {
       cardRef?.current?.classList.remove("start-rotate")
     }
@@ -28,27 +28,27 @@ const Answer = (props) => {
     return () => clearTimeout(timer);
   }, [loaderActive]);
 
-  useEffect(() => {
-    if (finishAnswer) {
-      const count = setInterval(() => {setTimer(prevState => {
-          console.log('prevst', prevState);
-          if (prevState > 0) {
-            return prevState - 1;
-          } else {
-            clearInterval(count)
-            return 0
-          }
-        }
-      )}, 1000)
-    }
-  }, [finishAnswer])
+  // useEffect(() => {
+  //   if (finishAnswer) {
+  //     const count = setInterval(() => {setTimer(prevState => {
+  //         console.log('prevst', prevState);
+  //         if (prevState > 0) {
+  //           return prevState - 1;
+  //         } else {
+  //           clearInterval(count)
+  //           return 0
+  //         }
+  //       }
+  //     )}, 1000)
+  //   }
+  // }, [finishAnswer])
     console.log('setInterva', finishAnswer, loaderActive);
 
   const beginAnswer = () => {
     setLoaderActive(true);
     setTimeout(() => {
       setFinishAnswer(true)
-    }, 3);
+    }, 3000);
 
    // clearTimeout(t);
   }
@@ -62,7 +62,7 @@ const Answer = (props) => {
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardWrap}`}>
           <Logo className={styles.logo}/>
-          <Loader className={styles.loader} isActive={loaderActive} setIsActive={setLoaderActive}/>
+          {loaderActive ? <Loader className={styles.loader} setIsActive={setLoaderActive}/> : null}
           <div className={styles.cardInfo}>
             <span>Tell me what you’d like to know about this role?</span>
             {!finishAnswer ? <button className={`${styles.beginBtn} `} onClick={() => {
@@ -72,16 +72,17 @@ const Answer = (props) => {
                 <div/>
               </button>
               :
-              <button type='button' className={styles.content}>
-                <span>finish answer</span>
-
-                <div className={styles.redCircleWrap}>
-                  <div className={styles.timer}>
-                    {timer}
-                  </div>
-                </div>
-                <div className={styles.line}/>
-              </button>
+              <ButtonAnswer time={timer}/>
+              // <button type='button' className={styles.content}>
+              //   <span>finish answer</span>
+              //
+              //   <div className={styles.redCircleWrap}>
+              //     <div className={styles.timer}>
+              //       {timer}
+              //     </div>
+              //   </div>
+              //   <div className={styles.line}/>
+              // </button>
             }
           </div>
           <div className={styles.cardContainer}>

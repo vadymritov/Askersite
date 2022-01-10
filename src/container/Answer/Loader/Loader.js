@@ -2,28 +2,24 @@ import styles from './Loader.module.scss';
 import {useEffect, useState} from "react";
 
 const Loader = ({className, isActive, setIsActive}) => {
-
   const [count, setCount] = useState(3);
 
   useEffect(() => {
-    if(isActive){
-      const begin = setInterval(() => {
-        console.log(count);
-        setCount(prevState => {
-          if(prevState === 0){
-            setIsActive(false);
-            setCount(3);
-            clearInterval(begin);
-          }
-          return prevState - 1;
-        });
-      }, 1000)
-      // clearInterval(begin);
-    }
-  }, [isActive])
+    const begin = setInterval(() => {
+      console.log(count);
+      setCount(prevState => {
+        if (prevState === 0) {
+          setIsActive(false);
+        }
+        return prevState - 1;
+      });
+    }, 1000)
 
-  return(
-    <div className={`${styles.loader} ${className} ${isActive ? styles.active : ''}`}>
+    return () => {clearInterval(begin);}
+  }, [])
+
+  return (
+    <div className={`${styles.loader} ${className} `}>
       <div></div>
       <div></div>
       <div></div>
