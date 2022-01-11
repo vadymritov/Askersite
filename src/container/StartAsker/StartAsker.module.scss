@@ -293,6 +293,9 @@
 }
 
 .infoBlock {
+  min-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -348,6 +351,7 @@
 }
 
 .textInfo {
+  overflow-y: auto;
   display: flex;
   align-items: center;
   font-family: $main-font;

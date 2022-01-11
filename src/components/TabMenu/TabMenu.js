@@ -66,8 +66,8 @@ const TabMenu = (props) => {
           <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
-        <NavLink onClick={() => {props.onClick('answer')
-        }} to={'/answer'} className={({isActive}) => (`${styles.tabItem} ${isActive || isActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => {props.onClick('search')
+        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${isActive || isActive ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>

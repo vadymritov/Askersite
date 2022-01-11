@@ -11,6 +11,8 @@ const AskerSearch = (props) => {
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [asker,setAsker]=useState('');
+
 
   const hendaleingFormSubmit = async () => {
     // var parameter =
@@ -37,10 +39,14 @@ const AskerSearch = (props) => {
     http.post('askerCode', `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => resp.data)
       .then(res => {
-          console.log('res', res);
+
         if (res != null) {
-          // navigate('/start-asker')
-          // setArrAsker(askersData.asker)
+          // await setAsker(res.asker)
+          navigate('/start-asker',{state:{
+              foundAsker:res.asker
+            }
+            })
+
           // if (respJson.status === true) {
           //   history.push({ pathname: "/SatrtAnswer", state: respJson });
           // }

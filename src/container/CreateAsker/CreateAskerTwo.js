@@ -93,7 +93,7 @@ const CreateAskerTwo = (props) => {
                 <button type="button" className={styles.iconWrap} onClick={removeEffect}>
                   <PlusIcon className={styles.editIcon}/>
                 </button>
-                <div className={styles.questionText}>{activeQuestion}</div>
+                <div className={styles.activeQuestionText}>{activeQuestion}</div>
                 <ClockIcon className={styles.iconClock}/>
               </div>
 

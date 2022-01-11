@@ -237,7 +237,7 @@
     height: 446px;
   }
   @include media-max($xs-break) {
-    width: 208px;
+    width: 250px;
     height: 379px;
   }
 }
@@ -248,7 +248,7 @@
   top: 0;
   width: 100%;
   height: calc(100% - 23px);
-  background-image: url("../../image/svg/VideoMen.svg");
+  //background-image: url("../../image/svg/VideoMen.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -386,4 +386,10 @@
   100% {
     width: 100%;
   }
+}
+.videoPreview{
+  height: 100%;
+  max-width: none;
+  position: absolute;
+  right: -50%;
 }

@@ -52,7 +52,7 @@ const CreateAskerThird = (props) => {
             <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
               <div className={styles.textBox}>
                 <span className={styles.title}>{props.currentAsker.job_title}</span>
-                {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
+                <span className={styles.text}>e.g Recruitment Agency</span>
               </div>
               <button className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
@@ -61,7 +61,7 @@ const CreateAskerThird = (props) => {
             <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
               <div className={styles.textBox}>
                 <span className={styles.title}>{props.currentAsker.job_author}</span>
-                {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
+                <span className={styles.text}>e.g Recruitment Agency</span>
               </div>
               <div className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>

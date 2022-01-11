@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import styles from "./StartAsker.module.scss";
 import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
@@ -11,11 +11,15 @@ import ClockIcon from "../../components/UI/icons/ClockIcon";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
+import {http} from "../../http/http";
 
 const StartAsker = (props) => {
+  const location = useLocation();
+  let { foundAsker } = location.state;
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [UserProfile, setUserProfile] = useState([]);
 
   const hendaleingFormSubmit = async () => {
     // var parameter =
@@ -42,7 +46,7 @@ const StartAsker = (props) => {
 
   useEffect(async () => {
     if (cardRef?.current?.classList.contains("start-rotate")) {
-      console.log('true');
+      // console.log('true');
       cardRef?.current?.classList.remove("start-rotate")
     }
 
@@ -63,7 +67,8 @@ const StartAsker = (props) => {
       <div className={styles.infoBlockHead}>
         <AllAnswerIcon className={styles.infoIcon}/>
         <div className={styles.infoText}>
-          <span className={styles.smallText}>Brighton Art Gallery</span> Cleaner Job in Brighton</div>
+          <span className={styles.smallText}>Brighton Art Gallery</span>
+          Cleaner Job in Brighton</div>
       </div>
 
 
@@ -77,40 +82,53 @@ const StartAsker = (props) => {
                   <div className={`${styles.questionItem}`}>
                     <CreateAskerIcon className={styles.createLogo}/>
                     <div className={styles.textBox}>
-                      <div className={styles.text}>Brighton Art Gallery</div>
-                      <div className={styles.title}>Cleaner job in Brighton</div>
+                      <div className={styles.text}>{foundAsker.title}</div>
+                      <div className={styles.title}>{foundAsker.author}</div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className={`${styles.infoBlock}`}>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>What are your strengths and weaknesses?</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
+                {foundAsker.question.map((item,index)=>{
+                 return <div key={index} className={`${styles.infoItem}`}>
+                    <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
+                    <div className={styles.textInfo}>{item.question}</div>
+                    <div className={styles.iconsBox}>
+                      <ClockIcon className={styles.iconClock}/>
+                      <span>{item.time}</span>
+                    </div>
                   </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>What’s your idea of the perfect flatmate?</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>Tell me what makes you perfect for this role</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
+                })}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>*/}
+                {/*  <div className={styles.textInfo}>What are your strengths and weaknesses?</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ClockIcon className={styles.iconClock}/>*/}
+                {/*    <span>30s</span>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>*/}
+                {/*  <div className={styles.textInfo}>What’s your idea of the perfect flatmate?</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ClockIcon className={styles.iconClock}/>*/}
+                {/*    <span>30s</span>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>*/}
+                {/*  <div className={styles.textInfo}>Tell me what makes you perfect for this role</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ClockIcon className={styles.iconClock}/>*/}
+                {/*    <span>30s</span>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
+                <button onClick={()=>navigate('/answer',{state:{
+                    foundAskerId:foundAsker.asker_id
+
+                  }})} type="button" className={`continue-btn  ${styles.buttonStyle}`}>
                   <span>START ASKER</span>
                   <div className={styles.plusIconBox}>
                     <ArrowBtn className={`${styles.shareIcon}`}/>
