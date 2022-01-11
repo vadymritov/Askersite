@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './ViewAsker.module.scss'
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
@@ -8,6 +8,8 @@ import ClockIcon from "../../components/UI/icons/ClockIcon";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
 import QuestionSmall from "../../components/UI/icons/QuestionSmall";
+import Logo from "../../components/UI/icons/Logo";
+import MenuBurgerIcon from "../../components/UI/icons/MenuBurgerIcon";
 
 const ViewAsker = (props) => {
   let navigate = useNavigate();
@@ -17,32 +19,23 @@ const ViewAsker = (props) => {
   const location = useLocation();
 
 
-  console.log('location.state',location?.state,  location?.state?.asker_id, nextQuestionList)
-  // useEffect(() => {
-  //   console.log('data = await props.data;', props.data);
-  // })
-
+  // console.log('location.state', location?.state, location?.state?.asker_id, nextQuestionList, viewAsker)
   useEffect(async () => {
-
     if (cardRef?.current?.classList.contains("start-rotate")) {
       cardRef?.current?.classList.remove("start-rotate")
     }
-
     const timer = setTimeout(() => {
       cardRef?.current?.classList.add("start-rotate")
     }, 1);
-
     if (location?.state) {
-      // setViewAnswerData(data);
       getNextQuestionList(location?.state.asker_id, location?.state.user_id);
-      ViewAnswer(location?.state.asker_id,location?.state.user_id);
+      ViewAnswer(location?.state.asker_id, location?.state.user_id);
     }
 
     return () => clearTimeout(timer);
   }, [location]);
 
   const getNextQuestionList = async (asker_id, user_id) => {
-
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
       .then(resp => resp.data)
       .then((res) => {
@@ -57,7 +50,6 @@ const ViewAsker = (props) => {
   };
 
   const ViewAnswer = async (asker_id, user_id) => {
-
     http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
       .then(resp => resp.data)
       .then((res) => {
@@ -71,9 +63,22 @@ const ViewAsker = (props) => {
       })
   };
 
-  const showContact = () => {
-    navigate('/contact-card')
+  const showOption = (e) => {
+    e.preventDefault();
+    navigate(
+      "/asker-option",
+      {
+        state: {
+          asker_id: location?.state.asker_id,
+          user_id: location?.state.user_id,
+        }
+      })
   }
+
+  const openViewAnswers = () => {
+    navigate('/watch-answer')
+  }
+
   return (
     <div className={styles.mainContainer}>
       <div className={`${styles.contentContainer}`}>
@@ -89,6 +94,11 @@ const ViewAsker = (props) => {
           <div className={`${styles.cardBg}`}>
             <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>
+              {/*<div className={styles.menuWBox}>*/}
+              <button type='button' className={styles.burgerBtn} onClick={(e) => showOption(e)}>
+                <MenuBurgerIcon className={styles.burgerIcon}/>
+              </button>
+              {/*</div>*/}
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>
                   <div className={`${styles.questionItem}`}>
@@ -111,17 +121,17 @@ const ViewAsker = (props) => {
                         <span>{item?.time}s</span>
                       </div>
                     </div>
-                )
+                  )
                 }
               </div>
-            <div className={`button-box ${styles.buttonBox}`}>
-              <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
-                <span>VIEW ANSWERS</span>
-                <div className={styles.plusIconBox}>
-                  <PlayIcon className={`${styles.shareIcon}`}/>
-                </div>
-              </button>
-            </div>
+              <div className={`button-box ${styles.buttonBox}`}>
+                <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={openViewAnswers}>
+                  <span>VIEW ANSWERS</span>
+                  <div className={styles.plusIconBox}>
+                    <PlayIcon className={`${styles.shareIcon}`}/>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div className={styles.rotate}>

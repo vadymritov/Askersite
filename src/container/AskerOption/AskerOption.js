@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./AskerOption.module.scss";
 import LetterIcon from "../../components/UI/icons/LetterIcon";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
@@ -15,9 +15,12 @@ import {http} from "../../http/http";
 const AskerOption = (props) => {
     let navigate = useNavigate();
     const cardRef = useRef(null);
-    const [selectprivate, setSelectPrivate] = useState("");
+    const [selectPrivate, setSelectPrivate] = useState("");
     let chbox = document.getElementById('user');
+  const location = useLocation();
   // const {companyId} = useParams();
+
+  console.log('option',location?.state,  location?.state?.asker_id, location?.status, chbox)
 
     useEffect(async () => {
       if (cardRef?.current?.classList.contains("start-rotate")) {
@@ -32,28 +35,24 @@ const AskerOption = (props) => {
     }, [props]);
 
     const onChangePrivate = (e) => {
-      if (chbox?.checked) {
-        activeAsker("a");
-        setSelectPrivate("checked");
-      } else {
-        setSelectPrivate("");
-        activeAsker("i");
+      e.preventDefault();
+      console.log('SelectPrivate', selectPrivate, chbox?.checked);
+      if (chbox != null) {
+        if (!chbox?.checked) {
+          setSelectPrivate("");
+          activeAsker("i");
+        } else {
+          activeAsker("a");
+          setSelectPrivate("checked");
+        }
       }
     };
 
     const activeAsker = (status) => {
-      // var parameter =
-      //   "&user_id=" +
-      //   encodeURIComponent(UserProfile.id) +
-      //   "&asker_id=" +
-      //   encodeURIComponent(props.data.ViewAnswerData.asker_id) +
-      //   "&asker_status=" +
-      //   encodeURIComponent(status);
-      http.post('inactiveAsker', `user_id=${localStorage.getItem("UserID")}`)
-      // http.post('inactiveAsker', `user_id=${localStorage.getItem("UserID")}&asker_id=${}&asker_status=${}`)
+      http.post('inactiveAsker', `user_id=${location?.state?.user_id}&asker_id=${location?.state?.asker_id}&asker_status=${status}`)
         .then(resp => resp.data)
         .then((res) => {
-          console.log('res', res);
+          console.log('resOption', res);
           // if (res.status === true) {
           // setCountryData(res?.country);
           // }
@@ -77,7 +76,19 @@ const AskerOption = (props) => {
       //   .catch((error) => {});
     };
 
-    const showContact = () => {
+  const showOption = (e) => {
+    e.preventDefault();
+    navigate(
+      "/view-asker",
+      {state: {
+          asker_id: location?.state.asker_id,
+          user_id: location?.state.user_id,
+        }
+      })
+  }
+
+
+  const showContact = () => {
       navigate('/contact-card')
     }
     return (
@@ -92,7 +103,7 @@ const AskerOption = (props) => {
           <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
             <div className={`${styles.cardBg}`}>
               {/*<div className={styles.closeBox}>*/}
-              <button className={styles.btnClose}>
+              <button className={styles.btnClose} onClick={(e) => showOption(e)}>
                 <CloseIcon className={styles.closeIcon}/>
               </button>
               {/*</div>*/}
@@ -171,7 +182,7 @@ const AskerOption = (props) => {
                       id={"user"}
                       onChange={(e) => onChangePrivate(e)}
                       value={"private"}
-                      checked={selectprivate}
+                      checked={selectPrivate}
                     />
                     <span></span>
                   </div>

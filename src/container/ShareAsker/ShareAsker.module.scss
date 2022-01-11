@@ -259,6 +259,14 @@
   height: 50px;
 }
 
+.inputBoxEmail {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .textBox {
   display: flex;
@@ -274,8 +282,9 @@
     max-width: 100%;
     font-size: 12px;
     line-height: 1;
-    text-align: start;
-    color: $darkText;
+    text-align: center;
+    //color: $darkText;
+    color: #898A8D!important;
     font-weight: 400;
     font-family: "Roboto", sans-serif;
     border: none;
@@ -285,17 +294,37 @@
     padding: 3px 5px 3px 0;
 
     &::placeholder {
-      text-align: center;
+      //width: 100%;
+      text-align: center!important;
       font-size: 14px;
       line-height: 1;
-      color: #898A8D;
+      color: #898A8D!important;
     }
+
+    //&:disabled {
+    //  color: #898A8D!important;
+    //  &::placeholder {
+    //    //width: 100%;
+    //    text-align: center!important;
+    //    font-size: 14px;
+    //    line-height: 1;
+    //    color: #898A8D!important;
+    //  }
+    //}
 
     &:focus {
       outline: none;
     }
   }
 }
+
+
+.emailIcon {
+  width: 18px;
+  height: 14px;
+  fill: #ADB8FA;
+}
+
 
 .title {
   display: flex;
@@ -307,6 +336,7 @@
 }
 
 .linkIconWrap {
+  @include btn-reset();
   min-width: 31px;
   height: 31px;
   background-color: $themeColorBase;
@@ -316,11 +346,23 @@
   box-shadow: 0px 6.2px 15.5px rgba(84, 104, 255, 0.3);
   border-radius: 7px;
 
+  &:hover {
+    opacity: 0.8;
+    transition: $transition;
+  }
+
   .linkIcon {
     min-width: 18px;
     height: 8px;
   }
 }
+
+.emailIcon {
+  width: 18px;
+  height: 14px;
+  fill: #ADB8FA;
+}
+
 
 .btnClose {
   @include btn-reset();
@@ -343,4 +385,29 @@
 .closeIcon {
   min-width: 14px;
   height: 14px;
+}
+
+.shareEmailModal {
+  max-width: 420px;
+  min-height: 420px;
+}
+
+.shareIconBox {
+  position: absolute;
+  top: calc(50% - 14px);
+  right: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #324add;
+  border-radius: 50%;
+
+  .shareIcon {
+    min-width: 16px;
+    height: 31px;
+    position: relative;
+    margin-left: 1px;
+  }
 }
