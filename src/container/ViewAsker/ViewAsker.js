@@ -13,13 +13,14 @@ import MenuBurgerIcon from "../../components/UI/icons/MenuBurgerIcon";
 
 const ViewAsker = (props) => {
   let navigate = useNavigate();
+  const location = useLocation();
   const [viewAsker, setViewAsker] = useState()
+  const {asker_id, user_id} = location?.state;
   const [nextQuestionList, setNextQuestionList] = useState([]);
   const cardRef = useRef(null);
-  const location = useLocation();
 
 
-  // console.log('location.state', location?.state, location?.state?.asker_id, nextQuestionList, viewAsker)
+  console.log('location.state', location?.state, location?.state?.asker_id, asker_id, user_id)
   useEffect(async () => {
     if (cardRef?.current?.classList.contains("start-rotate")) {
       cardRef?.current?.classList.remove("start-rotate")
@@ -28,8 +29,8 @@ const ViewAsker = (props) => {
       cardRef?.current?.classList.add("start-rotate")
     }, 1);
     if (location?.state) {
-      getNextQuestionList(location?.state.asker_id, location?.state.user_id);
-      ViewAnswer(location?.state.asker_id, location?.state.user_id);
+      getNextQuestionList(asker_id, user_id);
+      ViewAnswer(asker_id, user_id);
     }
 
     return () => clearTimeout(timer);
