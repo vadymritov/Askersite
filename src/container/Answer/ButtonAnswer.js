@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./Answer.module.scss";
 
-const ButtonAnswer = ({time, startTimer}) => {
+const ButtonAnswer = ({time, startTimer,cb}) => {
   const [newTimer, setNewTimer] = useState(time)
 
   // useEffect(() => {
@@ -12,7 +12,7 @@ const ButtonAnswer = ({time, startTimer}) => {
 
   useEffect(() => {
       const count = setInterval(() => {setNewTimer(prevState => {
-          console.log('prevst', prevState);
+          // console.log('prevst', prevState);
           if (prevState > 0) {
             return prevState - 1;
           } else {
@@ -24,7 +24,7 @@ const ButtonAnswer = ({time, startTimer}) => {
   }, [])
 
   return (
-    <button type='button' className={styles.content}>
+    <button type='button' className={styles.content} onClick={cb}>
       <span>finish answer</span>
 
       <div className={styles.redCircleWrap}>

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import styles from "./NextQuestion.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
@@ -10,12 +10,28 @@ import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import ReloadIcon from "../../components/UI/icons/ReloadIcon";
 import CheckNextIcon from "../../components/UI/icons/CheckNextIcon";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
+import {http} from "../../http/http";
 
 const NextQuestion = (props) => {
+  const location = useLocation();
+  let { arrayQuestion,askerId,askerCode } = location.state;
+  // console.log('allLocationStateNexQuestion',location.state)
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [currentQuestions,setCurrentQuestions] = useState([])
+  const [currentAsker,setCurrentAsker] = useState('')
+  const bodyFormData = new FormData();
+  const userID = JSON.parse(localStorage.getItem("UserID"));
+  bodyFormData.append('user_id',userID)
+  bodyFormData.append('asker_id',askerId)
+  useEffect(()=>{
+    http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
+      .then(resp => setCurrentAsker(resp.data.asker))
+    http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestions(nextQuestionList));
 
+  },[])
+// console.log(currentQuestions)
   const hendaleingFormSubmit = async () => {
     // var parameter =
     //   "&asker_code=" +
@@ -76,8 +92,8 @@ const NextQuestion = (props) => {
                   <div className={`${styles.questionItem}`}>
                     <CreateAskerIcon className={styles.createLogo}/>
                     <div className={styles.textBox}>
-                      <div className={styles.text}>Brighton Art Gallery</div>
-                      <div className={styles.title}>Cleaner job in Brighton</div>
+                      <div className={styles.text}>{currentAsker.title}</div>
+                      <div className={styles.title}>{currentAsker.author}</div>
                     </div>
                   </div>
                 </div>
@@ -109,7 +125,9 @@ const NextQuestion = (props) => {
                 </div>
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStyle}`}>
+                <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={()=>{
+                  navigate('/progress')
+                }}>
                   <span>NEXT QUESTION</span>
                   <div className={styles.plusIconBox}>
                     <ArrowBtn className={`${styles.shareIcon}`}/>

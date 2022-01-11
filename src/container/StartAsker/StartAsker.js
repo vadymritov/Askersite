@@ -11,11 +11,10 @@ import ClockIcon from "../../components/UI/icons/ClockIcon";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
-import {http} from "../../http/http";
 
 const StartAsker = (props) => {
   const location = useLocation();
-  let { foundAsker } = location.state;
+  let { foundAsker,askerCode } = location.state;
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -126,7 +125,8 @@ const StartAsker = (props) => {
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
                 <button onClick={()=>navigate('/answer',{state:{
-                    foundAskerId:foundAsker.asker_id
+                    foundAskerId:foundAsker.asker_id,
+                    askerCode
 
                   }})} type="button" className={`continue-btn  ${styles.buttonStyle}`}>
                   <span>START ASKER</span>

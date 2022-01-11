@@ -106,7 +106,9 @@ const AskerComplete = (props) => {
                 </div>
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} >
+                <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} onClick={()=>{
+                  navigate('/dashboard')
+                }} >
                   <span>SEND RESPONSES</span>
                   <ArrowBtn className={`arrow-btn ${styles.arrowTopGreen}`}/>
                 </button>

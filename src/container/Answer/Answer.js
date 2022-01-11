@@ -6,7 +6,6 @@ import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import {useLocation, useNavigate} from "react-router-dom";
 import Logo from "../../components/UI/icons/Logo";
 import ButtonAnswer from "./ButtonAnswer";
-import { useReactMediaRecorder } from "react-media-recorder";
 import Webcam from "react-webcam";
 import {http} from "../../http/http";
 
@@ -14,7 +13,7 @@ import {http} from "../../http/http";
 
 const Answer = (props) => {
   const location = useLocation();
-  let { foundAskerId } = location.state;
+  let { foundAskerId,askerCode } = location.state;
   const [loaderActive, setLoaderActive] = useState(false);
   const [finishAnswer, setFinishAnswer] = useState(false);
   const [timer, setTimer] = useState(30)
@@ -23,6 +22,8 @@ const Answer = (props) => {
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [UserProfile, setUserProfile] = useState([]);
+  const [currentQuestion,setCurrentQuestion] = useState('')
+
 
   let navigate = useNavigate();
   const cardRef = useRef(null);
@@ -43,18 +44,20 @@ const Answer = (props) => {
   const userID = JSON.parse(localStorage.getItem("UserID"));
   bodyFormData.append('user_id',userID)
   bodyFormData.append('asker_id',foundAskerId)
+  // const fetchNextQuestionsList = () =>http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestion(nextQuestionList.question_list));
   useEffect(() => {
     if (userID) {
       setUserProfile(userID);
-      http.post('nextQuestionList',bodyFormData).then(res=>console.log(res.data));
+      http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestion(nextQuestionList.question_list));
+      // setCurrentQuestionId(res.data.question_list[res.data.question_list.length-1].question_id)
     }
-  }, []);
 
+  }, []);
+  // console.log('currentQuest',currentQuestion)
   const videoConstraints = {
     facingMode: "user",
   };
   const startRecording = () => {
-    console.log('start recording')
     const timer = setTimeout(() => {
       handleStartCaptureClick();
     }, 2000);
@@ -74,7 +77,10 @@ const Answer = (props) => {
     const timer = setTimeout(() => {
       handleStopCaptureClick();
     }, 31000);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer)
+    };
   }, [webcamRef, setCapturing, mediaRecorderRef]);
 
   const handleDataAvailable = React.useCallback(
@@ -97,7 +103,15 @@ const Answer = (props) => {
         // console.log("fdata" , fdata);
 
 
-        http.post('submitAnswer',fdata).then(res=>console.log(res))
+        await http.post('submitAnswer',fdata).then(res=>console.log(res))
+        navigate('/next-question', {
+          state: {
+            arrayQuestion: currentQuestion,
+            askerId: foundAskerId,
+            askerCode
+          }
+        })
+
       }
     },
     [setRecordedChunks]
@@ -176,7 +190,7 @@ const Answer = (props) => {
                 <div/>
               </button>
               :
-              <ButtonAnswer time={timer} onClick={handleStopCaptureClick}/>
+              <ButtonAnswer time={timer}/>
               // <button type='button' className={styles.content}>
               //   <span>finish answer</span>
               //

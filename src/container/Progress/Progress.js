@@ -61,7 +61,9 @@ const Progress = (props) => {
             <span className={styles.smallText}>Brighton Art Gallery</span> Cleaner Job in Brighton
           </div>
         </div>
-        <div className={`${styles.contentContainer}`}>
+        <div className={`${styles.contentContainer}`} onClick={()=>{
+          navigate('/asker-complete')
+        }}>
           <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
             <div className={styles.cardContainerContact}>
               <div className={styles.contentBox}>

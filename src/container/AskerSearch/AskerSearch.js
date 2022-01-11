@@ -39,11 +39,12 @@ const AskerSearch = (props) => {
     http.post('askerCode', `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => resp.data)
       .then(res => {
-
+       // console.log(res)
         if (res != null) {
           // await setAsker(res.asker)
           navigate('/start-asker',{state:{
-              foundAsker:res.asker
+              foundAsker:res.asker,
+              askerCode:search
             }
             })
 
