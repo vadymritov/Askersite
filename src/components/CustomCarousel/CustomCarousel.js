@@ -6,9 +6,9 @@ import SpinEffect from "../SpinEffect/SpinEffect";
 import CarouselAnswerItem from "../../container/WatchAnswer/CarouselAnswerItem/CarouselAnswerItem";
 
 
-const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = ''}) => {
+const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '', state = {}}) => {
   const [itemIndex, setItemIndex] = useState(1);
-  const [slides, setSlides] = useState(data);
+  const [slides, setSlides] = useState();
   const [autoplay, setAutoplay] = useState(autoPlay);
   const [moveSlideStartX, setMoveSlideStartX] = useState(0);
   const [moveSlideStartY, setMoveSlideStartY] = useState(0);
@@ -34,6 +34,14 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = ''}
       setItemIndex(1);
     }, 350)
   };
+
+  useEffect(() => {
+    if(data != null) {
+      setSlides(data.answer_list)
+    }
+  }, [data])
+
+  console.log('dataCar', data, slides);
 
   const Prev = (e) => {
     e.preventDefault();
@@ -148,8 +156,9 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = ''}
   };
 
   const renderItems = (index, item) => {
+    console.log('item', item);
     if (type === 'watchAnswer') {
-      return <CarouselAnswerItem key={'carousel-' + index} member={item}/>
+      return <CarouselAnswerItem key={'carousel-' + index} state={state} data={data} item={item}/>
     }
   }
 
@@ -170,7 +179,7 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = ''}
       >
         <div className={styles.sliders} style={{transform: `translate3d(calc(-${(itemIndex * 100)}% - ${move}px),0,0)`, transitionDuration: transition + `ms`}}>
           {
-            slides.map((item, index) =>
+            slides?.map((item, index) =>
               <div key={'carousel-' + index} className={styles.slide}>
                 {renderItems(index, item)}
                 {/*<SpinEffect key={'carousel-' + index} member={item}/>*/}

@@ -36,7 +36,6 @@ const CreateAskerThird = (props) => {
     http.post('publishAsker',bodyFormData).then(res=>res.data).then(sharedID=>setSharedAskerId(sharedID.asker.asker_code))
   }
   const removeEffect = () => {
-
     elRef.current?.classList.add("ease-out-effect")
     const timer = setTimeout(() => {
       navigate('/share-asker',{ state: { sharedAskerId:sharedAskerId } })

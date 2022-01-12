@@ -1,9 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "./WatchAnswer.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Carousel} from "react-bootstrap";
 import CustomCarousel from "../../components/CustomCarousel/CustomCarousel";
+import {http} from "../../http/http";
 // import { Carousel } from 'react-responsive-carousel';
 // import Slider from 'react-touch-drag-slider'
 
@@ -11,10 +12,16 @@ import CustomCarousel from "../../components/CustomCarousel/CustomCarousel";
 const WatchAnswer = (props) => {
     let navigate = useNavigate();
     const cardRef = useRef(null);
-  const carouselMembers = [1, 2, 3, 4];
+    const location = useLocation();
+    const {asker_id, user_id} = location?.state;
+    const [userProfile, setUserProfile] = useState([]);
+    const [askerData, setAskerData] = useState([]);
+    const [answerData, setAnswerData] = useState([]);
 
+    // const carouselMembers = [1, 2, 3, 4];
+
+    console.log('askerDat',  answerData);
     useEffect(async () => {
-
       if (cardRef?.current?.classList.contains("start-rotate")) {
         cardRef?.current?.classList.remove("start-rotate")
       }
@@ -24,7 +31,43 @@ const WatchAnswer = (props) => {
       }, 1);
 
       return () => clearTimeout(timer);
-    }, [props]);
+    }, []);
+
+    useEffect(() => {
+      const user = localStorage.getItem("User");
+      if (user) {
+        setUserProfile(user);
+      }
+
+      askerDeatils(asker_id, user_id);
+      answerList(asker_id, user_id);
+    }, []);
+
+    const askerDeatils = async (asker_id, user_id) => {
+      http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
+        .then(res => res.data)
+        .then((res) => {
+          console.log('resOption', res, res.data.asker_detail[0]);
+          setAskerData(res.data.asker_detail[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    };
+
+  const answerList = async (asker_id, user_id) => {
+    http.post('answerList', `candidate_user_id=${user_id}&asker_id=${asker_id}`)
+      .then(res => res.data)
+      .then((res) => {
+          console.log('answerList', res, res.answer_list);
+        if (res.status === true) {
+          setAnswerData(res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
 
     const showContact = () => {
       navigate('/contact-card')
@@ -41,46 +84,12 @@ const WatchAnswer = (props) => {
         <div className={`${styles.contentContainer}`}>
 
           <CustomCarousel
-            data={carouselMembers}
+            data={answerData}
             autoPlay={false}
+            state={location?.state}
             interval={5000}
             type={'watchAnswer'}
           />
-
-          {/*<Carousel*/}
-          {/*  // activeIndex={0}*/}
-          {/*  indicators={false}*/}
-          {/*  prevLabel={null}*/}
-          {/*  nextLabel={null}*/}
-          {/*  // controls={false}*/}
-          {/*  // wrap={false}*/}
-          {/*>*/}
-          {/*  {images.map((item, index) => (*/}
-          {/*    <Carousel.Item>*/}
-          {/*      <div ref={cardRef} key={index} className={`default-flip flip-card-inner ${styles.cardWrap}`}>*/}
-          {/*        <div className={styles.cardContainer}>*/}
-          {/*        </div>*/}
-          {/*      </div>*/}
-          {/*    </Carousel.Item>*/}
-          {/*  ))}*/}
-
-          {/*</Carousel>*/}
-
-          {/*<div className={`${styles.cardWrap} ${styles.cardLeft}`}>*/}
-          {/*  <div className={styles.cardContainer}>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*/!*<div className={styles.contentWrapLogin }>*!/*/}
-          {/*/!*</div>*!/*/}
-          {/*<div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`} onClick={showContact}>*/}
-          {/*  <div className={styles.cardContainer}>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={`${styles.cardWrap} ${styles.cardRight}`}>*/}
-          {/*  <div className={styles.cardContainer}>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
         </div>
       </div>
       // </div>

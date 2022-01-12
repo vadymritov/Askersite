@@ -54,6 +54,23 @@
     margin-top: 5px;
   }
 }
+.logoBox {
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  display: flex;
+  width: 315px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+
+
+  .logo {
+    height: 29px;
+    width: 51px;
+  }
+}
+
 
 .infoBlockSmall {
   display: flex;
@@ -64,8 +81,8 @@
   box-shadow: 0px 17.7273px 18.9091px rgba(0, 20, 170, 0.03);
   z-index: 2;
   background: transparent;
-  width: 65px;
-  height: 13px;
+  width: calc(100% - 65px);
+  //height: 13px;
   border-radius: 0;
 }
 
@@ -81,8 +98,26 @@
   position: relative;
   top: 2px;
   left: -5px;
-  min-width: 13px;
-  height: 10px;
+  min-width: 31px;
+  height: 31px;
+}
+
+.infoTextSmall {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 100%;
+  font-size: 10px;
+  width: calc(100% - 33px);
+  line-height: 1.2;
+  color: $white;
+
+  &__job {
+    font-weight: 700;
+    font-size: 11px;
+  }
 }
 
 .infoText {
@@ -177,24 +212,15 @@
 .cardRight {
   position: absolute;
   top: 0;
-  //background-color: $themeColorOrange;
-  //background-image: none;
-  //right: -16em;
-  //@include media-max($lg-break) {
-  //  right: -11em;
-  //}
-  //@include media-max($md-break) {
-  //  right: -13em;
-  //}
-  //@include media-max($sm-break) {
-  //  right: -10em;
-  //}
 
 }
 
 .cardContainer {
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  justify-content: space-between;
   height: 100% !important;
-
   position: relative;
   top: 0px;
   left: 3px;
@@ -547,5 +573,79 @@
         color: #FFFFFF;
       }
     }
+  }
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  fill: $white
+
+  &__fill {
+    fill: rgba(173, 184, 250, 0.5)
+  }
+}
+
+.contentStar {
+  position: absolute;
+  bottom: 43px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 15px;
+
+  .starRate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+
+    .material-icons {
+      color: #adb8fa;
+      opacity: 0.5;
+      padding: 0 5px;
+      cursor: pointer;
+
+      &:hover ~ .material-icons {
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .material-icons {
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+
+    .star-checked {
+      color: #ffffff;
+      opacity: 1;
+    }
+  }
+
+  p {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+}
+
+.imgVideo {
+
+  height: 460px;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    max-width: 100%;
   }
 }
