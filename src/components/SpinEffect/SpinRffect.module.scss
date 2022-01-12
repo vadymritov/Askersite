@@ -112,10 +112,14 @@
   @include media-max($lg-break) {
     align-items: center;
     margin-bottom: 60px;
+    height: 470px;
   }
   @include media-max($md-break) {
     align-items: center;
     margin-bottom: 40px;
+  }
+  @include media-max($xs-break) {
+    height: 390px;
   }
 }
 
@@ -141,7 +145,7 @@
 
   //transform: rotateY(0deg);
   //transition: transform 2s 0s;
-  @include media-max(1400) {
+  @include media-max(1440) {
     width: 311px;
     height: 569px;
   }
@@ -224,7 +228,7 @@
 
   border-radius: 20px;
 
-  @include media-max(1400) {
+  @include media-max(1440) {
     width: 311px;
     height: 569px;
   }
@@ -332,7 +336,7 @@
     background-size: cover;
     backdrop-filter: blur(4px);
 
-    @include media-max(1400) {
+    @include media-max(1440) {
       width: 311px;
       height: 569px;
     }

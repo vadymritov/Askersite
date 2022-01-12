@@ -28,9 +28,6 @@ const SpinEffect = (props) => {
 
   return (
     <>
-
-      <div className="note">Click anywhere to flip</div>
-
       <div className={styles.mainContainer}>
         <div className={`${styles.contentContainer}`}>
           <div  className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrap}`} onClick={(e) => onchange(e, 'front')}>

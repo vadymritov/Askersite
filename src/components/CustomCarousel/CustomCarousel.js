@@ -20,7 +20,8 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
   const [isLockBodyTimer, setIsLockBodyTimer] = useState(false);
   let endMove = -1;
 
-  const Next = () => {
+  const Next = (e) => {
+    e.preventDefault();
     // @ts-ignore
     document.activeElement.blur();
     setTransition(350);
@@ -33,7 +34,8 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
     }, 350)
   };
 
-  const Prev = () => {
+  const Prev = (e) => {
+    e.preventDefault();
     setTransition(350)
     setItemIndex(0);
     const move = slides[slides.length - 1];
@@ -147,8 +149,8 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
   return (
     <div className={styles.customCarousel}>
       <div className={styles.arrows}>
-        <button className={styles.arrowButton} onClick={() => Prev()}><CarouselArrow/></button>
-        <button className={styles.arrowButton} onClick={() => Next()}><CarouselArrow/></button>
+        <button type='button' className={styles.arrowButton} onClick={(e) => Prev(e)}><CarouselArrow/></button>
+        <button type='button' className={styles.arrowButton} onClick={(e) => Next(e)}><CarouselArrow/></button>
       </div>
       <div
         className={styles.slidersWrapper}

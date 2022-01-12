@@ -43,7 +43,7 @@
   border-radius: 26px;
   margin-bottom: 45px;
   margin-top: 10px;
-  @include media-max($lg-break) {
+  @include media-max(1440) {
     margin-bottom: 25px;
   }
   @include media-max($md-break) {
@@ -135,7 +135,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   backdrop-filter: blur(4px);
-  @include media-max(1400) {
+  @include media-max(1440) {
     width: 311px;
     height: 569px;
   }
