@@ -129,6 +129,7 @@
   max-width: 100%;
   max-height: 625px;
   position: relative;
+  top: 0;
   border-radius: 20px;
   background-image: url("../../image/svg/WatchAnswer/WatchVioletPhone.svg");
   background-repeat: no-repeat;
@@ -164,16 +165,19 @@
 }
 .cardRight {
   position: absolute;
-  right: -16em;
-  @include media-max($lg-break) {
-    right: -11em;
-  }
-  @include media-max($md-break) {
-    right: -13em;
-  }
-  @include media-max($sm-break) {
-    right: -10em;
-  }
+  top:0;
+  background-color: $themeColorOrange;
+  background-image: none;
+  //right: -16em;
+  //@include media-max($lg-break) {
+  //  right: -11em;
+  //}
+  //@include media-max($md-break) {
+  //  right: -13em;
+  //}
+  //@include media-max($sm-break) {
+  //  right: -10em;
+  //}
 
 }
 
