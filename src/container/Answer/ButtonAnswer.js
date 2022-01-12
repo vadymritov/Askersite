@@ -21,6 +21,7 @@ const ButtonAnswer = ({time, startTimer,cb}) => {
           }
         }
       )}, 1000)
+    return  clearInterval(count)
   }, [])
 
   return (

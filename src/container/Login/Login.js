@@ -71,7 +71,7 @@ const Login = (props) => {
                 ><LockIcon className={styles.lockIcon}/></Input>
               </div>
               <NavLink to={'/'} className={`${styles.text} ${styles.paddingTop}`}>No account?</NavLink>
-              <NavLink to={'/'} className={`${styles.title} ${styles.greenText}`}>JOIN ASKER</NavLink>
+              <NavLink to={'/sign-up'} className={`${styles.title} ${styles.greenText}`}>JOIN ASKER</NavLink>
               <div className={`${styles.buttonBox}`}>
                 <button type="submit" className={`continue-btn`}>
                   <span>Continue</span>

@@ -16,12 +16,16 @@ const CreatePassword = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const [verifyCode, setVerifyCode] = useState("");
   const [focusInput, setFocusInput] = useState(false);
+  const [userName,setUserName]=useState();
+  const [password,setPassword]=useState();
+
 
   const onSubmit = (data) => {
     console.log('onSubmit', data);
     // encodeURIComponent()
   };
   const onSendData = (data) => {
+    // http.post('registerEmail',)
     console.log('onSendDat', data);
     props.nextStep(data)
   };

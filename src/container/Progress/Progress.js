@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import styles from "./Progress.module.scss";
 import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
@@ -8,6 +8,8 @@ import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import ProgressIcon from "../../components/UI/icons/ProgressIcon";
 
 const Progress = (props) => {
+  const location = useLocation();
+  let { AnswerData,askerId, askerCode } = location.state;
     const cardRef = useRef(null);
     let navigate = useNavigate();
     const [search, setSearch] = useState("");
@@ -62,7 +64,13 @@ const Progress = (props) => {
           </div>
         </div>
         <div className={`${styles.contentContainer}`} onClick={()=>{
-          navigate('/asker-complete')
+          navigate('/asker-complete',{
+            state:{
+              askerId,
+              askerCode,
+              AnswerData
+            }
+          })
         }}>
           <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
             <div className={styles.cardContainerContact}>
@@ -72,8 +80,8 @@ const Progress = (props) => {
                   <div className={styles.progressBox}>
                     <ProgressIcon className={styles.progressIcon}/>
                     <div className={styles.infoBox}>
-                    <div className={styles.persent}>33%</div>
-                    <div className={styles.textProgressive}>1 of 3</div>
+                    <div className={styles.persent}>{AnswerData.percentage}%</div>
+                    <div className={styles.textProgressive}>{AnswerData.total_answered_question} of {AnswerData.total_question}</div>
                     </div>
                   </div>
                   <div className={styles.titleBox}>

@@ -11,6 +11,7 @@ import ClockIcon from "../../components/UI/icons/ClockIcon";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
+import {http} from "../../http/http";
 
 const StartAsker = (props) => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const StartAsker = (props) => {
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [UserProfile, setUserProfile] = useState([]);
+  const [AnswerData, setAnswerData] = useState([]);
 
   const hendaleingFormSubmit = async () => {
     // var parameter =
@@ -55,11 +57,58 @@ const StartAsker = (props) => {
 
     return () => clearTimeout(timer);
   }, [props]);
+  const bodyFormData = new FormData();
+  const userID = JSON.parse(localStorage.getItem("UserID"));
+  bodyFormData.append('user_id',userID)
+  bodyFormData.append('asker_id',foundAsker.asker_id)
+
+  useEffect(()=>{
+    if (userID) {
+      setUserProfile(userID);
+      http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setAnswerData(nextQuestionList));
+      // setCurrentQuestionId(res.data.question_list[res.data.question_list.length-1].question_id)
+    }
+  },[])
 
   const showViewAnswer = () => {
-    console.log('onc');
+    // console.log('onc');
     navigate('/watch-answer')
   }
+  const sendCurrentQuestion =async ()=>{
+    if (AnswerData.total_question != 0) {
+      for (
+        let index = 0;
+        index < AnswerData.total_question;
+        index++
+      ) {
+        // const element = array[index];
+        if (
+          AnswerData.question_list[index].submitted_answer ===
+          "n"
+        ) {
+          navigate('/answer',{state:{
+              foundAskerId:foundAsker.asker_id,
+              askerCode,
+              data: AnswerData.question_list[index],
+              AnswerData,
+            }})
+
+
+
+
+          // history.push({
+          //   pathname: "/RecordAnswer",
+          //   state: {
+          //     data: AnswerData.question_list[index],
+          //     AnswerData,
+          //   },
+          // });
+          return AnswerData.question_list[index];
+        }
+      }
+    }
+  }
+
 
   return (
     <div className={styles.mainContainer}>
@@ -124,11 +173,14 @@ const StartAsker = (props) => {
                 {/*</div>*/}
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
-                <button onClick={()=>navigate('/answer',{state:{
-                    foundAskerId:foundAsker.asker_id,
-                    askerCode
+                <button onClick={sendCurrentQuestion
 
-                  }})} type="button" className={`continue-btn  ${styles.buttonStyle}`}>
+                  // ()=>navigate('/answer',{state:{
+                  //   foundAskerId:foundAsker.asker_id,
+                  //   askerCode
+                  //
+                  // }})
+                } type="button" className={`continue-btn  ${styles.buttonStyle}`}>
                   <span>START ASKER</span>
                   <div className={styles.plusIconBox}>
                     <ArrowBtn className={`${styles.shareIcon}`}/>

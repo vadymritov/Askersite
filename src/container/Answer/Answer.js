@@ -13,7 +13,8 @@ import {http} from "../../http/http";
 
 const Answer = (props) => {
   const location = useLocation();
-  let { foundAskerId,askerCode } = location.state;
+  let { foundAskerId,askerCode,AnswerData,data:activeQuestion } = location.state;
+  // console.log('actualQuestion',activeQuestion)
   const [loaderActive, setLoaderActive] = useState(false);
   const [finishAnswer, setFinishAnswer] = useState(false);
   const [timer, setTimer] = useState(30)
@@ -23,7 +24,7 @@ const Answer = (props) => {
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [UserProfile, setUserProfile] = useState([]);
   const [currentQuestion,setCurrentQuestion] = useState('')
-
+  const [screenQuestion,setScreenQuestion] = useState('')
 
   let navigate = useNavigate();
   const cardRef = useRef(null);
@@ -36,7 +37,7 @@ const Answer = (props) => {
     const timer = setTimeout(() => {
       cardRef?.current?.classList.add("start-rotate")
     }, 1);
-
+    // await setScreenQuestion(data)
     return () => clearTimeout(timer);
   }, [loaderActive]);
 
@@ -50,8 +51,9 @@ const Answer = (props) => {
       setUserProfile(userID);
       http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestion(nextQuestionList.question_list));
       // setCurrentQuestionId(res.data.question_list[res.data.question_list.length-1].question_id)
-    }
 
+    }
+   return setLoaderActive(false)
   }, []);
   // console.log('currentQuest',currentQuestion)
   const videoConstraints = {
@@ -91,14 +93,20 @@ const Answer = (props) => {
         const myFile = new File([data], "example.mp4", {
           type: "video/mp4",
         });
+        // console.log(myFile)
         const asker_id = foundAskerId;
+        // const stringId = data.question_id.toString();
         // const question_id = props.data.data.question_id;
         const fdata = new FormData();
-        // fdata.append("file", blob);
-        fdata.append("answer", myFile);
-        fdata.append("asker_id", asker_id);
-        fdata.append("question_id", 158);
+        // fdata.append("file", Blob);
         fdata.append("user_id",userID)
+        fdata.append("question_id",activeQuestion.question_id);
+        // fdata.append("asker_id", asker_id);
+        fdata.append("answer", myFile);
+
+        // fdata.append("question_id",data.question_id);
+
+
 
         // console.log("fdata" , fdata);
 
@@ -106,9 +114,10 @@ const Answer = (props) => {
         await http.post('submitAnswer',fdata).then(res=>console.log(res))
         navigate('/next-question', {
           state: {
-            arrayQuestion: currentQuestion,
+            activeQuestion,
             askerId: foundAskerId,
-            askerCode
+            askerCode,
+            AnswerData
           }
         })
 
@@ -158,15 +167,16 @@ const Answer = (props) => {
   //   }
   // }, [finishAnswer])
   //   console.log('setInterva', finishAnswer, loaderActive);
-
   const beginAnswer = () => {
     setLoaderActive(true);
     setTimeout(() => {
       setFinishAnswer(true)
     }, 3000);
 
-   // clearTimeout(t);
+   // clearTimeout(timeoutAnswer);
   }
+
+
 
   return (
     <div className={styles.mainContainer}>
@@ -180,7 +190,7 @@ const Answer = (props) => {
           <Webcam audio={true} ref={webcamRef}  className={styles.videoPreview}  videoConstraints={videoConstraints}/>
           {loaderActive ? <Loader className={styles.loader} setIsActive={setLoaderActive}/> : null}
           <div className={styles.cardInfo}>
-            <span>Tell me what you’d like to know about this role?</span>
+            <span>{activeQuestion.title}</span>
             {!finishAnswer ?
               <button className={`${styles.beginBtn} `} onClick={() => {
                 startRecording()
@@ -190,7 +200,22 @@ const Answer = (props) => {
                 <div/>
               </button>
               :
-              <ButtonAnswer time={timer}/>
+              <ButtonAnswer time={timer} cb={async ()=>{
+                handleStopCaptureClick();
+                setCapturing(false);
+                setFinishAnswer(true);
+                setLoaderActive(false);
+                clearTimeout(timer)
+                navigate('/next-question', {
+                  state: {
+                    activeQuestion,
+                    askerId: foundAskerId,
+                    askerCode,
+                    AnswerData
+                  }
+                })
+              }
+              }/>
               // <button type='button' className={styles.content}>
               //   <span>finish answer</span>
               //

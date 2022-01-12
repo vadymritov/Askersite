@@ -11,27 +11,32 @@ import ReloadIcon from "../../components/UI/icons/ReloadIcon";
 import CheckNextIcon from "../../components/UI/icons/CheckNextIcon";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
+import CloseIcon from "../../components/UI/icons/CloseIcon";
 
 const NextQuestion = (props) => {
   const location = useLocation();
-  let { arrayQuestion,askerId,askerCode } = location.state;
-  // console.log('allLocationStateNexQuestion',location.state)
+  let {activeQuestion, askerId, askerCode, AnswerData} = location.state;
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [currentQuestions,setCurrentQuestions] = useState([])
-  const [currentAsker,setCurrentAsker] = useState('')
+  const [currentQuestions, setCurrentQuestions] = useState([])
+  const [showSubmitPanelButton, setShowSubmitPanelButton] = useState(true)
+  const [currentAsker, setCurrentAsker] = useState('')
+  const [clickedQuestionId, setClickedQuestionId] = useState('')
   const bodyFormData = new FormData();
   const userID = JSON.parse(localStorage.getItem("UserID"));
-  bodyFormData.append('user_id',userID)
-  bodyFormData.append('asker_id',askerId)
-  useEffect(()=>{
+  bodyFormData.append('user_id', userID)
+  bodyFormData.append('asker_id', askerId)
+  useEffect(() => {
     http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => setCurrentAsker(resp.data.asker))
-    http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestions(nextQuestionList));
+    http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => setCurrentQuestions(nextQuestionList.question_list));
 
-  },[])
-// console.log(currentQuestions)
+  }, [])
+
+  const findClickedQuestion = () => {
+
+  }
   const hendaleingFormSubmit = async () => {
     // var parameter =
     //   "&asker_code=" +
@@ -78,7 +83,8 @@ const NextQuestion = (props) => {
       <div className={styles.infoBlockHead}>
         <AllAnswerIcon className={styles.infoIcon}/>
         <div className={styles.infoText}>
-          <span className={styles.smallText}>Brighton Art Gallery</span> Cleaner Job in Brighton</div>
+          <span className={styles.smallText}>Brighton Art Gallery</span> Cleaner Job in Brighton
+        </div>
       </div>
 
 
@@ -99,34 +105,78 @@ const NextQuestion = (props) => {
                 </div>
               </div>
               <div className={`${styles.infoBlock}`}>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}>
-                    <CheckNextIcon className={styles.checkIcon}/></div>
-                  <div className={styles.textInfo}>What are your strengths and weaknesses?</div>
-                  <div className={styles.iconsBox}>
-                    <ReloadIcon className={styles.iconReload}/>
+                {currentQuestions.map((item, index) => {
+                  return <div key={item.question_id} className={`${styles.infoItem}`}>
+                    {clickedQuestionId === item.question_id ? <div className={`${styles.recordItem}`}>
+                        {/*<div className={styles.circleBox}>*/}
+                        <div className={styles.textInfo}>Record this response again?</div>
+                        <div className={styles.iconsBoxRecord}>
+                          <button onClick={() => setClickedQuestionId(null)} type='button' className={styles.closeBtn}><CloseIcon className={styles.closeIcon}/></button>
+                          <button onClick={() => {
+                            navigate('/answer', {
+                              state: {
+                                foundAskerId: askerId,
+                                askerCode,
+                                data: currentQuestions.find(element => element === item),
+                                AnswerData,
+                              }
+                            })
+
+                          }} type='button' className={styles.yesBtn}><CheckIcon className={styles.checkIconYes}/></button>
+
+                        </div>
+                      </div>
+                      :
+                      <>
+                        <div className={styles.circleBox}>
+                          {item.submitted_answer !== 'n' ? <CheckNextIcon className={styles.checkIcon}/> : <CircleLi className={styles.point}/>}
+                        </div>
+                        <div className={styles.textInfo}>{item.title}</div>
+                        <div className={styles.iconsBox}>
+                          {item.submitted_answer !== 'n' ? <button className={styles.reloadButton} onClick={() => {
+                            setClickedQuestionId(item.question_id)
+                          }
+                          }><ReloadIcon className={styles.iconReload}/></button> : <ClockIcon className={styles.iconClock}/>}
+                        </div>
+                      </>
+                    }
+
                   </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}>
-                    <CheckNextIcon className={styles.checkIcon}/></div>
-                  <div className={styles.textInfo}>What’s your idea of the perfect flatmate?</div>
-                  <div className={styles.iconsBox}>
-                    <ReloadIcon className={styles.iconReload}/>
-                  </div>
-                </div>
-                <div className={`${styles.infoItem}`}>
-                  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>
-                  <div className={styles.textInfo}>Tell me what makes you perfect for this role</div>
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>30s</span>
-                  </div>
-                </div>
+                })}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}>*/}
+                {/*    <CheckNextIcon className={styles.checkIcon}/></div>*/}
+                {/*  <div className={styles.textInfo}>What are your strengths and weaknesses?</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ReloadIcon className={styles.iconReload}/>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}>*/}
+                {/*    <CheckNextIcon className={styles.checkIcon}/></div>*/}
+                {/*  <div className={styles.textInfo}>What’s your idea of the perfect flatmate?</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ReloadIcon className={styles.iconReload}/>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*<div className={`${styles.infoItem}`}>*/}
+                {/*  <div className={styles.circleBox}><CircleLi className={styles.point}/></div>*/}
+                {/*  <div className={styles.textInfo}>Tell me what makes you perfect for this role</div>*/}
+                {/*  <div className={styles.iconsBox}>*/}
+                {/*    <ClockIcon className={styles.iconClock}/>*/}
+                {/*    <span>30s</span>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={()=>{
-                  navigate('/progress')
+                <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={() => {
+                  navigate('/progress', {
+                    state: {
+                      AnswerData,
+                      askerId,
+                      askerCode
+                    }
+                  })
                 }}>
                   <span>NEXT QUESTION</span>
                   <div className={styles.plusIconBox}>
@@ -143,6 +193,6 @@ const NextQuestion = (props) => {
       </div>
     </div>
   )
-  };
+};
 
 export default NextQuestion;

@@ -417,3 +417,72 @@
   min-width: 25px;
   height: 25px;
 }
+.reloadButton{
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+.recordItem {
+  background: #F7F8FF;
+  opacity: 0.95;
+  border: 1px solid rgba(173, 184, 250, 0.1);
+  box-sizing: border-box;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: -10px;
+  position: relative;
+  width: calc(100% + 20px);
+}
+
+.iconsBoxRecord {
+  display: flex;
+  align-items: center;
+}
+.closeBtn {
+  @include btn-reset();
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D90000;
+
+  box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
+  border-radius: 7.31429px;
+  margin-right: 4px;
+  &:hover {
+    opacity: 0.8;
+    transition: $transition;
+  }
+
+  .closeIcon {
+    min-width: 10px;
+    height: 10px;
+  }
+}
+.yesBtn {
+  @include btn-reset();
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00D9CD;
+  box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
+  border-radius: 7.31429px;
+
+  &:hover {
+    opacity: 0.8;
+    transition: $transition;
+  }
+  .checkIconYes {
+    min-width: 11px;
+    height: 9px;
+  }
+}
