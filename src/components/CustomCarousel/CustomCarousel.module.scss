@@ -1,0 +1,153 @@
+@import "../../scss/settings";
+@import "../../scss/mixins";
+
+.customCarousel {
+  margin: 0 -10px;
+  //margin: 0;
+  position: relative;
+  //width: 100%;
+  width: calc(100% + 20px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  @include media-max($md-break) {
+    width: 100%;
+  }
+}
+
+.arrows {
+  //position: relative;
+}
+
+.arrowButton {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  outline: none;
+  //height: fit-content;
+
+  right: 0;
+  width: 9em;
+  top: 0;
+  height: 100%;
+
+  @include btn-reset();
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+
+
+  @include media-max($md-break) {
+    width: 40px;
+    top: calc(50% - 20px);
+    height: 40px;
+  }
+  @include media-max($sm-break) {
+    top: 0;
+    height: 100%;
+    width: 8em;
+  }
+  @include media-max($xs-break) {
+    width: 40px;
+    top: calc(50% - 20px);
+    height: 40px;
+  }
+
+  svg {
+    display: none;
+    width: 40px;
+    height: 40px;
+    fill: $white;
+    border-radius: 50px;
+    @include media-max($md-break) {
+      display: block;
+    }
+    @include media-max($sm-break) {
+      display: none;
+    }
+    @include media-max($xs-break) {
+      display: block;
+    }
+  }
+
+  &:first-child {
+    left: 0;
+    @include media-max($md-break) {
+      left: 10px;
+    }
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:last-child {
+    right: 0;
+    @include media-max($md-break) {
+      right: 10px;
+    }
+  }
+
+  &:hover {
+    svg {
+      fill: $themeColorSimilar;
+    }
+  }
+}
+
+.slidersWrapper {
+  width: calc(100% - 0px);
+  //width: calc(100% - 80px);
+  max-width: 1200px;
+  margin: 0 auto 10px auto;
+  flex-shrink: 0;
+  overflow: hidden;
+  //box-shadow: 5px 5px 6px rgb(15 24 30 / 83%);
+}
+
+.sliders {
+  display: flex;
+  transition-duration: 350ms;
+}
+
+.slide {
+  //width: 100%;
+  flex-shrink: 0;
+  width: calc(100% - 23em);
+  margin: 0 2em;
+  min-width: 317px;
+  @include media-max(1440) {
+    width: calc(100% - 21em);
+    margin: 0 1em;
+    //min-width: 300px;
+  }
+  @include media-max($lg-break) {
+    width: calc(100% - 17em);
+    margin: 0 1em;
+    min-width: 277px;
+  }
+  @include media-max(1040) {
+    width: calc(100% - 16em);
+    margin: 0 1em;
+    min-width: 270px;
+  }
+  @include media-max($md-break) {
+    width: calc(100% - 2em);
+    margin: 0 1em;
+    min-width: 270px;
+  }
+  @include media-max($sm-break) {
+    width: calc(100% - 21em);
+    margin: 0 2em;
+    min-width: 277px;
+  }
+  @include media-max($xs-break) {
+    width: calc(100% - 2em);
+    margin: 0 1em;
+    min-width: 270px;
+  }
+}

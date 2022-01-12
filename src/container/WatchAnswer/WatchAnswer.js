@@ -3,6 +3,7 @@ import styles from "./WatchAnswer.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import {useNavigate} from "react-router-dom";
 import {Carousel} from "react-bootstrap";
+import CustomCarousel from "../../components/CustomCarousel/CustomCarousel";
 // import { Carousel } from 'react-responsive-carousel';
 // import Slider from 'react-touch-drag-slider'
 
@@ -10,6 +11,7 @@ import {Carousel} from "react-bootstrap";
 const WatchAnswer = (props) => {
     let navigate = useNavigate();
     const cardRef = useRef(null);
+  const carouselMembers = [1, 2, 3, 4];
 
     useEffect(async () => {
 
@@ -38,6 +40,12 @@ const WatchAnswer = (props) => {
         </div>
         <div className={`${styles.contentContainer}`}>
 
+          <CustomCarousel
+            data={carouselMembers}
+            autoPlay={false}
+            interval={5000}
+            type={'watchAnswer'}
+          />
 
           {/*<Carousel*/}
           {/*  // activeIndex={0}*/}
@@ -58,20 +66,20 @@ const WatchAnswer = (props) => {
 
           {/*</Carousel>*/}
 
-          <div className={`${styles.cardWrap} ${styles.cardLeft}`}>
-            <div className={styles.cardContainer}>
-            </div>
-          </div>
-          {/*<div className={styles.contentWrapLogin }>*/}
+          {/*<div className={`${styles.cardWrap} ${styles.cardLeft}`}>*/}
+          {/*  <div className={styles.cardContainer}>*/}
+          {/*  </div>*/}
           {/*</div>*/}
-          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`} onClick={showContact}>
-            <div className={styles.cardContainer}>
-            </div>
-          </div>
-          <div className={`${styles.cardWrap} ${styles.cardRight}`}>
-            <div className={styles.cardContainer}>
-            </div>
-          </div>
+          {/*/!*<div className={styles.contentWrapLogin }>*!/*/}
+          {/*/!*</div>*!/*/}
+          {/*<div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`} onClick={showContact}>*/}
+          {/*  <div className={styles.cardContainer}>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+          {/*<div className={`${styles.cardWrap} ${styles.cardRight}`}>*/}
+          {/*  <div className={styles.cardContainer}>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
         </div>
       </div>

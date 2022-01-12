@@ -24,6 +24,7 @@ import AccountSettings from "./container/AccountSettings/AccountSettings";
 import Settings from "./container/Settings/Settings";
 import Answer from "./container/Answer/Answer";
 import AskerComplete from "./container/AskerComplete/AskerComplete";
+import SpinEffect from "./components/SpinEffect/SpinEffect";
 
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/progress" element={<Progress />}/>
         <Route path="/settings" element={<Settings />}/>
         <Route path="/answer" element={<Answer />}/>
+        <Route path="/spin" element={<SpinEffect />}/>
         {/*<Route exact path={"/"} component={LayoutTwo}/>*/}
         {/*<Route path={"/LogIn"} component={LayoutTwo}/>*/}
         {/*<Route path={"/ForgotPassword"} component={LayoutTwo}/>*/}
