@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './CustomCarousel.module.scss';
 import CarouselArrow from "../UI/icons/CarouselArrow";
 import SpinEffect from "../SpinEffect/SpinEffect";
+import CarouselAnswerItem from "../../container/WatchAnswer/CarouselAnswerItem/CarouselAnswerItem";
 
 
-const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
+const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = ''}) => {
   const [itemIndex, setItemIndex] = useState(1);
   const [slides, setSlides] = useState(data);
   const [autoplay, setAutoplay] = useState(autoPlay);
@@ -146,6 +147,12 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
     setIsLockBodyTimer(false);
   };
 
+  const renderItems = (index, item) => {
+    if (type === 'watchAnswer') {
+      return <CarouselAnswerItem key={'carousel-' + index} member={item}/>
+    }
+  }
+
   return (
     <div className={styles.customCarousel}>
       <div className={styles.arrows}>
@@ -165,7 +172,8 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true}) => {
           {
             slides.map((item, index) =>
               <div key={'carousel-' + index} className={styles.slide}>
-                <SpinEffect key={'carousel-' + index} member={item}/>
+                {renderItems(index, item)}
+                {/*<SpinEffect key={'carousel-' + index} member={item}/>*/}
               </div>
             )
           }

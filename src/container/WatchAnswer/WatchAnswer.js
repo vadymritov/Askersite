@@ -44,6 +44,7 @@ const WatchAnswer = (props) => {
             data={carouselMembers}
             autoPlay={false}
             interval={5000}
+            type={'watchAnswer'}
           />
 
           {/*<Carousel*/}
