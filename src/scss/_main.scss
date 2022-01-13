@@ -1031,12 +1031,9 @@ h2 {
   position: relative;
   top: 1px;
   border-radius: 20px;
-  //height: 100%;
-  //height: 618px;
   height: calc(100% - 35px);
   @include media-max(1440) {
     width: 311px;
-    //height: 569px;
   }
   @include media-max($lg-break) {
     width: 244px;
@@ -1044,7 +1041,9 @@ h2 {
   }
   @include media-max($xs-break) {
     width: 200px;
-    height: 366px;
+    height: 100%;
+    top: 0;
+    //height: 366px;
   }
 
   .slick-dots {
@@ -1060,6 +1059,9 @@ h2 {
     //background-image: linear-gradient(0deg, #000000, transparent);
     @include media-max($lg-break) {
       padding: 20px 10px 26px;
+    }
+    @include media-max($xs-break) {
+      //bottom: 4-;
     }
 
     li {
@@ -1104,21 +1106,39 @@ h2 {
 }
 
 .slick-list {
-  height: 547px;
+  height: 572px;
+  @include media-max($lg-break) {
+    height: 502px;
+  }
   @include media-max($md-break) {
     height: 460px;
+  }
+  @include media-max($xs-break) {
+    height: 351px;
   }
 }
 .slick-slide {
-  height: 547px;
+  height: 572px;
+  @include media-max($lg-break) {
+    height: 502px;
+  }
   @include media-max($md-break) {
     height: 460px;
   }
+  @include media-max($xs-break) {
+    height: 351px;
+  }
 
   .img-vid {
-    height: 590px;
+    height: 572px;
+    @include media-max($lg-break) {
+      height: 502px;
+    }
     @include media-max($md-break) {
       height: 460px;
+    }
+    @include media-max($xs-break) {
+      height: 351px;
     }
 
     div {
