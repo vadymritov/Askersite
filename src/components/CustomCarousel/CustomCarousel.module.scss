@@ -3,21 +3,16 @@
 
 .customCarousel {
   margin: 0 -10px;
-  //margin: 0;
   position: relative;
-  //width: 100%;
   width: calc(100% + 20px);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   @include media-max($md-break) {
     width: 100%;
   }
 }
 
-.arrows {
-  //position: relative;
-}
 
 .arrowButton {
   display: flex;
@@ -26,8 +21,6 @@
   bottom: 0;
   z-index: 1;
   outline: none;
-  //height: fit-content;
-
   right: 0;
   width: 9em;
   top: 0;
@@ -129,5 +122,4 @@
 .slide {
   flex-shrink: 0;
   width: 100%;
-
 }

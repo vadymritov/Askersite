@@ -39,7 +39,7 @@ const Dashboard = (props) => {
   }
 
   useEffect(() => {
-    const user = localStorage.getItem("User");
+    const user = JSON.parse(localStorage.getItem("User"));
     if (user) {
       setUserProfile(user);
     }

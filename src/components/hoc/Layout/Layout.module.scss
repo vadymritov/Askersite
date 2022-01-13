@@ -139,4 +139,8 @@
     padding: 30px 0;
     min-height: 460px;
   }
+  @include media-max($sm-break) {
+    padding: 10px 0;
+    min-height: 470px;
+  }
 }

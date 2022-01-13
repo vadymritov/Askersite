@@ -77,7 +77,14 @@ const ViewAsker = (props) => {
   }
 
   const openViewAnswers = () => {
-    navigate('/watch-answer')
+    navigate(
+      "/watch-answer",
+      {
+        state: {
+          asker_id: location?.state.asker_id,
+          user_id: location?.state.user_id,
+        }
+      })
   }
 
   return (
