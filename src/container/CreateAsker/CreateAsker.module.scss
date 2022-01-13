@@ -98,6 +98,7 @@
   }
   &.questionItemDisabled{
     background-color: rgba(173, 184, 250, 0.1);
+    border: 1px dashed rgba(173, 184, 250, 0.5)
   }
 
   &.questionItemDash {
