@@ -13,6 +13,8 @@ const CreateAskerThird = (props) => {
   const elRef = useRef();
   const userID = localStorage.getItem('UserID')
   const [sharedAskerId,setSharedAskerId] = useState('');
+  const [disabledTitle,setDisabledTitle]=useState(true);
+  const [disabledAuthor,setDisabledAuthor]=useState(true);
   let navigate = useNavigate();
   const [timer, setTimer] = useState()
   const [selectedQuestions,setSelectedQuestions]= useState([]);
@@ -49,21 +51,21 @@ const CreateAskerThird = (props) => {
         <div className={` ${styles.questionBlock}`}>
           <CreateAskerIcon className={styles.createLogo}/>
           <div className={styles.questionBox}>
-            <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
+            <div className={`${styles.questionItem} ${styles.questionItemSolid}  ${disabledTitle? styles.questionItemDisabled : '' }`}>
               <div className={styles.textBox}>
-                <span className={styles.title}>{props.currentAsker.job_title}</span>
-                <span className={styles.text}>e.g Recruitment Agency</span>
+                <label className={styles.title}>Who’s Asking?</label>
+                <input name={'name-3'} defaultValue={props.currentAsker.job_title} disabled={disabledTitle} placeholder='e.g Recruitment Agency'/>
               </div>
-              <button className={`${styles.iconWrap}`}>
+              <button onClick={(prevState)=>setDisabledTitle(!prevState)} className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
               </button>
             </div>
-            <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
+            <div className={`${styles.questionItem} ${styles.questionItemSolid} ${disabledAuthor? styles.questionItemDisabled : '' }`}>
               <div className={styles.textBox}>
-                <span className={styles.title}>{props.currentAsker.job_author}</span>
-                <span className={styles.text}>e.g Recruitment Agency</span>
+                <label className={styles.title}>What’s it About?</label>
+                <input name={'name-4'} defaultValue={props.currentAsker.job_author} disabled={disabledAuthor} placeholder='e.g Questions for Candidates'/>
               </div>
-              <div className={`${styles.iconWrap}`}>
+              <div onClick={(prevState)=>setDisabledAuthor(!prevState)} className={`${styles.iconWrap}`}>
                 <EditCreateBtn className={styles.editIcon}/>
               </div>
             </div>
