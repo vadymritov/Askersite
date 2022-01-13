@@ -23,7 +23,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
     const [userProfile, setUserProfile] = useState();
     const [askerData, setAskerData] = useState([]);
     const [answerData, setAnswerData] = useState([]);
-
     // const isActive = false
     const settings = {
       dots: true,
@@ -37,10 +36,19 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       autoplaySpeed: 15000,
     };
 
-    console.log('prof', userProfile, userProfile);
+    console.log('prof', answerData,);
+    console.log('tem', data, item);
+
+    useEffect(() => {
+      if (data) {
+        setAnswerData(data.answer_list)
+      }
+    }, [data])
+
 
     const onchange = (e, type) => {
-      e.preventDefault()
+      e.preventDefault();
+      e.stopPropagation();
       console.log('onCli', type);
       if (type === 'front') {
         setActive(false)
@@ -87,38 +95,38 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         })
     };
 
-    const submitRating = async (rating, question_id, answer_id) => {
+    const submitRating = async (e, rating, question_id, answer_id) => {
+      console.log('submitRating', rating, question_id);
+      e.stopPropagation();
+      e.preventDefault();
 
       http.post('videoRating', `user_id=${user_id}&asker_id=${asker_id}&question_id=${question_id}&rating=${rating}&answer_id=${answer_id}`)
         .then(res => res.data)
         .then((res) => {
           console.log('submitRating', res,);
           answerList(asker_id, user_id)
-          // if (res.status === true) {
-          //   setAnswerData(res.answer_list);
-          // }
         })
         .catch((err) => {
           console.log(err);
         })
     };
 
-  const onCopy = (e, type) => {
-    e.preventDefault();
-    if (type === 'name') {
-      copy(`<span>${userProfile?.name}</span>`, {
-        asHtml: true,
-      });
-    } else if (type === 'email') {
-      copy(`<span>${userProfile?.email}</span>`, {
-        asHtml: true,
-      });
-    } else if (type === 'phone') {
-      copy(`<span>${userProfile?.phone}</span>`, {
-        asHtml: true,
-      });
-    }
-  };
+    const onCopy = (e, type) => {
+      e.preventDefault();
+      if (type === 'name') {
+        copy(`<span>${userProfile?.name}</span>`, {
+          asHtml: true,
+        });
+      } else if (type === 'email') {
+        copy(`<span>${userProfile?.email}</span>`, {
+          asHtml: true,
+        });
+      } else if (type === 'phone') {
+        copy(`<span>${userProfile?.phone}</span>`, {
+          asHtml: true,
+        });
+      }
+    };
 
     console.log('CarouselAnswer', data, userProfile, item);
 
@@ -127,155 +135,73 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         <div className={styles.mainContainer}>
           <div className={`${styles.contentContainer}`}>
             <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`} onClick={(e) => onchange(e, 'back')}>
-              <div className={styles.cardContainer}>
-                <div className={styles.logoBox}>
-                  <div className={styles.infoBlockSmall}>
-                    <AllAnswerIcon className={styles.infoIconSmall}/>
-                    <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
+              <div className={`${styles.cutBox}`}>
+                <div className={`${styles.cardContainer}`}>
+                  <div className={styles.logoBox}>
+                    <div className={styles.infoBlockSmall}>
+                      <AllAnswerIcon className={styles.infoIconSmall}/>
+                      <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
+                    </div>
+                    <LogoWhiteViolet className={styles.logo}/>
                   </div>
-                  <LogoWhiteViolet className={styles.logo}/>
-                </div>
-                <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
-                  <Slider {...settings}>
-                    {data?.answer_list?.length > 0
-                      ? data?.answer_list.map((item) => (
-                        <div className={`wth-ans-inner-single-slide slide-watch`}>
-                          <div className={`img-vid ${styles.imgVideo}`}>
-                            {/*<video playsInline autoPlay muted loop>*/}
-                            {/*  <source src={item.answer} type="video/mp4"/>*/}
-                            {/*</video>*/}
-                          </div>
-                          <div className={`cont-watch ${styles.contentStar}`}>
-                            <div className={`star-rate ${styles.starRate}`}>
-                              <span
-                                // className={`material-icons ${
-                                //   item.rating >= 1 ? "star-checked" : ""
-                                // }`}
-                                id="star_r1"
-                                onClick={() =>
-                                  submitRating(1, item.question_id, item.answer_id)
-                                }
-                              >
-                            {item.rating >= 1 ? (
-                              <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
-                              // <img
-                              //   alt=""
-                              //   className="before"
-                              //   src={star_white}
-                              // />
-                            ) : (
-                              <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
-                              // <img
-                              //   alt=""
-                              //   className="before"
-                              //   src={star}
-                              // />
-                            )}
-                          </span>
-                              {/*    <span*/}
-                              {/*      className={`material-icons ${*/}
-                              {/*        item.rating >= 2 ? "star-checked" : ""*/}
-                              {/*      }`}*/}
-                              {/*      id="star_r2"*/}
-                              {/*      onClick={() =>*/}
-                              {/*        submitRating(2, item.question_id, item.answer_id)*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*  {item.rating >= 2 ? (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star_white}*/}
-                              {/*    />*/}
-                              {/*  ) : (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star}*/}
-                              {/*    />*/}
-                              {/*  )}*/}
-                              {/*</span>*/}
-                              {/*    <span*/}
-                              {/*      className={`material-icons ${*/}
-                              {/*        item.rating >= 3 ? "star-checked" : ""*/}
-                              {/*      }`}*/}
-                              {/*      id="star_r3"*/}
-                              {/*      onClick={() =>*/}
-                              {/*        submitRating(3, item.question_id, item.answer_id)*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*  {item.rating >= 3 ? (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star_white}*/}
-                              {/*    />*/}
-                              {/*  ) : (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star}*/}
-                              {/*    />*/}
-                              {/*  )}*/}
-                              {/*</span>*/}
-                              {/*    <span*/}
-                              {/*      className={`material-icons ${*/}
-                              {/*        item.rating >= 4 ? "star-checked" : ""*/}
-                              {/*      }`}*/}
-                              {/*      id="star_r4"*/}
-                              {/*      onClick={() =>*/}
-                              {/*        submitRating(4, item.question_id, item.answer_id)*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*  {item.rating >= 4 ? (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star_white}*/}
-                              {/*    />*/}
-                              {/*  ) : (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star}*/}
-                              {/*    />*/}
-                              {/*  )}*/}
-                              {/*</span>*/}
-                              {/*    <span*/}
-                              {/*      className={`material-icons ${*/}
-                              {/*        item.rating >= 5 ? "star-checked" : ""*/}
-                              {/*      }`}*/}
-                              {/*      id="star_r5"*/}
-                              {/*      onClick={() =>*/}
-                              {/*        submitRating(5, item.question_id, item.answer_id)*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*  {item.rating >= 5 ? (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star_white}*/}
-                              {/*    />*/}
-                              {/*  ) : (*/}
-                              {/*    <img*/}
-                              {/*      alt=""*/}
-                              {/*      className="before"*/}
-                              {/*      src={star}*/}
-                              {/*    />*/}
-                              {/*  )}*/}
-                              {/*</span>*/}
+                  <div className={`screen`}>
+                    <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
+                      <Slider {...settings}>
+                        {answerData?.length > 0
+                          ? answerData.map((item) => (
+                            <div className={`wth-ans-inner-single-slide slide-watch`}>
+                              <div className={`img-vid ${styles.imgVideo}`}>
+                                <video playsInline autoPlay muted loop>
+                                  <source src={item.answer} type="video/mp4"/>
+                                </video>
+                              </div>
+                              <div className={`cont ${styles.contentStar}`}>
+                                <div className={`star-rate ${styles.starsBox}`}>
+                                  <button type='button' className={`material-iconss ${item.rating >= 1 ? "star-checked" : ""} ${styles.iconWrap}`}
+                                          id="star_r1"
+                                          onClick={(e) => submitRating(e, 1, item.question_id, item.answer_id)}>
+                                    {/*{item.rating >= 1 ? (*/}
+                                    <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
+                                  </button>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 2 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 2, item.question_id, item.answer_id)}>
+                                    <StarIcon className={item.rating >= 2 ? styles.starIcon : styles.starIcon__fill}/>
+                                </span>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 3 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 3, item.question_id, item.answer_id)}>
+                                    <StarIcon className={item.rating >= 3 ? styles.starIcon : styles.starIcon__fill}/>
+                                </span>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 4 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 4, item.question_id, item.answer_id)}>
+                                    <StarIcon className={item.rating >= 4 ? styles.starIcon : styles.starIcon__fill}/>
+                                </span>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 5 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 5, item.question_id, item.answer_id)}>
+                                    <StarIcon className={item.rating >= 5 ? styles.starIcon : styles.starIcon__fill}/>
+                                </span>
+
+                                </div>
+                                <p className={styles.questioText}>{item.question}</p>
+                              </div>
                             </div>
-                            <p className={styles.questioText}>{item.question}</p>
-                          </div>
-                        </div>
-                      ))
-                      : null}
-                  </Slider>
+                          ))
+                          : null}
+                      </Slider>
+                    </div>
+                  </div>
                 </div>
+                {/*<div className={styles.rotate}>*/}
+                {/*  <div className="triangle-violet"/>*/}
+                {/*</div>*/}
               </div>
-              {/*<div className={styles.rotate}>*/}
-              {/*  <div className="triangle-violet"/>*/}
-              {/*</div>*/}
             </div>
             {/*</div>*/}
 
@@ -333,14 +259,8 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                 </div>
               </div>
             </div>
-            {/*<div className={styles.rotate}>*/}
-            {/*  <div className="triangle-violet"/>*/}
-            {/*</div>*/}
           </div>
-          {/*<div className={styles.rotate}>*/}
-          {/*  <div className="triangle-violet"/>*/}
-          {/*</div>*/}
-          {/*<div className="card-shadow"/>*/}
+
         </div>
       </>
     )

@@ -57,13 +57,14 @@
 .logoBox {
   position: absolute;
   z-index: 2;
-  top: 12px;
+  top: 0x;
+  height: 50px;
   display: flex;
   width: 315px;
   max-width: 100%;
   align-items: center;
   justify-content: center;
-
+  background-image: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.56) 74%);
 
   .logo {
     height: 29px;
@@ -139,7 +140,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 600px;
   //height: 850px;
   width: 100%;
@@ -162,9 +163,8 @@
   width: 338px;
   height: 618px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-
   overflow: hidden;
   z-index: 1;
   max-width: 100%;
@@ -215,25 +215,30 @@
 
 }
 
+.cutBox {
+  width: calc(100% - 4px);
+  position: relative;
+  height: calc(100% - 21px);
+  overflow: hidden;
+  top: 2px;
+  z-index: 10;
+  border-radius: 21px;
+}
+
 .cardContainer {
   display: flex;
   flex-direction: column;
   //align-items: center;
   justify-content: space-between;
   height: 100% !important;
-  position: relative;
+  //position: relative;
   top: 0px;
-  left: 3px;
+  left: 0;
+  //left: 3px;
   bottom: 0;
   right: 0;
   width: 100%;
-  //height: 100%;
-  //background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
-  //background-size: contain;
-  //background-repeat: no-repeat;
-  //@include media-max(1400) {
-  //  height: calc(100% - 21px);
-  //}
+
   @include media-max($xs-break) {
     left: 1px;
   }
@@ -283,9 +288,9 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
+  //background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
+  //background-size: contain;
+  //background-repeat: no-repeat;
 
 
   &:before {
@@ -317,8 +322,10 @@
     height: 96%;
     border-radius: 27px;
     backdrop-filter: blur(15px);
+    transition: $transition;
     &__none {
       display: none;
+      transition: $transition;
     }
   }
 
@@ -589,45 +596,63 @@
   }
 }
 
-.starIcon {
-  width: 16px;
-  height: 16px;
-  fill: $white;
-  margin-right: 10px;
-
-  &:last-of-type {
-    margin-right: 0;
+.iconWrap {
+  @include btn-reset();
+  background: transparent;
+  &:hover {
+    opacity: .8;
+    transition: $transition;
+    cursor: pointer;
   }
 
+}
+.starIcon {
+  width: 20px;
+  height: 20px;
+  fill: $white;
+  margin: 0 6px;
+  transition: $transition;
+  //&:last-of-type {
+  //  margin-right: 0;
+  //}
+
   &__fill {
-    fill: rgba(173, 184, 250, 0.5)
+    width: 20px;
+    height: 20px;
+    margin: 0 6px;
+    fill: rgba(173, 184, 250, 0.5);
+    transition: $transition;
   }
 }
 .starIconBack {
   width: 20px;
   height: 20px;
   fill: $white;
-  margin-right: 12px;
+  margin: 0 6px;
 
   &:last-of-type {
     margin-right: 0;
   }
 
   &__fill {
+    width: 20px;
+    height: 20px;
+    margin: 0 6px;
     fill: rgba(173, 184, 250, 0.5)
   }
 }
 
 .contentStar {
   position: absolute;
-  bottom: 43px;
+  bottom: 33px;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   color: #ffffff;
   text-align: center;
-  padding: 15px 15px;
+  padding: 15px 15px 25px;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.71) 54%, transparent);
 
   .starRate {
     display: inline-flex;
@@ -638,10 +663,12 @@
     //svg {
     //  width: 16px;
     //  height: 16px;
-    //  fill: $white
+    //  fill: $white;
+    //  transition: $transition;
     //
     //  &__fill {
-    //    fill: rgba(173, 184, 250, 0.5)
+    //    fill: rgba(173, 184, 250, 0.5);
+    //    transition: $transition;
     //  }
     //}
 
@@ -680,13 +707,12 @@
     font-size: 18px;
     line-height: 1.2;
     color: $white;
-    opacity: .8;
+    //opacity: .8;
   }
 }
 
 .imgVideo {
-
-  height: 460px;
+  //height: 460px;
 
   video {
     width: 100%;
@@ -695,87 +721,83 @@
     pointer-events: none;
     max-width: 100%;
   }
-
 }
 
 
-
-
-
-
-.wth-ans-outer-single-slide {
-  &.slick-current {
-    .wth-ans-inner-slider {
-      .slick-dots {
-        li {
-          &.slick-active {
-            button {
-              &:after {
-                // width: 100%;
-                animation-name: statusProgress;
-                animation-duration: 15s;
-                animation-fill-mode: both;
-                animation-iteration-count: 1;
-                animation-timing-function: linear;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.wthInnerSlider {
-  position: relative;
-  height: 100%;
-  .slick-dots {
-    li {
-      &.slick-active {
-        button {
-          &:after {
-            // width: 100%;
-            animation-name: statusProgress;
-            animation-duration: 15s;
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-            animation-timing-function: linear;
-          }
-        }
-      }
-    }
-  }
-}
-
-.promotionVideoSlide {
-  .slick-dots {
-    display: flex !important;
-    li {
-      &.slick-active {
-        button {
-          &:after {
-            // width: 100%;
-            animation-name: statusProgress;
-            animation-duration: 15s;
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-            animation-timing-function: linear;
-          }
-        }
-      }
-    }
-  }
-}
-@keyframes statusProgress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.wth-ans-inner-single-slide {
-  //position: relative;
-  height: 100%;
-}
+//
+//.wth-ans-outer-single-slide {
+//  &.slick-current {
+//    .wth-ans-inner-slider {
+//      .slick-dots {
+//        li {
+//          &.slick-active {
+//            button {
+//              &:after {
+//                // width: 100%;
+//                animation-name: statusProgress;
+//                animation-duration: 15s;
+//                animation-fill-mode: both;
+//                animation-iteration-count: 1;
+//                animation-timing-function: linear;
+//              }
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.wthInnerSlider {
+//  position: relative;
+//  height: 100%;
+//  .slick-dots {
+//    li {
+//      &.slick-active {
+//        button {
+//          &:after {
+//            // width: 100%;
+//            animation-name: statusProgress;
+//            animation-duration: 15s;
+//            animation-fill-mode: both;
+//            animation-iteration-count: 1;
+//            animation-timing-function: linear;
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.promotionVideoSlide {
+//  .slick-dots {
+//    display: flex !important;
+//    li {
+//      &.slick-active {
+//        button {
+//          &:after {
+//            // width: 100%;
+//            animation-name: statusProgress;
+//            animation-duration: 15s;
+//            animation-fill-mode: both;
+//            animation-iteration-count: 1;
+//            animation-timing-function: linear;
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//@keyframes statusProgress {
+//  0% {
+//    width: 0%;
+//  }
+//  100% {
+//    width: 100%;
+//  }
+//}
+//
+//.wth-ans-inner-single-slide {
+//  //position: relative;
+//  height: 100%;
+//}
