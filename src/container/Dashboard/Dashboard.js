@@ -109,8 +109,8 @@ const Dashboard = (props) => {
 
             <div className={styles.row}>
               <div className={styles.rowAnswers}>
-                {
-                  arrAsker.map((item, index) => {
+                {arrAsker &&
+                  arrAsker?.map((item, index) => {
                     return <div key={index} className={styles.cardWrap}>
                       <div className={styles.answersContainer}>
                         <DashbordLogoIcon className={styles.createLogo}/>

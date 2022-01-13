@@ -9,8 +9,10 @@ import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {NavLink} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import LinePhone from "../../components/UI/icons/LinePhone";
+import {http} from "../../http/http";
 
-const Verification = ({...props}) => {
+const Verification = ({newUser,...props}) => {
+  // console.log('props',props)
   const {register, handleSubmit, formState: {errors}} = useForm();
   const [verifyCode, setVerifyCode] = useState("");
   const [focusInput, setFocusInput] = useState(false);
@@ -20,8 +22,22 @@ const Verification = ({...props}) => {
     // encodeURIComponent()
   };
   const onSendData = (data) => {
+    const form = new FormData();
+    form.append('country_code', newUser.country_code);
+    form.append('verification_code', verifyCode);
+    form.append('user_id', newUser.id);
+    form.append('phone', newUser.phone);
+
+    http.post('ApiVerifyOtp', form).then((res) => {
+      // console.log(res)
+      // console.log('verificationStatusTrue',res.data.status === true)
+      if (res.data.status === true) {
+        props.nextStep(data)
+      }
+
+    });
     console.log('onSendDat', data);
-    props.nextStep(data)
+    // props.nextStep(data)
   };
 
   const prevStep = () => {

@@ -13,7 +13,7 @@ import {http} from '../../http/http'
 import SelectPickerPhone from "../../components/UI/SelectPickerPhone/SelectPickerPhone";
 
 
-const CreateAccount = ({...props}) => {
+const CreateAccount = ({setNewUser,...props}) => {
   const navigate = useNavigate();
   const {register, handleSubmit, formState: {errors}} = useForm();
 
@@ -27,8 +27,13 @@ const CreateAccount = ({...props}) => {
     form.append('phone', data.phone);
     form.append('country_code', countryCodeRef.current);
 
-    http.post('APIsendsms', form).then(() => {
-      props.nextStep(data)
+    http.post('APIsendsms', form).then(async (res) => {
+        const {user} = res.data;
+      //засетить нового юзера.
+        await setNewUser(user)
+        props.nextStep(data)
+
+
     });
   };
 

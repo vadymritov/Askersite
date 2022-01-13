@@ -9,6 +9,8 @@ const SignUp = (props) => {
   const [step, setStep] = useState('createAccount');
   const [path, setPath] = useState(['createAccount', 'verification', 'password']);
   const [registration, setRegistration] = useState({});
+  const [newUser,setNewUser] = useState('')
+  // console.log('newUser',newUser)
 
   const onSubmit = (data) => {
     console.log('onSubmit', data);
@@ -32,11 +34,11 @@ const SignUp = (props) => {
   const renderRegistrationStep = () => {
     switch (step) {
       case 'createAccount':
-        return <CreateAccount nextStep={nextStep}/>;
+        return <CreateAccount setNewUser={setNewUser} nextStep={nextStep}/>;
       case 'verification':
-        return <Verification nextStep={nextStep} onStepChange={prevStep}/>;
+        return <Verification  newUser={newUser} nextStep={nextStep} onStepChange={prevStep}/>;
       case 'password':
-        return <CreatePassword nextStep={nextStep} onStepChange={prevStep}/>;
+        return <CreatePassword newUser={newUser} nextStep={nextStep} onStepChange={prevStep}/>;
 
       default:
         return null

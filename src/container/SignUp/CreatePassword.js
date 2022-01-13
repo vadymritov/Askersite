@@ -7,17 +7,21 @@ import Input from "../../components/UI/Input/Input";
 import {regexEmail} from "../../utils/helpers";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
 import LockIcon from "../../components/UI/icons/LockIcon";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import LinePhone from "../../components/UI/icons/LinePhone";
 import {useForm} from "react-hook-form";
+import {http} from "../../http/http";
 
 const CreatePassword = (props) => {
+  console.log('createPassword',props)
+  let navigate = useNavigate();
   const {register, handleSubmit, formState: {errors}} = useForm();
   const [verifyCode, setVerifyCode] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [focusInput, setFocusInput] = useState(false);
-  const [userName,setUserName]=useState();
-  const [password,setPassword]=useState();
+
 
 
   const onSubmit = (data) => {
@@ -25,9 +29,21 @@ const CreatePassword = (props) => {
     // encodeURIComponent()
   };
   const onSendData = (data) => {
-    // http.post('registerEmail',)
-    console.log('onSendDat', data);
-    props.nextStep(data)
+    const form = new FormData();
+    form.append('email',data.email);
+    form.append('password',data.password);
+    form.append('user_id', props.newUser.id);
+    // form.append('phone', newUser.phone);
+
+    http.post('registerEmail', form).then((res) => {
+      // console.log(res)
+      // console.log('loginEmailStatus',res.data.status === true)
+      if (res.data.status === true) {
+       navigate('/log-in')
+      }
+
+    });
+    // props.nextStep(data)
   };
 
   const prevStep = () => {
@@ -49,23 +65,38 @@ const CreatePassword = (props) => {
         <div className={styles.inputBox}>
           <Input
             name='email'
+            // onChange={(e)=>{
+            //   setUserEmail(e.target.value)
+            //   // console.log('passwordSend',userEmail)
+            // }}
             type='email'
             errors={errors}
             placeholder='Email'
+
             register={register("email", {required: true, maxLength: 128, pattern: regexEmail})}
             addPadding={true}
           ><EmailIcon className={styles.emailIcon}/></Input>
           <Input
             name='password'
+            // onChange={(e)=>{
+            //   setUserPassword(e.target.value)
+            //   // console.log('passwordSend',userPassword)
+            // }}
             type='password'
             errors={errors}
+            register={register("password", {required: true,minLength: {
+                value: 5,
+                message: "min length is 5"
+              }})}
             placeholder='Password'
           ><LockIcon className={styles.lockIcon}/></Input>
         </div>
         <div className={`${styles.text} ${styles.paddingTop}`}>Already have an account?</div>
         <NavLink to={'/log-in'} className={`${styles.title} ${styles.greenText}`}>SIGN IN</NavLink>
         <div className={`${styles.buttonBox}`}>
-          <button type="button" className={`continue-btn`} onClick={onSendData}>
+          <button type="submit" className={`continue-btn`}
+                  // onClick={onSendData}
+          >
             <span>Continue</span>
             <ArrowBtn className={styles.arrowBtn}/>
           </button>
