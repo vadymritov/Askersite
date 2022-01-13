@@ -26,7 +26,6 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  //overflow: hidden;
 }
 
 .infoBlock {
@@ -142,9 +141,7 @@
   justify-content: center;
   align-items: flex-start;
   height: 600px;
-  //height: 850px;
   width: 100%;
-  //overflow: hidden;
   @include media-max($lg-break) {
     align-items: center;
     margin-bottom: 60px;
@@ -178,8 +175,6 @@
   background-size: cover;
   backdrop-filter: blur(4px);
 
-  //transform: rotateY(0deg);
-  //transition: transform 2s 0s;
   @include media-max(1440) {
     width: 311px;
     height: 569px;
@@ -221,7 +216,6 @@
   left: 0;
   width: 100%;
   height: 76%;
-  //height: calc(70% + 30px);
 }
 
 .cutBox {
@@ -250,10 +244,8 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  //align-items: center;
   justify-content: space-between;
   height: 100% !important;
-  //position: relative;
   top: 0px;
   left: 0;
   //left: 3px;
@@ -310,10 +302,6 @@
   right: 0;
   width: 100%;
   height: 100%;
-  //background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
-  //background-size: contain;
-  //background-repeat: no-repeat;
-
 
   &:before {
     content: "";
@@ -330,8 +318,6 @@
     background-size: 100% 100%;
 
   }
-
-  //}
 
   .blur {
     position: absolute;
@@ -689,17 +675,10 @@
   padding: 15px 45px 48px;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.71) 54%, transparent);
   @include media-max(1440) {
-    //bottom: 10px;
-    //bottom: 33px;
-    padding: 15px 15px 25px;
+    padding: 15px 15px 35px;
+  }@include media-max($lg-break) {
+    //padding: 15px 15px 16px;
   }
-  //@include media-max($md-break) {
-  //  //bottom: 33px;
-  //  //padding: 15px 15px 25px;
-  //}
-  //@include media-max($xs-break) {
-  //  bottom: 0;
-  //}
 
   .starRate {
     display: inline-flex;
@@ -749,13 +728,10 @@
     @include media-max($xs-break) {
       font-size: 15px;
     }
-    //opacity: .8;
   }
 }
 
 .imgVideo {
-  //height: 460px;
-
   video {
     width: 100%;
     height: 100%;
@@ -764,82 +740,3 @@
     max-width: 100%;
   }
 }
-
-
-//
-//.wth-ans-outer-single-slide {
-//  &.slick-current {
-//    .wth-ans-inner-slider {
-//      .slick-dots {
-//        li {
-//          &.slick-active {
-//            button {
-//              &:after {
-//                // width: 100%;
-//                animation-name: statusProgress;
-//                animation-duration: 15s;
-//                animation-fill-mode: both;
-//                animation-iteration-count: 1;
-//                animation-timing-function: linear;
-//              }
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//.wthInnerSlider {
-//  position: relative;
-//  height: 100%;
-//  .slick-dots {
-//    li {
-//      &.slick-active {
-//        button {
-//          &:after {
-//            // width: 100%;
-//            animation-name: statusProgress;
-//            animation-duration: 15s;
-//            animation-fill-mode: both;
-//            animation-iteration-count: 1;
-//            animation-timing-function: linear;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//.promotionVideoSlide {
-//  .slick-dots {
-//    display: flex !important;
-//    li {
-//      &.slick-active {
-//        button {
-//          &:after {
-//            // width: 100%;
-//            animation-name: statusProgress;
-//            animation-duration: 15s;
-//            animation-fill-mode: both;
-//            animation-iteration-count: 1;
-//            animation-timing-function: linear;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//@keyframes statusProgress {
-//  0% {
-//    width: 0%;
-//  }
-//  100% {
-//    width: 100%;
-//  }
-//}
-//
-//.wth-ans-inner-single-slide {
-//  //position: relative;
-//  height: 100%;
-//}

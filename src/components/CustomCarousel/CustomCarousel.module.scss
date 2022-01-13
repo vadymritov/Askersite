@@ -3,9 +3,7 @@
 
 .customCarousel {
   margin: 0 -10px;
-  //margin: 0;
   position: relative;
-  //width: 100%;
   width: calc(100% + 20px);
   overflow: hidden;
   display: flex;
@@ -15,9 +13,6 @@
   }
 }
 
-.arrows {
-  //position: relative;
-}
 
 .arrowButton {
   display: flex;
@@ -26,8 +21,6 @@
   bottom: 0;
   z-index: 1;
   outline: none;
-  //height: fit-content;
-
   right: 0;
   width: 9em;
   top: 0;
@@ -101,12 +94,10 @@
 
 .slidersWrapper {
   width: calc(100% - 18em);
-  //width: calc(100% - 80px);
   max-width: 1200px;
   margin: 0 auto 10px auto;
   flex-shrink: 0;
   overflow: visible;
-  //overflow: hidden;
   @include media-max($lg-break) {
     width: calc(100% - 15em);
   }
@@ -129,40 +120,6 @@
 }
 
 .slide {
-  //width: 100%;
   flex-shrink: 0;
   width: 100%;
-  //width: calc(100% - 23em);
-  //margin: 0 2em;
-  //min-width: 317px;
-  //@include media-max(1440) {
-  //  width: calc(100% - 21em);
-  //  margin: 0 1em;
-  //  //min-width: 300px;
-  //}
-  //@include media-max($lg-break) {
-  //  width: calc(100% - 17em);
-  //  margin: 0 1em;
-  //  min-width: 277px;
-  //}
-  //@include media-max(1040) {
-  //  width: calc(100% - 16em);
-  //  margin: 0 1em;
-  //  min-width: 270px;
-  //}
-  //@include media-max($md-break) {
-  //  width: calc(100% - 2em);
-  //  margin: 0 1em;
-  //  min-width: 270px;
-  //}
-  //@include media-max($sm-break) {
-  //  width: calc(100% - 21em);
-  //  margin: 0 2em;
-  //  min-width: 277px;
-  //}
-  //@include media-max($xs-break) {
-  //  width: calc(100% - 2em);
-  //  margin: 0 1em;
-  //  min-width: 270px;
-  //}
 }
