@@ -46,7 +46,6 @@ const Verification = ({newUser,...props}) => {
   };
 
   console.log('hhh', focusInput,  verifyCode.length > 0, verifyCode.length);
-
   return (
     <>
       <div className={`fade-in ${styles.content}`}>
@@ -72,7 +71,7 @@ const Verification = ({newUser,...props}) => {
                   console.log('blue', e.target.value);
                 }}
                 onFocus={(e) => {
-                  setFocusInput(true)
+                    setFocusInput(true)
                 }}
                 onChange={(e) => {
                     setVerifyCode(e.target.value)
@@ -82,10 +81,11 @@ const Verification = ({newUser,...props}) => {
                 }}
               />
               <div className={`otp-bg ${styles.codeItems}`}>
-                <span className={focusInput || (!focusInput && verifyCode.length > 0) ? '' :  styles.opacity}/>
-                <span className={(focusInput && verifyCode.length >= 1) || (!focusInput && verifyCode.length > 1) ? '' :  styles.opacity}/>
-                <span className={(focusInput && verifyCode.length >= 2) || (!focusInput && verifyCode.length > 2) ? '' :  styles.opacity}/>
-                <span className={(focusInput && verifyCode.length >= 3) || (!focusInput && verifyCode.length > 3) ? '' :  styles.opacity}/>
+                {/*<span className={(focusInput && verifyCode.length === 0) || (!focusInput && verifyCode.length === 0) ? '' :  styles.opacity}/>*/}
+                <span className={focusInput || (!focusInput && verifyCode.length > 0) ? '' :  styles.opacity}>{verifyCode[0]}</span>
+                <span className={(focusInput && verifyCode.length >= 1) || (!focusInput && verifyCode.length > 1) ? '' :  styles.opacity}>{verifyCode[1]}</span>
+                <span className={(focusInput && verifyCode.length >= 2) || (!focusInput && verifyCode.length > 2) ? '' :  styles.opacity}>{verifyCode[2]}</span>
+                <span className={(focusInput && verifyCode.length >= 3) || (!focusInput && verifyCode.length > 3) ? '' :  styles.opacity}>{verifyCode[3]}</span>
               </div>
             </div>
           </div>

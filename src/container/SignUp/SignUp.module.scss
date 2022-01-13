@@ -82,17 +82,18 @@
     input {
       position: absolute;
       left: 0;
+      color:transparent;
       top: 0;
       bottom: 0;
       width: calc(100% + 85px);
       height: 100%;
-      color: $darkText;
+      //color: $darkText;
       font-size: 25px;
       font-weight: bold;
       z-index: 1;
-      letter-spacing: 70px;
+      //letter-spacing: 70px;
       padding: 0 24px;
-      caret-color: #5468ff;
+      caret-color: transparent;
       background-color: transparent!important;
       border: none;
       font-family: "Roboto", sans-serif;
@@ -110,12 +111,21 @@
       justify-content: space-between;
 
       span {
+        caret-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 65px;
         height: 65px;
         background-color: #ffffff;
         border-radius: 15px;
         box-shadow: 0px 12px 19px rgb(60 128 209 / 8%);
-
+        color: $darkText;
+        font-size: 25px;
+        font-weight: bold;
+        border: none;
+        font-family: "Roboto", sans-serif;
+        //z-index: 1;
         &.opacity{
           opacity: .3;
         }
