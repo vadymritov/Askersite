@@ -9,7 +9,7 @@
   width: calc(100% + 20px);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   @include media-max($md-break) {
     width: 100%;
   }
