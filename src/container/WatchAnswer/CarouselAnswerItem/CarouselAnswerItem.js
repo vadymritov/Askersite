@@ -36,8 +36,8 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       autoplaySpeed: 15000,
     };
 
-    console.log('prof', answerData,);
-    console.log('tem', data, item);
+    // console.log('prof', answerData,);
+    // console.log('tem', data, item);
 
     useEffect(() => {
       if (data) {
@@ -55,8 +55,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       } else {
         setActive(true)
       }
-
-      // e.stopPropagation()
     }
 
     useEffect(() => {
@@ -65,15 +63,13 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         setUserProfile(user);
       }
 
-      // askerDeatils(asker_id, user_id);
-      // answerList(asker_id, user_id);
     }, [localStorage]);
 
     const askerDeatils = async (asker_id, user_id) => {
       http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
         .then(res => res.data)
         .then((res) => {
-          console.log('resOption', res, res.data.asker_detail[0]);
+          // console.log('resOption', res, res.data.asker_detail[0]);
           setAskerData(res.data.asker_detail[0]);
         })
         .catch((err) => {
@@ -85,7 +81,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       http.post('answerList', `candidate_user_id=${user_id}&asker_id=${asker_id}`)
         .then(res => res.data)
         .then((res) => {
-          console.log('answerList', res, res.answer_list);
           if (res.status === true) {
             setAnswerData(res.answer_list);
           }
@@ -96,7 +91,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
     };
 
     const submitRating = async (e, rating, question_id, answer_id) => {
-      console.log('submitRating', rating, question_id);
       e.stopPropagation();
       e.preventDefault();
 
@@ -129,6 +123,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
     };
 
     console.log('CarouselAnswer', data, userProfile, item);
+    console.log('answerData', answerData);
 
     return (
       <>
@@ -150,7 +145,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                         <Slider {...settings}>
                           {answerData?.length > 0
                             ? answerData.map((item) => (
-                              <div className={`wth-ans-inner-single-slide slide-watch`}>
+                              <div key={`slide-${item.question_id}`} className={`wth-ans-inner-single-slide slide-watch`}>
                                 <div className={`img-vid ${styles.imgVideo}`}>
                                   <video playsInline autoPlay muted loop>
                                     <source src={item.answer} type="video/mp4"/>

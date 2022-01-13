@@ -30,7 +30,7 @@ const WatchAnswer = (props) => {
         cardRef?.current?.classList.add("start-rotate")
       }, 1);
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer)
     }, []);
 
     useEffect(() => {
@@ -54,8 +54,38 @@ const WatchAnswer = (props) => {
           console.log(err);
         })
     };
+//
+//  const askerDeatilsAll = async (user_id) => {
+//       http.post('viewAnswers', `user_id=${user_id}`)
+//         .then(res => res.data)
+//         .then((res) => {
+//           console.log('skerDeatilsAll', res, res.data.asker_detail[0]);
+//           // setAskerData(res.data.asker_detail[0]);
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         })
+//     };
+//
+// const askerDeatilsAsker = async (asker_id) => {
+//       http.post('viewAnswers', `asker_id=${asker_id}`)
+//         .then(res => res.data)
+//         .then((res) => {
+//           console.log('skerDeatilsAll', res, res.data.asker_detail[0]);
+//           // setAskerData(res.data.asker_detail[0]);
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         })
+//     };
+//
+//   useEffect(async () => {
+//     askerDeatilsAll(user_id)
+//     askerDeatilsAsker(asker_id)
+//   }, []);
 
   const answerList = async (asker_id, user_id) => {
+    // http.post('answerList', `asker_id=${asker_id}`)
     http.post('answerList', `candidate_user_id=${user_id}&asker_id=${asker_id}`)
       .then(res => res.data)
       .then((res) => {

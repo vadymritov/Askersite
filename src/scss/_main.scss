@@ -1033,7 +1033,6 @@ h2 {
   //top: 1px;
   border-radius: 20px;
   height: 100%;
-  //height: calc(100% - 29px);
   @include media-max(1440) {
     width: 311px;
     top: 0;
@@ -1041,7 +1040,6 @@ h2 {
   }
   @include media-max($lg-break) {
     width: 244px;
-    //height: calc(100% - 35px);
   }
   @include media-max($xs-break) {
     width: 200px;

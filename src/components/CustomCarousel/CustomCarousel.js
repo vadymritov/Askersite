@@ -41,7 +41,7 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
     }
   }, [data])
 
-  console.log('dataCar', data, slides);
+  // console.log('dataCar', data, slides);
 
   const Prev = (e) => {
     e.preventDefault();
@@ -156,7 +156,7 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   };
 
   const renderItems = (index, item) => {
-    console.log('item', item);
+    // console.log('item', item);
     if (type === 'watchAnswer') {
       return <CarouselAnswerItem key={'carousel-' + index} state={state} data={data} item={item}/>
     }
