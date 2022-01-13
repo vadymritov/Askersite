@@ -13,27 +13,31 @@ import Logo from "../../../components/UI/icons/Logo";
 import {ReactComponent as LogoWhiteViolet} from '../../../image/svg/LogoWhateViolet.svg';
 import {ReactComponent as StarIcon} from "../../../image/svg/StarIcon.svg";
 import Slider from "react-slick";
+import StarSvg from "../../../components/UI/icons/StarSvg";
+import copy from "copy-html-to-clipboard";
 
 const CarouselAnswerItem = ({state, item, data, ...props}) => {
     const [isActive, setActive] = useState(false);
     const location = useLocation();
     const {asker_id, user_id} = location?.state;
-    const [userProfile, setUserProfile] = useState([]);
+    const [userProfile, setUserProfile] = useState();
     const [askerData, setAskerData] = useState([]);
     const [answerData, setAnswerData] = useState([]);
 
     // const isActive = false
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    vertical: true,
-    autoplay: true,
-    autoplaySpeed: 15000,
-  };
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      vertical: true,
+      autoplay: true,
+      autoplaySpeed: 15000,
+    };
+
+    console.log('prof', userProfile, userProfile);
 
     const onchange = (e, type) => {
       e.preventDefault()
@@ -48,14 +52,14 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
     }
 
     useEffect(() => {
-      const user = localStorage.getItem("User");
+      const user = JSON.parse(localStorage.getItem("User"));
       if (user) {
         setUserProfile(user);
       }
 
       // askerDeatils(asker_id, user_id);
       // answerList(asker_id, user_id);
-    }, []);
+    }, [localStorage]);
 
     const askerDeatils = async (asker_id, user_id) => {
       http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
@@ -83,20 +87,37 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         })
     };
 
-  const submitRating = async (rating, question_id, answer_id) => {
+    const submitRating = async (rating, question_id, answer_id) => {
 
-    http.post('videoRating', `user_id=${user_id}&asker_id=${asker_id}&question_id=${question_id}&rating=${rating}&answer_id=${answer_id}`)
-      .then(res => res.data)
-      .then((res) => {
-        console.log('submitRating', res, );
-        answerList(asker_id, user_id)
-        // if (res.status === true) {
-        //   setAnswerData(res.answer_list);
-        // }
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      http.post('videoRating', `user_id=${user_id}&asker_id=${asker_id}&question_id=${question_id}&rating=${rating}&answer_id=${answer_id}`)
+        .then(res => res.data)
+        .then((res) => {
+          console.log('submitRating', res,);
+          answerList(asker_id, user_id)
+          // if (res.status === true) {
+          //   setAnswerData(res.answer_list);
+          // }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    };
+
+  const onCopy = (e, type) => {
+    e.preventDefault();
+    if (type === 'name') {
+      copy(`<span>${userProfile?.name}</span>`, {
+        asHtml: true,
+      });
+    } else if (type === 'email') {
+      copy(`<span>${userProfile?.email}</span>`, {
+        asHtml: true,
+      });
+    } else if (type === 'phone') {
+      copy(`<span>${userProfile?.phone}</span>`, {
+        asHtml: true,
+      });
+    }
   };
 
     console.log('CarouselAnswer', data, userProfile, item);
@@ -105,7 +126,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       <>
         <div className={styles.mainContainer}>
           <div className={`${styles.contentContainer}`}>
-            <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrap}`} onClick={(e) => onchange(e, 'front')}>
+            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`} onClick={(e) => onchange(e, 'back')}>
               <div className={styles.cardContainer}>
                 <div className={styles.logoBox}>
                   <div className={styles.infoBlockSmall}>
@@ -114,27 +135,27 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                   </div>
                   <LogoWhiteViolet className={styles.logo}/>
                 </div>
-                <div className="wth-ans-inner-slider promotionVideoSlide">
+                <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
                   <Slider {...settings}>
                     {data?.answer_list?.length > 0
                       ? data?.answer_list.map((item) => (
-                        <div className="wth-ans-inner-single-slide">
+                        <div className={`wth-ans-inner-single-slide slide-watch`}>
                           <div className={`img-vid ${styles.imgVideo}`}>
-                            <video playsInline autoPlay muted loop>
-                              <source src={item.answer} type="video/mp4"/>
-                            </video>
+                            {/*<video playsInline autoPlay muted loop>*/}
+                            {/*  <source src={item.answer} type="video/mp4"/>*/}
+                            {/*</video>*/}
                           </div>
                           <div className={`cont-watch ${styles.contentStar}`}>
                             <div className={`star-rate ${styles.starRate}`}>
-                          <span
-                            className={`material-icons ${
-                              item.rating >= 1 ? "star-checked" : ""
-                            }`}
-                            id="star_r1"
-                            onClick={() =>
-                              submitRating(1, item.question_id, item.answer_id)
-                            }
-                          >
+                              <span
+                                // className={`material-icons ${
+                                //   item.rating >= 1 ? "star-checked" : ""
+                                // }`}
+                                id="star_r1"
+                                onClick={() =>
+                                  submitRating(1, item.question_id, item.answer_id)
+                                }
+                              >
                             {item.rating >= 1 ? (
                               <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
                               // <img
@@ -151,100 +172,100 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                               // />
                             )}
                           </span>
-                          {/*    <span*/}
-                          {/*      className={`material-icons ${*/}
-                          {/*        item.rating >= 2 ? "star-checked" : ""*/}
-                          {/*      }`}*/}
-                          {/*      id="star_r2"*/}
-                          {/*      onClick={() =>*/}
-                          {/*        submitRating(2, item.question_id, item.answer_id)*/}
-                          {/*      }*/}
-                          {/*    >*/}
-                          {/*  {item.rating >= 2 ? (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star_white}*/}
-                          {/*    />*/}
-                          {/*  ) : (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star}*/}
-                          {/*    />*/}
-                          {/*  )}*/}
-                          {/*</span>*/}
-                          {/*    <span*/}
-                          {/*      className={`material-icons ${*/}
-                          {/*        item.rating >= 3 ? "star-checked" : ""*/}
-                          {/*      }`}*/}
-                          {/*      id="star_r3"*/}
-                          {/*      onClick={() =>*/}
-                          {/*        submitRating(3, item.question_id, item.answer_id)*/}
-                          {/*      }*/}
-                          {/*    >*/}
-                          {/*  {item.rating >= 3 ? (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star_white}*/}
-                          {/*    />*/}
-                          {/*  ) : (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star}*/}
-                          {/*    />*/}
-                          {/*  )}*/}
-                          {/*</span>*/}
-                          {/*    <span*/}
-                          {/*      className={`material-icons ${*/}
-                          {/*        item.rating >= 4 ? "star-checked" : ""*/}
-                          {/*      }`}*/}
-                          {/*      id="star_r4"*/}
-                          {/*      onClick={() =>*/}
-                          {/*        submitRating(4, item.question_id, item.answer_id)*/}
-                          {/*      }*/}
-                          {/*    >*/}
-                          {/*  {item.rating >= 4 ? (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star_white}*/}
-                          {/*    />*/}
-                          {/*  ) : (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star}*/}
-                          {/*    />*/}
-                          {/*  )}*/}
-                          {/*</span>*/}
-                          {/*    <span*/}
-                          {/*      className={`material-icons ${*/}
-                          {/*        item.rating >= 5 ? "star-checked" : ""*/}
-                          {/*      }`}*/}
-                          {/*      id="star_r5"*/}
-                          {/*      onClick={() =>*/}
-                          {/*        submitRating(5, item.question_id, item.answer_id)*/}
-                          {/*      }*/}
-                          {/*    >*/}
-                          {/*  {item.rating >= 5 ? (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star_white}*/}
-                          {/*    />*/}
-                          {/*  ) : (*/}
-                          {/*    <img*/}
-                          {/*      alt=""*/}
-                          {/*      className="before"*/}
-                          {/*      src={star}*/}
-                          {/*    />*/}
-                          {/*  )}*/}
-                          {/*</span>*/}
+                              {/*    <span*/}
+                              {/*      className={`material-icons ${*/}
+                              {/*        item.rating >= 2 ? "star-checked" : ""*/}
+                              {/*      }`}*/}
+                              {/*      id="star_r2"*/}
+                              {/*      onClick={() =>*/}
+                              {/*        submitRating(2, item.question_id, item.answer_id)*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*  {item.rating >= 2 ? (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star_white}*/}
+                              {/*    />*/}
+                              {/*  ) : (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star}*/}
+                              {/*    />*/}
+                              {/*  )}*/}
+                              {/*</span>*/}
+                              {/*    <span*/}
+                              {/*      className={`material-icons ${*/}
+                              {/*        item.rating >= 3 ? "star-checked" : ""*/}
+                              {/*      }`}*/}
+                              {/*      id="star_r3"*/}
+                              {/*      onClick={() =>*/}
+                              {/*        submitRating(3, item.question_id, item.answer_id)*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*  {item.rating >= 3 ? (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star_white}*/}
+                              {/*    />*/}
+                              {/*  ) : (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star}*/}
+                              {/*    />*/}
+                              {/*  )}*/}
+                              {/*</span>*/}
+                              {/*    <span*/}
+                              {/*      className={`material-icons ${*/}
+                              {/*        item.rating >= 4 ? "star-checked" : ""*/}
+                              {/*      }`}*/}
+                              {/*      id="star_r4"*/}
+                              {/*      onClick={() =>*/}
+                              {/*        submitRating(4, item.question_id, item.answer_id)*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*  {item.rating >= 4 ? (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star_white}*/}
+                              {/*    />*/}
+                              {/*  ) : (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star}*/}
+                              {/*    />*/}
+                              {/*  )}*/}
+                              {/*</span>*/}
+                              {/*    <span*/}
+                              {/*      className={`material-icons ${*/}
+                              {/*        item.rating >= 5 ? "star-checked" : ""*/}
+                              {/*      }`}*/}
+                              {/*      id="star_r5"*/}
+                              {/*      onClick={() =>*/}
+                              {/*        submitRating(5, item.question_id, item.answer_id)*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*  {item.rating >= 5 ? (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star_white}*/}
+                              {/*    />*/}
+                              {/*  ) : (*/}
+                              {/*    <img*/}
+                              {/*      alt=""*/}
+                              {/*      className="before"*/}
+                              {/*      src={star}*/}
+                              {/*    />*/}
+                              {/*  )}*/}
+                              {/*</span>*/}
                             </div>
-                            <p>{item.question}</p>
+                            <p className={styles.questioText}>{item.question}</p>
                           </div>
                         </div>
                       ))
@@ -258,48 +279,54 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
             </div>
             {/*</div>*/}
 
-            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrapContact}`} onClick={(e) => onchange(e, 'back')}>
+            <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} onClick={(e) => onchange(e, 'front')}>
               <div className={styles.contentWrap}>
                 <div className={styles.cardContainerContact}>
-                  <div className={!isActive ? styles.blur : styles.blur__none}/>
+                  <div className={isActive ? styles.blur : styles.blur__none}/>
                   <div className={styles.contentBox}>
                     <div className={styles.iconBox}>
                       <CircleContact className={styles.circleIcon}/>
                     </div>
                     <div className={styles.nameBox}>
-                      <div className={styles.name}>Antonio Pérez</div>
-                      <StarsLine className={styles.starsLine}/>
+                      <div className={styles.name}>{userProfile?.name}</div>
+                      <div className={styles.starsBox}>
+                        <StarIcon className={`${styles.starIconBack}`}/>
+                        <StarIcon className={`${styles.starIconBack}`}/>
+                        <StarIcon className={`${styles.starIconBack}`}/>
+                        <StarIcon className={`${styles.starIconBack} ${styles.starIconBack__fill}`}/>
+                        <StarIcon className={`${styles.starIconBack} ${styles.starIconBack__fill}`}/>
+                      </div>
                     </div>
                     <div className={styles.infoBox}>
                       <div className={styles.infoLine}>
                         <ContactName className={styles.infoIcon}/>
                         <div className={styles.contactBlock}>
                           <span className={styles.titleInfo}>Name</span>
-                          <span className={styles.textInfo}>Antonio Pérez</span>
+                          <span className={styles.textInfo}>{userProfile?.name}</span>
                         </div>
-                        <div className={styles.linkIconWrap}>
+                        <button type='button' onClick={(e) => onCopy(e, 'name')} className={styles.linkIconWrap}>
                           <ContactLink className={styles.linkIcon}/>
-                        </div>
+                        </button>
                       </div>
                       <div className={styles.infoLine}>
                         <ContactEmail className={styles.infoIcon}/>
                         <div className={styles.contactBlock}>
                           <span className={styles.titleInfo}>Email</span>
-                          <span className={styles.textInfo}>antonio.p@gmail.com</span>
+                          <span className={styles.textInfo}>{userProfile?.email}</span>
                         </div>
-                        <div className={styles.linkIconWrap}>
+                        <button type='button' onClick={(e) => onCopy(e, 'email')} className={styles.linkIconWrap}>
                           <ContactLink className={styles.linkIcon}/>
-                        </div>
+                        </button>
                       </div>
                       <div className={styles.infoLine}>
                         <ContactPhone className={styles.infoIcon}/>
                         <div className={styles.contactBlock}>
                           <span className={styles.titleInfo}>Phone number</span>
-                          <span className={styles.textInfo}>07432932937</span>
+                          <span className={styles.textInfo}>{userProfile?.phone}</span>
                         </div>
-                        <div className={styles.linkIconWrap}>
+                        <button type='button' onClick={(e) => onCopy(e, 'phone')} className={styles.linkIconWrap}>
                           <ContactLink className={styles.linkIcon}/>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </div>

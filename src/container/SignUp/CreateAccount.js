@@ -37,7 +37,7 @@ const CreateAccount = ({...props}) => {
   }
 
   useEffect(() => {
-    const user = localStorage.getItem("User");
+    const user = JSON.parse(localStorage.getItem("User"));
     if (user === "Logout" || user === null) {
     } else {
       navigate('/');

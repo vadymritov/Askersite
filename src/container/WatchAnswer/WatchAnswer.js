@@ -20,7 +20,7 @@ const WatchAnswer = (props) => {
 
     // const carouselMembers = [1, 2, 3, 4];
 
-    console.log('askerDat',  answerData);
+    console.log('askerDat',  answerData, askerData, userProfile);
     useEffect(async () => {
       if (cardRef?.current?.classList.contains("start-rotate")) {
         cardRef?.current?.classList.remove("start-rotate")
@@ -34,7 +34,7 @@ const WatchAnswer = (props) => {
     }, []);
 
     useEffect(() => {
-      const user = localStorage.getItem("User");
+      const user = JSON.parse(localStorage.getItem("User"));
       if (user) {
         setUserProfile(user);
       }

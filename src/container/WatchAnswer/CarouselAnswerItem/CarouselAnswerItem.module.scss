@@ -57,7 +57,7 @@
 .logoBox {
   position: absolute;
   z-index: 2;
-  top: 50px;
+  top: 12px;
   display: flex;
   width: 315px;
   max-width: 100%;
@@ -228,9 +228,9 @@
   right: 0;
   width: 100%;
   //height: 100%;
-  background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
+  //background-image: url("../../../image/svg/WatchAnswer/WatchMen.svg");
+  //background-size: contain;
+  //background-repeat: no-repeat;
   //@include media-max(1400) {
   //  height: calc(100% - 21px);
   //}
@@ -492,6 +492,13 @@
     }
   }
 
+  .starsBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
   .starsLine {
     min-width: auto;
     height: 28px;
@@ -528,6 +535,7 @@
     }
 
     .linkIconWrap {
+      @include btn-reset();
       min-width: 31px;
       height: 31px;
       background-color: #7685FE;
@@ -535,6 +543,11 @@
       justify-content: center;
       align-items: center;
       border-radius: 8px;
+
+      &:hover {
+        opacity: 0.8;
+        transition: $transition;
+      }
 
       .linkIcon {
         min-width: 18px;
@@ -579,7 +592,26 @@
 .starIcon {
   width: 16px;
   height: 16px;
-  fill: $white
+  fill: $white;
+  margin-right: 10px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &__fill {
+    fill: rgba(173, 184, 250, 0.5)
+  }
+}
+.starIconBack {
+  width: 20px;
+  height: 20px;
+  fill: $white;
+  margin-right: 12px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 
   &__fill {
     fill: rgba(173, 184, 250, 0.5)
@@ -602,6 +634,16 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
+
+    //svg {
+    //  width: 16px;
+    //  height: 16px;
+    //  fill: $white
+    //
+    //  &__fill {
+    //    fill: rgba(173, 184, 250, 0.5)
+    //  }
+    //}
 
     .material-icons {
       color: #adb8fa;
@@ -629,11 +671,16 @@
     }
   }
 
-  p {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 500;
-    opacity: 0.8;
+  p.questioText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    color: $white;
+    opacity: .8;
   }
 }
 
@@ -648,4 +695,87 @@
     pointer-events: none;
     max-width: 100%;
   }
+
+}
+
+
+
+
+
+
+.wth-ans-outer-single-slide {
+  &.slick-current {
+    .wth-ans-inner-slider {
+      .slick-dots {
+        li {
+          &.slick-active {
+            button {
+              &:after {
+                // width: 100%;
+                animation-name: statusProgress;
+                animation-duration: 15s;
+                animation-fill-mode: both;
+                animation-iteration-count: 1;
+                animation-timing-function: linear;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.wthInnerSlider {
+  position: relative;
+  height: 100%;
+  .slick-dots {
+    li {
+      &.slick-active {
+        button {
+          &:after {
+            // width: 100%;
+            animation-name: statusProgress;
+            animation-duration: 15s;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-timing-function: linear;
+          }
+        }
+      }
+    }
+  }
+}
+
+.promotionVideoSlide {
+  .slick-dots {
+    display: flex !important;
+    li {
+      &.slick-active {
+        button {
+          &:after {
+            // width: 100%;
+            animation-name: statusProgress;
+            animation-duration: 15s;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-timing-function: linear;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes statusProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.wth-ans-inner-single-slide {
+  //position: relative;
+  height: 100%;
 }
