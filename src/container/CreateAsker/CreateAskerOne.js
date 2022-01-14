@@ -27,6 +27,8 @@ const CreateAskerOne = ({...props}) => {
     job_author:'',
   })
 
+  console.log('asker', asker, userID);
+
   const handleChange = e => {
     const { name, value } = e.target;
     setAsker(prevState => ({
@@ -39,7 +41,7 @@ const CreateAskerOne = ({...props}) => {
   bodyFormData.append('job_author', asker.job_author)
   bodyFormData.append('user_id',userID)
   const handleContinue = () => {
-   http.post('createAsker',bodyFormData).then(res=>res.data).then(askerId => props.setActiveAskerId(askerId.asker.id))
+   http.post('createAsker',bodyFormData).then(res=>res.data).then(askerId => props.setActiveAskerId(askerId?.asker?.id))
 
   };
 
@@ -53,7 +55,6 @@ const CreateAskerOne = ({...props}) => {
             <div className={`${styles.questionItem} ${styles.questionItemSolid}`}>
               <div className={styles.textBox}>
                 <label className={styles.title}>Who’s Asking?</label>
-                {/*<span className={styles.text}>e.g Recruitment Agency</span>*/}
                 <input name='job_title'  placeholder='e.g Recruitment Agency' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap}`}>
@@ -64,7 +65,6 @@ const CreateAskerOne = ({...props}) => {
             <div className={`${styles.questionItem} ${styles.questionItemDash}`}>
               <div className={styles.textBox}>
                 <label className={styles.title}>What’s it About?</label>
-                {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
                 <input name='job_author' placeholder='e.g Questions for Candidates' onChange={handleChange}/>
               </div>
               <div className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>

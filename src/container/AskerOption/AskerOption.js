@@ -4,13 +4,13 @@ import OptionContent from "./OptionContent";
 import EditAsker from "../EditAsker/EditAsker";
 import ShareAsker from "../ShareAsker/ShareAsker";
 
-const AskerOption = ({onChange, ...props}) => {
+const AskerOption = ({onChange, location, viewAsker, ...props}) => {
     const [selectPrivate, setSelectPrivate] = useState("");
     const [type, setType] = useState("option");
-    const location = useLocation();
+    // const location = useLocation();
     const [askerCode,setAskerCode] = useState()
 
-    console.log('option', selectPrivate, type)
+    console.log('option', selectPrivate, type, viewAsker)
 
     useEffect(() => {
       if (type === 'edit') {
@@ -35,9 +35,9 @@ const AskerOption = ({onChange, ...props}) => {
                               setType={setType}
         />
       } else if (type === 'edit') {
-        return <EditAsker setAskerCode={setAskerCode}  setType={setType}/>
+        return <EditAsker setAskerCode={setAskerCode}  setType={setType} location={location}/>
       } else if (type === 'share') {
-        return <ShareAsker askerCode={askerCode} setType={setType} closeOption={closeOption}/>
+        return <ShareAsker askerCode={askerCode} setType={setType} closeOption={closeOption} createType='create' location={location}/>
       }
     }
 

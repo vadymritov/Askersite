@@ -7,10 +7,10 @@ import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import {http} from "../../http/http";
 
-const EditAsker = ({setType,setAskerCode, ...props}) => {
+const EditAsker = ({setType,setAskerCode, location, ...props}) => {
 
-  const location = useLocation();
-  const {asker_id, user_id, viewAsker} = location?.state
+  // const location = useLocation();
+  const {asker_id, user_id, viewAsker} = location;
   const [nextQuestionList, setNextQuestionList] = useState([]);
   const [currentAsker, setCurrentAsker] = useState();
   const [newAuthor, setNewAuthor] = useState();
@@ -25,6 +25,7 @@ const EditAsker = ({setType,setAskerCode, ...props}) => {
   let navigate = useNavigate();
   const cardRef = useRef(null);
 
+  console.log('edit location', location);
   const getNextQuestionList = async (asker_id, user_id) => {
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
       .then(resp => resp.data)

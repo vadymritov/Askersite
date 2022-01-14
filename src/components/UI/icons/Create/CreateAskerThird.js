@@ -41,7 +41,8 @@ const CreateAskerThird = (props) => {
     // elRef.current?.classList.add("ease-out-effect")
     elRef.current?.classList.add("fade-out")
     const timer = setTimeout(() => {
-      navigate('/share-asker',{ state: { sharedAskerId:sharedAskerId } })
+      navigate('/share-asker',{
+        state: { sharedAskerId: sharedAskerId } })
     }, 300);
     return timer;
   };

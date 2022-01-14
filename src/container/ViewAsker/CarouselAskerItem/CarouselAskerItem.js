@@ -39,7 +39,8 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
     autoplaySpeed: 15000,
   };
 
-  console.log('location.state', data, item, viewAsker, nextQuestionList)
+  console.log('location.state', location.state, viewAsker);
+  // console.log('location.state', data, item, viewAsker, nextQuestionList)
   // console.log('nextQuestionLis', nextQuestionList)
 
   const onchange = (e, type) => {
@@ -183,7 +184,7 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
           </div>
 
           <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} >
-            <AskerOption onChange={(e) => onchange(e, 'front')}/>
+            <AskerOption onChange={(e) => onchange(e, 'front')} location={location.state} viewAsker={viewAsker}/>
           </div>
         </div>
 

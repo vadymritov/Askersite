@@ -1,13 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './CreateAsker.module.scss'
 import {useNavigate} from "react-router-dom";
-import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
-import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
-import ArrowBtn from "../../components/UI/icons/ArrowBtn";
-import LinePhone from "../../components/UI/icons/LinePhone";
-import CreateAccount from "../SignUp/CreateAccount";
-import Verification from "../SignUp/Verification";
-import CreatePassword from "../SignUp/CreatePassword";
 import CreateAskerTwo from "./CreateAskerTwo";
 import CreateAskerOne from "./CreateAskerOne";
 import CreateAskerThird from "../../components/UI/icons/Create/CreateAskerThird";

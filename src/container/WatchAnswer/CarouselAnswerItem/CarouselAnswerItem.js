@@ -36,21 +36,15 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       autoplaySpeed: 15000,
     };
 
-    // console.log('prof', answerData,);
-    // console.log('tem', data, item);
-
     useEffect(() => {
       if (data) {
         setAnswerData(data.answer_list)
       }
     }, [data])
 
-  console.log('item', item);
-
     const onchange = (e, type) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log('onCli', type);
       if (type === 'front') {
         setActive(false)
       } else {
@@ -63,14 +57,12 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       if (user) {
         setUserProfile(user);
       }
-
     }, [localStorage]);
 
     const askerDeatils = async (asker_id, user_id) => {
       http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
         .then(res => res.data)
         .then((res) => {
-          // console.log('resOption', res, res.data.asker_detail[0]);
           setAskerData(res.data.asker_detail[0]);
         })
         .catch((err) => {
@@ -122,9 +114,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         });
       }
     };
-
-    // console.log('CarouselAnswer', data, userProfile, item);
-    // console.log('answerData', answerData);
 
     return (
       <>
