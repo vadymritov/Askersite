@@ -20,6 +20,7 @@ const NextQuestion = (props) => {
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [currentQuestions, setCurrentQuestions] = useState([])
+  const [currentAllInformation, setCurrentAllInformation] = useState('')
   const [showSubmitPanelButton, setShowSubmitPanelButton] = useState(true)
   const [currentAsker, setCurrentAsker] = useState('')
   const [clickedQuestionId, setClickedQuestionId] = useState('')
@@ -30,10 +31,12 @@ const NextQuestion = (props) => {
   useEffect(() => {
     http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => setCurrentAsker(resp.data.asker))
-    http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => setCurrentQuestions(nextQuestionList.question_list));
+    http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => {
+      setCurrentAllInformation(nextQuestionList)
+      setCurrentQuestions(nextQuestionList.question_list)
+    });
 
   }, [])
-
   const findClickedQuestion = () => {
 
   }
@@ -174,7 +177,8 @@ const NextQuestion = (props) => {
                     state: {
                       AnswerData,
                       askerId,
-                      askerCode
+                      askerCode,
+                      currentAllInformation
                     }
                   })
                 }}>
