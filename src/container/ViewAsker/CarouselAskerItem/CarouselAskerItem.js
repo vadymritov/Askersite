@@ -17,12 +17,12 @@ import BellIcon from "../../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../../components/UI/icons/TwoMenIcon";
 import AskerOption from "../../AskerOption/AskerOption";
 
-const CarouselAskerItem = ({state, item, data, ...props}) => {
+const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAsker , ...props}) => {
   let navigate = useNavigate();
   const location = useLocation();
-  const [viewAsker, setViewAsker] = useState()
-  const {asker_id, user_id} = location?.state;
-  const [nextQuestionList, setNextQuestionList] = useState([]);
+  // const [viewAsker, setViewAsker] = useState()
+  // const {asker_id, user_id} = location?.state;
+  // const [nextQuestionList, setNextQuestionList] = useState([]);
   // const cardRef = useRef(null);
   const [isActive, setActive] = useState(false);
   const [selectPrivate, setSelectPrivate] = useState("");
@@ -39,16 +39,12 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
     autoplaySpeed: 15000,
   };
 
-
-  console.log('location.state', location?.state, location?.state?.asker_id, asker_id, user_id)
-  console.log('Active', isActive)
-
+  console.log('location.state', data, item, viewAsker, nextQuestionList)
+  // console.log('nextQuestionLis', nextQuestionList)
 
   const onchange = (e, type) => {
-    console.log('front', type);
     // e.preventDefault();
     // e.stopPropagation();
-    console.log('onCli', type);
     if (type === 'front') {
       setActive(false)
     } else {
@@ -56,21 +52,15 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
     }
   }
 
-  useEffect(async () => {
-    // if (cardRef?.current?.classList.contains("start-rotate")) {
-    //   cardRef?.current?.classList.remove("start-rotate")
-    // }
-    // const timer = setTimeout(() => {
-    //   cardRef?.current?.classList.add("start-rotate")
-    // }, 1);
-
-    if (location?.state) {
-      getNextQuestionList(asker_id, user_id);
-      ViewAnswer(asker_id, user_id);
-    }
-
-    // return () => clearTimeout(timer);
-  }, [location]);
+  // useEffect(async () => {
+  //
+  //   if (location?.state) {
+  //     getNextQuestionList(asker_id, user_id);
+  //     ViewAnswer(asker_id, user_id);
+  //   }
+  //
+  //   // return () => clearTimeout(timer);
+  // }, [location]);
 
   const getNextQuestionList = async (asker_id, user_id) => {
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
@@ -78,7 +68,7 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
       .then((res) => {
         console.log('getNextQuestionLi', res);
         if (res.status === true) {
-          setNextQuestionList(res?.question_list)
+          // setNextQuestionList(res?.question_list)
         }
       })
       .catch((err) => {
@@ -92,7 +82,7 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
       .then((res) => {
         console.log('ViewAns', res);
         if (res.status === true) {
-          setViewAsker(res.data);
+          // setViewAsker(res.data);
         }
       })
       .catch((err) => {
@@ -147,7 +137,6 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
             <div className={`${styles.cardBg}`}>
               <GrayBg className={styles.grayBg}/>
               <div className={styles.cardContainer}>
-                {/*<div className={styles.menuWBox}>*/}
                 <button type='button' className={styles.burgerBtn} onClick={(e) => onchange(e, 'back')}>
                   <MenuBurgerIcon className={styles.burgerIcon}/>
                 </button>
@@ -157,8 +146,8 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
                     <div className={`${styles.questionItem}`}>
                       <CreateAskerIcon className={styles.createLogo}/>
                       <div className={styles.textBox}>
-                        <div className={styles.text}>{viewAsker?.asker_title}</div>
-                        <div className={styles.title}>{viewAsker?.asker_author}</div>
+                        <div className={styles.text}>{item?.title}</div>
+                        <div className={styles.title}>{item?.author}</div>
                       </div>
                     </div>
                   </div>
@@ -194,10 +183,7 @@ const CarouselAskerItem = ({state, item, data, ...props}) => {
           </div>
 
           <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} >
-          {/*<div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapOption}`} onClick={(e) => onchange(e, 'front')}>*/}
-            {/*<div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>*/}
             <AskerOption onChange={(e) => onchange(e, 'front')}/>
-
           </div>
         </div>
 

@@ -7,7 +7,7 @@ import CarouselAnswerItem from "../../container/WatchAnswer/CarouselAnswerItem/C
 import CarouselAskerItem from "../../container/ViewAsker/CarouselAskerItem/CarouselAskerItem";
 
 
-const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '', state = {}}) => {
+const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '', state = {}, ...props}) => {
   const [itemIndex, setItemIndex] = useState(1);
   const [slides, setSlides] = useState();
   const [autoplay, setAutoplay] = useState(autoPlay);
@@ -45,6 +45,7 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   }, [data])
 
   console.log('dataCar', data, type);
+  console.log('slider', slides,itemIndex, move);
 
   const Prev = (e) => {
     e.preventDefault();
@@ -157,9 +158,9 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   const renderItems = (index, item) => {
     // console.log('item', item);
     if (type === 'watchAnswer') {
-      return <CarouselAnswerItem key={'carousel-' + index} state={state} data={data} item={item}/>
+      return <CarouselAnswerItem  state={state} data={data} item={item}/>
     } else if (type === 'viewAsker') {
-      return <CarouselAskerItem key={'carousel-' + index} state={state} data={data} item={item}/>
+      return <CarouselAskerItem index={index} state={state} data={data} item={item} viewAsker={props.viewAsker} nextQuestionList={props.nextQuestionList}/>
     }
   }
 

@@ -45,6 +45,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       }
     }, [data])
 
+  console.log('item', item);
 
     const onchange = (e, type) => {
       e.preventDefault();
@@ -122,8 +123,8 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       }
     };
 
-    console.log('CarouselAnswer', data, userProfile, item);
-    console.log('answerData', answerData);
+    // console.log('CarouselAnswer', data, userProfile, item);
+    // console.log('answerData', answerData);
 
     return (
       <>
@@ -135,6 +136,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                   <div className={`${styles.cardContainer}`}>
                     <div className={styles.logoBox}>
                       <div className={styles.infoBlockSmall}>
+                  {item.question_id}
                         <AllAnswerIcon className={styles.infoIconSmall}/>
                         <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
                       </div>
@@ -144,7 +146,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                       <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
                         <Slider {...settings}>
                           {answerData?.length > 0
-                            ? answerData.map((item) => (
+                            ? answerData?.map((item, index) => (
                               <div key={`slide-${item.question_id}`} className={`wth-ans-inner-single-slide slide-watch`}>
                                 <div className={`img-vid ${styles.imgVideo}`}>
                                   <video playsInline autoPlay muted loop>

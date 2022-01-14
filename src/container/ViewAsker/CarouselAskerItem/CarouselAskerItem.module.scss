@@ -301,6 +301,10 @@
   flex-direction: column;
   width: 100%;
   margin-top: 28px;
+  flex-grow: 1;
+  overflow: auto;
+  height: 100%;
+  max-height: 243px;
 }
 
 .infoItem {
@@ -308,7 +312,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 27px;
+  margin-top: 10px;
+  //margin-bottom: 27px;
 
   @include media-max($lg-break) {
     margin-bottom: 15px;
