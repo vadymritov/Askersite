@@ -38,14 +38,16 @@ const CreateAskerThird = (props) => {
     http.post('publishAsker',bodyFormData).then(res=>res.data).then(sharedID=>setSharedAskerId(sharedID.asker.asker_code))
   }
   const removeEffect = () => {
-    elRef.current?.classList.add("ease-out-effect")
+    // elRef.current?.classList.add("ease-out-effect")
+    elRef.current?.classList.add("fade-out")
     const timer = setTimeout(() => {
       navigate('/share-asker',{ state: { sharedAskerId:sharedAskerId } })
     }, 300);
     return timer;
   };
   return (
-    <div ref={elRef} className={`ease-in-effect  ${styles.createContainer}`}>
+    <div ref={elRef} className={`fade-in ${styles.createContainer}`}>
+    {/*<div ref={elRef} className={`ease-in-effect  ${styles.createContainer}`}>*/}
       <div className={styles.contantWrap}>
         <div className={` ${styles.questionBlock}`}>
           <CreateAskerIcon className={styles.createLogo}/>

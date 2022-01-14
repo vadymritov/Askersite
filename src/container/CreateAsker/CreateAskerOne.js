@@ -15,7 +15,8 @@ const CreateAskerOne = ({...props}) => {
   const removeEffect = () => {
     props.setCurrentAsker(asker)
     handleContinue()
-    elRef.current?.classList.add("ease-out-effect")
+    // elRef.current?.classList.add("ease-out-effect")
+    elRef.current?.classList.add("fade-out")
     const timer = setTimeout(() => {
       props.nextStep()
     }, 300);
@@ -43,7 +44,8 @@ const CreateAskerOne = ({...props}) => {
   };
 
   return (
-    <div ref={elRef} className={` ease-in-effect ${styles.createContainer}`}>
+    <div ref={elRef} className={` fade-in ${styles.createContainer}`}>
+    {/*<div ref={elRef} className={` ease-in-effect ${styles.createContainer}`}>*/}
       <div className={styles.contantWrap}>
         <div className={` ${styles.questionBlock}`}>
           <CreateAskerIcon className={styles.createLogo}/>

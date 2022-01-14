@@ -19,6 +19,7 @@ const CreateAskerTwo = (props) => {
   const [disabledTitle,setDisabledTitle]=useState(true);
   const [disabledAuthor,setDisabledAuthor]=useState(true);
   const elRef = useRef();
+  const elRefFade = useRef();
   const userID = localStorage.getItem('UserID')
   const bodyFormData = new FormData();
   bodyFormData.append('user_id', userID)
@@ -31,7 +32,9 @@ const CreateAskerTwo = (props) => {
 
   const removeEffect = () => {
     handleContinue()
-    elRef.current?.classList.add("ease-out-effect")
+    // elRef.current?.classList.add("ease-out-effect")
+    elRefFade.current?.classList.add("ease-in-effect")
+    elRef.current?.classList.add("fade-out");
     const timer = setTimeout(() => {
       props.nextStep()
     }, 300);
@@ -69,12 +72,14 @@ const CreateAskerTwo = (props) => {
   // }
 
   return (
-    <div ref={elRef} className={` ease-in-effect ${styles.askerWrapper}`}>
+    <div  className={`${styles.askerWrapper}`}>
+    {/*<div ref={elRef} className={` ease-in-effect ${styles.askerWrapper}`}>*/}
       {/*<div className={styles.contantWrap}>*/}
       {/*<div className={`${styles.askerWrapper}`}>*/}
       <div className={`${styles.askerRow}`}>
 
-        <div className={`${styles.askerCol} `}>
+        {/*<div ref={elRefFade} className={` ease-in-effect ${styles.askerCol} `}>*/}
+        <div ref={elRefFade} className={` ease-out-effect ${styles.askerCol} `}>
           <div className={`${styles.contantWrapTwo}`}>
             <div className={` ${styles.questionBlock}`}>
               <CreateAskerIcon className={styles.createLogo}/>
@@ -121,7 +126,7 @@ const CreateAskerTwo = (props) => {
           </div>
         </div>
 
-        <div className={`${styles.askerScrol} `}>
+        <div ref={elRef} className={` fade-in  ${styles.askerScrol} `}>
           <div className={`${styles.questionsWrap}`}>
             <div className={`${styles.questionsCol}`}>
               {

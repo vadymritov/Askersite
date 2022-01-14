@@ -214,15 +214,27 @@ h2 {
   -o-animation: fadeIn ease 3s;
   -ms-animation: fadeIn ease 3s;
 }
+.fade-out {
+  animation: fadeOut ease 3s;
+  -webkit-animation: fadeOut ease 3s;
+  -moz-animation: fadeOut ease 3s;
+  -o-animation: fadeOut ease 3s;
+  -ms-animation: fadeOut ease 3s;
+}
 
 .ease-in-effect {
-  animation: dissolveInLeft 1s ease-in-out;
-  -webkit-animation: dissolveInLeft 1s ease-in-out;
+  animation: dissolveInLeft .5s ease-in-out;
+  -webkit-animation: dissolveInLeft .5s ease-in-out;
+  //animation: dissolveInLeft 1s ease-in-out;
+  //-webkit-animation: dissolveInLeft 1s ease-in-out;
 }
 
 .ease-out-effect {
-  animation: dissolveInRight 0.5s ease-in-out;
-  -webkit-animation: dissolveInRight 0.5s ease-in-out;
+  animation: dissolveInRight 1s ease-in-out ;
+  //animation-delay: 10s;
+  -webkit-animation: dissolveInRight 1s ease-in-out ;
+  //animation: dissolveInRight 0.5s ease-in-out;
+  //-webkit-animation: dissolveInRight 0.5s ease-in-out;
 }
 
 
