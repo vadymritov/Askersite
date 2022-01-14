@@ -13,7 +13,7 @@ import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {http} from "../../http/http";
 import copy from "copy-html-to-clipboard";
 
-const ShareAsker = ({closeOption, setType, ...props}) => {
+const ShareAsker = ({closeOption, setType,askerCode, ...props}) => {
   const [show, setShow] = useState(false);
   const location = useLocation();
   let {sharedAskerId} = location.state;
@@ -22,7 +22,7 @@ const ShareAsker = ({closeOption, setType, ...props}) => {
   const [EmailID, setEmailID] = useState("");
 
 
-  console.log('location.state', location?.state?.sharedAskerId, sharedAskerId)
+  // console.log('location.state', location?.state?.sharedAskerId, sharedAskerId)
 
   useEffect(async () => {
 
@@ -55,7 +55,7 @@ const ShareAsker = ({closeOption, setType, ...props}) => {
   };
   const sendEmail = async () => {
 
-    http.post('share-asker-send-mail-api', `email=${EmailID}&asker_code=${sharedAskerId}`)
+    http.post('share-asker-send-mail-api', `email=${EmailID}&asker_code=${sharedAskerId || askerCode}`)
       .then(resp => resp.data)
       .then((res) => {
         console.log('setShow', res);
@@ -73,11 +73,11 @@ const ShareAsker = ({closeOption, setType, ...props}) => {
   const onCopy = (e, type) => {
     e.preventDefault();
     if (type === 'email') {
-      copy(`<span>${`askerapp.com/${sharedAskerId}`}</span>`, {
+      copy(`<span>${`askerapp.com/${sharedAskerId||askerCode}`}</span>`, {
         asHtml: true,
       });
     } else if (type === 'code') {
-      copy(`<span>${sharedAskerId}</span>`, {
+      copy(`<span>${sharedAskerId||askerCode}</span>`, {
         asHtml: true,
       });
     }
@@ -104,7 +104,7 @@ const ShareAsker = ({closeOption, setType, ...props}) => {
               <div className={`${styles.inputBlock} `}>
                 <div className={styles.textBox}>
                   {/*<input name={'name'} readOnly="readonly" />*/}
-                  <input name={'name'} readOnly="readonly" defaultValue={sharedAskerId}/>
+                  <input name={'name'} readOnly="readonly" defaultValue={sharedAskerId||askerCode}/>
                 </div>
                 <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'code')}>
                   <ContactLink className={styles.linkIcon}/>
@@ -113,7 +113,7 @@ const ShareAsker = ({closeOption, setType, ...props}) => {
               <div className={`${styles.inputBlock} `}>
                 <div className={styles.textBox}>
                   {/*<input name={'name'} readOnly="readonly" />*/}
-                  <input name={'name'} readOnly="readonly" placeholder={`askerapp.com/${sharedAskerId}`}/>
+                  <input name={'name'} readOnly="readonly" placeholder={`askerapp.com/${sharedAskerId||askerCode}`}/>
                 </div>
                 <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'email')}>
                   <ContactLink className={styles.linkIcon}/>

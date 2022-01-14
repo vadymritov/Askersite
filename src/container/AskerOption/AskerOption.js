@@ -8,6 +8,7 @@ const AskerOption = ({onChange, ...props}) => {
     const [selectPrivate, setSelectPrivate] = useState("");
     const [type, setType] = useState("option");
     const location = useLocation();
+    const [askerCode,setAskerCode] = useState()
 
     console.log('option', selectPrivate, type)
 
@@ -34,9 +35,9 @@ const AskerOption = ({onChange, ...props}) => {
                               setType={setType}
         />
       } else if (type === 'edit') {
-        return <EditAsker setType={setType}/>
+        return <EditAsker setAskerCode={setAskerCode}  setType={setType}/>
       } else if (type === 'share') {
-        return <ShareAsker setType={setType} closeOption={closeOption}/>
+        return <ShareAsker askerCode={askerCode} setType={setType} closeOption={closeOption}/>
       }
     }
 

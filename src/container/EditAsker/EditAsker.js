@@ -7,10 +7,12 @@ import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import {http} from "../../http/http";
 
-const EditAsker = ({setType, ...props}) => {
+const EditAsker = ({setType,setAskerCode, ...props}) => {
+
   const location = useLocation();
   const {asker_id, user_id, viewAsker} = location?.state
   const [nextQuestionList, setNextQuestionList] = useState([]);
+  const [currentAsker, setCurrentAsker] = useState();
   const [newAuthor, setNewAuthor] = useState();
   const [newTitle, setNewTitle] = useState();
   const [EditQuestion, SetEditQuestion] = useState(false);
@@ -22,7 +24,6 @@ const EditAsker = ({setType, ...props}) => {
   const [changedQuestion, setChangedQuestion] = useState('');
   let navigate = useNavigate();
   const cardRef = useRef(null);
-
 
   const getNextQuestionList = async (asker_id, user_id) => {
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
@@ -52,7 +53,22 @@ const EditAsker = ({setType, ...props}) => {
         console.log(err);
       })
   };
-  const sendChangedTitleOrAuthors = async (asker_id, user_id, asker_title = viewAsker?.asker_title, asker_author = viewAsker?.asker_author) => {
+  const getCurrentAsker = async (asker_id, user_id) => {
+
+    http.post('viewAnswers', `user_id=${user_id}&asker_id=${asker_id}`)
+      .then(resp => resp.data)
+      .then((res) => {
+        // console.log('askerEditQuestion', res);
+        if (res.status === true) {
+          setCurrentAsker(res.data)
+          // console.log('askerEditQuestion', res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
+  const sendChangedTitleOrAuthors = async (asker_id, user_id, asker_title = currentAsker?.asker_title, asker_author = currentAsker?.asker_author) => {
 
     http.post('askerTitle', `user_id=${user_id}&asker_id=${asker_id}&asker_title=${asker_title}&asker_author=${asker_author}`)
       .then(resp => resp.data)
@@ -86,7 +102,9 @@ const EditAsker = ({setType, ...props}) => {
 
 
   useEffect(() => {
+    getCurrentAsker(asker_id, user_id)
     getNextQuestionList(asker_id, user_id)
+
   }, [])
 
 
@@ -108,7 +126,7 @@ const EditAsker = ({setType, ...props}) => {
 
   return (
     <>
-      <div ref={cardRef} className={`default-flip flip-card-inner bg-collor ${styles.cardBg} `}>
+      <div ref={cardRef} className={`default-flip flip-card-inner bg-collor ${styles.cardBg}  `}>
         <div className={styles.cardContainer}>
           <div className={` ${styles.questionBlock}`}>
             <CreateAskerIcon className={styles.createLogo}/>
@@ -116,8 +134,8 @@ const EditAsker = ({setType, ...props}) => {
               <div className={`${styles.questionItem} ${editField === 'job' ? styles.questionItemSolid : ''}`}>
                 <div className={styles.textBox}>
                   {editField == null || editField === 'job' ?
-                    <div className={styles.titleSmall}>{newTitle ? newTitle : viewAsker?.asker_title}</div> :
-                    <input name={'job'} onChange={(e) => setNewTitle(e.target.value)} defaultValue={viewAsker?.asker_title} placeholder=''/>
+                    <div className={styles.titleSmall}>{newTitle ? newTitle : currentAsker?.asker_title}</div> :
+                    <input name={'job'} onChange={(e) => setNewTitle(e.target.value)} defaultValue={currentAsker?.asker_title} placeholder=''/>
                   }
                 </div>
                 {editField == null || editField === 'job' ?
@@ -135,8 +153,8 @@ const EditAsker = ({setType, ...props}) => {
               <div className={`${styles.questionItem} ${editField === 'name' ? styles.questionItemSolid : ''}`}>
                 <div className={styles.textBox}>
                   {editField == null || editField === 'name' ?
-                    <div className={styles.title}>{newAuthor ? newAuthor : viewAsker?.asker_author}</div> :
-                    <input name={'name'} onChange={(e) => setNewAuthor(() => e.target.value)} defaultValue={viewAsker?.asker_author} placeholder=''/>
+                    <div className={styles.title}>{newAuthor ? newAuthor : currentAsker?.asker_author}</div> :
+                    <input name={'name'} onChange={(e) => setNewAuthor(() => e.target.value)} defaultValue={currentAsker?.asker_author} placeholder=''/>
                   }
                 </div>
                 {editField == null || editField === 'name' ?
@@ -207,7 +225,10 @@ const EditAsker = ({setType, ...props}) => {
           })}
           <div className={`button-box ${styles.buttonBox}`}>
             <button type="button"
-                    onClick={(e) => changeType(e, 'share')}
+                    onClick={(e) => {
+                      setAskerCode(currentAsker.asker_code)
+                      changeType(e, 'share')
+                    }}
                     className={`continue-btn  ${styles.buttonStylePublich}`}>
               <span>SAVE CHANGES</span>
               <div className={styles.plusIconBox}>
