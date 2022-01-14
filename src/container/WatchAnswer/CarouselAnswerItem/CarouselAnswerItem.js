@@ -136,7 +136,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                   <div className={`${styles.cardContainer}`}>
                     <div className={styles.logoBox}>
                       <div className={styles.infoBlockSmall}>
-                  {item.question_id}
                         <AllAnswerIcon className={styles.infoIconSmall}/>
                         <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
                       </div>
