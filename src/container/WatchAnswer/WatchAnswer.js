@@ -20,18 +20,18 @@ const WatchAnswer = (props) => {
 
     // const carouselMembers = [1, 2, 3, 4];
 
-    console.log('askerDat',  answerData, askerData, userProfile);
-    useEffect(async () => {
-      if (cardRef?.current?.classList.contains("start-rotate")) {
-        cardRef?.current?.classList.remove("start-rotate")
-      }
-
-      const timer = setTimeout(() => {
-        cardRef?.current?.classList.add("start-rotate")
-      }, 1);
-
-      return () => clearTimeout(timer)
-    }, []);
+    // console.log('askerDat',  answerData, askerData, userProfile);
+    // useEffect(async () => {
+    //   if (cardRef?.current?.classList.contains("start-rotate")) {
+    //     cardRef?.current?.classList.remove("start-rotate")
+    //   }
+    //
+    //   const timer = setTimeout(() => {
+    //     cardRef?.current?.classList.add("start-rotate")
+    //   }, 1);
+    //
+    //   return () => clearTimeout(timer)
+    // }, []);
 
     useEffect(() => {
       const user = JSON.parse(localStorage.getItem("User"));

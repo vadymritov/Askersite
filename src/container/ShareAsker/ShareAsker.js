@@ -13,10 +13,10 @@ import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {http} from "../../http/http";
 import copy from "copy-html-to-clipboard";
 
-const ShareAsker = (props) => {
+const ShareAsker = ({closeOption, setType, ...props}) => {
   const [show, setShow] = useState(false);
   const location = useLocation();
-  let { sharedAskerId } = location.state;
+  let {sharedAskerId} = location.state;
   let navigate = useNavigate();
   const cardRef = useRef(null);
   const [EmailID, setEmailID] = useState("");
@@ -44,6 +44,11 @@ const ShareAsker = (props) => {
   const handleClose = () => {
     setShow(false);
   };
+
+  const changeType = (e, type) => {
+    e.preventDefault();
+    setType(type)
+  }
 
   const handleShow = () => {
     setShow(true);
@@ -79,75 +84,57 @@ const ShareAsker = (props) => {
   };
 
   return (
-    <div className={styles.mainContainer}>
-      <div className={`${styles.contentContainer}`}>
-        <div className={`${styles.cardWrap} ${styles.cardLeft}`}>
-          <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
-            <div className={styles.cardContainer}>
+    <>
+      <>
+        <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardBg}`}>
+          <button className={styles.btnClose} onClick={(e) => closeOption(e)}>
+            <CloseIcon className={styles.closeIcon}/>
+          </button>
+          <div className={styles.cardContainer}>
+            <div className={styles.logoBox}>
+              <LetterIcon className={styles.letterIcon}/>
             </div>
-          </div>
-        </div>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
-          <div className={`${styles.cardBg}`}>
-            <button className={styles.btnClose} onClick={()=>navigate('/dashboard')}>
-              <CloseIcon className={styles.closeIcon} />
-            </button>
-            <div className={styles.cardContainer}>
-              <div className={styles.logoBox}>
-                <LetterIcon className={styles.letterIcon}/>
-              </div>
-              <div className={styles.titleBox}>
-                <ShareIcon className={styles.shareLink}/>
-                Share Asker
-              </div>
-              <div className={styles.text}>Invite people to answer using this Asker’s unique access code or via direct link:</div>
+            <div className={styles.titleBox}>
+              <ShareIcon className={styles.shareLink}/>
+              Share Asker
+            </div>
+            <div className={styles.text}>Invite people to answer using this Asker’s unique access code or via direct link:</div>
 
-              <div className={styles.inputBox}>
-                <div className={`${styles.inputBlock} `}>
-                  <div className={styles.textBox}>
-                    {/*<input name={'name'} readOnly="readonly" />*/}
-                    <input name={'name'} readOnly="readonly" defaultValue={sharedAskerId}/>
-                  </div>
-                  <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'code')}>
-                    <ContactLink className={styles.linkIcon}/>
-                  </button>
+            <div className={styles.inputBox}>
+              <div className={`${styles.inputBlock} `}>
+                <div className={styles.textBox}>
+                  {/*<input name={'name'} readOnly="readonly" />*/}
+                  <input name={'name'} readOnly="readonly" defaultValue={sharedAskerId}/>
                 </div>
-                <div className={`${styles.inputBlock} `}>
-                  <div className={styles.textBox}>
-                    {/*<input name={'name'} readOnly="readonly" />*/}
-                    <input name={'name'} readOnly="readonly"  placeholder={`askerapp.com/${sharedAskerId}`}/>
-                  </div>
-                  <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'email')}>
-                    <ContactLink className={styles.linkIcon}/>
-                  </button>
-                </div>
+                <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'code')}>
+                  <ContactLink className={styles.linkIcon}/>
+                </button>
               </div>
-              <div className={`button-box ${styles.buttonBox}`}>
-                <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} onClick={handleShow}>
-                  <span>SHARE NOW</span>
-                  <div className={styles.plusIconBox}>
-                    <ShareIcon className={`${styles.shareIcon}`}/>
-                  </div>
+              <div className={`${styles.inputBlock} `}>
+                <div className={styles.textBox}>
+                  {/*<input name={'name'} readOnly="readonly" />*/}
+                  <input name={'name'} readOnly="readonly" placeholder={`askerapp.com/${sharedAskerId}`}/>
+                </div>
+                <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'email')}>
+                  <ContactLink className={styles.linkIcon}/>
                 </button>
               </div>
             </div>
-          </div>
-          <div className={styles.rotate}>
-            <div className="triangle-violet"/>
-          </div>
-        </div>
-
-        <div className={`${styles.cardWrap} ${styles.cardRight}`}>
-          <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
-            <div className={styles.cardContainer}>
+            <div className={`button-box ${styles.buttonBox}`}>
+              <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} onClick={handleShow}>
+                <span>SHARE NOW</span>
+                <div className={styles.plusIconBox}>
+                  <ShareIcon className={`${styles.shareIcon}`}/>
+                </div>
+              </button>
             </div>
           </div>
         </div>
-
-        {/*<div className={styles.rotate}>*/}
-        {/*  <div className="triangle-3"/>*/}
-        {/*</div>*/}
-      </div>
+        <div className={styles.rotate}>
+          <div className="triangle-violet"/>
+          {/*</div>*/}
+        </div>
+      </>
 
       <Modal
         show={show}
@@ -179,7 +166,7 @@ const ShareAsker = (props) => {
                           />
 
                           <div className="icon">
-                              <EmailIcon className={styles.emailIcon}/>
+                            <EmailIcon className={styles.emailIcon}/>
                           </div>
                           <input
                             type="email"
@@ -214,7 +201,7 @@ const ShareAsker = (props) => {
           </div>
         </Modal.Body>
       </Modal>
-    </div>
+    </>
   )
 };
 

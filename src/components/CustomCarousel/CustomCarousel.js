@@ -4,6 +4,7 @@ import styles from './CustomCarousel.module.scss';
 import CarouselArrow from "../UI/icons/CarouselArrow";
 import SpinEffect from "../SpinEffect/SpinEffect";
 import CarouselAnswerItem from "../../container/WatchAnswer/CarouselAnswerItem/CarouselAnswerItem";
+import CarouselAskerItem from "../../container/ViewAsker/CarouselAskerItem/CarouselAskerItem";
 
 
 const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '', state = {}}) => {
@@ -36,12 +37,14 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   };
 
   useEffect(() => {
-    if(data != null) {
+    if(data != null && type === 'watchAnswer') {
       setSlides(data.answer_list)
+    } else {
+      setSlides(data);
     }
   }, [data])
 
-  // console.log('dataCar', data, slides);
+  console.log('dataCar', data, type);
 
   const Prev = (e) => {
     e.preventDefault();
@@ -54,10 +57,6 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
       setItemIndex(1);
     }, 350)
   };
-
-  useEffect(() => {
-    setSlides(data);
-  }, []);
 
   const isAutoplay = () => {
     /* istanbul ignore else */
@@ -159,6 +158,8 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
     // console.log('item', item);
     if (type === 'watchAnswer') {
       return <CarouselAnswerItem key={'carousel-' + index} state={state} data={data} item={item}/>
+    } else if (type === 'viewAsker') {
+      return <CarouselAskerItem key={'carousel-' + index} state={state} data={data} item={item}/>
     }
   }
 

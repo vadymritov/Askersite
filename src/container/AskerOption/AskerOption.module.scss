@@ -56,6 +56,13 @@
     width: 312px;
     height: 430px;
   }
+  @include media-max($sm-break) {
+    width: 280px;
+    height: 430px;
+  }
+  @include media-max($l-break) {
+    width: 250px;
+  }
 
 }
 
@@ -135,6 +142,9 @@
   padding: 27px;
   @include media-max($lg-break) {
     padding: 20px;
+  }
+  @include media-max($sm-break) {
+    padding: 15px;
   }
 }
 
@@ -279,6 +289,7 @@
   font-size: 12px;
   line-height: 1.2;
   color: $white;
+  text-align: start;
   //margin-bottom: 17px;
 }
 
@@ -292,8 +303,8 @@
   height: 30px;
   position: absolute;
   z-index: 5;
-  right: 28px;
-  top: 24px;
+  right: 15px;
+  top: 18px;
 
   &:hover {
     opacity: .8;
@@ -323,9 +334,12 @@
 
 
 .acdcToogler {
-  width: 48px;
+  width: 68px;
+  display: flex;
   height: 32px;
+  justify-content: center;
   position: relative;
+  left: 8px;
 
   input {
     position: relative;

@@ -129,7 +129,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       <>
         <div className={styles.mainContainer}>
           <div className={`${styles.contentContainer}`}>
-            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`}>
+            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`} >
               <div className={`${styles.clickBox}`} onClick={(e) => onchange(e, 'back')}/>
                 <div className={`${styles.cutBox}`}>
                   <div className={`${styles.cardContainer}`}>
@@ -195,9 +195,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                     </div>
                   </div>
                 </div>
-              {/*</div>*/}
             </div>
-            {/*</div>*/}
 
             <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} onClick={(e) => onchange(e, 'front')}>
               <div className={styles.contentWrap}>
