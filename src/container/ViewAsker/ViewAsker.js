@@ -72,6 +72,7 @@ const ViewAsker = (props) => {
         state: {
           asker_id: location?.state.asker_id,
           user_id: location?.state.user_id,
+          viewAsker
         }
       })
   }

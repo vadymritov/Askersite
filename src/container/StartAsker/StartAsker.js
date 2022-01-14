@@ -87,9 +87,9 @@ const StartAsker = (props) => {
           "n"
         ) {
           navigate('/answer',{state:{
-              foundAskerId:foundAsker.asker_id,
+              foundAskerId:foundAsker?.asker_id,
               askerCode,
-              data: AnswerData.question_list[index],
+              data: AnswerData?.question_list[index],
               AnswerData,
             }})
 

@@ -118,7 +118,13 @@ const AskerOption = (props) => {
                       <div className={styles.iconWrap}>
                         <EditCreateBtn className={styles.linkIcon}/>
                       </div>
-                      <div className={styles.textBox}>
+                      <div onClick={()=>{
+                        navigate('/edit-asker',{state:{
+                            asker_id: location?.state.asker_id,
+                            user_id: location?.state.user_id,
+                            viewAsker:location?.state.viewAsker
+                          }})
+                      }} className={styles.textBox}>
                         <span className={styles.title}>Edit</span>
                         <span className={styles.text}>Edit this Asker</span>
                       </div>
