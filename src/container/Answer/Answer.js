@@ -101,7 +101,7 @@ const Answer = (props) => {
         // fdata.append("file", Blob);
         fdata.append("user_id",userID)
         fdata.append("question_id",activeQuestion.question_id);
-        // fdata.append("asker_id", asker_id);
+        fdata.append("asker_id", asker_id);
         fdata.append("answer", myFile);
 
         // fdata.append("question_id",data.question_id);
