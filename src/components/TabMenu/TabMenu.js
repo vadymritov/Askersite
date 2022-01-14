@@ -58,7 +58,7 @@ const TabMenu = (props) => {
   return (
     <div className={styles.tabContainerWrap}>
       <div className={styles.tabContainer}>
-        <NavLink onClick={() => props.onClick('watch')} to={'/watch-answer'} className={({isActive}) => (`${styles.tabItem} ${ watchTabActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => props.onClick('watch')} to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ watchTabActive ? styles.activeTab : ''} `)}>
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
