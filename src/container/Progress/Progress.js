@@ -9,7 +9,7 @@ import ProgressIcon from "../../components/UI/icons/ProgressIcon";
 
 const Progress = (props) => {
   const location = useLocation();
-  let { AnswerData,askerId, askerCode } = location.state;
+  let { AnswerData,askerId, askerCode,currentAllInformation } = location.state;
     const cardRef = useRef(null);
     let navigate = useNavigate();
     const [search, setSearch] = useState("");
@@ -80,8 +80,8 @@ const Progress = (props) => {
                   <div className={styles.progressBox}>
                     <ProgressIcon className={styles.progressIcon}/>
                     <div className={styles.infoBox}>
-                    <div className={styles.persent}>{AnswerData.percentage}%</div>
-                    <div className={styles.textProgressive}>{AnswerData.total_answered_question} of {AnswerData.total_question}</div>
+                    <div className={styles.persent}>{Math.round(currentAllInformation.percentage)}%</div>
+                    <div className={styles.textProgressive}>{currentAllInformation.total_answered_question} of {currentAllInformation.total_question}</div>
                     </div>
                   </div>
                   <div className={styles.titleBox}>
