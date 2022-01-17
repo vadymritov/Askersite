@@ -15,6 +15,7 @@ const Layout = ({children}) => {
   const [smallView, setSmallView] = useState(true)
   const [isSettingsActive, setIsSettingsActive] = useState(false);
   const [showSettings, setShowSettings] = useState(false)
+  const user = JSON.parse(localStorage.getItem("User"));
 
 
   const onClick = (buttonName) => {
@@ -23,8 +24,8 @@ const Layout = ({children}) => {
 
   useEffect(() => {
     if (pathname === '/'
-      || pathname === '/log-in'
-      || pathname === '/sign-up'
+      // || pathname === '/log-in'
+      // || pathname === '/sign-up'
     ) {
       setSmallView(true)
     } else {
@@ -48,7 +49,7 @@ const Layout = ({children}) => {
             <div className={styles.contentWrapper}>
               {children}
 
-              {!smallView ?
+              {!smallView && user?
                 <TabMenu onClick={onClick} setShowSettings={setShowSettings} showSettings={showSettings}/>
                 // <TabMenu onClick={onClick}/>
                 : null}
