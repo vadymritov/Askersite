@@ -78,7 +78,7 @@ const Answer = (props) => {
     mediaRecorderRef.current.start();
     const timer = setTimeout(() => {
       handleStopCaptureClick();
-    }, 31000);
+    }, 30000);
 
     return () => {
       clearTimeout(timer)
@@ -200,12 +200,12 @@ const Answer = (props) => {
                 <div/>
               </button>
               :
-              <ButtonAnswer time={timer} cb={async ()=>{
+              <ButtonAnswer time={timer}  cb={()=>{
                 handleStopCaptureClick();
                 setCapturing(false);
-                setFinishAnswer(true);
+                // setFinishAnswer(true);
                 setLoaderActive(false);
-                clearTimeout(timer)
+                // clearTimeout(timer)
                 navigate('/next-question', {
                   state: {
                     activeQuestion,
