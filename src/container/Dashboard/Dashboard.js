@@ -53,6 +53,7 @@ const Dashboard = (props) => {
         "/share-asker",
         {state: {
             asker_id: item.asker_id,
+            sharedAskerId: item.asker_code,
             user_id: localStorage.getItem("UserID"),
           }
         })
