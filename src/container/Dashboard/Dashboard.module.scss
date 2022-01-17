@@ -91,7 +91,6 @@
 
 }
 
-
 .buttonItem {
   width: 100%;
   max-width: 100%;
@@ -102,6 +101,10 @@
   font-weight: 700;
   letter-spacing: 0.75px;
   border-radius: 8px;
+}
+
+.shareButtonItem {
+  background-color: #b3befa;
 }
 
 .plusIconBox {
@@ -119,6 +122,17 @@
   .shareIcon {
     min-width: 21px;
     height: 23px;
+    position: relative;
+    margin-left: 1px;
+  }
+}
+
+.shareIconBox {
+  background-color: #9eaaee;
+
+  .shareIcon {
+    min-width: 10px;
+    height: 12px;
     position: relative;
     margin-left: 1px;
   }
@@ -402,3 +416,97 @@
     transition: $transition;
   }
 }
+
+
+//.contentBox {
+//  @include btn-reset();
+//  display: flex;
+//  flex-direction: column;
+//  width: 100%;
+//
+//  @include btn-reset();
+//  //display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  background: #7685FE;
+//  min-width: 31px;
+//  height: 31px;
+//  box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
+//  border-radius: 7.31429px;
+//
+//  &:hover, &:active {
+//    opacity: 0.8;
+//    transition: $transition;
+//  }
+//
+//  &:hover {
+//    opacity: 0.8;
+//    transition: $transition;
+//
+//  }
+//
+//  .optionBlock {
+//    display: flex;
+//    align-items: center;
+//    justify-content: space-between;
+//    width: 100%;
+//    margin-bottom: 10px;
+//
+//  }
+//
+//  .iconWrap {
+//    //min-width: 31px;
+//    //height: 31px;
+//    background-color: #ADB8FA;
+//    //display: flex;
+//    //justify-content: center;
+//    //align-items: center;
+//    //border-radius: 50%;
+//    //margin-right: 15px;
+//
+//    .linkIcon {
+//      min-width: 17px;
+//      height: 17px;
+//      position: relative;
+//      margin-left: 1px;
+//    }
+//
+//
+//    position: absolute;
+//    top: calc(50% - 11px);
+//    right: 4px;
+//    width: 22px;
+//    height: 22px;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    background: #44BCB6;
+//    border-radius: 50%;
+//
+//    //.shareIcon {
+//    //  min-width: 21px;
+//    //  height: 23px;
+//    //  position: relative;
+//    //  margin-left: 1px;
+//    //}
+//  }
+//
+//  .textBox {
+//    display: flex;
+//    align-items:  flex-start;
+//    flex-direction: column;
+//    justify-content: center;
+//    width: 100%;
+//  }
+//
+//
+//  .title {
+//    display: flex;
+//    align-items: center;
+//    font-family: $main-font;
+//    font-weight: 700;
+//    font-size: 18px;
+//    line-height: 1.2;
+//    color: $white;
+//  }
+//}

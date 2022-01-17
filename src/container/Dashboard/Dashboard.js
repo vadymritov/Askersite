@@ -10,6 +10,7 @@ import DashbordLogoIcon from "../../components/UI/icons/DashbordLogoIcon";
 import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import {http} from "../../http/http";
+import ShareIcon from "../../components/UI/icons/ShareIcon";
 
 const Dashboard = (props) => {
   const [typeTab, setTypeTab] = useState('all');
@@ -47,14 +48,27 @@ const Dashboard = (props) => {
 
   const handleLink = (e, item) => {
     e.preventDefault();
-    navigate(
-      "/view-asker",
-      {state: {
-        asker_id: item.asker_id,
-        user_id: localStorage.getItem("UserID"),
-      }
-    })
+    if (item?.watch_answer === 'n') {
+      navigate(
+        "/share-asker",
+        {state: {
+            asker_id: item.asker_id,
+            user_id: localStorage.getItem("UserID"),
+          }
+        })
+    } else {
+      navigate(
+        "/view-asker",
+        {
+          state: {
+            asker_id: item.asker_id,
+            user_id: localStorage.getItem("UserID"),
+          }
+        })
+    }
   }
+
+  console.log('arrAske', arrAsker);
 
   const handleTabChange = (e, type) => {
     e.preventDefault();
@@ -121,12 +135,33 @@ const Dashboard = (props) => {
                           </div>
                         </div>
                         <div className={`${styles.buttonBox}`}>
+                          {item?.watch_answer === 'n' ?
+                            // <button className={styles.contentBox} type="submit" onClick={(e) => handleLink(e, item)}>
+                            //   <div className={`${styles.optionBlock} `}>
+                            //     <div className={styles.textBox}>
+                            //       <span className={styles.title}>Share Asker</span>
+                            //     </div>
+                            //     <div className={styles.iconWrap}>
+                            //       <ShareIcon className={styles.linkIcon}/>
+                            //     </div>
+                            //   </div>
+                            // </button>
+                            <button type="submit" className={`continue-btn ${styles.buttonItem} ${styles.shareButtonItem}`} onClick={(e) => handleLink(e, item)}>
+                              <span>Share Asker</span>
+                              <div className={`${styles.plusIconBox} ${styles.shareIconBox}  `}>
+                                {/*<ArrowBtn className={`${styles.shareIcon}`}/>*/}
+                                <ShareIcon className={`${styles.shareIcon}`}/>
+                              </div>
+                            </button>
+                            :
                           <button type="submit" className={`continue-btn ${styles.buttonItem}`} onClick={(e) => handleLink(e, item)}>
                             <span>12 NEW ANSWERS</span>
                             <div className={styles.plusIconBox}>
                               <ArrowBtn className={`${styles.shareIcon}`}/>
                             </div>
-                          </button>
+                          </button>}
+
+
                         </div>
 
                       </div>

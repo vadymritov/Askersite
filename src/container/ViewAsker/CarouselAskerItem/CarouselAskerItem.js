@@ -40,8 +40,6 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
   };
 
   console.log('location.state', location.state, viewAsker);
-  // console.log('location.state', data, item, viewAsker, nextQuestionList)
-  // console.log('nextQuestionLis', nextQuestionList)
 
   const onchange = (e, type) => {
     // e.preventDefault();
