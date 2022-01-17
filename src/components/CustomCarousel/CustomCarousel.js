@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 //@ts-ignore
 import styles from './CustomCarousel.module.scss';
 import CarouselArrow from "../UI/icons/CarouselArrow";
-import SpinEffect from "../SpinEffect/SpinEffect";
 import CarouselAnswerItem from "../../container/WatchAnswer/CarouselAnswerItem/CarouselAnswerItem";
 import CarouselAskerItem from "../../container/ViewAsker/CarouselAskerItem/CarouselAskerItem";
 
 
 const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '', state = {}, ...props}) => {
   const [itemIndex, setItemIndex] = useState(1);
-  const [slides, setSlides] = useState();
+  const [slides, setSlides] = useState([]);
   const [autoplay, setAutoplay] = useState(autoPlay);
   const [moveSlideStartX, setMoveSlideStartX] = useState(0);
   const [moveSlideStartY, setMoveSlideStartY] = useState(0);
@@ -37,15 +36,12 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   };
 
   useEffect(() => {
-    if(data != null && type === 'watchAnswer') {
-      setSlides(data.answer_list)
-    } else {
+    // if(data != null && type === 'watchAnswer') {
+    //   setSlides(data.answer_list)
+    // } else {
+    // }
       setSlides(data);
-    }
   }, [data])
-
-  console.log('dataCar', data, type);
-  console.log('slider', slides,itemIndex, move);
 
   const Prev = (e) => {
     e.preventDefault();
@@ -158,7 +154,7 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
   const renderItems = (index, item) => {
     // console.log('item', item);
     if (type === 'watchAnswer') {
-      return <CarouselAnswerItem  state={state} data={data} item={item}/>
+      return <CarouselAnswerItem  state={state} data={props?.answerData} item={item} />
     } else if (type === 'viewAsker') {
       return <CarouselAskerItem index={index} state={state} data={data} item={item} viewAsker={props.viewAsker} nextQuestionList={props.nextQuestionList}/>
     }
@@ -184,7 +180,6 @@ const CustomCarousel = ({data = [], interval = 5000, autoPlay = true, type = '',
             slides?.map((item, index) =>
               <div key={'carousel-' + index} className={styles.slide}>
                 {renderItems(index, item)}
-                {/*<SpinEffect key={'carousel-' + index} member={item}/>*/}
               </div>
             )
           }

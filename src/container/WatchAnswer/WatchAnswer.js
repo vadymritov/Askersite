@@ -114,7 +114,8 @@ const WatchAnswer = (props) => {
         <div className={`${styles.contentContainer}`}>
 
           <CustomCarousel
-            data={answerData}
+            data={images}
+            answerData={answerData}
             autoPlay={false}
             state={location?.state}
             interval={5000}
