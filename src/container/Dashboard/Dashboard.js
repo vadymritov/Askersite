@@ -137,20 +137,9 @@ const Dashboard = (props) => {
                         </div>
                         <div className={`${styles.buttonBox}`}>
                           {item?.watch_answer === 'n' ?
-                            // <button className={styles.contentBox} type="submit" onClick={(e) => handleLink(e, item)}>
-                            //   <div className={`${styles.optionBlock} `}>
-                            //     <div className={styles.textBox}>
-                            //       <span className={styles.title}>Share Asker</span>
-                            //     </div>
-                            //     <div className={styles.iconWrap}>
-                            //       <ShareIcon className={styles.linkIcon}/>
-                            //     </div>
-                            //   </div>
-                            // </button>
                             <button type="submit" className={`continue-btn ${styles.buttonItem} ${styles.shareButtonItem}`} onClick={(e) => handleLink(e, item)}>
                               <span>Share Asker</span>
                               <div className={`${styles.plusIconBox} ${styles.shareIconBox}  `}>
-                                {/*<ArrowBtn className={`${styles.shareIcon}`}/>*/}
                                 <ShareIcon className={`${styles.shareIcon}`}/>
                               </div>
                             </button>
