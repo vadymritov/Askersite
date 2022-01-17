@@ -45,7 +45,7 @@ const Layout = ({children}) => {
       </div>
 
         <div className={styles.mainRow} >
-          <div className={`${styles.mainCol} ${smallView ? styles.mainColSmall : null}`}>
+          <div className={`${styles.mainCol} ${!smallView ? styles.scaleUpHorLeft : null} ${smallView ? styles.mainColSmall : null}`}>
             <div className={styles.contentWrapper}>
               {children}
 
@@ -65,7 +65,7 @@ const Layout = ({children}) => {
               {/*</div>*/}
             </div>
           </div>
-          <div className={`${styles.staticCol} ${smallView ? styles.staticColSmall : styles.staticCol}`}
+          <div className={`${styles.staticCol} ${!smallView ? styles.scaleUpHorRight : null}  ${smallView ? styles.staticColSmall : styles.staticCol}`}
 
           //      onClick={()=>{
           //   if(showSettings){

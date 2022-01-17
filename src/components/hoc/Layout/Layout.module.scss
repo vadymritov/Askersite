@@ -52,6 +52,7 @@
   flex-direction: column;
   border-radius: 19px;
   //overflow: hidden;
+
   @include media-max($sm-break) {
     width: 100%;
     height: calc(100vh - 60px);
@@ -67,6 +68,7 @@
   }
 
 }
+
 
 .mainColSmall {
   position: relative;
@@ -112,6 +114,9 @@
   flex-direction: column;
   background-color: #fafafa;
   border-radius: 19px;
+
+
+
   @include media-max($md-break) {
     margin-left: 10px;
     width: 50%;
@@ -121,7 +126,6 @@
     margin-top: 12px;
   }
 }
-
 
 .contentWrapper {
   position: relative;
@@ -144,3 +148,80 @@
     min-height: 470px;
   }
 }
+
+
+/// for green back bigger
+.scaleUpHorLeft {
+  -webkit-animation: scaleUpHorLeft 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scaleUpHorLeft 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@-webkit-keyframes scaleUpHorLeft {
+  0% {
+    -webkit-transform: scaleX(0.7);
+    transform: scaleX(0.7);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+}
+@keyframes scaleUpHorLeft {
+  0% {
+    -webkit-transform: scaleX(0.7);
+    transform: scaleX(0.7);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+}
+
+/// for green back bigger
+
+
+
+
+/// for written words small
+.scaleUpHorRight {
+  -webkit-animation: scaleUpHorRight 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scaleUpHorRight 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes scaleUpHorRight {
+  0% {
+    -webkit-transform: scaleX(1.2);
+    transform: scaleX(1.2);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+@keyframes scaleUpHorRight {
+  0% {
+    -webkit-transform: scaleX(1.2);
+    transform: scaleX(1.2);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 70% 70%;
+    transform-origin: 70% 70%;
+  }
+}
+
+/// for written words small
+
