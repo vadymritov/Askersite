@@ -244,12 +244,16 @@
 
 .row {
   display: block;
-  height: 400px;
+  height: 300px;
+  //height: 400px;
   max-height: 409px;
   overflow-y: auto;
   overflow-x: hidden;
   transition: $transition;
-  @include media-max($md-break) {
+  //@include media-max($md-break) {
+  //  height: 300px;
+  //}
+  @include media-max($sm-break) {
     height: 230px;
   }
 }
