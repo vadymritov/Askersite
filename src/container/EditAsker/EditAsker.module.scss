@@ -401,6 +401,7 @@
   min-width: 52px;
   height: 49px;
   position: relative;
+  stroke: #ADB8FA;
   @include media-max($lg-break) {
     width: 40px;
     min-width: 40px;
