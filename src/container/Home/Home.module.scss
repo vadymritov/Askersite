@@ -255,18 +255,16 @@
     display: flex;
     position: absolute;
     border-radius: 4px;
-    top: -14vw;
+    top: -6vw;
     background-image: url("../../image/svg/QuestionBottom.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    //left: -18vw;
     height: 11em;
     width: 25em;
     left: -209px;
     padding: 0;
     @include animationJS();
-
     @include media-max($lg-break) {
       top: -16vw;
       left: -14vw;
