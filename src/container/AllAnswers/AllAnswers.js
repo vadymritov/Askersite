@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './AllAnswers.module.scss'
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import {useNavigate} from "react-router-dom";
@@ -7,11 +7,11 @@ import {http} from "../../http/http";
 const AllAnswers = (props) => {
   let navigate = useNavigate();
   const [arrAsker, setArrAsker] = useState([])
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8,]
+  const answersArray = arrAsker;
   const userID = JSON.parse(localStorage.getItem("UserID"));
-  useState(()=>{
-    http.post('allAsker', `user_id=${userID}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker.slice(0,16)))
-  },[])
+  useEffect(()=>{
+    http.post('allAsker', `user_id=${userID}`).then(resp => resp.data).then(askersData => setArrAsker(askersData.asker.filter(o => o.watch_answer === 'y')))
+  },[userID])
 
   return (
     <div className={styles.mainContainer}>
