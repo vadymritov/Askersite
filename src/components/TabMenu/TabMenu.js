@@ -22,6 +22,7 @@ const TabMenu = (props) => {
 
   const toggleSettings = () => {
     // navigate(`/${url}&settings`)
+    props.onClick('settings')
     props.setShowSettings(!props.showSettings)
   }
 
@@ -58,16 +59,19 @@ const TabMenu = (props) => {
   return (
     <div className={styles.tabContainerWrap}>
       <div className={styles.tabContainer}>
-        <NavLink onClick={() => props.onClick('watch')} to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ watchTabActive ? styles.activeTab : ''} `)}>
+        <NavLink onClick={() => {
+          props.onClick('watch')
+        }
+        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ isActive ? styles.activeTab : ''} `)}>
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}  `)}>
+        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''}`)}>
           <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
         <NavLink onClick={() => {props.onClick('search')
-        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${answerTabActive ? styles.activeTab : ''} `)}>
+        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
