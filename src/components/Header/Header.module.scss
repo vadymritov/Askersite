@@ -44,9 +44,16 @@
   height: 30px;
   display: inline-flex;
   align-items: center;
-  margin-right: 40px;
+  //margin-right: 40px;
   text-decoration: none;
   color: #ABABAB;
+   &:not(:last-child){
+     margin-right: 30px;
+   }
+   &:nth-last-child(2){
+     margin-right:15px;
+     margin-left: 15px;
+   }
   @include media-max(1550) {
     margin-right: 3vw;
   }
