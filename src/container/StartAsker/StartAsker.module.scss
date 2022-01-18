@@ -71,8 +71,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(100% - 52px);
+  height: calc(100% - 32px);
   overflow: hidden;
+  margin-bottom: 60px;
   @include media-max($lg-break) {
     margin-bottom: 60px;
   }
@@ -83,7 +84,7 @@
 }
 .cardWrap {
   width: 338px;
-  height: 475px;
+  height: 450px;
   position: relative;
   z-index: 3;
   max-width: 100%;
@@ -144,11 +145,12 @@
 
 
 .rotate {
-  transform: rotate(180deg);
+  transform: rotate(-315deg);
   position: absolute;
-  bottom: -32px;
+  bottom: -22px;
   z-index: -1;
   left: calc(50% - 18px);
+  //background-image: url("../../image/svg/white-arrow-down.svg");
 }
 
 .logoBox {

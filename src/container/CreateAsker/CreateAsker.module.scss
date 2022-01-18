@@ -44,9 +44,9 @@
 }
 
 .rotate {
-  transform: rotate(180deg);
+  transform: rotate(-315deg);
   position: absolute;
-  bottom: -32px;
+  bottom: -22px;
   z-index: -1;
   left: calc(50% - 18px);
 }
@@ -344,8 +344,6 @@
     padding: 0 22px;
     min-width: 300px;
     max-height: 532px;
-
-
     @include media-max($lg-break) {
       min-width: 14em;
       left: 20px;
@@ -417,7 +415,7 @@
     @include media-max($lg-break) {
       min-width: 15em;
       min-height: 21em;
-      max-height: auto;
+      //max-height: auto;
     }
     @include media-max($md-break) {
       min-width: 260px;
