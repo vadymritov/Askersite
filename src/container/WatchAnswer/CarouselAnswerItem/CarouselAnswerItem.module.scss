@@ -53,11 +53,12 @@
     margin-top: 5px;
   }
 }
+
 .logoBox {
   position: absolute;
   z-index: 2;
-  top: 0x;
-  height: 50px;
+  top: 0;
+  height: 40px;
   display: flex;
   width: 100%;
   max-width: 100%;
@@ -78,7 +79,8 @@
   align-items: center;
   position: relative;
   padding: 2px;
-  box-shadow: 0px 17.7273px 18.9091px rgba(0, 20, 170, 0.03);
+  margin-left: -1px;
+  box-shadow: 0 17.7273px 18.9091px rgba(0, 20, 170, 0.03);
   z-index: 2;
   background: transparent;
   width: calc(100% - 65px);
@@ -97,7 +99,6 @@
 .infoIconSmall {
   position: relative;
   top: 2px;
-  left: -5px;
   min-width: 31px;
   height: 31px;
 }
@@ -209,6 +210,7 @@
   top: 0;
 
 }
+
 .clickBox {
   position: absolute;
   z-index: 20;
@@ -286,6 +288,7 @@
     height: 407px;
   }
 }
+
 .contentWrap {
   position: relative;
   width: 100%;
@@ -331,6 +334,7 @@
     border-radius: 27px;
     backdrop-filter: blur(15px);
     transition: $transition;
+
     &__none {
       display: none;
       transition: $transition;
@@ -607,6 +611,7 @@
 .iconWrap {
   @include btn-reset();
   background: transparent;
+
   &:hover {
     opacity: .8;
     transition: $transition;
@@ -614,11 +619,12 @@
   }
 
 }
+
 .starIcon {
-  width: 20px;
-  height: 20px;
+  width: 21.07px;
+  height: 21.07px;
   fill: $white;
-  margin: 0 6px;
+  margin: 0 6.98px;
   transition: $transition;
 
   @include media-max($lg-break) {
@@ -633,7 +639,7 @@
   &__fill {
     width: 20px;
     height: 20px;
-    margin: 0 6px;
+    margin: 0 10px;
     fill: rgba(173, 184, 250, 0.5);
     transition: $transition;
     @include media-max($lg-break) {
@@ -641,11 +647,13 @@
       height: 18px;
     }
     @include media-max($xs-break) {
+      margin: 0 6px;
       width: 16px;
       height: 16px;
     }
   }
 }
+
 .starIconBack {
   width: 20px;
   height: 20px;
@@ -664,7 +672,8 @@
   }
 }
 
-.contentStar {position: absolute;
+.contentStar {
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
@@ -676,7 +685,8 @@
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.71) 54%, transparent);
   @include media-max(1440) {
     padding: 15px 15px 35px;
-  }@include media-max($lg-break) {
+  }
+  @include media-max($lg-break) {
     //padding: 15px 15px 16px;
   }
 
@@ -719,6 +729,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 18px;
+    padding-top: 15px;
     line-height: 1.2;
     color: $white;
 
@@ -739,4 +750,9 @@
     pointer-events: none;
     max-width: 100%;
   }
+}
+
+.activeSlide {
+  background-color: #00d9cd !important;
+  opacity: 1 !important;
 }

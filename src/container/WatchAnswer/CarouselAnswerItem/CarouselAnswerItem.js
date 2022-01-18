@@ -18,12 +18,19 @@ import copy from "copy-html-to-clipboard";
 
 const CarouselAnswerItem = ({state, item, data, ...props}) => {
     const [isActive, setActive] = useState(false);
+    const [showSlide, setShowSlide] = useState(-1);
     const location = useLocation();
     const {asker_id, user_id} = location?.state;
     const [userProfile, setUserProfile] = useState();
     const [askerData, setAskerData] = useState([]);
     const [answerData, setAnswerData] = useState([]);
     // const isActive = false
+    const getPaginate = (count) => {
+      return <button className={(showSlide >= count) ? styles.activeSlide : ''}>
+        {count}
+      </button>
+    }
+
     const settings = {
       dots: true,
       infinite: true,
@@ -34,13 +41,29 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       vertical: true,
       autoplay: true,
       autoplaySpeed: 15000,
+      customPaging: i => (
+        getPaginate(i)
+      ),
+      beforeChange: (current, next) => {
+        if ((current + 1) === answerData?.length) {
+          setShowSlide(-1);
+        } else {
+          setShowSlide(current)
+        }
+      },
     };
 
     useEffect(() => {
       if (data) {
-        setAnswerData(data.answer_list)
+        const d = [];
+        for (let i = 0; i < data.answer_list?.length && i < 3; i++) {
+            d.push(data.answer_list[i]);
+        }
+        setAnswerData(d);
       }
     }, [data])
+
+  console.log(answerData)
 
     const onchange = (e, type) => {
       e.preventDefault();
@@ -119,72 +142,72 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
       <>
         <div className={styles.mainContainer}>
           <div className={`${styles.contentContainer}`}>
-            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`} >
+            <div className={`card card--back ${!isActive ? 'card--back--flip' : ''} ${styles.cardWrap}`}>
               <div className={`${styles.clickBox}`} onClick={(e) => onchange(e, 'back')}/>
-                <div className={`${styles.cutBox}`}>
-                  <div className={`${styles.cardContainer}`}>
-                    <div className={styles.logoBox}>
-                      <div className={styles.infoBlockSmall}>
-                        <AllAnswerIcon className={styles.infoIconSmall}/>
-                        <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
-                      </div>
-                      <LogoWhiteViolet className={styles.logo}/>
+              <div className={`${styles.cutBox}`}>
+                <div className={`${styles.cardContainer}`}>
+                  <div className={styles.logoBox}>
+                    <div className={styles.infoBlockSmall}>
+                      <AllAnswerIcon className={styles.infoIconSmall}/>
+                      <div className={styles.infoTextSmall}>{data?.asker_title}<br/> <span className={styles.infoTextSmall__job}>{data?.asker_author}</span></div>
                     </div>
-                    <div className={`screen`}>
-                      <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
-                        <Slider {...settings}>
-                          {answerData?.length > 0
-                            ? answerData?.map((item, index) => (
-                              <div key={`slide-${item.question_id}`} className={`wth-ans-inner-single-slide slide-watch`}>
-                                <div className={`img-vid ${styles.imgVideo}`}>
-                                  <video playsInline autoPlay muted loop>
-                                    <source src={item.answer} type="video/mp4"/>
-                                  </video>
-                                </div>
-                                <div className={`cont ${styles.contentStar}`}>
-                                  <div className={`star-rate ${styles.starsBox}`}>
-                                    <button type='button' className={`material-iconss ${item.rating >= 1 ? "star-checked" : ""} ${styles.iconWrap}`}
-                                            id="star_r1"
-                                            onClick={(e) => submitRating(e, 1, item.question_id, item.answer_id)}>
-                                      {/*{item.rating >= 1 ? (*/}
-                                      <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
-                                    </button>
-                                    <span
-                                      className={`material-iconss ${item.rating >= 2 ? "star-checked" : ""}`}
-                                      id="star_r2"
-                                      onClick={(e) => submitRating(e, 2, item.question_id, item.answer_id)}>
+                    <LogoWhiteViolet className={styles.logo}/>
+                  </div>
+                  <div className={`screen`}>
+                    <div className={`wth-ans-inner-slider promotionVideoSlide ${styles.promotionVideoSlide} ${styles.wthInnerSlider}`}>
+                      <Slider {...settings}>
+                        {answerData?.length > 0
+                          ? answerData?.map((item, index) => (
+                            <div key={`slide-${item.question_id}`} className={`wth-ans-inner-single-slide slide-watch`}>
+                              <div className={`img-vid ${styles.imgVideo}`}>
+                                <video playsInline autoPlay muted loop>
+                                  <source src={item.answer} type="video/mp4"/>
+                                </video>
+                              </div>
+                              <div className={`cont ${styles.contentStar}`}>
+                                <div className={`star-rate ${styles.starsBox}`}>
+                                  <button type='button' className={`material-iconss ${item.rating >= 1 ? "star-checked" : ""} ${styles.iconWrap}`}
+                                          id="star_r1"
+                                          onClick={(e) => submitRating(e, 1, item.question_id, item.answer_id)}>
+                                    {/*{item.rating >= 1 ? (*/}
+                                    <StarIcon className={item.rating >= 1 ? styles.starIcon : styles.starIcon__fill}/>
+                                  </button>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 2 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 2, item.question_id, item.answer_id)}>
                                     <StarIcon className={item.rating >= 2 ? styles.starIcon : styles.starIcon__fill}/>
                                 </span>
-                                    <span
-                                      className={`material-iconss ${item.rating >= 3 ? "star-checked" : ""}`}
-                                      id="star_r2"
-                                      onClick={(e) => submitRating(e, 3, item.question_id, item.answer_id)}>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 3 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 3, item.question_id, item.answer_id)}>
                                     <StarIcon className={item.rating >= 3 ? styles.starIcon : styles.starIcon__fill}/>
                                 </span>
-                                    <span
-                                      className={`material-iconss ${item.rating >= 4 ? "star-checked" : ""}`}
-                                      id="star_r2"
-                                      onClick={(e) => submitRating(e, 4, item.question_id, item.answer_id)}>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 4 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 4, item.question_id, item.answer_id)}>
                                     <StarIcon className={item.rating >= 4 ? styles.starIcon : styles.starIcon__fill}/>
                                 </span>
-                                    <span
-                                      className={`material-iconss ${item.rating >= 5 ? "star-checked" : ""}`}
-                                      id="star_r2"
-                                      onClick={(e) => submitRating(e, 5, item.question_id, item.answer_id)}>
+                                  <span
+                                    className={`material-iconss ${item.rating >= 5 ? "star-checked" : ""}`}
+                                    id="star_r2"
+                                    onClick={(e) => submitRating(e, 5, item.question_id, item.answer_id)}>
                                     <StarIcon className={item.rating >= 5 ? styles.starIcon : styles.starIcon__fill}/>
                                 </span>
 
-                                  </div>
-                                  <p className={styles.questioText}>{item.question}</p>
                                 </div>
+                                <p className={styles.questioText}>{item.question}</p>
                               </div>
-                            ))
-                            : null}
-                        </Slider>
-                      </div>
+                            </div>
+                          ))
+                          : null}
+                      </Slider>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
             <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} onClick={(e) => onchange(e, 'front')}>
