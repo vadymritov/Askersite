@@ -172,58 +172,63 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
 
             </div>
           </div>
+          <div  className={styles.contentBlockContainer}>
           {nextQuestionList && nextQuestionList.map((item, index) => {
             return (selectedQuestionId === item.question_id && EditQuestion ?
-              <div key={item.question_id} className={`${styles.questionItem} ${styles.questionItemDash}`}>
-                <div onClick={() => {
-                  setSelectedQuestionText(item.title)
-                  sendChangedQuestion(asker_id, user_id, selectedQuestionId, selectedQuestionText)
-                  // await getNextQuestionList(asker_id,user_id)
-                  SetEditQuestion(prevState => !prevState)
-                  setNextQuestionList((prevState) => [...prevState.map((selectedQuest) => {
-                    if (selectedQuestionId === selectedQuest.question_id) {
-                      return {
-                        ...selectedQuest,
-                        title: selectedQuestionText
-                      }
 
-                    }
-                    return selectedQuest
-                  })])
-                }} className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>
-                  <CheckIcon className={styles.checkIcon}/>
-                </div>
-                <div className={styles.textBox}>
-                  {/*<div className={styles.textEdit}>{item.title}</div>*/}
-                  <input type='text' className={styles.textEdit} onChange={(e) => setSelectedQuestionText(e.target.value)} defaultValue={item.title}/>
-                  {/*<input name={'name-4'} placeholder='e.g Questions for Candidates'/>*/}
-                  {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
-                </div>
-                <div className={styles.timesBox}>
-                  {/*<span>30s</span>*/}
-                  <span className={styles.active}>{item.time}s</span>
-                  <span>90s</span>
-                </div>
-              </div>
-
-              :
-              <div key={item.question_id} className={styles.contentBlock}>
-                <div className={`${styles.questionItemEmpty}`}>
-                  <button type="button" onClick={() => {
-                    setSelectedQuestionId(item.question_id)
+                <div key={item.question_id} className={`${styles.questionItem} ${styles.questionItemDash}`}>
+                  <div onClick={() => {
+                    setSelectedQuestionText(item.title)
+                    sendChangedQuestion(asker_id, user_id, selectedQuestionId, selectedQuestionText)
+                    // await getNextQuestionList(asker_id,user_id)
                     SetEditQuestion(prevState => !prevState)
-                  }} className={styles.iconWrap}>
-                    <EditCreateBtn className={styles.editIcon}/>
-                  </button>
-                  <input className={styles.textEdit} disabled={true} type='text' onChange={(e) => e.target.value} defaultValue={item.title}/>
-                  {/*<div className={styles.textEdit}>{item.title}</div>*/}
-                  <div className={styles.iconsBox}>
-                    <ClockIcon className={styles.iconClock}/>
-                    <span>{item.time}s</span>
+                    setNextQuestionList((prevState) => [...prevState.map((selectedQuest) => {
+                      if (selectedQuestionId === selectedQuest.question_id) {
+                        return {
+                          ...selectedQuest,
+                          title: selectedQuestionText
+                        }
+
+                      }
+                      return selectedQuest
+                    })])
+                  }} className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>
+                    <CheckIcon className={styles.checkIcon}/>
+                  </div>
+                  <div className={styles.textBox}>
+                    {/*<div className={styles.textEdit}>{item.title}</div>*/}
+                    <input type='text' className={styles.textEdit} onChange={(e) => setSelectedQuestionText(e.target.value)} defaultValue={item.title}/>
+                    {/*<input name={'name-4'} placeholder='e.g Questions for Candidates'/>*/}
+                    {/*<span className={styles.text}>e.g Questions for Candidates</span>*/}
+                  </div>
+                  <div className={styles.timesBox}>
+                    {/*<span>30s</span>*/}
+                    <span className={styles.active}>{item.time}s</span>
+                    <span>90s</span>
                   </div>
                 </div>
-              </div>)
+                :
+                <div key={item.question_id} className={styles.contentBlock}>
+                  <div className={`${styles.questionItemEmpty}`}>
+                    <button type="button" onClick={() => {
+                      setSelectedQuestionId(item.question_id)
+                      SetEditQuestion(prevState => !prevState)
+                    }} className={styles.iconWrap}>
+                      <EditCreateBtn className={styles.editIcon}/>
+                    </button>
+                    <input className={styles.textEdit} disabled={true} type='text' onChange={(e) => e.target.value} defaultValue={item.title}/>
+                    {/*<div className={styles.textEdit}>{item.title}</div>*/}
+                    <div className={styles.iconsBox}>
+                      <ClockIcon className={styles.iconClock}/>
+                      <span>{item.time}s</span>
+                    </div>
+                  </div>
+                </div>
+
+
+              )
           })}
+          </div>
           <div className={`button-box ${styles.buttonBox}`}>
             <button type="button"
                     onClick={(e) => {

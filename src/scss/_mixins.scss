@@ -105,8 +105,9 @@
     width: 45px;
     height: 45px;
     border-radius: 20%;
+    background-image: url('../image/svg/white-arrow-down.svg');
     //@include triangle(50px, $white, true);
-    opacity: .9;
+    //opacity: .9;
     //transform: translate(0, 90%);
   }
 

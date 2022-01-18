@@ -272,7 +272,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
               {shareBox()}
             </div>
             <div className={styles.rotate}>
-              <div className="triangle-violet"/>
+              <ArrowDown  className={styles.rotateArrowBtn}/>
             </div>
           </>
 

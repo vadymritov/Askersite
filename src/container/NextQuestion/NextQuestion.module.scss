@@ -182,9 +182,9 @@
 
 
 .rotate {
-  transform: rotate(180deg);
+  transform: rotate(-315deg);
   position: absolute;
-  bottom: -32px;
+  bottom: -20px;
   z-index: -1;
   left: calc(50% - 18px);
 }

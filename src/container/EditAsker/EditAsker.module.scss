@@ -131,7 +131,7 @@
   width: 100%;
   height: 100%;
   padding: 27px;
-  transition: 900m;
+  transition: 900 m;
   @include media-max($lg-break) {
     padding: 20px;
   }
@@ -150,14 +150,14 @@
   width: 100%;
   height: 100%;
   padding: 27px;
-  transition: 900m;
+  transition: 900 m;
 }
 
 
 .rotate {
-  transform: rotate(180deg);
+  transform: rotate(-315deg);
   position: absolute;
-  bottom: -32px;
+  bottom: -20px;
   z-index: -1;
   left: calc(50% - 18px);
 }
@@ -207,19 +207,25 @@
 
 
 .textBox {
+  max-width: 150px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
   //padding: 11px 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   width: calc(100% - 5px);
   color: rgba(96, 111, 129, 0.9);
+  margin-right: 24px;
 
   input {
     display: flex;
     width: 100%;
+
     max-width: 100%;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1;
     text-align: start;
     //color: $darkText;
@@ -227,9 +233,9 @@
     border: none;
     background: none;
     appearance: none;
-    min-height: 10px;
     padding: 3px 5px 3px 0;
-    color: rgba(96, 111, 129, 0.9);;
+    color: rgba(96, 111, 129, 0.9);
+    min-height: 65px;
 
     &:focus {
       outline: none;
@@ -246,6 +252,7 @@
   line-height: 1;
   color: rgba(52, 67, 86, 0.9);
   text-align: start;
+
   @include media-max($lg-break) {
     font-size: 18px;
   }
@@ -316,6 +323,7 @@
   background: #7685FE;
   min-width: 31px;
   height: 31px;
+  margin-right: 5px;
   box-shadow: 0px 8.12698px 20.3175px rgba(84, 104, 255, 0.3);
   border-radius: 7.31429px;
 
@@ -352,7 +360,7 @@
   width: 100%;
 }
 
-.buttonStylePublich  {
+.buttonStylePublich {
   background: #00D9CD;
   width: 100%;
 }
@@ -383,6 +391,14 @@
   margin-bottom: 7px;
 }
 
+.contentBlockContainer {
+  height: 300px;
+  overflow: auto;
+  padding: 5px;
+
+  //overflow-x: hidden;
+}
+
 .iconsBox {
   display: flex;
   justify-content: center;
@@ -410,7 +426,6 @@
 }
 
 
-
 .questionItemEmpty {
   display: flex;
   align-items: center;
@@ -420,34 +435,38 @@
   padding-left: 21px;
   min-height: 74px;
   //margin-bottom: 5px;
+  //background: #FAFAFA;
   background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px 3px 19px rgba(60, 128, 209, 0.09);
+  filter: drop-shadow(0px 3px 19px rgba(60, 128, 209, 0.09));
   @include media-max($lg-break) {
     min-height: 62px;
   }
 }
-  .textEdit {
-    display: flex;
-    align-items: center;
-    font-family: $main-font;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.1;
-    color: #344356;
-    height: 100%;
-    opacity: 0.8;
-    margin-left: 10px;
-    width: 100%;
-    text-align: start;
-    @include media-max($l-break) {
-      font-size: 13px;
-    }
+
+.textEdit {
+  display: flex;
+  align-items: center;
+  font-family: $main-font;
+  font-weight: 400;
+  font-size: 15px;
+  text-align: start;
+  line-height: 1.1;
+  color: #344356;
+  height: 100%;
+  opacity: 0.8;
+  margin-left: 10px;
+  width: 100%;
+
+  @include media-max($l-break) {
+    font-size: 13px;
   }
+}
 
 .iconWrapCheck {
   background-color: #00D9CD;
   //margin-right: 10px;
 }
+
 .checkIcon {
   min-width: 12px;
   height: 10px;
