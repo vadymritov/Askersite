@@ -56,7 +56,9 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
     useEffect(() => {
       if (data) {
         const d = [];
-        for (let i = 0; i < data.answer_list?.length || i < 3; i++) {
+        const l = data.answer_list?.length > 3 ? 3 : data.answer_list?.length;
+
+        for (let i = 0; i < l; i++) {
           if (data.answer_list[i]) {
             d.push(data.answer_list[i]);
           }
