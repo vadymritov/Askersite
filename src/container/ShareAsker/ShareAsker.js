@@ -10,6 +10,7 @@ import {Modal} from "react-bootstrap";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {http} from "../../http/http";
 import copy from "copy-html-to-clipboard";
+import {ReactComponent as ArrowDown} from '../../image/svg/arow-down.svg';
 
 const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) => {
   const [show, setShow] = useState(false);
@@ -245,7 +246,8 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
 
                 </div>
                 <div className={styles.rotate}>
-                  <div className="triangle-violet"/>
+                  <ArrowDown  className={styles.rotateArrowBtn}/>
+                  {/*<div className="triangle-violet"/>*/}
                 </div>
               </div>
 

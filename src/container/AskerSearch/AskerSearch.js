@@ -6,6 +6,7 @@ import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
 import SearchIcon from "../../components/UI/icons/SearchIcon";
 import {http} from "../../http/http";
+import {ReactComponent as ArrowDown} from '../../image/svg/arow-down.svg';
 
 const AskerSearch = (props) => {
   const cardRef = useRef(null);
@@ -103,6 +104,7 @@ const AskerSearch = (props) => {
                   </button>
                 </div>
               </div>
+              {/*<ArrowDown className={styles.arrowDown}/>*/}
             </div>
 
           </div>
