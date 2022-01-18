@@ -145,7 +145,7 @@ const Dashboard = (props) => {
                             </button>
                             :
                           <button type="submit" className={`continue-btn ${styles.buttonItem}`} onClick={(e) => handleLink(e, item)}>
-                            <span>12 NEW ANSWERS</span>
+                            <span>NEW ANSWERS</span>
                             <div className={styles.plusIconBox}>
                               <ArrowBtn className={`${styles.shareIcon}`}/>
                             </div>

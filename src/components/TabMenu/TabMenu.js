@@ -8,7 +8,6 @@ import TabSettings from "../UI/icons/TabMenu/TabSettings";
 import {getQueryParams} from "../../utils/helpers";
 
 const TabMenu = (props) => {
-  // console.log('props',props)
   const {pathname} = useLocation();
   const [askTabActive, setAskTabActive] = useState(false);
   const [watchTabActive, setWatchTabActive] = useState(false);
@@ -32,6 +31,7 @@ const TabMenu = (props) => {
       || pathname === '/dashboard'
       || pathname === '/edit-asker'
       || pathname === '/view-asker') {
+
       setAskTabActive(true)
     }
 
@@ -62,16 +62,16 @@ const TabMenu = (props) => {
         <NavLink onClick={() => {
           props.onClick('watch')
         }
-        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ isActive ? styles.activeTab : ''} `)}>
-          <TabWatch className={`${styles.taIcon}`}/>
+        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ isActive && watchTabActive  ? styles.activeTab : ''} `)}>
+          <TabWatch className={`${styles.taIcon} ${styles.shadow}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''}`)}>
-          <TabAsk  className={`${styles.taIcon}`}/>
+        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive && askTabActive ? styles.activeTab : ''}`)}>
+          <TabAsk  className={`${styles.taIcon} ${styles.shadow}`}/>
           <span>Ask</span>
         </NavLink>
         <NavLink onClick={() => {props.onClick('search')
-        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${isActive ? styles.activeTab : ''} `)}>
+        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${isActive && answerTabActive  ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>

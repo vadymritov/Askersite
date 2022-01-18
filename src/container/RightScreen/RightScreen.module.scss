@@ -113,7 +113,7 @@
   justify-content: flex-start;
   height: 280px;
   @include media-max($lg-break) {
-    height: 220px;
+    height: 240px;
   }
   @include media-max($sm-break) {
     min-height: 220px;

@@ -102,12 +102,16 @@
 .triangle {
 
   &-white {
-    @include triangle(40px, $white, true);
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+    //@include triangle(50px, $white, true);
     opacity: .9;
     //transform: translate(0, 90%);
   }
 
   &-violet {
+
   //rgba(84, 104, 255, 0.85) 7.1%, rgba(123, 139, 255, 0.85)
   //  @include triangle(40px, rgba(123, 139, 255, 0.85), true);
     @include triangle(40px, rgba(84, 104, 255, 0.85), true);

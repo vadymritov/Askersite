@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "./ShareAsker.module.scss";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
 import ContactLink from "../../components/UI/icons/Contact/ContactLink";
@@ -245,7 +245,8 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
 
                 </div>
                 <div className={styles.rotate}>
-                  <div className="triangle-violet"/>
+                  <ArrowDown  className={styles.rotateArrowBtn}/>
+                  {/*<div className="triangle-violet"/>*/}
                 </div>
               </div>
 
