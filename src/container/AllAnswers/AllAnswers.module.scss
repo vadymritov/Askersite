@@ -108,8 +108,15 @@
   align-self: center;
   height: 100%;
   overflow: auto;
+  width: 100%;
   @include media-max($lg-break){
-    padding-left: 20px;
+    width: 80%;
+  }
+  @include media-max($md-break){
+    width: 75%;
+  }
+  @include media-max($sm-break){
+    width: 100%;
   }
 }
 
