@@ -181,16 +181,18 @@
   width: 89px;
   height: 100%;
   background: #FFFFFF;
-  //opacity: 0.85;
+  opacity: 0.85;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
+  //font-family: $fontRoboto;
+  padding-top: 3px;
   font-family: $main-font;
   font-size: 12px;
-  line-height: 1.1;
+  line-height: 1;
   color: #344356;
-  letter-spacing: 0.994px;
+  letter-spacing: 1.285px;
   text-transform: uppercase;
   margin-right: 2px;
 
@@ -205,6 +207,7 @@
 .active {
   color: #344356;
   font-weight: 700;
+  box-shadow: 0 12px 19px rgba(60, 128, 209, 0.2);
 }
 
 .tabLeft {

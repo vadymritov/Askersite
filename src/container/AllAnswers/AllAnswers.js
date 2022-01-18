@@ -19,19 +19,22 @@ const AllAnswers = (props) => {
         <AllAnswerIcon className={styles.infoIcon}/>
         <div className={styles.infoText}>Brighton Art Gallery<br/> Cleaner Job in Brighton</div>
       </div>
-      <div className={styles.row}>
-      {
-        arrAsker.map((item, index) => {
-          return <div key={item.asker_id} onClick={()=>navigate('/watch-answer',{state:{
-            asker_id:item.asker_id,
-              user_id:userID
-            }})} className={styles.cardWrap}>
-            <div className={styles.answersContainer}>
-              <div className={styles.answerCard}/>
-            </div>
-          </div>
-        })
-      }
+      <div className={styles.answersWrapper}>
+        <div className={styles.row}>
+          <div className={styles.answersSpace}/>
+          {
+            arrAsker.map((item, index) => {
+              return <div key={item.asker_id} onClick={()=>navigate('/watch-answer',{state:{
+                  asker_id:item.asker_id,
+                  user_id:userID
+                }})} className={styles.cardWrap}>
+                <div className={styles.answersContainer}>
+                  <div className={styles.answerCard}/>
+                </div>
+              </div>
+            })
+          }
+        </div>
       </div>
     </div>
   )

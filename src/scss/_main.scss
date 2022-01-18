@@ -152,12 +152,14 @@ input[type=number]::-webkit-outer-spin-button {
   overflow: hidden;
   padding: 0 5px;
   background-color: #b6fffb;
+  line-height: 0;
 }
 .activeTypedViolet {
   transition: 0.3s ease;
   overflow: hidden;
   padding: 0 5px;
   background-color: #ADB8FA;
+  line-height: 0;
 }
 
 h2 {
