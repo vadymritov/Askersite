@@ -14,10 +14,7 @@
   bottom: 0;
 }
 
-.shadow{
-  filter: drop-shadow(0px 3.93832px 3.93832px rgba(0, 0, 0, 0.1));
 
-}
 
 .tabContainer {
   width: 368px;
@@ -65,6 +62,9 @@
     @include media-max($xs-break) {
       min-width: 18px;
       height: 18px;
+    }
+    &:hover{
+      filter: drop-shadow(0px 3.93832px 3.93832px rgba(0, 0, 0, 0.1));
     }
   }
 
