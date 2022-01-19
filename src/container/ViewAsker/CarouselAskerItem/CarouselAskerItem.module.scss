@@ -238,7 +238,8 @@
   width: calc(100% - 5px);
   color: rgba(96, 111, 129, 0.9);
   margin-top: 10px;
-  opacity: .8;
+  white-space: initial;
+  //opacity: .8;
   padding-left: 16px;
 
 
@@ -267,10 +268,11 @@
 }
 
 .title {
+  max-width: 150px;
   text-overflow: ellipsis !important;
   overflow: hidden;
   display: block;
-
+  word-wrap: break-word;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 20px;

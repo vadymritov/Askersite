@@ -12,6 +12,8 @@ import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
+// import {ReactComponent as ArrowDown} from "../../image/svg/arow-down.svg";
 
 const StartAsker = (props) => {
   const location = useLocation();
@@ -190,9 +192,10 @@ const StartAsker = (props) => {
               </div>
             </div>
           </div>
-          <div className={styles.rotate}>
-            <div className="triangle-white"/>
-          </div>
+          <ArrowDown  className={styles.rotateT}/>
+          {/*<div className={styles.rotate}>*/}
+          {/*  <div className="triangle-white"/>*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>

@@ -401,7 +401,15 @@
   transform: rotate(-90deg);
   fill: #44BCB6;
 }
-
+.rotateT{
+  position: absolute;
+  bottom: -28px;
+  z-index: -1;
+  fill: #f3f4fd;
+  left: calc(50% - 25px);
+  width: 60px;
+  height: 30px;
+}
 .buttonStylePublich  {
   background: #00D9CD;
   width: 100%;

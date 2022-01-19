@@ -12,6 +12,7 @@ import CheckNextIcon from "../../components/UI/icons/CheckNextIcon";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const NextQuestion = (props) => {
   const location = useLocation();
@@ -190,9 +191,9 @@ const NextQuestion = (props) => {
               </div>
             </div>
           </div>
-          <div className={styles.rotate}>
-            <div className="triangle-white"/>
-          </div>
+          {/*<div className={styles.rotate}>*/}
+          <ArrowDown  className={styles.rotateT}/>
+          {/*</div>*/}
         </div>
       </div>
     </div>

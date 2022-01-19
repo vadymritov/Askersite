@@ -11,6 +11,7 @@ import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {http} from "../../http/http";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const AskerComplete = (props) => {
   const location = useLocation();
@@ -168,9 +169,9 @@ const AskerComplete = (props) => {
 
             </div>
           </div>
-          <div className={styles.rotate}>
-            <div className="triangle-white"/>
-          </div>
+          {/*<div className={styles.rotate}>*/}
+          <ArrowDown  className={styles.rotateT}/>
+          {/*</div>*/}
         </div>
       </div>
     </div>
