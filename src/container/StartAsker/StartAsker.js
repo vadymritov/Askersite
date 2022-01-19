@@ -143,7 +143,7 @@ const StartAsker = (props) => {
                     <div className={styles.textInfo}>{item.question}</div>
                     <div className={styles.iconsBox}>
                       <ClockIcon className={styles.iconClock}/>
-                      <span>{item.time}</span>
+                      <span>{item.time}s</span>
                     </div>
                   </div>
                 })}
@@ -183,7 +183,8 @@ const StartAsker = (props) => {
                 } type="button" className={`continue-btn  ${styles.buttonStyle}`}>
                   <span>START ASKER</span>
                   <div className={styles.plusIconBox}>
-                    <ArrowBtn className={`${styles.shareIcon}`}/>
+                    <PlayIcon className={`${styles.shareIcon}`}/>
+                    {/*<ArrowBtn className={`${styles.shareIcon}`}/>*/}
                   </div>
                 </button>
               </div>
