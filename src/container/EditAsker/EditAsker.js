@@ -127,7 +127,7 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
 
   return (
     <>
-      <div ref={cardRef} className={`default-flip flip-card-inner bg-collor ${styles.cardBg}  `}>
+      <div ref={cardRef} className={`default-flip flip-card-inner bg-color ${styles.cardBg}  `}>
         <div className={styles.cardContainer}>
           <div className={` ${styles.questionBlock}`}>
             <CreateAskerIcon className={styles.createLogo}/>
@@ -241,15 +241,18 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
                 <CheckIcon className={`${styles.shareIcon}`}/>
               </div>
             </button>
+
           </div>
           {/*<div className={styles.rotate}>*/}
           {/*  <div className="triangle-white"/>*/}
           {/*</div>*/}
+
+        </div>
+        <div className={styles.rotate}>
+          <div className="triangle-white"/>
         </div>
       </div>
-      <div className={styles.rotate}>
-        <div className="triangle-white"/>
-      </div>
+
     </>
   )
 };
