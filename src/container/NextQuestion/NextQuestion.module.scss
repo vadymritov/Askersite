@@ -439,6 +439,15 @@
     margin-left: 1px;
   }
 }
+.rotateT{
+  position: absolute;
+  bottom: -28px;
+  z-index: -1;
+  fill: #fcfcff;
+  left: calc(50% - 25px);
+  width: 60px;
+  height: 30px;
+}
 .iconReload {
   min-width: 21px;
   height:20px;

@@ -8,6 +8,7 @@ import MessageIcon from "../../components/UI/icons/MessageIcon";
 import BellIcon from "../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../components/UI/icons/TwoMenIcon";
 import {http} from "../../http/http";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType, ...props}) => {
 
@@ -134,9 +135,7 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
             </div>
           </div>
         </div>
-        <div className={styles.rotate}>
-          <div className="triangle-violet"/>
-        </div>
+        <ArrowDown className={styles.rotateT}/>
       </>
     )
   }

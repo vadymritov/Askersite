@@ -8,6 +8,7 @@ import ClockIcon from "../ClockIcon";
 import ArrowBtn from "../ArrowBtn";
 import {useNavigate} from "react-router-dom";
 import {http} from "../../../../http/http";
+import ArrowDown from "../ArrowDown";
 
 const CreateAskerThird = (props) => {
   const elRef = useRef();
@@ -103,9 +104,9 @@ const CreateAskerThird = (props) => {
             <ArrowBtn className={`arrow-btn ${styles.arrowTopGreen}`}/>
           </button>
         </div>
-        <div className={styles.rotate}>
-          <div className="triangle-white"/>
-        </div>
+        {/*<div className={styles.rotate}>*/}
+        <ArrowDown  className={styles.rotateT}/>
+        {/*</div>*/}
       </div>
     </div>
   )

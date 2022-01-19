@@ -10,8 +10,9 @@ import {Modal} from "react-bootstrap";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {http} from "../../http/http";
 import copy from "copy-html-to-clipboard";
-import {ReactComponent as ArrowDown}  from '../../image/svg/arow-down.svg';
+// import {ReactComponent as ArrowDown}  from '../../image/svg/arow-down.svg';
 import {useForm} from "react-hook-form";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) => {
   const [show, setShow] = useState(false);
@@ -280,10 +281,11 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
             <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>
-            <div className={styles.rotate}>
-              <ArrowDown  className={styles.rotateArrowBtn}/>
+              <ArrowDown className={styles.rotateT}/>
+            {/*<div className={styles.rotate}>*/}
+              {/*<ArrowDown  className={styles.rotateArrowBtn}/>*/}
               {/*<div className="triangle-violet"/>*/}
-            </div>
+            {/*</div>*/}
           </div>
 
           {modalBlock()}

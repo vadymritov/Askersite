@@ -16,6 +16,7 @@ import MessageIcon from "../../../components/UI/icons/MessageIcon";
 import BellIcon from "../../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../../components/UI/icons/TwoMenIcon";
 import AskerOption from "../../AskerOption/AskerOption";
+import ArrowDown from "../../../components/UI/icons/ArrowDown";
 
 const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAsker , ...props}) => {
   let navigate = useNavigate();
@@ -170,9 +171,10 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
                 </div>
               </div>
             </div>
-            <div className={styles.rotate}>
-              <div className="triangle-white"/>
-            </div>
+            <ArrowDown className={styles.rotateT}/>
+            {/*<div className={styles.rotate}>*/}
+            {/*  <div className="triangle-white"/>*/}
+            {/*</div>*/}
             {/*</div>*/}
           </div>
 

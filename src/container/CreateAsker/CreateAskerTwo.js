@@ -10,6 +10,7 @@ import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import {Modal} from "react-bootstrap";
 import {http} from "../../http/http";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const CreateAskerTwo = (props) => {
   const [questions,setQuestions] = useState([]);
@@ -120,9 +121,9 @@ const CreateAskerTwo = (props) => {
                 <ArrowBtn className={`arrow-btn ${styles.arrowTop}`}/>
               </button>
             </div>
-            <div className={styles.rotate}>
-              <div className="triangle-white"/>
-            </div>
+            {/*<div className={styles.rotate}>*/}
+            <ArrowDown  className={styles.rotateT}/>
+            {/*</div>*/}
           </div>
         </div>
 
@@ -215,9 +216,9 @@ const CreateAskerTwo = (props) => {
                   <ArrowBtn className={`arrow-btn ${styles.arrowTop}`}/>
                 </button>
               </div>
-              <div className={styles.rotate}>
-                <div className="triangle-white"/>
-              </div>
+              {/*<div className={styles.rotate}>*/}
+              <ArrowDown  className={styles.rotateT}/>
+              {/*</div>*/}
             </div>
           </div>
         </Modal.Body>

@@ -12,6 +12,8 @@ import PlayIcon from "../../components/UI/icons/PlayIcon";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
+// import {ReactComponent as ArrowDown} from "../../image/svg/arow-down.svg";
 
 const StartAsker = (props) => {
   const location = useLocation();
@@ -143,7 +145,7 @@ const StartAsker = (props) => {
                     <div className={styles.textInfo}>{item.question}</div>
                     <div className={styles.iconsBox}>
                       <ClockIcon className={styles.iconClock}/>
-                      <span>{item.time}</span>
+                      <span>{item.time}s</span>
                     </div>
                   </div>
                 })}
@@ -183,15 +185,17 @@ const StartAsker = (props) => {
                 } type="button" className={`continue-btn  ${styles.buttonStyle}`}>
                   <span>START ASKER</span>
                   <div className={styles.plusIconBox}>
-                    <ArrowBtn className={`${styles.shareIcon}`}/>
+                    <PlayIcon className={`${styles.shareIcon}`}/>
+                    {/*<ArrowBtn className={`${styles.shareIcon}`}/>*/}
                   </div>
                 </button>
               </div>
             </div>
           </div>
-          <div className={styles.rotate}>
-            <div className="triangle-white"/>
-          </div>
+          <ArrowDown  className={styles.rotateT}/>
+          {/*<div className={styles.rotate}>*/}
+          {/*  <div className="triangle-white"/>*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>
