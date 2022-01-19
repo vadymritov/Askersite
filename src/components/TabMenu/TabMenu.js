@@ -63,11 +63,11 @@ const TabMenu = (props) => {
           props.onClick('watch')
         }
         } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ isActive && watchTabActive  ? styles.activeTab : ''} `)}>
-          <TabWatch className={`${styles.taIcon} ${styles.shadow}`}/>
+          <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
         <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive && askTabActive ? styles.activeTab : ''}`)}>
-          <TabAsk  className={`${styles.taIcon} ${styles.shadow}`}/>
+          <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
         <NavLink onClick={() => {props.onClick('search')
