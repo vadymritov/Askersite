@@ -158,8 +158,8 @@
 }
 
 .cardWrap {
-  width: 338px;
-  height: 618px;
+  width: 331px;
+  height: 613px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -221,25 +221,25 @@
 }
 
 .cutBox {
-  width: calc(100% - 4px);
+  width: calc(100% - 8px);
   position: relative;
-  height: calc(100% - 27px);
+  height: calc(100% - 39px);
   overflow: hidden;
-  top: 2px;
+  top: 4px;
   z-index: 10;
   border-radius: 28px;
   @include media-max(1440) {
-    border-radius: 26px;
-    height: calc(100% - 26px);
+    border-radius: 24px;
+    height: calc(100% - 34px);
+    //height: calc(100% - 26px);
   }
   @include media-max($lg-break) {
-    width: calc(100% - 4px);
-    height: calc(100% - 21px);
-    border-radius: 21px;
+    height: calc(100% - 28px);
+    border-radius: 18px;
   }
   @include media-max($xs-break) {
-    height: calc(100% - 18px);
-    border-radius: 18px;
+    height: calc(100% - 25px);
+    border-radius: 16px;
   }
 }
 

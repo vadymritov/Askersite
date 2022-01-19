@@ -339,95 +339,6 @@ h2 {
 }
 
 
-//// Slide -------------------------------------------------//
-//
-//.wth-ans-outer-single-slide {
-//  &.slick-current {
-//    .wth-ans-inner-slider {
-//      .slick-dots {
-//        li {
-//          &.slick-active {
-//            button {
-//              &:after {
-//                // width: 100%;
-//                animation-name: statusProgress;
-//                animation-duration: 15s;
-//                animation-fill-mode: both;
-//                animation-iteration-count: 1;
-//                animation-timing-function: linear;
-//              }
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//.wth-ans-inner-slider {
-//  position: relative;
-//  height: 100%;
-//  .slick-dots {
-//    li {
-//      &.slick-active {
-//        button {
-//          &:after {
-//            // width: 100%;
-//            animation-name: statusProgress;
-//            animation-duration: 15s;
-//            animation-fill-mode: both;
-//            animation-iteration-count: 1;
-//            animation-timing-function: linear;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//.promotionVideoSlide {
-//  .slick-dots {
-//    display: flex !important;
-//    li {
-//      &.slick-active {
-//        button {
-//          &:after {
-//            // width: 100%;
-//            animation-name: statusProgress;
-//            animation-duration: 15s;
-//            animation-fill-mode: both;
-//            animation-iteration-count: 1;
-//            animation-timing-function: linear;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-//@keyframes statusProgress {
-//  0% {
-//    width: 0%;
-//  }
-//  100% {
-//    width: 100%;
-//  }
-//}
-//
-//.wth-ans-inner-single-slide {
-//  //position: relative;
-//  height: 100%;
-//}
-//
-//.wth-ans-inner-slider{
-//  .slick-dots{
-//    li{
-//      button{
-//        height: 5px;
-//      }
-//    }
-//  }
-//}
-
 /***************************** WATCH ANSWER : START *****************************/
 .watch-answer-box {
   width: 100%;
@@ -1132,51 +1043,48 @@ h2 {
 }
 
 .slick-list {
-  height: 600px;
+  height: 583px;
   @include media-max(1440) {
-    height: 546px;
+    height: 540px;
   }
   @include media-max($lg-break) {
-    height: 427px;
-    //height: 502px;
+    height: 421px;
   }
   @include media-max($md-break) {
     //height: 460px;
   }
   @include media-max($xs-break) {
-    height: 351px;
+    height: 346px;
   }
 }
 .slick-slide {
-  height: 600px;
+  height: 583px;
   @include media-max(1440) {
-    height: 546px;
+    height: 540px;
   }
   @include media-max($lg-break) {
-    height: 427px;
-    //height: 502px;
+    height: 421px;
   }
   @include media-max($md-break) {
     //height: 460px;
   }
   @include media-max($xs-break) {
-    height: 351px;
+    height: 346px;
   }
 
   .img-vid {
-    height: 600px;
+    height: 583px;
     @include media-max(1440) {
-      height: 546px;
+      height: 540px;
     }
     @include media-max($lg-break) {
-      height: 427px;
-      //height: 502px;
+      height: 421px;
     }
     @include media-max($md-break) {
       //height: 460px;
     }
     @include media-max($xs-break) {
-      height: 351px;
+      height: 346px;
     }
 
     div {

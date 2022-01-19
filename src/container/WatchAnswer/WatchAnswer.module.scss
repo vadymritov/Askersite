@@ -104,8 +104,10 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   height: 850px;
   width: 100%;
+  padding-bottom: 60px;
   //overflow: hidden;
   @include media-max($lg-break) {
     align-items: center;
