@@ -4,10 +4,10 @@ import React, {useEffect, useRef, useState} from "react";
 import Loader from "./Loader/Loader";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import {useLocation, useNavigate} from "react-router-dom";
-import Logo from "../../components/UI/icons/Logo";
 import ButtonAnswer from "./ButtonAnswer";
 import Webcam from "react-webcam";
 import {http} from "../../http/http";
+import {ReactComponent as LogoWhite} from "../../image/svg/LogoWhateViolet.svg";
 
 
 
@@ -186,7 +186,8 @@ const Answer = (props) => {
       </div>
       <div className={`${styles.contentContainer}`}>
         <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardWrap}`}>
-          <Logo className={styles.logo}/>
+          <div className={styles.contentBox}>
+          <LogoWhite className={styles.logo}/>
           <Webcam audio={true} ref={webcamRef}  className={styles.videoPreview}  videoConstraints={videoConstraints}/>
           {loaderActive ? <Loader className={styles.loader} setIsActive={setLoaderActive}/> : null}
           <div className={styles.cardInfo}>
@@ -203,9 +204,7 @@ const Answer = (props) => {
               <ButtonAnswer time={timer}  cb={()=>{
                 handleStopCaptureClick();
                 setCapturing(false);
-                // setFinishAnswer(true);
                 setLoaderActive(false);
-                // clearTimeout(timer)
                 navigate('/next-question', {
                   state: {
                     activeQuestion,
@@ -229,6 +228,7 @@ const Answer = (props) => {
             }
           </div>
           <div className={styles.cardContainer}>
+          </div>
           </div>
         </div>
       </div>
