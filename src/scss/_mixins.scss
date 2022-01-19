@@ -112,10 +112,13 @@
   }
 
   &-violet {
-
+    width: 55px;
+    height: 55px;
+    background-image: url('../image/svg/arow-down.svg');
+    background-repeat: no-repeat;
   //rgba(84, 104, 255, 0.85) 7.1%, rgba(123, 139, 255, 0.85)
   //  @include triangle(40px, rgba(123, 139, 255, 0.85), true);
-    @include triangle(40px, rgba(84, 104, 255, 0.85), true);
+  //  @include triangle(40px, rgba(84, 104, 255, 0.85), true);
   }
 
 }
