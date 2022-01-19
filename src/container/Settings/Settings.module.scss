@@ -12,7 +12,22 @@
   justify-content: flex-end;
   overflow: hidden;
 }
-
+.blur{
+  position: absolute;
+  overflow: hidden;
+  z-index: 1000;
+  transition: all .3s ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  pointer-events: none;
+}
+.blur_active{
+  backdrop-filter: blur(15px);
+  pointer-events: auto;
+}
 .settingsBackdrop {
   position: absolute;
   top: 0;
@@ -28,17 +43,23 @@
   backdrop-filter: blur(15px);
   border-radius: 20px;
 }
+
+.settingActive{
+  right: 0 !important;
+
+}
 .settingsBar {
   display: flex;
-  position: relative;
+  right: -450px;
+  position: absolute;
   flex-direction: column;
-  z-index: 3;
   height: 100%;
+  transition: all 0.25s cubic-bezier(.25,.46,.45,.94);
   background: rgba(84, 104, 255, 0.8);
   opacity: 0.9;
-  backdrop-filter: blur(100px);
   border-radius: 0px 20px 20px 0px;
   width: 417px;
+  z-index: 1001;
   //width: calc(100% - 12em);
   min-width: 400px;
   padding: 0 40px 50px 60px;
@@ -58,10 +79,11 @@
     padding: 0 20px 40px;
   }
 }
-.settingsBar{
+
+/*.settingsBar{
   animation:settingsBar 0.25s cubic-bezier(.25,.46,.45,.94) both;
 }
-@keyframes settingsBar{0%{transform:translateX(350px)}100%{transform:translateX(0)}}
+@keyframes settingsBar{0%{transform:translateX(350px)}100%{transform:translateX(0)}}*/
 
 .settingsTitle {
   margin-top: 40px;

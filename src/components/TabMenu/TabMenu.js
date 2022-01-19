@@ -57,8 +57,8 @@ const TabMenu = (props) => {
 
 
   return (
-    <div className={styles.tabContainerWrap}>
-      <div className={styles.tabContainer}>
+    <div className={styles.tabContainerWrap} >
+      <div className={styles.tabContainer} id={'tabMenu'}>
         <NavLink onClick={() => {
           props.onClick('watch')
         }
