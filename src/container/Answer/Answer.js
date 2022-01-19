@@ -8,8 +8,7 @@ import ButtonAnswer from "./ButtonAnswer";
 import Webcam from "react-webcam";
 import {http} from "../../http/http";
 import {ReactComponent as LogoWhite} from "../../image/svg/LogoWhateViolet.svg";
-
-
+import {ReactComponent as TringlePhone} from "../../image/svg/WatchAnswer/WatchTrianglePhone.svg";
 
 const Answer = (props) => {
   const location = useLocation();
@@ -231,6 +230,7 @@ const Answer = (props) => {
           </div>
           </div>
         </div>
+        {/*<TringlePhone />*/}
       </div>
     </div>
   )
