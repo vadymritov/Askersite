@@ -236,7 +236,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
 }
 
@@ -340,6 +340,7 @@
   justify-content: center;
   position: relative;
   left: 8px;
+  cursor: pointer;
 
   input {
     position: relative;
@@ -368,10 +369,10 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      left: -8px;
+      left: 0;
       width: 21px;
       height: 21px;
-      border: 8px solid #ffffff;
+      border: 7px solid #ffffff;
       border-radius: 50%;
       background-color: transparent;
       z-index: 1;
