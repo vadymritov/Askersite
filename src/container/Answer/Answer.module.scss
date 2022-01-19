@@ -234,11 +234,12 @@
   }
   @include media-max($lg-break) {
     width: 244px;
-    height: 446px;
+    height: 449px;
+    //height: 446px;
   }
   @include media-max($xs-break) {
     width: 236px;
-    height: 432px;
+    height: 437px;
   }
 }
 
@@ -252,9 +253,15 @@
   z-index: 1;
   position: relative;
   border-radius: 25px;
+  @include media-max(1400) {
+    height: calc(100% - 25px);
+  }
   @include media-max($lg-break) {
-    height: calc(100% - 17px);
+    height: calc(100% - 20px);
     border-radius: 19px;
+  }
+  @include media-max($xs-break) {
+    height: calc(100% - 22px);
   }
 }
 
