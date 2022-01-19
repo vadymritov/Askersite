@@ -6,6 +6,7 @@ import ClockIcon from "../../components/UI/icons/ClockIcon";
 import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import {http} from "../../http/http";
+import ArrowDown from "../../components/UI/icons/ArrowDown";
 
 const EditAsker = ({setType,setAskerCode, location, ...props}) => {
 
@@ -248,9 +249,9 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
           {/*</div>*/}
 
         </div>
-        <div className={styles.rotate}>
-          <div className="triangle-white"/>
-        </div>
+        <ArrowDown className={styles.rotateT}/>
+
+
       </div>
 
     </>

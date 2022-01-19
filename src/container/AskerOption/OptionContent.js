@@ -136,9 +136,6 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
           </div>
         </div>
         <ArrowDown className={styles.rotateT}/>
-        {/*<div className={styles.rotate}>*/}
-        {/*  <div className="triangle-violet"/>*/}
-        {/*</div>*/}
       </>
     )
   }
