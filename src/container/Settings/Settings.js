@@ -14,28 +14,14 @@ import {ReactComponent as PhoneSvg} from '../../image/svg/PhoneSvg.svg';
 import SelectPickerPhone from "../../components/UI/SelectPickerPhone/SelectPickerPhone";
 
 const Settings = (props) => {
-  const mainContainerRef = useRef(null);
-
-  useEffect(() => {
-    const hideSettingsToggle = (e) => {
-      const path = e.path || (e.composedPath && e.composedPath())
-      if (!path.includes(mainContainerRef.current)) {
-        props.setShowSettings(false)
-      }
-    }
-    window.addEventListener('click', hideSettingsToggle)
-    return () => window.removeEventListener('click', hideSettingsToggle)
-  }, [])
 
   const toggleSettings = () => {
     // navigate(`/${url}&settings`)
-    props.setShowSettings(!props.showSettings)
+    //props.setShowSettings(!props.showSettings)
   }
-
   return (
-    <div className={styles.settingsContainer} ref={mainContainerRef}>
-      <div className={styles.settingsBackdrop} onClick={() => toggleSettings()}/>
-      <div className={styles.settingsBar}>
+    <div className={`${styles.blur} ${props.showSettings ? styles.blur_active : ''}`}>
+      <div id='settings' className={`${styles.settingsBar} ${props.showSettings ? styles.settingActive : ''}`}>
         <div className={styles.settingsTitle}>
           <TabSettings className={`${styles.icon}`}/>
           <div className={styles.text}>Account Settings</div>
@@ -133,6 +119,7 @@ const Settings = (props) => {
       </div>
     </div>
   )
+
 };
 
 export default Settings;

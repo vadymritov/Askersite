@@ -255,6 +255,15 @@
     fill: $white;
   }
 }
+.rotateT{
+  position: absolute;
+  bottom: -28px;
+  z-index: -1;
+  fill: #FFFFFF;
+  left: calc(50% - 25px);
+  width: 60px;
+  height: 30px;
+}
 
 .arrowTopGreen {
   transform: rotate(-90deg);

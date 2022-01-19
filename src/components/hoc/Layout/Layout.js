@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import RightScreen from "../../../container/RightScreen/RightScreen";
 import TabMenu from "../../TabMenu/TabMenu";
@@ -13,13 +13,29 @@ import Settings from "../../../container/Settings/Settings";
 const Layout = ({children}) => {
   const {pathname} = useLocation();
   const [smallView, setSmallView] = useState(true)
-  const [isSettingsActive, setIsSettingsActive] = useState(false);
   const [showSettings, setShowSettings] = useState(false)
   const user = JSON.parse(localStorage.getItem("User"));
 
+  useEffect(() => {
+    const hideSettingsToggle = (e) => {
+      const path = e.path || (e.composedPath && e.composedPath())
+      const settingsEl = document.getElementById('settings');
+      const tabMenuEl = document.getElementById('tabMenu');
+      console.log(tabMenuEl);
+      if (!path.includes(settingsEl) && !path.includes(tabMenuEl)) {
+        setShowSettings(false)
+      }
+    }
+    if(showSettings){
+      window.addEventListener('click', hideSettingsToggle)
+    }
+    return () => window.removeEventListener('click', hideSettingsToggle)
+
+  }, [showSettings])
+
 
   const onClick = (buttonName) => {
-    setIsSettingsActive(buttonName === 'settings')
+    setShowSettings(buttonName === 'settings')
   };
 
   useEffect(() => {
@@ -37,47 +53,42 @@ const Layout = ({children}) => {
 
   return (
     <>
-      <BurgerHeader pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={<BurgerMenu />} right  />
-    <div className={`container ${styles.mainContainer}`} id={"page-wrap"} >
-      <div className={styles.mainWrapper}>
-      <div className={styles.headerBlock} >
-        <Header />
-      </div>
-
-        <div className={styles.mainRow} >
-          <div className={`${styles.mainCol} ${!smallView ? styles.scaleUpHorLeft : null} ${smallView ? styles.mainColSmall : null}`}>
-            <div className={styles.contentWrapper}>
-              {children}
-
-              {!smallView && user?
-                <TabMenu onClick={onClick} setShowSettings={setShowSettings} showSettings={showSettings}/>
-                // <TabMenu onClick={onClick}/>
-                : null}
-              {showSettings ?
-                <>
-                  <div className='blur-box'>
-                    <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
-                  </div>
-                </> : null}
-              {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
-              {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
-              {/*  <AccountSettings isActive={isSettingsActive}/>*/}
-              {/*</div>*/}
-            </div>
+      <BurgerHeader pageWrapId={"page-wrap"} outerContainerId={"outer-container"} customBurgerIcon={<BurgerMenu/>} right/>
+      <div className={`container ${styles.mainContainer}`} id={"page-wrap"}>
+        <div className={styles.mainWrapper}>
+          <div className={styles.headerBlock}>
+            <Header/>
           </div>
-          <div className={`${styles.staticCol} ${!smallView ? styles.scaleUpHorRight : null}  ${smallView ? styles.staticColSmall : styles.staticCol}`}
 
-          //      onClick={()=>{
-          //   if(showSettings){
-          //     setShowSettings(false)
-          //   }
-          // }}
-          >
-            <RightScreen />
+          <div className={styles.mainRow}>
+            <div className={`${styles.mainCol} ${!smallView ? styles.scaleUpHorLeft : null} ${smallView ? styles.mainColSmall : null}`}>
+              <div className={styles.contentWrapper}>
+                {children}
+
+                {!smallView && user ?
+                  <TabMenu onClick={onClick} setShowSettings={setShowSettings} showSettings={showSettings}/>
+                  // <TabMenu onClick={onClick}/>
+                  : null}
+                <Settings setShowSettings={setShowSettings} showSettings={showSettings}/>
+                {/*<div className={`blur-back ${isSettingsActive && 'blur-back_active'}`}/>*/}
+                {/*<div className={`modalWindow ${isSettingsActive && 'modalWindow_active'}`}>*/}
+                {/*  <AccountSettings isActive={isSettingsActive}/>*/}
+                {/*</div>*/}
+              </div>
+            </div>
+            <div className={`${styles.staticCol} ${!smallView ? styles.scaleUpHorRight : null}  ${smallView ? styles.staticColSmall : styles.staticCol}`}
+
+              //      onClick={()=>{
+              //   if(showSettings){
+              //     setShowSettings(false)
+              //   }
+              // }}
+            >
+              <RightScreen/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   )
 };
