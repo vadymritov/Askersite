@@ -11,6 +11,7 @@ import EmailIcon from "../../components/UI/icons/EmailIcon";
 import {http} from "../../http/http";
 import copy from "copy-html-to-clipboard";
 import {ReactComponent as ArrowDown}  from '../../image/svg/arow-down.svg';
+import {useForm} from "react-hook-form";
 
 const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) => {
   const [show, setShow] = useState(false);
@@ -21,6 +22,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
   let navigate = useNavigate();
   const cardRef = useRef(null);
   const [EmailID, setEmailID] = useState("");
+  const {register, handleSubmit, formState: {errors}} = useForm();
 
 
   useEffect(() => {
@@ -72,7 +74,6 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
     setShow(true);
   };
   const sendEmail = async () => {
-
     http.post('share-asker-send-mail-api', `email=${EmailID}&asker_code=${sharedAskerId || askerCode}`)
       .then(resp => resp.data)
       .then((res) => {
@@ -132,7 +133,6 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
               </div>
               <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'code')}>
                 <ContactLink className={styles.linkIcon}/>
-                {/*</div>*/}
               </button>
             </div>
             <div className={`${styles.inputBlock} `}>
@@ -141,7 +141,6 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
               </div>
               <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'email')}>
                 <ContactLink className={styles.linkIcon}/>
-                {/*</div>*/}
               </button>
             </div>
           </div>
@@ -171,7 +170,8 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
             <div className="center-box theme-bg">
               <div className="center-box-inner">
                 <div className="log-reg-form">
-                  <form method="POST" action="{{route('asker.send_mail')}}">
+                  {/*<form method="POST" action="{{route('asker.send_mail')}}" >*/}
+                  <form method="POST" onSubmit={handleSubmit(sendEmail)} role={'form'}>
                     {/* @csrf */}
                     <div className="head">
                       <h4>Share Code</h4>
@@ -185,7 +185,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
                         <div className={`text-filled-modal with-icon ${styles.inputBlock}`}>
                           <input
                             type="hidden"
-                            value="{{$asker}}"
+                            // value="{{$asker}}"
                             name="asker_code"
                           />
 
@@ -201,14 +201,17 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
                         </div>
                       </div>
                     </div>
-                    <div className="cust-form-row" onClick={() => sendEmail()}>
+                    <div className="cust-form-row" >
+                    {/*<div className="cust-form-row" onClick={() => sendEmail()}>*/}
                       <div className="cust-form-col">
 
                         <div className={`submit-filled with-icon button-box ${styles.buttonBox}`}>
                           <input
-                            type="button"
+                            type="submit"
+                            // type="button"
                             value="SHARE"
                             className={`continue-btn shareAskerModalClose ${styles.buttonStylePublich}`}
+                            // onClick={() => sendEmail()}
                           />
                           <div className="icon">
                             <div className={styles.shareIconBox}>
@@ -243,14 +246,12 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
               <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
                 <div className={`${styles.cardBg}`}>
                   {shareBox()}
-
                 </div>
                 <div className={styles.rotate}>
                   <ArrowDown  className={styles.rotateArrowBtn}/>
                   {/*<div className="triangle-violet"/>*/}
                 </div>
               </div>
-
               <div className={`${styles.cardWrap} ${styles.cardRight}`}>
                 <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
                   <div className={styles.cardContainer}>
@@ -267,14 +268,23 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
     } else if (typeShare === 'create') {
       return (
         <>
-          <>
-            <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardBg}`}>
+          {/*<>*/}
+          {/*  <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardBg}`}>*/}
+          {/*    {shareBox()}*/}
+          {/*  </div>*/}
+          {/*  <div className={`${styles.rotate}`}>*/}
+          {/*    <ArrowDown  className={styles.rotateArrowBtn}/>*/}
+          {/*  </div>*/}
+          {/*</>*/}
+          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+            <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>
             <div className={styles.rotate}>
               <ArrowDown  className={styles.rotateArrowBtn}/>
+              {/*<div className="triangle-violet"/>*/}
             </div>
-          </>
+          </div>
 
           {modalBlock()}
         </>

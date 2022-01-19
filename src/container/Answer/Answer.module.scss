@@ -89,10 +89,10 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   height: 700px;
   width: 100%;
   overflow: auto;
-  //overflow: hidden;
   @include media-max($lg-break) {
     align-items: center;
     margin-bottom: 60px;
@@ -104,12 +104,12 @@
 }
 
 .logo {
-  min-width: 46px;
-  height: 14px;
+  min-width: 70px;
+  height: 31px;
   position: absolute;
   z-index: 5;
-  top:17px;
-  right: 23px;
+  top: 9px;
+  right: 7px;
 }
 
 .cardInfo{
@@ -212,16 +212,16 @@
 
 .cardWrap {
   width: 338px;
-  height: 618px;
+  height: 625px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3px;
+  padding: 4px;
   overflow: hidden;
   z-index: 1;
   max-width: 100%;
   max-height: 625px;
-  position: relative;
+  //position: relative;
   border-radius: 20px;
   background-image: url("../../image/svg/WatchAnswer/WatchVioletPhone.svg");
   background-repeat: no-repeat;
@@ -230,18 +230,33 @@
 
   @include media-max(1400) {
     width: 311px;
-    height: 569px;
+    height: 572px;
   }
   @include media-max($lg-break) {
     width: 244px;
     height: 446px;
   }
   @include media-max($xs-break) {
-    width: 250px;
-    height: 379px;
+    width: 236px;
+    height: 432px;
   }
 }
 
+.contentBox {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: calc(100% - 31px);
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+  border-radius: 25px;
+  @include media-max($lg-break) {
+    height: calc(100% - 17px);
+    border-radius: 19px;
+  }
+}
 
 .cardContainer {
   position: relative;
@@ -254,7 +269,7 @@
   background-position: center;
   border-radius: 28px;
   @include media-max(1400) {
-    height: calc(100% - 21px);
+    height: calc(100% - 25px);
   }
   @include media-max($lg-break) {
     top: -2px;
