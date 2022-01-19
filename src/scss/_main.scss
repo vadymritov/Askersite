@@ -1050,9 +1050,6 @@ h2 {
   @include media-max($lg-break) {
     height: 421px;
   }
-  @include media-max($md-break) {
-    //height: 460px;
-  }
   @include media-max($xs-break) {
     height: 346px;
   }
@@ -1065,9 +1062,6 @@ h2 {
   @include media-max($lg-break) {
     height: 421px;
   }
-  @include media-max($md-break) {
-    //height: 460px;
-  }
   @include media-max($xs-break) {
     height: 346px;
   }
@@ -1079,9 +1073,6 @@ h2 {
     }
     @include media-max($lg-break) {
       height: 421px;
-    }
-    @include media-max($md-break) {
-      //height: 460px;
     }
     @include media-max($xs-break) {
       height: 346px;
