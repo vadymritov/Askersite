@@ -139,16 +139,11 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
                 <button type='button' className={styles.burgerBtn} onClick={(e) => onchange(e, 'back')}>
                   <MenuBurgerIcon className={styles.burgerIcon}/>
                 </button>
-                {/*</div>*/}
-                <div className={` ${styles.questionBlock}`}>
-                  <div className={styles.questionBox}>
-                    <div className={`${styles.questionItem}`}>
-                      <CreateAskerIcon className={styles.createLogo}/>
-                      <div className={styles.textBox}>
-                        <div className={styles.text}>{item?.title}</div>
-                        <div className={styles.title}>{item?.author}</div>
-                      </div>
-                    </div>
+                <div className={styles.questionBlock}>
+                  <CreateAskerIcon className={styles.createLogo}/>
+                  <div className={styles.textBox}>
+                    <span className={styles.text}>{item?.title}</span>
+                    <span className={styles.title}>{item?.author}</span>
                   </div>
                 </div>
                 <div className={`${styles.infoBlock}`}>

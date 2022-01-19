@@ -189,6 +189,7 @@
 }
 
 .createLogo {
+  display: block;
   min-width: 122px;
   height: 122px;
   //position: relative;
@@ -234,15 +235,11 @@
 }
 
 .textBox {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-  //padding: 11px 14px;
   width: calc(100% - 5px);
   color: rgba(96, 111, 129, 0.9);
   margin-top: 10px;
   opacity: .8;
+  padding-left: 16px;
 
 
   input {
@@ -270,8 +267,10 @@
 }
 
 .title {
-  display: flex;
-  align-items: center;
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+  display: block;
+
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 20px;
