@@ -57,7 +57,7 @@
   transition: all 0.25s cubic-bezier(.25,.46,.45,.94);
   background: rgba(84, 104, 255, 0.8);
   opacity: 0.9;
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 10px 10px 0px;
   width: 417px;
   z-index: 1001;
   //width: calc(100% - 12em);
@@ -291,6 +291,6 @@
   }
 
   &.disabled {
-    opacity: .4;
+    //opacity: .4;
   }
 }

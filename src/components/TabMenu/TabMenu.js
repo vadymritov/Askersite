@@ -12,34 +12,18 @@ const TabMenu = (props) => {
   const [askTabActive, setAskTabActive] = useState(false);
   const [watchTabActive, setWatchTabActive] = useState(false);
   const [answerTabActive, setAnswerTabActive] = useState(false);
-  const [askSettingsActive, setSettingsTabActive] = useState(false);
+  // const [askSettingsActive, setSettingsTabActive] = useState(false);
 
   const {search} = useLocation();
-  const targetUrl = getQueryParams(search);
-  let navigate = useNavigate();
-  let url = window.location.href.split('/').slice(-1)[0]
+  // const targetUrl = getQueryParams(search);
+  // let navigate = useNavigate();
+  // let url = window.location.href.split('/').slice(-1)[0]
 
   const toggleSettings = () => {
     // navigate(`/${url}&settings`)
     props.onClick('settings')
     props.setShowSettings(!props.showSettings)
   }
-
-  useEffect(() => {
-    if (!!askTabActive) {
-      setAnswerTabActive(false);
-      setWatchTabActive(false);
-    }
-
-    if (answerTabActive) {
-      setAskTabActive(false);
-      setWatchTabActive(false);
-    }
-    if (watchTabActive) {
-      setAskTabActive(false)
-      setAnswerTabActive(false);
-    }
-  }, [askTabActive, answerTabActive, watchTabActive])
 
   useEffect(() => {
     if (pathname === '/create-asker'
@@ -49,8 +33,8 @@ const TabMenu = (props) => {
       || pathname === '/view-asker') {
 
       setAskTabActive(true)
-      // setAnswerTabActive(false);
-      // setWatchTabActive(false);
+      setAnswerTabActive(false);
+      setWatchTabActive(false);
     }
 
     if (pathname === '/answer'
@@ -62,8 +46,8 @@ const TabMenu = (props) => {
       || pathname === '/asker-complete'
       ) {
       setAnswerTabActive(true);
-      // setAskTabActive(false);
-      // setWatchTabActive(false);
+      setAskTabActive(false);
+      setWatchTabActive(false);
     }
 
     if (pathname === '/contact-card'
@@ -71,8 +55,8 @@ const TabMenu = (props) => {
       || pathname === '/all-answers'
       ) {
       setWatchTabActive(true)
-      // setAskTabActive(false)
-      // setAnswerTabActive(false);
+      setAskTabActive(false)
+      setAnswerTabActive(false);
     }
   }, [pathname])
 
