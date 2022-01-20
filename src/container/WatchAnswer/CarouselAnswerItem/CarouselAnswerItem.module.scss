@@ -198,7 +198,7 @@
   max-height: 625px;
   position: relative;
   top: 0;
-  border-radius: 20px;
+  border-radius: 24px;
   background-image: url("../../../image/svg/WatchAnswer/WatchVioletPhone.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -212,6 +212,9 @@
   @include media-max($lg-break) {
     width: 244px;
     height: 446px;
+  }
+  @include media-max($md-break) {
+    border-radius: 21px;
   }
   @include media-max($xs-break) {
     width: 200px;

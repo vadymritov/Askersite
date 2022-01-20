@@ -26,6 +26,22 @@ const TabMenu = (props) => {
   }
 
   useEffect(() => {
+    if (!!askTabActive) {
+      setAnswerTabActive(false);
+      setWatchTabActive(false);
+    }
+
+    if (answerTabActive) {
+      setAskTabActive(false);
+      setWatchTabActive(false);
+    }
+    if (watchTabActive) {
+      setAskTabActive(false)
+      setAnswerTabActive(false);
+    }
+  }, [askTabActive, answerTabActive, watchTabActive])
+
+  useEffect(() => {
     if (pathname === '/create-asker'
       || pathname === '/share-asker'
       || pathname === '/dashboard'
@@ -33,6 +49,8 @@ const TabMenu = (props) => {
       || pathname === '/view-asker') {
 
       setAskTabActive(true)
+      // setAnswerTabActive(false);
+      // setWatchTabActive(false);
     }
 
     if (pathname === '/answer'
@@ -43,17 +61,24 @@ const TabMenu = (props) => {
       || pathname === '/progress'
       || pathname === '/asker-complete'
       ) {
-      setAnswerTabActive(true)
+      setAnswerTabActive(true);
+      // setAskTabActive(false);
+      // setWatchTabActive(false);
     }
+
     if (pathname === '/contact-card'
       || pathname === '/watch-answer'
       || pathname === '/all-answers'
       ) {
       setWatchTabActive(true)
+      // setAskTabActive(false)
+      // setAnswerTabActive(false);
     }
   }, [pathname])
 
-  // console.log('props.showSettings', props.showSettings);
+  console.log('askSettingsActive', askTabActive, );
+  console.log('answerTabActive',answerTabActive );
+  console.log('WatchTabActi', watchTabActive, pathname);
 
 
   return (
@@ -62,16 +87,16 @@ const TabMenu = (props) => {
         <NavLink onClick={() => {
           props.onClick('watch')
         }
-        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${ isActive && watchTabActive  ? styles.activeTab : ''} `)}>
+        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${  watchTabActive  ? styles.activeTab : ''} `)}>
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${isActive && askTabActive ? styles.activeTab : ''}`)}>
+        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}`)}>
           <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
         <NavLink onClick={() => {props.onClick('search')
-        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${isActive && answerTabActive  ? styles.activeTab : ''} `)}>
+        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${answerTabActive  ? styles.activeTab : ''} `)}>
           <TabAnswer className={`${styles.taIcon}`}/>
           <span>Answer</span>
         </NavLink>
