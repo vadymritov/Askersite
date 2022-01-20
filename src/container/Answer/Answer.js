@@ -110,16 +110,19 @@ const Answer = (props) => {
         // console.log("fdata" , fdata);
 
 
-        await http.post('submitAnswer',fdata).then(res=>console.log(res))
-        navigate('/next-question', {
-          state: {
-            activeQuestion,
-            askerId: foundAskerId,
-            askerCode,
-            AnswerData
+        await http.post('submitAnswer',fdata).then(res=> {
+          if(res.data.status===true){
+              navigate('/next-question', {
+                state: {
+                  activeQuestion,
+                  askerId: foundAskerId,
+                  askerCode,
+                  AnswerData
+                }
+              })
+
           }
         })
-
       }
     },
     [setRecordedChunks]
@@ -212,6 +215,8 @@ const Answer = (props) => {
                     AnswerData
                   }
                 })
+
+
               }
               }/>
               // <button type='button' className={styles.content}>

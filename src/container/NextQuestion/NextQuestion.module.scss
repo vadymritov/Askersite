@@ -222,6 +222,7 @@
   justify-content: center;
   max-width: 100%;
   width: 100%;
+  margin-bottom: 10px;
   //width: 231px;
 }
 .createLogo {
@@ -274,10 +275,12 @@
   flex-direction: column;
   justify-content: center;
   //padding: 11px 14px;
+  white-space: initial;
   width: calc(100% - 5px);
   color: rgba(96, 111, 129, 0.9);
   margin-top: 10px;
-  opacity: .8;
+  margin-bottom: 30px;
+  //opacity: .8;
 
   input {
     display: flex;
@@ -304,13 +307,16 @@
 }
 
 .title {
+
   display: flex;
   align-items: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
+  max-width: 150px;
   font-size: 20px;
   line-height: 1.2;
   color: $darkText;
+  word-wrap: break-word;
   @include media-max($lg-break) {
     font-size: 18px;
   }
@@ -324,7 +330,7 @@
   font-size: 14px;
   line-height: 1.2;
   color: #344356;
-  opacity: .8;
+  opacity: .6;
   @include media-max($lg-break) {
     font-size: 13px;
   }
@@ -434,7 +440,7 @@
 
   .shareIcon {
     min-width: 16px;
-    height: 15px;
+    height: 30px;
     position: relative;
     margin-left: 1px;
   }

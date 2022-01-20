@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState,useLayoutEffect} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import styles from "./NextQuestion.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
@@ -25,19 +25,26 @@ const NextQuestion = (props) => {
   const [showSubmitPanelButton, setShowSubmitPanelButton] = useState(true)
   const [currentAsker, setCurrentAsker] = useState('')
   const [clickedQuestionId, setClickedQuestionId] = useState('')
-  const bodyFormData = new FormData();
-  const userID = JSON.parse(localStorage.getItem("UserID"));
-  bodyFormData.append('user_id', userID)
-  bodyFormData.append('asker_id', askerId)
+
   useEffect(() => {
     http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => setCurrentAsker(resp.data.asker))
-    http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => {
-      setCurrentAllInformation(nextQuestionList)
-      setCurrentQuestions(nextQuestionList.question_list)
-    });
+    const bodyFormData = new FormData();
+    const userID = JSON.parse(localStorage.getItem("UserID"));
+    bodyFormData.append('user_id', userID)
+    bodyFormData.append('asker_id', askerId)
+
+    setTimeout(()=>{
+      http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => {
+        setCurrentAllInformation(nextQuestionList)
+        setCurrentQuestions(nextQuestionList.question_list)
+      });
+    }, 1100)
+
+
 
   }, [])
+
   const findClickedQuestion = () => {
 
   }
@@ -109,7 +116,7 @@ const NextQuestion = (props) => {
                 </div>
               </div>
               <div className={`${styles.infoBlock}`}>
-                {currentQuestions.map((item, index) => {
+                {currentQuestions && currentQuestions.map((item, index) => {
                   return <div key={item.question_id} className={`${styles.infoItem}`}>
                     {clickedQuestionId === item.question_id ? <div className={`${styles.recordItem}`}>
                         {/*<div className={styles.circleBox}>*/}
