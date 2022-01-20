@@ -276,4 +276,7 @@
   position: absolute;
   bottom: 3px;
   left: calc(50% - 29px);
+  @include media-max($lg-break) {
+    bottom: 22px;
+  }
 }

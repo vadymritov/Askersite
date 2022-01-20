@@ -68,7 +68,7 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
                 </div>
               </button>
 
-              <button className={styles.contentBox}>
+              <button className={styles.contentBox} onClick={(e) => changeType(e, 'share')}>
                 <div className={`${styles.optionBlock} `}>
                   <div className={styles.iconWrap}>
                     <ShareIcon className={styles.linkIcon}/>
