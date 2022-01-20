@@ -12,7 +12,7 @@ const AskerSearch = (props) => {
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [asker,setAsker]=useState('');
+  const [asker, setAsker] = useState('');
 
 
   const hendaleingFormSubmit = async () => {
@@ -40,14 +40,15 @@ const AskerSearch = (props) => {
     http.post('askerCode', `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => resp.data)
       .then(res => {
-       // console.log(res)
+        // console.log(res)
         if (res != null) {
           // await setAsker(res.asker)
-          navigate('/start-asker',{state:{
-              foundAsker:res.asker,
-              askerCode:search
+          navigate('/start-asker', {
+            state: {
+              foundAsker: res.asker,
+              askerCode: search
             }
-            })
+          })
 
           // if (respJson.status === true) {
           //   history.push({ pathname: "/SatrtAnswer", state: respJson });
@@ -77,36 +78,38 @@ const AskerSearch = (props) => {
   return (
     <div className={styles.mainContainer}>
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`} >
-          <div className={styles.cardContainerContact}>
-            <div className={styles.contentBox}>
-              <SearchBgTriangle className={styles.triangleBgIcon}/>
-              <div className={styles.searchBox}>
-                <div className={styles.titleBox}>
-                  <QuestionOption className={styles.questionOption}/>
-                  Asker Search
-                </div>
-                <div className={styles.text}>Enter Asker Access Code below.</div>
+        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
+            <div className={styles.cardContainerContact}>
+          <div className={styles.triangleWrap}>
+              <div className={styles.contentBox}>
+                <SearchBgTriangle className={styles.triangleBgIcon}/>
+                <div className={styles.searchBox}>
+                  <div className={styles.titleBox}>
+                    <QuestionOption className={styles.questionOption}/>
+                    Asker Search
+                  </div>
+                  <div className={styles.text}>Enter Asker Access Code below.</div>
 
-                <div className={`search-filled ${styles.searchFilled}`}>
-                  <input
-                    type="text"
-                    name="asker_code"
-                    placeholder="ENTER ASKER CODE"
-                    onChange={(event) => setSearch(event.target.value)}
-                  />
-                  <button
-                    type="button"
-                    className={styles.searchBtn}
-                    onClick={() => hendaleingFormSubmit()}
-                  >
-                    <SearchIcon className={styles.serchIcon}/>
-                  </button>
+                  <div className={`search-filled ${styles.searchFilled}`}>
+                    <input
+                      type="text"
+                      name="asker_code"
+                      placeholder="ENTER ASKER CODE"
+                      onChange={(event) => setSearch(event.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className={styles.searchBtn}
+                      onClick={() => hendaleingFormSubmit()}
+                    >
+                      <SearchIcon className={styles.serchIcon}/>
+                    </button>
+                  </div>
                 </div>
+                {/*<ArrowDown className={styles.arrowDown}/>*/}
               </div>
-              {/*<ArrowDown className={styles.arrowDown}/>*/}
+            <ArrowDown className={styles.rotateT}/>
             </div>
-
           </div>
         </div>
 
