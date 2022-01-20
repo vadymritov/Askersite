@@ -5,7 +5,6 @@ import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import CreateAskerIcon from "../../components/UI/icons/Create/CreateAskerIcon";
 import CircleLi from "../../components/UI/icons/Contact/CircleLi";
 import ClockIcon from "../../components/UI/icons/ClockIcon";
-import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import ReloadIcon from "../../components/UI/icons/ReloadIcon";
 import CheckNextIcon from "../../components/UI/icons/CheckNextIcon";
@@ -14,6 +13,7 @@ import {http} from "../../http/http";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
+import {ReactComponent as LogoNext} from "../../image/svg/LogoNextQuestion.svg";
 
 const NextQuestion = (props) => {
   const location = useLocation();
@@ -108,7 +108,7 @@ const NextQuestion = (props) => {
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>
                   <div className={`${styles.questionItem}`}>
-                    <CreateAskerIcon className={styles.createLogo}/>
+                    <LogoNext className={styles.createLogo}/>
                     <div className={styles.textBox}>
                       <div className={styles.text}>{currentAsker.title}</div>
                       <div className={styles.title}>{currentAsker.author}</div>

@@ -89,14 +89,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  //overflow: hidden;
   z-index: 1;
   max-width: 100%;
   max-height: 494px;
   position: relative;
   border-radius: 20px;
   @include media-max($lg-break) {
-    //width: 318px;
     width: 333px;
     height: 581px
   }
