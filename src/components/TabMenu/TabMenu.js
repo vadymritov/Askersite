@@ -76,9 +76,7 @@ const TabMenu = (props) => {
     }
   }, [pathname])
 
-  console.log('askSettingsActive', askTabActive, );
-  console.log('answerTabActive',answerTabActive );
-  console.log('WatchTabActi', watchTabActive, pathname);
+  // console.log('props.showSettings', props.showSettings);
 
 
   return (
@@ -91,7 +89,7 @@ const TabMenu = (props) => {
           <TabWatch className={`${styles.taIcon}`}/>
           <span>Watch</span>
         </NavLink>
-        <NavLink to={'/create-asker'} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}`)}>
+        <NavLink to={'/create-asker'} onClick={() => {props.onClick('ask')}} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}`)}>
           <TabAsk  className={`${styles.taIcon}`}/>
           <span>Ask</span>
         </NavLink>
