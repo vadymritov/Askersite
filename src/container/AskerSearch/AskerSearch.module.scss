@@ -154,7 +154,8 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  height: calc(100% - 40px);
+  height: 100%;
+  //height: calc(100% - 40px);
   overflow: hidden;
   align-items: center;
   border-radius: 28px;
