@@ -502,10 +502,11 @@
 }
 
 .rotateT {
-  width: 60px;
-  height: 30px;
-  fill: #fafbfe;
   position: absolute;
-  bottom: -26px;
-  left: calc(50% - 25px);
+  bottom: -22px;
+  z-index: -1;
+  fill: #fafbfe;
+  left: calc(50% - 12px);
+  width: 36px;
+  height: 24px;
 }

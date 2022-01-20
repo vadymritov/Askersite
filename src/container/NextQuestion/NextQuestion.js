@@ -200,9 +200,7 @@ const NextQuestion = (props) => {
               </div>
             </div>
           </div>
-          {/*<div className={styles.rotate}>*/}
           <TriangleSearchSm  className={styles.rotateT}/>
-          {/*</div>*/}
         </div>
       </div>
     </div>

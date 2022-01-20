@@ -7,6 +7,7 @@ import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const CreateAskerOne = ({...props}) => {
   const elRef = useRef();
@@ -82,9 +83,7 @@ const CreateAskerOne = ({...props}) => {
             </div>
           </button>
         </div>
-        {/*<div className={styles.rotate}>*/}
-        <ArrowDown  className={styles.rotateT}/>
-        {/*</div>*/}
+        <TriangleSearchSm  className={styles.rotateT}/>
       </div>
     </div>
   )

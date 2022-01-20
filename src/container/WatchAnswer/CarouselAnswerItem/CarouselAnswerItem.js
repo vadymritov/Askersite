@@ -210,8 +210,8 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                     </div>
                   </div>
                 </div>
-                <TriangleSearchSm  className={styles.rotateT}/>
               </div>
+                <TriangleSearchSm className={styles.rotateT}/>
             </div>
 
             <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} onClick={(e) => onchange(e, 'front')}>
@@ -266,6 +266,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                     </div>
                   </div>
                 </div>
+                <TriangleSearchSm className={`${styles.rotateT} ${styles.rotateT_back}`}/>
               </div>
             </div>
           </div>

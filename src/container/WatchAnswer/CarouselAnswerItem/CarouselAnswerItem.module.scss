@@ -173,7 +173,7 @@
   height: 600px;
   width: 100%;
   @include media-max($lg-break) {
-    align-items: center;
+    //align-items: center;
     margin-bottom: 60px;
     height: 470px;
   }
@@ -192,7 +192,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  overflow: hidden;
+  //overflow: hidden;
   z-index: 1;
   max-width: 100%;
   max-height: 625px;
@@ -307,6 +307,19 @@
 
   border-radius: 20px;
 
+  //@include media-max(1440) {
+  //  width: 311px;
+  //  height: 569px;
+  //}
+  //@include media-max($lg-break) {
+  //  width: 244px;
+  //  height: 446px;
+  //}
+  //@include media-max($xs-break) {
+  //  width: 224px;
+  //  height: 407px;
+  //}
+
   @include media-max(1440) {
     width: 311px;
     height: 569px;
@@ -315,9 +328,12 @@
     width: 244px;
     height: 446px;
   }
+  @include media-max($md-break) {
+    border-radius: 21px;
+  }
   @include media-max($xs-break) {
-    width: 224px;
-    height: 407px;
+    width: 200px;
+    height: 366px;
   }
 }
 
@@ -362,7 +378,7 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 96%;
+    height: 94%;
     border-radius: 27px;
     backdrop-filter: blur(15px);
     transition: $transition;
@@ -791,10 +807,23 @@
 
 .rotateT{
   position: absolute;
-  bottom: -28px;
+  bottom: 3px;
   z-index: -1;
-  fill: #fcfcff;
-  left: calc(50% - 30px);
-  width: 60px;
-  height: 30px;
+  fill: #6C7DFB;
+  left: calc(50% - 12px);
+  width: 36px;
+  height: 24px;
+  @include media-max($lg-break) {
+    bottom: 0;
+  }
 }
+
+.rotateT_back {
+  bottom: 6px;
+  fill: #697ef8;
+  z-index: 4;
+  @include media-max($lg-break) {
+    bottom: 0;
+  }
+}
+

@@ -9,6 +9,7 @@ import ArrowBtn from "../ArrowBtn";
 import {useNavigate} from "react-router-dom";
 import {http} from "../../../../http/http";
 import ArrowDown from "../ArrowDown";
+import TriangleSearchSm from "../TriangleSearchSm";
 
 const CreateAskerThird = (props) => {
   const elRef = useRef();
@@ -105,7 +106,8 @@ const CreateAskerThird = (props) => {
           </button>
         </div>
         {/*<div className={styles.rotate}>*/}
-        <ArrowDown  className={styles.rotateT}/>
+        <TriangleSearchSm className={`${styles.rotateT} ${styles.rotateT_two}`}/>
+        {/*<ArrowDown  className={styles.rotateT}/>*/}
         {/*</div>*/}
       </div>
     </div>

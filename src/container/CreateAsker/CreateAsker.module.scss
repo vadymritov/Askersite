@@ -259,12 +259,16 @@
 }
 .rotateT{
   position: absolute;
-  bottom: -28px;
+  bottom: -22px;
   z-index: -1;
-  fill: #FFFFFF;
-  left: calc(50% - 25px);
-  width: 60px;
-  height: 30px;
+  fill: #fcfcff;
+  left: calc(50% - 12px);
+  width: 36px;
+  height: 24px;
+}
+
+.rotateT_two {
+  //bottom: -20px;
 }
 
 .arrowTopGreen {

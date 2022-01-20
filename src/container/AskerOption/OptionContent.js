@@ -9,6 +9,7 @@ import BellIcon from "../../components/UI/icons/BellIcon";
 import TwoMenIcon from "../../components/UI/icons/TwoMenIcon";
 import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType, ...props}) => {
 
@@ -135,7 +136,8 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
             </div>
           </div>
         </div>
-        <ArrowDown className={styles.rotateT}/>
+        <TriangleSearchSm className={`${styles.rotateT}`}/>
+        {/*<ArrowDown className={styles.rotateT}/>*/}
       </>
     )
   }
