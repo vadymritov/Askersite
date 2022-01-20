@@ -788,3 +788,13 @@
   background-color: #00d9cd !important;
   opacity: 1 !important;
 }
+
+.rotateT{
+  position: absolute;
+  bottom: -28px;
+  z-index: -1;
+  fill: #fcfcff;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 30px;
+}

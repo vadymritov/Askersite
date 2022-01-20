@@ -15,6 +15,7 @@ import {ReactComponent as StarIcon} from "../../../image/svg/StarIcon.svg";
 import Slider from "react-slick";
 import StarSvg from "../../../components/UI/icons/StarSvg";
 import copy from "copy-html-to-clipboard";
+import TriangleSearchSm from "../../../components/UI/icons/TriangleSearchSm";
 
 const CarouselAnswerItem = ({state, item, data, ...props}) => {
     const [isActive, setActive] = useState(false);
@@ -66,8 +67,6 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
         setAnswerData(d);
       }
     }, [data])
-
-  console.log(answerData)
 
     const onchange = (e, type) => {
       e.preventDefault();
@@ -211,6 +210,7 @@ const CarouselAnswerItem = ({state, item, data, ...props}) => {
                     </div>
                   </div>
                 </div>
+                <TriangleSearchSm  className={styles.rotateT}/>
               </div>
             </div>
 

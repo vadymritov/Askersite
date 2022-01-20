@@ -345,6 +345,7 @@
   min-height: 200px;
   @include media-max($lg-break) {
     margin-top: 16px;
+    min-height: 170px;
   }
 }
 
@@ -450,7 +451,7 @@
   bottom: -28px;
   z-index: -1;
   fill: #fcfcff;
-  left: calc(50% - 25px);
+  left: calc(50% - 30px);
   width: 60px;
   height: 30px;
 }

@@ -14,6 +14,7 @@ import CloseIcon from "../../components/UI/icons/CloseIcon";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import PlayIcon from "../../components/UI/icons/PlayIcon";
 import {ReactComponent as LogoNext} from "../../image/svg/LogoNextQuestion.svg";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const NextQuestion = (props) => {
   const location = useLocation();
@@ -200,7 +201,7 @@ const NextQuestion = (props) => {
             </div>
           </div>
           {/*<div className={styles.rotate}>*/}
-          <ArrowDown  className={styles.rotateT}/>
+          <TriangleSearchSm  className={styles.rotateT}/>
           {/*</div>*/}
         </div>
       </div>
