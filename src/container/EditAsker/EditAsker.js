@@ -188,12 +188,13 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
                       if (selectedQuestionId === selectedQuest.question_id) {
                         return {
                           ...selectedQuest,
-                          title: selectedQuestionText
+                          title: selectedQuestionText || item.title
                         }
 
                       }
                       return selectedQuest
                     })])
+                    setSelectedQuestionText('')
                   }} className={`${styles.iconWrap} ${styles.iconWrapCheck}`}>
                     <CheckIcon className={styles.checkIcon}/>
                   </div>

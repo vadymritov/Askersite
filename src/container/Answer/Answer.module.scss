@@ -223,10 +223,11 @@
   max-height: 625px;
   //position: relative;
   border-radius: 20px;
-  background-image: url("../../image/svg/WatchAnswer/WatchVioletPhone.svg");
+  background-image: url("../../image/svg/mobileVector.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   backdrop-filter: blur(4px);
+  margin-bottom: 20px;
 
   @include media-max(1400) {
     width: 311px;

@@ -12,6 +12,9 @@ import {http} from "../../http/http";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import {ReactComponent as LogoNext} from "../../image/svg/LogoNextQuestion.svg";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
+
 
 const AskerComplete = (props) => {
   const location = useLocation();
@@ -84,7 +87,7 @@ const AskerComplete = (props) => {
               <div className={` ${styles.questionBlock}`}>
                 <div className={styles.questionBox}>
                   <div className={`${styles.questionItem}`}>
-                    <CreateAskerIcon className={styles.createLogo}/>
+                    <LogoNext className={styles.createLogo}/>
                     <div className={styles.textBox}>
                       <div className={styles.text}>{currentAsker.title}</div>
                       <div className={styles.title}>{currentAsker.author}</div>
@@ -170,7 +173,7 @@ const AskerComplete = (props) => {
             </div>
           </div>
           {/*<div className={styles.rotate}>*/}
-          <ArrowDown  className={styles.rotateT}/>
+          <TriangleSearchSm  className={styles.rotateT}/>
           {/*</div>*/}
         </div>
       </div>

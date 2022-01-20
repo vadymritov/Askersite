@@ -13,6 +13,7 @@ import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 // import {ReactComponent as ArrowDown} from "../../image/svg/arow-down.svg";
 
 const StartAsker = (props) => {
@@ -192,7 +193,7 @@ const StartAsker = (props) => {
               </div>
             </div>
           </div>
-          <ArrowDown  className={styles.rotateT}/>
+          <TriangleSearchSm  className={styles.rotateT}/>
           {/*<div className={styles.rotate}>*/}
           {/*  <div className="triangle-white"/>*/}
           {/*</div>*/}

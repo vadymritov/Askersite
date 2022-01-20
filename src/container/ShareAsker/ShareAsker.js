@@ -249,10 +249,10 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
                 <div className={`${styles.cardBg}`}>
                   {shareBox()}
                 </div>
-                <div className={styles.rotate}>
-                  <ArrowDown  className={styles.rotateArrowBtn}/>
+                {/*<div className={styles.rotate}>*/}
+                  <TriangleSearchSm className={`${styles.rotateT}`}/>
                   {/*<div className="triangle-violet"/>*/}
-                </div>
+                {/*</div>*/}
               </div>
               <div className={`${styles.cardWrap} ${styles.cardRight}`}>
                 <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
