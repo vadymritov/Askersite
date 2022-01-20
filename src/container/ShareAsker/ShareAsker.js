@@ -269,23 +269,11 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
     } else if (typeShare === 'create') {
       return (
         <>
-          {/*<>*/}
-          {/*  <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardBg}`}>*/}
-          {/*    {shareBox()}*/}
-          {/*  </div>*/}
-          {/*  <div className={`${styles.rotate}`}>*/}
-          {/*    <ArrowDown  className={styles.rotateArrowBtn}/>*/}
-          {/*  </div>*/}
-          {/*</>*/}
           <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
             <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>
               <ArrowDown className={styles.rotateT}/>
-            {/*<div className={styles.rotate}>*/}
-              {/*<ArrowDown  className={styles.rotateArrowBtn}/>*/}
-              {/*<div className="triangle-violet"/>*/}
-            {/*</div>*/}
           </div>
 
           {modalBlock()}
