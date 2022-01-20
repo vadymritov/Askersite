@@ -13,6 +13,7 @@ import copy from "copy-html-to-clipboard";
 // import {ReactComponent as ArrowDown}  from '../../image/svg/arow-down.svg';
 import {useForm} from "react-hook-form";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) => {
   const [show, setShow] = useState(false);
@@ -248,10 +249,10 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
                 <div className={`${styles.cardBg}`}>
                   {shareBox()}
                 </div>
-                <div className={styles.rotate}>
-                  <ArrowDown  className={styles.rotateArrowBtn}/>
+                {/*<div className={styles.rotate}>*/}
+                  <TriangleSearchSm  className={styles.rotateArrowBtn}/>
                   {/*<div className="triangle-violet"/>*/}
-                </div>
+                {/*</div>*/}
               </div>
               <div className={`${styles.cardWrap} ${styles.cardRight}`}>
                 <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
@@ -273,7 +274,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) =
             <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>
-              <ArrowDown className={styles.rotateT}/>
+              <TriangleSearchSm className={styles.rotateT}/>
           </div>
 
           {modalBlock()}

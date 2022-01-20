@@ -7,6 +7,7 @@ import EditCreateBtn from "../../components/UI/icons/Create/EditCreateBtn";
 import CheckIcon from "../../components/UI/icons/Create/CheckIcon";
 import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const EditAsker = ({setType,setAskerCode, location, ...props}) => {
 
@@ -249,7 +250,7 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
           {/*</div>*/}
 
         </div>
-        <ArrowDown className={styles.rotateT}/>
+        <TriangleSearchSm className={styles.rotateT}/>
 
 
       </div>

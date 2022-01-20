@@ -156,14 +156,20 @@
 
 .rotate {
   //transform: rotate(180deg);
-  position: absolute;
-  bottom: -30px;
-  z-index: -1;
-  left: calc(50% - 20px);
+  //position: absolute;
+  //bottom: -30px;
+  //z-index: -1;
+  //left: calc(50% - 20px);
 }
 .rotateArrowBtn{
-  width: 100%;
-  height: 100%;
+
+  position: absolute;
+  bottom: -19px;
+  z-index: -1;
+  fill: #5b6efd;
+  left: calc(50% - 18px);
+  width: 36px;
+  height: 23px;
 }
 
 .logoBox {
@@ -431,10 +437,10 @@
 }
 
 .rotateT {
-  width: 60px;
-  height: 30px;
+  width: 36px;
+  height: 23px;
   fill: #586cfe;
   position: absolute;
-  bottom: -26px;
-  left: calc(50% - 25px);
+  bottom: -21px;
+  left: calc(50% - 20px);
 }
