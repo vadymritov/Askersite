@@ -13,6 +13,7 @@ import {ReactComponent as GrayBg} from '../../image/svg/GrayBg.svg';
 import {http} from "../../http/http";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
+import PlayIcon from "../../components/UI/icons/PlayIcon";
 
 const NextQuestion = (props) => {
   const location = useLocation();
@@ -39,7 +40,7 @@ const NextQuestion = (props) => {
         setCurrentAllInformation(nextQuestionList)
         setCurrentQuestions(nextQuestionList.question_list)
       });
-    }, 1100)
+    }, 1300)
 
 
 
@@ -192,7 +193,7 @@ const NextQuestion = (props) => {
                 }}>
                   <span>NEXT QUESTION</span>
                   <div className={styles.plusIconBox}>
-                    <ArrowBtn className={`${styles.shareIcon}`}/>
+                    <PlayIcon className={`${styles.shareIcon}`}/>
                   </div>
                 </button>
               </div>
