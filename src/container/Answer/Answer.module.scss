@@ -93,6 +93,7 @@
   height: 700px;
   width: 100%;
   overflow: auto;
+  margin-bottom: 60px;
   @include media-max($lg-break) {
     align-items: center;
     margin-bottom: 60px;
@@ -213,8 +214,6 @@
   }
 }
 
-
-
 .cardWrap {
   width: 338px;
   height: 625px;
@@ -232,11 +231,12 @@
   background-repeat: no-repeat;
   background-size: contain;
   backdrop-filter: blur(4px);
-  margin-bottom: 60px;
+  //margin-bottom: 60px;
 
   @include media-max(1440) {
-    width: 311px;
-    height: 572px;
+    width: 261px;
+    height: 484px;
+    //border-radius: 16px;
   }
   @include media-max($lg-break) {
     width: 244px;
@@ -261,6 +261,7 @@
   border-radius: 25px;
   @include media-max(1440) {
     height: calc(100% - 25px);
+    border-radius: 22px;
   }
   @include media-max($lg-break) {
     height: calc(100% - 20px);
