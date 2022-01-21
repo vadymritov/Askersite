@@ -113,7 +113,7 @@
   width: 100%;
   height: 100%;
   border-radius: 30px;
-  overflow: hidden;
+  //overflow: hidden;
   background-color: $white;
   //background: linear-gradient(196.51deg, rgba(123, 139, 255, 0.95) 3.21%, rgba(84, 104, 255, 0.95) 94.01%);
   background-size: cover;
@@ -405,7 +405,7 @@
   position: absolute;
   bottom: -22px;
   z-index: -1;
-  fill: #f3f4fd;
+  fill: #fefefe;
   left: calc(50% - 19px);
   width: 36px;
   height: 24px;

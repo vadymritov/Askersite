@@ -164,7 +164,7 @@
   display: flex;
   justify-content: center;
 
-  @include media-max($lg-break) {
+  @include media-max(1440) {
     font-size: 15px;
     padding-right: 22px;
   }
