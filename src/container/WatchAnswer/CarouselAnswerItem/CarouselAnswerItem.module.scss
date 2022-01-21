@@ -807,12 +807,16 @@
 
 .rotateT{
   position: absolute;
-  bottom: 3px;
+  bottom: 8px;
   z-index: -1;
   fill: #6C7DFB;
   left: calc(50% - 12px);
   width: 36px;
   height: 24px;
+
+  @include media-max(1440) {
+    bottom: 3px;
+  }
   @include media-max($lg-break) {
     bottom: 0;
   }

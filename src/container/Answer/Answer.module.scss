@@ -233,7 +233,7 @@
   backdrop-filter: blur(4px);
   //margin-bottom: 60px;
 
-  @include media-max(1440) {
+  @include media-max(1500) {
     width: 261px;
     height: 484px;
     //border-radius: 16px;
@@ -259,7 +259,7 @@
   z-index: 1;
   position: relative;
   border-radius: 25px;
-  @include media-max(1440) {
+  @include media-max(1500) {
     height: calc(100% - 25px);
     border-radius: 22px;
   }
@@ -282,7 +282,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 28px;
-  @include media-max(1440) {
+  @include media-max(1500) {
     height: calc(100% - 25px);
   }
   @include media-max($lg-break) {
