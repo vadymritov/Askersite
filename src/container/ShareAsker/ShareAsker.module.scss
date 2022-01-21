@@ -37,6 +37,7 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+  perspective: 200vmin;
   @include media-max($lg-break) {
     margin-bottom: 60px;
   }
