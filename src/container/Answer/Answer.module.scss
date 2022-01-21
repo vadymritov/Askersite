@@ -94,6 +94,7 @@
   width: 100%;
   overflow: auto;
   margin-bottom: 60px;
+  perspective: 200vmin;
   @include media-max($lg-break) {
     align-items: center;
     margin-bottom: 60px;
