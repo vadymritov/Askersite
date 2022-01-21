@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import OptionContent from "./OptionContent";
 import EditAsker from "../EditAsker/EditAsker";
 import ShareAsker from "../ShareAsker/ShareAsker";
+import styles from './AskerOption.module.scss'
 
 const AskerOption = ({onChange, location, viewAsker, ...props}) => {
     const [selectPrivate, setSelectPrivate] = useState("");
@@ -43,9 +44,9 @@ const AskerOption = ({onChange, location, viewAsker, ...props}) => {
 
 
     return (
-      <>
+      <div className={styles.optionalContainer}>
         {renderContent()}
-      </>
+      </div>
     )
   }
 ;

@@ -6,7 +6,7 @@
   position: relative;
   width: calc(100% + 20px);
   min-height: 550px;
-  overflow: hidden;
+  //overflow: hidden;
   display: flex;
   align-items: flex-start;
   @include media-max($lg-break) {

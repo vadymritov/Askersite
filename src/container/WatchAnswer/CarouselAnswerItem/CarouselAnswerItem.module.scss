@@ -170,19 +170,22 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
-  height: 600px;
+  //height: 600px;
   width: 100%;
+  perspective: 200vmin;
   @include media-max($lg-break) {
     //align-items: center;
     margin-bottom: 60px;
     height: 470px;
   }
   @include media-max($md-break) {
-    align-items: center;
+    //align-items: center;
     margin-bottom: 40px;
+    margin-top: 20px;
   }
   @include media-max($xs-break) {
     height: 390px;
+    margin-top: 5px;
   }
 }
 
@@ -216,10 +219,10 @@
   @include media-max($md-break) {
     border-radius: 21px;
   }
-  @include media-max($xs-break) {
-    width: 200px;
-    height: 366px;
-  }
+  //@include media-max($xs-break) {
+  //  width: 200px;
+  //  height: 366px;
+  //}
 }
 
 .cardLeft {
@@ -270,7 +273,7 @@
     border-radius: 18px;
   }
   @include media-max($xs-break) {
-    height: calc(100% - 25px);
+    height: calc(100% - 27px);
     border-radius: 16px;
   }
 }
@@ -307,23 +310,14 @@
 
   border-radius: 20px;
 
+  @include media-max(1440) {
+    width: 261px;
+    height: 484px;
+  }
   //@include media-max(1440) {
   //  width: 311px;
   //  height: 569px;
   //}
-  //@include media-max($lg-break) {
-  //  width: 244px;
-  //  height: 446px;
-  //}
-  //@include media-max($xs-break) {
-  //  width: 224px;
-  //  height: 407px;
-  //}
-
-  @include media-max(1440) {
-    width: 311px;
-    height: 569px;
-  }
   @include media-max($lg-break) {
     width: 244px;
     height: 446px;
@@ -332,8 +326,8 @@
     border-radius: 21px;
   }
   @include media-max($xs-break) {
-    width: 200px;
-    height: 366px;
+    //width: 200px;
+    //height: 366px;
   }
 }
 
@@ -514,7 +508,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
+    //@include media-max($lg-break) {
       width: 84px;
       min-height: 84px;
       height: 84px;
@@ -526,7 +521,7 @@
     min-width: 112px;
     height: 112px;
     fill: $white;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
       min-width: 74px;
       height: 74px;
     }
@@ -540,7 +535,7 @@
     width: 100%;
     margin-top: 28px;
     margin-bottom: 60px;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
       margin-top: 24px;
       margin-bottom: 35px;
     }
@@ -554,7 +549,7 @@
     line-height: 1.3;
     text-align: center;
     color: #FFFFFF;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
       font-size: 22px;
     }
   }
@@ -569,7 +564,7 @@
   .starsLine {
     min-width: auto;
     height: 28px;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
       height: 17px;
     }
   }
@@ -580,7 +575,7 @@
     justify-content: center;
     width: 100%;
     padding: 0 28px;
-    @include media-max($lg-break) {
+    @include media-max(1440) {
       padding: 0 14px;
     }
   }
@@ -595,7 +590,7 @@
     .infoIcon {
       min-width: 30px;
       height: 38px;
-      @include media-max($lg-break) {
+      @include media-max(1440) {
         min-width: 30px;
         height: 30px;
       }
@@ -630,7 +625,7 @@
       margin-left: 21px;
       min-width: 165px;
       max-width: 100%;
-      @include media-max($lg-break) {
+      @include media-max(1440) {
         margin-left: 3px;
         min-width: calc(100% - 68px);
       }
@@ -823,9 +818,12 @@
 }
 
 .rotateT_back {
-  bottom: 6px;
+  bottom: 8px;
   fill: #697ef8;
   z-index: 4;
+  @include media-max(1440) {
+    bottom: 6px;
+  }
   @include media-max($lg-break) {
     bottom: 0;
   }

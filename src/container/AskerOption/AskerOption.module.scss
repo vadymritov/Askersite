@@ -397,3 +397,22 @@
     }
   }
 }
+
+.optionalContainer {
+  //width: 338px;
+  //height: 475px;
+  perspective: 200vmin;
+  width: 338px;
+  height: 475px;
+  @include media-max($lg-break) {
+    width: 312px;
+    height: 430px;
+  }
+  @include media-max($sm-break) {
+    width: 280px;
+    height: 430px;
+  }
+  @include media-max($l-break) {
+    width: 250px;
+  }
+}

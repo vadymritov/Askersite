@@ -29,7 +29,7 @@
   @include media-max($md-break) {
     margin-bottom: 40px;
     padding-top: 25px;
-    overflow: visible;
+    //overflow: visible;
   }
   @include media-max($sm-break) {
     margin-bottom: 0;

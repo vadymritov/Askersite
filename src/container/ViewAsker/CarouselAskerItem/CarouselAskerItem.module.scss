@@ -22,6 +22,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  perspective: 200vmin;
   @include media-max($sm-break) {
     margin-bottom: 0;
     align-items: flex-start;

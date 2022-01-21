@@ -974,7 +974,7 @@ h2 {
     width: 244px;
   }
   @include media-max($xs-break) {
-    width: 200px;
+    //width: 200px;
     height: 100%;
     top: 0;
   }
@@ -1053,7 +1053,7 @@ h2 {
     height: 421px;
   }
   @include media-max($xs-break) {
-    height: 346px;
+    //height: 346px;
   }
 }
 .slick-slide {
@@ -1066,7 +1066,7 @@ h2 {
     height: 421px;
   }
   @include media-max($xs-break) {
-    height: 346px;
+    //height: 346px;
   }
 
   .img-vid {
@@ -1079,7 +1079,7 @@ h2 {
       height: 421px;
     }
     @include media-max($xs-break) {
-      height: 346px;
+      //height: 346px;
     }
 
     div {
