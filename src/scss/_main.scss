@@ -965,7 +965,8 @@ h2 {
   border-radius: 20px;
   height: 100%;
   @include media-max(1440) {
-    width: 311px;
+    //width: 311px;
+    width: 261px;
     top: 0;
     height: 100%;
   }
@@ -1045,7 +1046,8 @@ h2 {
 .slick-list {
   height: 583px;
   @include media-max(1440) {
-    height: 540px;
+    //height: 540px;
+    height: 457px;
   }
   @include media-max($lg-break) {
     height: 421px;
@@ -1057,7 +1059,8 @@ h2 {
 .slick-slide {
   height: 583px;
   @include media-max(1440) {
-    height: 540px;
+    //height: 540px;
+    height: 457px;
   }
   @include media-max($lg-break) {
     height: 421px;
@@ -1069,7 +1072,8 @@ h2 {
   .img-vid {
     height: 583px;
     @include media-max(1440) {
-      height: 540px;
+      //height: 540px;
+      height: 457px;
     }
     @include media-max($lg-break) {
       height: 421px;
