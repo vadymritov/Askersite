@@ -99,6 +99,7 @@ const Dashboard = (props) => {
 
 
   return (
+    <div className={styles.dashboardContainer}>
     <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.createContainer}`}>
       <div className={styles.bgContainer}>
         <div className={styles.contantWrap}>
@@ -178,6 +179,7 @@ const Dashboard = (props) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 };
