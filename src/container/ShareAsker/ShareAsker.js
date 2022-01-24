@@ -15,7 +15,8 @@ import {useForm} from "react-hook-form";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const ShareAsker = ({closeOption, setType, askerCode, createType,   ...props}) => {
+const ShareAsker = ({closeOption, setType, askerCode, createType ,  ...props}) => {
+  // console.log(askerCode)
   const [show, setShow] = useState(false);
   const [typeShare, setTypeShare] = useState('share');
   const location = useLocation();

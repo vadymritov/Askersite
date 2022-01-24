@@ -11,8 +11,8 @@ import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType, ...props}) => {
-
+const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType,setAskerCode,viewAsker, ...props}) => {
+console.log('locationOption', location)
   const onChangePrivate = (e) => {
     // e.preventDefault();
     if (e.target.checked) {
@@ -29,7 +29,8 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
     http.post('inactiveAsker', `user_id=${location?.state?.user_id}&asker_id=${location?.state?.asker_id}&asker_status=${status}`)
       .then(resp => resp.data)
       .then((res) => {
-        console.log('resOption', res);
+       // return setAskerCode(res.asker_code)
+       //  console.log('resOption', res);
         // if (res.status === true) {
         // setCountryData(res?.country);
         // }
@@ -69,7 +70,10 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
                 </div>
               </button>
 
-              <button className={styles.contentBox} onClick={(e) => changeType(e, 'share')}>
+              <button className={styles.contentBox} onClick={(e) => {
+                setAskerCode(viewAsker.asker_code)
+                changeType(e, 'share')
+              }}>
                 <div className={`${styles.optionBlock} `}>
                   <div className={styles.iconWrap}>
                     <ShareIcon className={styles.linkIcon}/>

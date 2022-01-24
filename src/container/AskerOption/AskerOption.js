@@ -7,20 +7,22 @@ import styles from './AskerOption.module.scss'
 
 const AskerOption = ({onChange, location, viewAsker, ...props}) => {
     const [selectPrivate, setSelectPrivate] = useState("");
+    // console.log('helloWorld',viewAsker)
     const [type, setType] = useState("option");
     // const location = useLocation();
     const [askerCode,setAskerCode] = useState()
 
-    console.log('option', selectPrivate, type, viewAsker)
+
+    // console.log('option',viewAsker)
 
     useEffect(() => {
       if (type === 'edit') {
 
       }
-    })
+    },[])
 
     const closeOption = (e) => {
-      console.log('onChange',);
+      // console.log('onChange',);
       e.preventDefault();
       onChange('front');
       setType('option')
@@ -34,6 +36,8 @@ const AskerOption = ({onChange, location, viewAsker, ...props}) => {
                               location={location}
                               setSelectPrivate={setSelectPrivate}
                               setType={setType}
+                              setAskerCode={setAskerCode}
+                              viewAsker={viewAsker}
         />
       } else if (type === 'edit') {
         return <EditAsker setAskerCode={setAskerCode}  setType={setType} location={location}/>

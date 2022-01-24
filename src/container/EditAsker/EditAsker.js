@@ -27,7 +27,7 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
   let navigate = useNavigate();
   const cardRef = useRef(null);
 
-  console.log('edit location', location);
+  // console.log('edit location', location);
   const getNextQuestionList = async (asker_id, user_id) => {
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
       .then(resp => resp.data)
