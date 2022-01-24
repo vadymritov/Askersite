@@ -66,27 +66,29 @@ const TabMenu = (props) => {
   return (
     <div className={styles.tabContainerWrap} >
       <div className={styles.tabContainer} id={'tabMenu'}>
-        <NavLink onClick={() => {
-          props.onClick('watch')
-        }
-        } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${  watchTabActive  ? styles.activeTab : ''} `)}>
-          <TabWatch className={`${styles.taIcon}`}/>
-          <span>Watch</span>
-        </NavLink>
-        <NavLink to={'/create-asker'} onClick={() => {props.onClick('ask')}} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}`)}>
-          <TabAsk  className={`${styles.taIcon}`}/>
-          <span>Ask</span>
-        </NavLink>
-        <NavLink onClick={() => {props.onClick('search')
-        }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${answerTabActive  ? styles.activeTab : ''} `)}>
-          <TabAnswer className={`${styles.taIcon}`}/>
-          <span>Answer</span>
-        </NavLink>
-        <button type='button' onClick={() => toggleSettings()}
-          className={`${styles.tabItem} ${!!props.showSettings ? styles.activeTab : ''}`} >
-          <TabSettings className={`${styles.taIcon} `}/>
-          <span>Settings</span>
-        </button>
+        <div className={styles.tabContainerSecondary}>
+          <NavLink onClick={() => {
+            props.onClick('watch')
+          }
+          } to={'/all-answers'} className={({isActive}) => (`${styles.tabItem} ${  watchTabActive  ? styles.activeTab : ''} `)}>
+            <TabWatch className={`${styles.taIcon}`}/>
+            <span>Watch</span>
+          </NavLink>
+          <NavLink to={'/create-asker'} onClick={() => {props.onClick('ask')}} className={({isActive}) => (`${styles.tabItem} ${askTabActive ? styles.activeTab : ''}`)}>
+            <TabAsk  className={`${styles.taIcon}`}/>
+            <span>Ask</span>
+          </NavLink>
+          <NavLink onClick={() => {props.onClick('search')
+          }} to={'/asker-search'} className={({isActive}) => (`${styles.tabItem} ${answerTabActive  ? styles.activeTab : ''} `)}>
+            <TabAnswer className={`${styles.taIcon}`}/>
+            <span>Answer</span>
+          </NavLink>
+          <button type='button' onClick={() => toggleSettings()}
+                  className={`${styles.tabItem} ${!!props.showSettings ? styles.activeTab : ''}`} >
+            <TabSettings className={`${styles.taIcon} `}/>
+            <span>Settings</span>
+          </button></div>
+
 
       </div>
     </div>

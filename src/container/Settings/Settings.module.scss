@@ -12,6 +12,7 @@
   justify-content: flex-end;
   overflow: hidden;
 }
+
 .blur{
   position: absolute;
   overflow: hidden;
@@ -29,8 +30,9 @@
   //pointer-events: auto;
 }
 .blur_active{
-  background-color: transparent;
-  backdrop-filter: blur(20px);
+  background: rgba(90, 109, 254, 0.15);
+  //background-color: transparent;
+  backdrop-filter: blur(10px);
   pointer-events: auto;
 }
 .settingsBackdrop {
@@ -63,11 +65,11 @@
   background: rgba(84, 104, 255, 0.8);
   opacity: 0.9;
   border-radius: 0px 10px 10px 0px;
-  width: 417px;
+  width: 330px;
   z-index: 1001;
   //width: calc(100% - 12em);
-  min-width: 400px;
-  padding: 0 40px 50px 60px;
+  min-width: 330px;
+  padding: 0 40px 40px 50px;
   overflow-y: auto;
   overflow-x: hidden;
   @include media-max($md-break) {
@@ -102,12 +104,14 @@
   margin-bottom: 29px;
 
   .text {
-    color: $white;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1x;
-    margin-left: 5px;
     font-family: "Roboto", sans-serif;
+    font-style: normal;
+    color: $white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    margin-left: 5px;
+
   }
   .icon {
     fill: $white;
@@ -263,7 +267,7 @@
     .titleInfo {
       font-family: "Roboto", sans-serif;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 16px;
       line-height: 1.1;
       text-align: center;
       color: #FFFFFF;
@@ -271,7 +275,7 @@
         font-size: 18px;
       }
       @include media-max($sm-break) {
-        font-size: 20px;
+        font-size: 18px;
       }
       @include media-max($xs-break) {
         font-size: 18px;

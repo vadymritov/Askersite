@@ -17,15 +17,20 @@
 
 
 .tabContainer {
-  width: 368px;
+  border-radius: 30px 30px 0px 0px;
+  backdrop-filter: blur(30px);
+}
+
+
+.tabContainerSecondary{
+  width: 345px;
   height: 64px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  background-color: $white;
-  backdrop-filter: blur(30px);
   padding: 0 30px;
+  background-color:rgba(255,255,255, 0.6);
   border-radius: 30px 30px 0px 0px;
   @include media-max($xs-break) {
     width: 300px;
@@ -57,7 +62,8 @@
   .taIcon {
     fill: #ADB8FA;
     min-width: 21px;
-    height: 21px;
+    //height: 21px;
+    height: 16px;
     margin-bottom: 5px;
     @include media-max($xs-break) {
       min-width: 18px;
