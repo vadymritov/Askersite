@@ -112,6 +112,7 @@
   width: 100%;
   justify-content: flex-start;
   height: 280px;
+  padding-top: 25px;
   @include media-max($lg-break) {
     height: 240px;
   }
@@ -180,8 +181,9 @@
   display: flex;
   align-items: center;
   width: 400px;
-  margin: 0 auto;
-  justify-content: space-between;
+  //margin: 0 auto;
+  justify-content: flex-start;
+  padding-bottom: 45px;
 
   @include media-max($md-break) {
     width: 250px;
@@ -195,8 +197,8 @@
 
   .iconLink {
     @include btn-reset();
-    width: 169px;
-    height: 66px;
+    width: 135px;
+    height: 50px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -208,16 +210,16 @@
     }
 
     @include media-max($lg-break) {
-      width: 148px;
-      height: 55px;
+      width: 115px;
+      height: 45px;
     }
     @include media-max($sm-break) {
-      width: 200px;
-      height: 105px;
+      width: 165px;
+      height: 90px;
     }
     @include media-max($xs-break) {
-      width: 148px;
-      height: 55px;
+      width: 115px;
+      height: 45px;
     }
   }
 
@@ -227,20 +229,20 @@
   }
 
   .googlePay {
-    width: 200px;
-    height: 113px;
-    background-image: url("../../image/svg/GooglePlay.svg");
+    width: 135px;
+    height: 50px;
+    background-image: url("../../image/svg/play-market-correct.svg");
     @include media-max($lg-break) {
-      width: 144px;
-      height: 95px;
+      width: 115px;
+      height: 45px;
     }
     @include media-max($sm-break) {
-      width: 200px;
-      height: 105px;
+      width: 165px;
+      height: 90px;
     }
     @include media-max($xs-break) {
-      width: 144px;
-      height: 95px;
+      width: 115px;
+      height: 45px;
     }
   }
 }

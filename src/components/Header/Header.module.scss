@@ -9,6 +9,7 @@
   width: 100%;
   max-width: 100%;
   padding: 0 31px 0 43px;
+  //margin-bottom: 30px;
   @include media-max($lg-break) {
     padding: 0 24px;
   }
@@ -21,7 +22,7 @@
 }
 
 .logo {
-  height: 94px;
+  height: 55px;
   width: 75px;
   @include media-max($md-break) {
     height: 60px
@@ -32,6 +33,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  //margin-bottom: 20px;
   margin-left: 20px;
   @include media-max($md-break) {
     margin-left: 20px;

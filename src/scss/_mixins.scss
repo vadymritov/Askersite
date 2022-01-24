@@ -48,6 +48,22 @@
   animation-duration: 20s;
   animation-timing-function: ease-in-out;
 }
+@mixin animationJSAnother {
+  transform: translateZ(10px);
+  animation-name: $homeAnimation;
+  animation-fill-mode:revert;
+  animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-timing-function: ease-in-out;
+}
+@mixin animationJSDifferent {
+  transform: translateZ(10px);
+  animation-name: $homeAnimation;
+  animation-fill-mode:backwards;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+}
 
 
 @mixin triangle($size: 2rem, $background: red, $radius: true) {
