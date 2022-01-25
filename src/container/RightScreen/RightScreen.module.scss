@@ -81,6 +81,7 @@
   @include media-max($xs-break) {
     display: none;
   }
+
 }
 .MoveOnBottomInDashboard{
   @include media-max($md-break) {
@@ -157,6 +158,12 @@
   @include media-max(1400) {
     margin-top: 20px;
   }
+  @include media-max(991) {
+    margin-top: 50px;
+  }
+  //@include media-max($md-break) {
+  //  margin-top: 40px;
+  //}
 
   .btnCreate {
     @include btn-reset();
