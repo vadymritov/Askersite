@@ -143,7 +143,21 @@
   }
 }
 
+.firstRotate {
+  transition: none !important;
+  animation: rotate .8s cubic-bezier(1, -0, 0.4, 1.39);
+  animation-fill-mode: forwards;
+}
 
+@keyframes rotate {
+  from {
+    transform: rotateY(90deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
 
 .rotateT {
   width: 36px;

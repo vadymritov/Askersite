@@ -12,7 +12,7 @@ import {ReactComponent as TringlePhone} from "../../image/svg/WatchAnswer/WatchT
 
 const Answer = (props) => {
   const location = useLocation();
-  let { foundAskerId,askerCode,AnswerData,data:activeQuestion } = location.state;
+  let {foundAskerId, askerCode, AnswerData, data: activeQuestion} = location.state;
   // console.log('actualQuestion',activeQuestion)
   const [loaderActive, setLoaderActive] = useState(false);
   const [finishAnswer, setFinishAnswer] = useState(false);
@@ -22,8 +22,8 @@ const Answer = (props) => {
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [UserProfile, setUserProfile] = useState([]);
-  const [currentQuestion,setCurrentQuestion] = useState('')
-  const [screenQuestion,setScreenQuestion] = useState('')
+  const [currentQuestion, setCurrentQuestion] = useState('')
+  const [screenQuestion, setScreenQuestion] = useState('')
 
   let navigate = useNavigate();
   const cardRef = useRef(null);
@@ -42,17 +42,34 @@ const Answer = (props) => {
 
   const bodyFormData = new FormData();
   const userID = JSON.parse(localStorage.getItem("UserID"));
-  bodyFormData.append('user_id',userID)
-  bodyFormData.append('asker_id',foundAskerId)
+  bodyFormData.append('user_id', userID)
+  bodyFormData.append('asker_id', foundAskerId)
+
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/answer', {state: {foundAskerId, askerCode, AnswerData, data: activeQuestion}})
+  }
+
   // const fetchNextQuestionsList = () =>http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestion(nextQuestionList.question_list));
   useEffect(() => {
     if (userID) {
       setUserProfile(userID);
-      http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setCurrentQuestion(nextQuestionList.question_list));
+      http.post('nextQuestionList', bodyFormData).then(res => res.data).then(nextQuestionList => setCurrentQuestion(nextQuestionList.question_list));
       // setCurrentQuestionId(res.data.question_list[res.data.question_list.length-1].question_id)
 
     }
-   return setLoaderActive(false)
+
+    if (location?.state?.from === 'start-asker' || location?.state?.from === 'asker-complete') {
+      cardRef?.current?.classList.add(styles.firstRotate)
+    }
+    if (window && (location?.state?.from === 'start-asker' || location?.state?.from === 'asker-complete')) {
+      window.addEventListener('beforeunload', reloadListener);
+    }
+
+    return () => {
+      return setLoaderActive(false)
+      window.removeEventListener('beforeunload', reloadListener);
+    }
   }, []);
   // console.log('currentQuest',currentQuestion)
   const videoConstraints = {
@@ -85,7 +102,7 @@ const Answer = (props) => {
   }, [webcamRef, setCapturing, mediaRecorderRef]);
 
   const handleDataAvailable = React.useCallback(
-    async ({ data }) => {
+    async ({data}) => {
       if (data.size > 0) {
         setRecordedChunks((prev) => prev.concat(data));
 
@@ -98,28 +115,32 @@ const Answer = (props) => {
         // const question_id = props.data.data.question_id;
         const fdata = new FormData();
         // fdata.append("file", Blob);
-        fdata.append("user_id",userID)
-        fdata.append("question_id",activeQuestion.question_id);
+        fdata.append("user_id", userID)
+        fdata.append("question_id", activeQuestion.question_id);
         fdata.append("asker_id", asker_id);
         fdata.append("answer", myFile);
 
         // fdata.append("question_id",data.question_id);
 
 
-
         // console.log("fdata" , fdata);
 
 
-        await http.post('submitAnswer',fdata).then(res=> {
-          if(res.data.status===true){
+        await http.post('submitAnswer', fdata).then(res => {
+          if (res.data.status === true) {
+            cardRef?.current?.classList.add("customRotate");
+            setTimeout(() => {
               navigate('/next-question', {
                 state: {
                   activeQuestion,
                   askerId: foundAskerId,
                   askerCode,
-                  AnswerData
+                  AnswerData,
+                  from: 'answer'
                 }
               })
+            }, 400);
+
 
           }
         })
@@ -175,9 +196,8 @@ const Answer = (props) => {
       setFinishAnswer(true)
     }, 3000);
 
-   // clearTimeout(timeoutAnswer);
+    // clearTimeout(timeoutAnswer);
   }
-
 
 
   return (
@@ -187,52 +207,54 @@ const Answer = (props) => {
         <div className={styles.infoText}>Brighton Art Gallery<br/> Cleaner Job in Brighton</div>
       </div>
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner  ${styles.cardWrap}`}>
+        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrap}`}>
           <div className={styles.contentBox}>
-          <LogoWhite className={styles.logo}/>
-          <Webcam audio={true} ref={webcamRef}  className={styles.videoPreview}  videoConstraints={videoConstraints}/>
-          {loaderActive ? <Loader className={styles.loader} setIsActive={setLoaderActive}/> : null}
-          <div className={styles.cardInfo}>
-            <span>{activeQuestion.title}</span>
-            {!finishAnswer ?
-              <button className={`${styles.beginBtn} `} onClick={() => {
-                startRecording()
-                beginAnswer()
-              }}>
-                begin answer
-                <div/>
-              </button>
-              :
-              <ButtonAnswer time={timer}  cb={()=>{
-                handleStopCaptureClick();
-                setCapturing(false);
-                setLoaderActive(false);
-                navigate('/next-question', {
-                  state: {
-                    activeQuestion,
-                    askerId: foundAskerId,
-                    askerCode,
-                    AnswerData
-                  }
-                })
-
-
+            <LogoWhite className={styles.logo}/>
+            <Webcam audio={true} ref={webcamRef} className={styles.videoPreview} videoConstraints={videoConstraints}/>
+            {loaderActive ? <Loader className={styles.loader} setIsActive={setLoaderActive}/> : null}
+            <div className={styles.cardInfo}>
+              <span>{activeQuestion.title}</span>
+              {!finishAnswer ?
+                <button className={`${styles.beginBtn} `} onClick={() => {
+                  startRecording()
+                  beginAnswer()
+                }}>
+                  begin answer
+                  <div/>
+                </button>
+                :
+                <ButtonAnswer time={timer} cb={() => {
+                  handleStopCaptureClick();
+                  setCapturing(false);
+                  setLoaderActive(false);
+                  cardRef?.current?.classList.add("customRotate");
+                  setTimeout(() => {
+                    navigate('/next-question', {
+                      state: {
+                        activeQuestion,
+                        askerId: foundAskerId,
+                        askerCode,
+                        AnswerData,
+                        from: 'answer'
+                      }
+                    })
+                  }, 400);
+                }
+                }/>
+                // <button type='button' className={styles.content}>
+                //   <span>finish answer</span>
+                //
+                //   <div className={styles.redCircleWrap}>
+                //     <div className={styles.timer}>
+                //       {timer}
+                //     </div>
+                //   </div>
+                //   <div className={styles.line}/>
+                // </button>
               }
-              }/>
-              // <button type='button' className={styles.content}>
-              //   <span>finish answer</span>
-              //
-              //   <div className={styles.redCircleWrap}>
-              //     <div className={styles.timer}>
-              //       {timer}
-              //     </div>
-              //   </div>
-              //   <div className={styles.line}/>
-              // </button>
-            }
-          </div>
-          <div className={styles.cardContainer}>
-          </div>
+            </div>
+            <div className={styles.cardContainer}>
+            </div>
           </div>
         </div>
         {/*<TringlePhone />*/}

@@ -20,7 +20,11 @@
     display: none;
   }
 }
-
+.dashboardHideButtomHeader{
+  @include media-max($md-break) {
+    display: none;
+  }
+}
 .rightContent {
   height: 100%;
   width: 100%;
@@ -31,7 +35,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @include media-max($sm-break) {
+  @include media-max($md-break) {
     padding-top: 60px;
   }
 }
@@ -77,8 +81,15 @@
   @include media-max($xs-break) {
     display: none;
   }
-}
 
+}
+.MoveOnBottomInDashboard{
+  @include media-max($md-break) {
+    top: 8px;
+    width: 79px;
+    height: 84px;
+  }
+}
 
 .wrapIcon{
   position: relative;
@@ -114,11 +125,11 @@
   height: 280px;
   padding-top: 25px;
   @include media-max($lg-break) {
-    height: 240px;
+    height: 260px;
   }
   @include media-max($sm-break) {
     min-height: 220px;
-    height: 240px;
+    height: 260px;
   }
 
 
@@ -147,6 +158,12 @@
   @include media-max(1400) {
     margin-top: 20px;
   }
+  @include media-max(991) {
+    margin-top: 50px;
+  }
+  //@include media-max($md-break) {
+  //  margin-top: 40px;
+  //}
 
   .btnCreate {
     @include btn-reset();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './Login.module.scss';
 import QuestionLogin from "../../components/UI/icons/QuestionLogin";
 import LogoWhite from "../../components/UI/icons/LogoWhite";
@@ -16,6 +16,7 @@ import {http} from "../../http/http";
 const Login = (props) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const navigate = useNavigate();
+  const cardRef = useRef(null);
   const onSubmit = (data) => {
     const form = new FormData();
     form.append('email', data.email);
@@ -30,7 +31,13 @@ const Login = (props) => {
           localStorage.setItem("UserID", respJson.user.id);
           localStorage.setItem("User", JSON.stringify(respJson.user));
           // dispatch(setUserProfile(respJson));
-          navigate('/dashboard');
+          // navigate('/dashboard');
+          cardRef?.current?.classList.add("start-rotate")
+          setTimeout(() => {
+            navigate('/dashboard', {state:{
+                from:'login'
+              }});
+          }, 400)
         } else {
           alert(respJson.message);
         }
@@ -42,7 +49,7 @@ const Login = (props) => {
 
   return (
     <div className={`container-login`}>
-      <div className={`contentWrap-login`}>
+      <div ref={cardRef} className={`contentWrap-login`}>
         <div className={`contentBox-login`}>
           <div className={`fade-in ${styles.content}`}>
             <button type='button' className={styles.arrowBtnWrap}><ArrowBack className={styles.arrowBack}/></button>

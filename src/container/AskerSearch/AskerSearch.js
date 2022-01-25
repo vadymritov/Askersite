@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import styles from "./AskerSearch.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
@@ -44,12 +44,19 @@ const AskerSearch = (props) => {
         // console.log(res)
         if (res != null) {
           // await setAsker(res.asker)
-          navigate('/start-asker', {
-            state: {
-              foundAsker: res.asker,
-              askerCode: search
-            }
-          })
+
+          cardRef?.current?.classList.add("customRotate")
+          setTimeout(() => {
+            navigate('/start-asker', {
+              state: {
+                foundAsker: res.asker,
+                askerCode: search,
+                from: 'asker-search'
+              }
+            })
+          }, 400);
+
+
 
           // if (respJson.status === true) {
           //   history.push({ pathname: "/SatrtAnswer", state: respJson });
@@ -79,7 +86,7 @@ const AskerSearch = (props) => {
   return (
     <div className={styles.mainContainer}>
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
+        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrapContact}`}>
             <div className={styles.cardContainerContact}>
           <div className={styles.triangleWrap}>
               <div className={styles.contentBox}>

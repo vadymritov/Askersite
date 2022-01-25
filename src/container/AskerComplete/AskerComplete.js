@@ -25,6 +25,11 @@ const AskerComplete = (props) => {
   const [search, setSearch] = useState("");
   const [clickedQuestionId, setClickedQuestionId] = useState('')
 
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/asker-complete', {state: {askerId, askerCode, AnswerData}})
+  }
+
   const hendaleingFormSubmit = async () => {
     // var parameter =
     //   "&asker_code=" +
@@ -68,7 +73,18 @@ const AskerComplete = (props) => {
 
   useEffect(()=>{
     http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
-      .then(resp => setCurrentAsker(resp.data.asker))
+      .then(resp => setCurrentAsker(resp.data.asker));
+
+    if (location?.state?.from === 'progress') {
+      cardRef?.current?.classList.add(styles.firstRotate)
+    }
+    if (window && location?.state?.from === 'progress') {
+      window.addEventListener('beforeunload', reloadListener);
+    }
+
+    return () => {
+      window.removeEventListener('beforeunload', reloadListener);
+    }
   },[])
 
   return (
@@ -81,7 +97,7 @@ const AskerComplete = (props) => {
 
 
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
             <div className={styles.cardContainer}>
               <div className={` ${styles.questionBlock}`}>
@@ -111,6 +127,7 @@ const AskerComplete = (props) => {
                                askerCode,
                                data: AnswerData.question_list.find(element => element === item),
                                AnswerData,
+                               from: 'asker-complete'
                              }
                            })
 

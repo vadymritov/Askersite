@@ -12,11 +12,17 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  @include media-max($sm-break) {
-    padding: 12px 20px 19px;
+  @include media-max($md-break) {
+    padding: 112px 20px 19px;
   }
 
-
+  @media screen and (max-width: 767px),
+  screen and (max-height: 690px) {
+    padding: 25px 20px 19px;
+  }
+  @include media-max($xs-break) {
+    padding: 20px 20px 19px;
+  }
 }
 
 .arrowBtnWrap {
@@ -48,9 +54,13 @@
   max-width: 100%;
   align-items: center;
   justify-content: center;
-  @include media-max($sm-break) {
-    padding-top: 10px;
-  }
+
+  //@media screen and (max-height: 690px) {
+  //  padding-top: 50px;
+  //}
+  //@include media-max($sm-break) {
+  //  padding-top: 10px;
+  //}
 
   .questionIcon {
     width: 34px;
@@ -78,7 +88,6 @@
   max-width: 100%;
   align-items: center;
   justify-content: center;
-
   @include media-max($sm-break) {
     input {
      height: 35px;

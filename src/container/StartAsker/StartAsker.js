@@ -65,13 +65,30 @@ const StartAsker = (props) => {
   bodyFormData.append('user_id',userID)
   bodyFormData.append('asker_id',foundAsker.asker_id)
 
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/start-asker', {state: {foundAsker, askerCode}})
+  }
+
   useEffect(()=>{
     if (userID) {
       setUserProfile(userID);
       http.post('nextQuestionList',bodyFormData).then(res=>res.data).then(nextQuestionList=>setAnswerData(nextQuestionList));
       // setCurrentQuestionId(res.data.question_list[res.data.question_list.length-1].question_id)
     }
+
+    if (location?.state?.from === 'asker-search') {
+      cardRef?.current?.classList.add(styles.firstRotate)
+    }
+    if (window && location?.state?.from === 'asker-search') {
+      window.addEventListener('beforeunload', reloadListener);
+    }
+
+    return () => {
+      window.removeEventListener('beforeunload', reloadListener);
+    }
   },[])
+
 
   const showViewAnswer = () => {
     // console.log('onc');
@@ -84,17 +101,22 @@ const StartAsker = (props) => {
         index < AnswerData.total_question;
         index++
       ) {
+        console.log(AnswerData.question_list[index].submitted_answer)
         // const element = array[index];
         if (
           AnswerData.question_list[index].submitted_answer ===
           "n"
         ) {
-          navigate('/answer',{state:{
-              foundAskerId:foundAsker?.asker_id,
-              askerCode,
-              data: AnswerData?.question_list[index],
-              AnswerData,
-            }})
+          cardRef?.current?.classList.add("customRotate");
+          setTimeout(() => {
+            navigate('/answer',{state:{
+                foundAskerId:foundAsker?.asker_id,
+                askerCode,
+                data: AnswerData?.question_list[index],
+                AnswerData,
+                from: 'start-asker'
+              }})
+          }, 400);
 
 
 
@@ -124,7 +146,7 @@ const StartAsker = (props) => {
 
 
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrap}`}>
           <div className={`${styles.cardBg}`}>
             <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>

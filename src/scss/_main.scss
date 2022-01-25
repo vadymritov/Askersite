@@ -249,6 +249,10 @@ h2 {
   height: 100%;
   max-width: 100%;
   padding: 70px 20px;
+  perspective: 200vmin;
+  @media screen and (max-height: 690px) {
+    padding: 35px 20px;
+  }
 }
 
 .contentWrap-login {
@@ -278,6 +282,27 @@ h2 {
     background-position: center top
   ;
     //background-size: 100% 100%;
+  }
+}
+
+.contentWrap-login.start-rotate {
+  transform: rotateY(-90deg);
+  transition: transform 400ms 0s;
+}
+
+.cardWrap.customRotate {
+  transition: none !important;
+  animation: rotate .4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(-90deg);
   }
 }
 
