@@ -324,9 +324,9 @@
   @include media-max($l-break) {
     width: 100%;
   }
-  @media (min-width: 760px) and (max-width: 850px) {
-    width: 100%
-  }
+  //@media (min-width: 760px) and (max-width: 880px) {
+  //  width: 100%
+  //}
 }
 
 .answersContainer {
@@ -550,3 +550,24 @@
 //    color: $white;
 //  }
 //}
+.rotateAfterLogin {
+  transition: none;
+  animation: rotate .8s cubic-bezier(1, -0, 0.4, 1.39);
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(90deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+.fixHeigthAuto{
+  @include media-max($md-break) {
+    height:auto !important;
+  }
+}

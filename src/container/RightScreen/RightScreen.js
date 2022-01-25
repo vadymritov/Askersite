@@ -4,9 +4,10 @@ import Typed from "typed.js";
 import Header from "../../components/Header/Header";
 import {ReactComponent as QuestionGreen}  from '../../image/svg/QuestionGreen.svg';
 import {ReactComponent as QuestionViolet}  from '../../image/svg/QuestionViolet.svg';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const RightScreen = (props) => {
+  const {pathname} = useLocation();
   const el = useRef(null);
   let navigate = useNavigate();
   let token = localStorage.getItem('UserID');
@@ -49,11 +50,11 @@ const RightScreen = (props) => {
 
   return (
     <div className={styles.rightContainer}>
-      <div className={styles.homeWrap}>
+      <div className={ `${styles.homeWrap} ${pathname === '/dashboard' ? styles.dashboardHideButtomHeader : ''}`}>
       <Header />
       </div>
       <div className={styles.rightContent}>
-        <QuestionGreen className={styles.greenIcon}/>
+        <QuestionGreen className={ `${styles.greenIcon} ${pathname === '/dashboard' ? styles.MoveOnBottomInDashboard : ''}`}/>
         <div className={styles.tellmeContent}>
           <div className={styles.typedTextWrap}>
             <h2>

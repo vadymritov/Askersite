@@ -249,6 +249,7 @@ h2 {
   height: 100%;
   max-width: 100%;
   padding: 70px 20px;
+  perspective: 200vmin;
 }
 
 .contentWrap-login {
@@ -279,6 +280,11 @@ h2 {
   ;
     //background-size: 100% 100%;
   }
+}
+
+.contentWrap-login.start-rotate {
+  transform: rotateY(-90deg);
+  transition: transform 400ms 0s;
 }
 
 .contentBox-login {
@@ -331,7 +337,7 @@ h2 {
 
   @include media-max($md-break) {
     display: block;
-    top: 25px;
+    //top: 25px;
   }
   @include media-max($sm-break) {
     top: 15px;

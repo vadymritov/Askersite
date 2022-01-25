@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Link, NavLink, useNavigate} from "react-router-dom";
+import {Link, NavLink, useLocation, useNavigate} from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import Logo from "../../components/UI/icons/Logo";
@@ -11,27 +11,27 @@ import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import {http} from "../../http/http";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
-
 const Dashboard = (props) => {
   const [typeTab, setTypeTab] = useState('all');
   const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7])
   let navigate = useNavigate();
+  const location = useLocation();
   const cardRef = useRef(null);
   const [userProfile, setUserProfile] = useState('');
-
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/dashboard', {state: {}})
+  }
 
 
 
   useEffect(async () => {
-
     if (cardRef?.current?.classList.contains("start-rotate")) {
       cardRef?.current?.classList.remove("start-rotate")
     }
-
     const timer = setTimeout(() => {
       cardRef?.current?.classList.add("start-rotate")
     }, 1);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -44,7 +44,20 @@ const Dashboard = (props) => {
     if (user) {
       setUserProfile(user);
     }
-  }, []);
+    if (location?.state?.from === 'login') {
+      cardRef?.current?.classList.add(styles.rotateAfterLogin)
+    }
+    if (window && location?.state?.from === 'login') {
+      window.addEventListener('beforeunload', reloadListener);
+      return () => {
+        window.removeEventListener('beforeunload', reloadListener);
+      }
+    }
+
+    const refRoot = document.getElementById('root')
+    refRoot.classList.add(styles.fixHeigthAuto)
+   return ()=> refRoot.classList.remove(styles.fixHeigthAuto)
+    }, []);
 
   const handleLink = (e, item) => {
     e.preventDefault();
@@ -69,7 +82,7 @@ const Dashboard = (props) => {
     }
   }
 
-  console.log('arrAske', arrAsker);
+  // console.log('arrAske', arrAsker);
 
   const handleTabChange = (e, type) => {
     e.preventDefault();
@@ -88,6 +101,9 @@ const Dashboard = (props) => {
     }
 
   }, [typeTab])
+  // window.onbeforeunload = (event) => {
+  //   navigate('/dashboard', {state: {}})
+  // };
 
   // const removeEffect = () => {
   //   elRef.current?.classList.add("ease-out-effect")

@@ -56,12 +56,12 @@ const Layout = ({children}) => {
       <BurgerHeader pageWrapId={"page-wrap"} outerContainerId={"outer-container"} customBurgerIcon={<BurgerMenu/>} right/>
       <div className={`container ${styles.mainContainer}`} id={"page-wrap"}>
         <div className={styles.mainWrapper}>
-          <div className={styles.headerBlock}>
-            <Header/>
+          <div className={ `${styles.headerBlock} ${pathname === '/dashboard' ? styles.dashboardHeaderTablet : ''}`}>
+            <Header />
           </div>
 
-          <div className={styles.mainRow}>
-            <div className={`${styles.mainCol} ${!smallView ? styles.scaleUpHorLeft : null} ${smallView ? styles.mainColSmall : null}`}>
+          <div className={`${styles.mainRow} ${pathname === '/dashboard' ? styles.dashboardMainRow : ''}`}>
+            <div className={`${styles.mainCol} ${pathname === '/dashboard' ? styles.dashboardMainCol : ''} ${!smallView ? styles.scaleUpHorLeft : null} ${smallView ? styles.mainColSmall : null}`}>
               <div className={styles.contentWrapper}>
                 {children}
 
@@ -76,7 +76,7 @@ const Layout = ({children}) => {
                 {/*</div>*/}
               </div>
             </div>
-            <div className={`${styles.staticCol} ${!smallView ? styles.scaleUpHorRight : null}  ${smallView ? styles.staticColSmall : styles.staticCol}`}
+            <div className={`${styles.staticCol} ${pathname === '/dashboard' ? styles.dashboardStaticCol : ''} ${!smallView ? styles.scaleUpHorRight : null}  ${smallView ? styles.staticColSmall : styles.staticCol}`}
 
               //      onClick={()=>{
               //   if(showSettings){

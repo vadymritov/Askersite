@@ -12,7 +12,6 @@ import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType,setAskerCode,viewAsker, ...props}) => {
-console.log('locationOption', location)
   const onChangePrivate = (e) => {
     // e.preventDefault();
     if (e.target.checked) {

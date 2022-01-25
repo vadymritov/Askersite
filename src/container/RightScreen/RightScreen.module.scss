@@ -20,7 +20,11 @@
     display: none;
   }
 }
-
+.dashboardHideButtomHeader{
+  @include media-max($md-break) {
+    display: none;
+  }
+}
 .rightContent {
   height: 100%;
   width: 100%;
@@ -31,7 +35,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @include media-max($sm-break) {
+  @include media-max($md-break) {
     padding-top: 60px;
   }
 }
@@ -78,7 +82,13 @@
     display: none;
   }
 }
-
+.MoveOnBottomInDashboard{
+  @include media-max($md-break) {
+    top: 8px;
+    width: 79px;
+    height: 84px;
+  }
+}
 
 .wrapIcon{
   position: relative;
