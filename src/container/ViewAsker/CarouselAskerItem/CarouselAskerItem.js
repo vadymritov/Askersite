@@ -53,15 +53,7 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
     }
   }
 
-  // useEffect(async () => {
-  //
-  //   if (location?.state) {
-  //     getNextQuestionList(asker_id, user_id);
-  //     ViewAnswer(asker_id, user_id);
-  //   }
-  //
-  //   // return () => clearTimeout(timer);
-  // }, [location]);
+
 
   const getNextQuestionList = async (asker_id, user_id) => {
     http.post('nextQuestionList', `user_id=${user_id}&asker_id=${asker_id}`)
