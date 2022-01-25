@@ -124,11 +124,11 @@
   height: 280px;
   padding-top: 25px;
   @include media-max($lg-break) {
-    height: 240px;
+    height: 260px;
   }
   @include media-max($sm-break) {
     min-height: 220px;
-    height: 240px;
+    height: 260px;
   }
 
 

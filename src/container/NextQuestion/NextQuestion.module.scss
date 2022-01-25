@@ -86,7 +86,7 @@
     align-items: flex-start;
   }
 }
-.cardWrap {
+.cardWrapp {
   width: 338px;
   height: 475px;
   position: relative;
@@ -162,6 +162,22 @@
   }
   @include media-max($md-break) {
     right: -19em;
+  }
+}
+
+.firstRotate {
+  transition: none !important;
+  animation: rotate .8s cubic-bezier(1, -0, 0.4, 1.39);
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(90deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
   }
 }
 

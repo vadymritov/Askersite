@@ -287,6 +287,22 @@ h2 {
   transition: transform 400ms 0s;
 }
 
+.cardWrap.customRotate {
+  transition: none !important;
+  animation: rotate .4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(-90deg);
+  }
+}
+
 .contentBox-login {
   position: relative;
   z-index: 1;

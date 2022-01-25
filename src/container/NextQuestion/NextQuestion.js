@@ -28,6 +28,11 @@ const NextQuestion = (props) => {
   const [currentAsker, setCurrentAsker] = useState('')
   const [clickedQuestionId, setClickedQuestionId] = useState('')
 
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/next-question', {state: {activeQuestion, askerId, askerCode, AnswerData}})
+  }
+
   useEffect(() => {
     http.post('askerCode', `asker_code=${askerCode}&user_id=${localStorage.getItem("UserID")}`)
       .then(resp => setCurrentAsker(resp.data.asker))
@@ -43,7 +48,16 @@ const NextQuestion = (props) => {
       });
     }, 1300)
 
+    if (location?.state?.from === 'answer') {
+      cardRef?.current?.classList.add(styles.firstRotate)
+    }
+    if (window && location?.state?.from === 'answer') {
+      window.addEventListener('beforeunload', reloadListener);
+    }
 
+    return () => {
+      window.removeEventListener('beforeunload', reloadListener);
+    }
 
   }, [])
 
@@ -102,7 +116,7 @@ const NextQuestion = (props) => {
 
 
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrapp}`}>
           <div className={`${styles.cardBg}`}>
             <GrayBg className={styles.grayBg}/>
             <div className={styles.cardContainer}>
@@ -183,14 +197,18 @@ const NextQuestion = (props) => {
               </div>
               <div className={`button-box ${styles.buttonBox}`}>
                 <button type="button" className={`continue-btn  ${styles.buttonStyle}`} onClick={() => {
-                  navigate('/progress', {
-                    state: {
-                      AnswerData,
-                      askerId,
-                      askerCode,
-                      currentAllInformation
-                    }
-                  })
+                  cardRef?.current?.classList.add("customRotate");
+                  setTimeout(() => {
+                    navigate('/progress', {
+                      state: {
+                        AnswerData,
+                        askerId,
+                        askerCode,
+                        currentAllInformation,
+                        from: 'next-question'
+                      }
+                    })
+                  }, 400);
                 }}>
                   <span>NEXT QUESTION</span>
                   <div className={styles.plusIconBox}>

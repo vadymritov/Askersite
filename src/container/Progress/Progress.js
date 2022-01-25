@@ -37,6 +37,24 @@ const Progress = (props) => {
       //   });
     };
 
+  const reloadListener = (event) => {
+    event.preventDefault();
+    navigate('/progress', {state: {AnswerData,askerId, askerCode,currentAllInformation}})
+  }
+
+    useEffect(() => {
+      if (location?.state?.from === 'next-question') {
+        cardRef?.current?.classList.add(styles.firstRotate)
+      }
+      if (window && location?.state?.from === 'next-question') {
+        window.addEventListener('beforeunload', reloadListener);
+      }
+
+      return () => {
+        window.removeEventListener('beforeunload', reloadListener);
+      }
+    }, [])
+
     useEffect(async () => {
       if (cardRef?.current?.classList.contains("start-rotate")) {
         console.log('true');
@@ -64,15 +82,19 @@ const Progress = (props) => {
           </div>
         </div>
         <div className={`${styles.contentContainer}`} onClick={()=>{
-          navigate('/asker-complete',{
-            state:{
-              askerId,
-              askerCode,
-              AnswerData
-            }
-          })
+          cardRef?.current?.classList.add("customRotate");
+          setTimeout(() => {
+            navigate('/asker-complete', {
+              state: {
+                askerId,
+                askerCode,
+                AnswerData,
+                from: 'progress'
+              }
+            })
+          }, 400)
         }}>
-          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrapContact}`}>
+          <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrapContact}`}>
             <div className={styles.cardContainerContact}>
               <div className={styles.contentBox}>
                 <SearchBgTriangle className={styles.triangleBgIcon}/>

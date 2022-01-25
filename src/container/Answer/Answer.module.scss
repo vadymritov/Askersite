@@ -62,6 +62,22 @@
   height: 52px;
 }
 
+.firstRotate {
+  transition: none !important;
+  animation: rotate .8s cubic-bezier(1, -0, 0.4, 1.39);
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(90deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
 .infoIconSmall {
   position: relative;
   top: 2px;

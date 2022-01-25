@@ -71,6 +71,10 @@
   perspective: 200vmin;
 }
 
+.cardWrap {
+  perspective: 200vmin;
+}
+
 .cardWrapContact {
   width: 333px;
   height: 494px;
@@ -89,6 +93,16 @@
     width: 318px;
     height: 581px;
     position: relative;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(90deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
   }
 }
 
