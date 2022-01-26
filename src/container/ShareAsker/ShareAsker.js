@@ -15,8 +15,9 @@ import {useForm} from "react-hook-form";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const ShareAsker = ({closeOption, setType, askerCode, createType ,  ...props}) => {
+const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,  ...props}) => {
   // console.log(askerCode)
+  console.log(isLeft);
   const [show, setShow] = useState(false);
   const [typeShare, setTypeShare] = useState('share');
   const location = useLocation();
@@ -26,6 +27,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType ,  ...props}) =
   const cardRef = useRef(null);
   const [EmailID, setEmailID] = useState("");
   const {register, handleSubmit, formState: {errors}} = useForm();
+
 
 
   useEffect(() => {
@@ -271,7 +273,7 @@ const ShareAsker = ({closeOption, setType, askerCode, createType ,  ...props}) =
     } else if (typeShare === 'create') {
       return (
         <>
-          <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
+          <div ref={cardRef} className={`card ${isLeft ? 'card--back' : 'card--backLeft'} ${(type === 'edit-share') ? styles.activeShare : ''} ${type==='menu-share' ? styles.suka : ''}  ${styles.cardBg}  ${location?.pathname === '/view-asker' ? styles.withAbsoluteAndTop : ''} ${styles.cardWrap}`}>
             <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>

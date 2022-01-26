@@ -9,7 +9,7 @@ import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const EditAsker = ({setType,setAskerCode, location, ...props}) => {
+const EditAsker = ({setType, setIsLeft, setAskerCode, type, location, ...props}) => {
 
   // const location = useLocation();
   const {asker_id, user_id, viewAsker} = location;
@@ -124,12 +124,15 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
   const changeType = (e, type) => {
     e.preventDefault();
     setType(type)
+    if(type === 'edit-share'){
+      setIsLeft(false);
+    }
     SetEditQuestion(prevState => !prevState)
   }
 
   return (
     <>
-      <div ref={cardRef} className={`default-flip flip-card-inner bg-color ${styles.cardBg}  `}>
+      <div ref={cardRef} className={`card card--back bg-color ${styles.cardBg} ${type === 'edit' ? styles.activeEdit : ''} `}>
         <div className={styles.cardContainer}>
           <div className={` ${styles.questionBlock}`}>
             <CreateAskerIcon className={styles.createLogo}/>
@@ -236,7 +239,7 @@ const EditAsker = ({setType,setAskerCode, location, ...props}) => {
             <button type="button"
                     onClick={(e) => {
                       setAskerCode(currentAsker.asker_code)
-                      changeType(e, 'share')
+                      changeType(e, 'edit-share')
                     }}
                     className={`continue-btn  ${styles.buttonStylePublich}`}>
               <span>SAVE CHANGES</span>

@@ -248,6 +248,14 @@
       transform: rotateY(0);
     }
   }
+  &--backLeft {
+    border-radius: 10vmin 100vmin 100vmin 10vmin;
+    transform: rotateY(-180deg);
+    background-position: 10vmin 10vmin;
+    &--flip {
+      transform: rotateY(0);
+    }
+  }
   &__content {
     height: 100%;
     width: 100%;
