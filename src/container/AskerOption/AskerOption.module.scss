@@ -160,11 +160,27 @@
 .rotateT {
   position: absolute;
   bottom: -22px;
-  z-index: -1;
+  z-index: 100;
   fill: #5a6efa;
   left: calc(50% - 12px);
   width: 36px;
   height: 24px;
+}
+
+.leftT {
+  animation: kek;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes kek {
+  0%, 75%{
+    opacity: 1;
+
+  }
+  100%{
+    opacity: 0;
+  }
 }
 
 

@@ -26,7 +26,7 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
   // const {asker_id, user_id} = location?.state;
   // const [nextQuestionList, setNextQuestionList] = useState([]);
   // const cardRef = useRef(null);
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(null);
   const [selectPrivate, setSelectPrivate] = useState("");
 
   const settings = {
@@ -41,7 +41,7 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
     autoplaySpeed: 15000,
   };
 
-  console.log('location.state', location.state, viewAsker);
+  // console.log('location.state', location.state, viewAsker);
 
   const onchange = (e, type) => {
     // e.preventDefault();
@@ -164,12 +164,12 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
                 </div>
               </div>
             </div>
-            <TriangleSearchSm className={`${styles.rotateT}`}/>
+            <TriangleSearchSm className={`${styles.rotateT} ${styles.whitePipka}`}/>
 
           </div>
 
           <div className={`card card--front ${!isActive ? 'card--front--flip' : ''} ${styles.cardWrapContact}`} >
-            <AskerOption onChange={(e) => onchange(e, 'front')} location={location.state} viewAsker={viewAsker}/>
+            <AskerOption isActiveAsker={isActive} onChange={(e) => onchange(e, 'front')} location={location.state} viewAsker={viewAsker}/>
           </div>
         </div>
 

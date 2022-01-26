@@ -5,12 +5,13 @@ import EditAsker from "../EditAsker/EditAsker";
 import ShareAsker from "../ShareAsker/ShareAsker";
 import styles from './AskerOption.module.scss'
 
-const AskerOption = ({onChange, location, viewAsker, ...props}) => {
+const AskerOption = ({onChange, isActiveAsker, location, viewAsker, ...props}) => {
     const [selectPrivate, setSelectPrivate] = useState("");
     // console.log('helloWorld',viewAsker)
-    const [type, setType] = useState("option");
+    const [type, setType] = useState("");
+    const [isLeft, setIsLeft] = useState("");
     // const location = useLocation();
-    const [askerCode,setAskerCode] = useState()
+    const [askerCode, setAskerCode] = useState()
 
 
     // console.log('option',viewAsker)
@@ -19,31 +20,47 @@ const AskerOption = ({onChange, location, viewAsker, ...props}) => {
       if (type === 'edit') {
 
       }
-    },[])
+    }, [])
 
     const closeOption = (e) => {
       // console.log('onChange',);
       e.preventDefault();
       onChange('front');
-      setType('option')
+      setType('')
 
     }
 
     const renderContent = () => {
-      if (type === 'option') {
-        return <OptionContent closeOption={closeOption}
-                              selectPrivate={selectPrivate}
-                              location={location}
-                              setSelectPrivate={setSelectPrivate}
-                              setType={setType}
-                              setAskerCode={setAskerCode}
-                              viewAsker={viewAsker}
-        />
-      } else if (type === 'edit') {
-        return <EditAsker setAskerCode={setAskerCode}  setType={setType} location={location}/>
-      } else if (type === 'share') {
-        return <ShareAsker askerCode={askerCode} setType={setType} closeOption={closeOption} createType='create' location={location}/>
-      }
+    //   if (type === 'option') {
+    //     return <OptionContent closeOption={closeOption}
+    //                           selectPrivate={selectPrivate}
+    //                           location={location}
+    //                           setSelectPrivate={setSelectPrivate}
+    //                           setType={setType}
+    //                           setAskerCode={setAskerCode}
+    //                           viewAsker={viewAsker}
+    //     />
+    //   } else if (type === 'edit') {
+        return <>
+            <OptionContent
+            closeOption={closeOption}
+            selectPrivate={selectPrivate}
+            location={location}
+            setSelectPrivate={setSelectPrivate}
+            setType={setType}
+            type={type}
+            setAskerCode={setAskerCode}
+            viewAsker={viewAsker}
+            isActiveAsker={isActiveAsker}
+            setIsLeft={setIsLeft}
+            isLeft={isLeft}
+          />
+          <EditAsker isLeft={isLeft} type={type} setIsLeft={setIsLeft} setAskerCode={setAskerCode} setType={setType} location={location}/>
+          <ShareAsker isLeft={isLeft} type={type} setIsLeft={setIsLeft} askerCode={askerCode} setType={setType} closeOption={closeOption} createType='create' location={location}/>
+        </>
+      // } else if (type === 'share') {
+      //   return <ShareAsker askerCode={askerCode} setType={setType} closeOption={closeOption} createType='create' location={location}/>
+      // }
     }
 
 

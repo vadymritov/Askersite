@@ -11,7 +11,7 @@ import {http} from "../../http/http";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, setType,setAskerCode,viewAsker, ...props}) => {
+const OptionContent = ({closeOption, setIsLeft, type, isActiveAsker, selectPrivate, setSelectPrivate, location, setType,setAskerCode,viewAsker, ...props}) => {
   const onChangePrivate = (e) => {
     // e.preventDefault();
     if (e.target.checked) {
@@ -41,12 +41,18 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
 
   const changeType = (e, type) => {
     e.preventDefault();
+    if (type === 'menu-share') {
+      setIsLeft(true)
+    }
+
     setType(type)
   }
 
+  console.log(type)
+
   return (
       <>
-        <div className={`${styles.cardBg}`}>
+        <div className={`card card--front ${(type === 'edit' || type === 'menu-share' || type === 'edit-share') ? 'card--front--flip' : ''} ${styles.cardBg}`}>
           <button className={styles.btnClose} onClick={(e) => closeOption(e)}>
             <CloseIcon className={styles.closeIcon}/>
           </button>
@@ -71,7 +77,7 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
 
               <button className={styles.contentBox} onClick={(e) => {
                 setAskerCode(viewAsker.asker_code)
-                changeType(e, 'share')
+                changeType(e, 'menu-share')
               }}>
                 <div className={`${styles.optionBlock} `}>
                   <div className={styles.iconWrap}>
@@ -139,7 +145,7 @@ const OptionContent = ({closeOption, selectPrivate, setSelectPrivate, location, 
             </div>
           </div>
         </div>
-        <TriangleSearchSm className={`${styles.rotateT}`}/>
+        {isActiveAsker !== null && <TriangleSearchSm className={`card card--front ${(type === 'edit' || type === 'menu-share' || type === 'edit-share') ? 'card--front--flip' : ''} ${styles.rotateT} ${!isActiveAsker ? styles.leftT : ''}`}/>}
         {/*<ArrowDown className={styles.rotateT}/>*/}
       </>
     )

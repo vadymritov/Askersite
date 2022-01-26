@@ -70,6 +70,9 @@
     margin-bottom: 25px;
     max-height: 525px;
   }
+  @media screen and (max-height: 660px) {
+    max-height: 525px;
+  }
 }
 
 .topBox {
@@ -277,6 +280,9 @@
   //@include media-max($md-break) {
   //  height: 300px;
   //}
+  @media screen and (max-height: 660px) {
+   height: 200px;
+  }
   @include media-max($sm-break) {
     height: 230px;
   }
