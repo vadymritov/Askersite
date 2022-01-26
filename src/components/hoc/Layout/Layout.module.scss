@@ -61,6 +61,12 @@
     max-height: 600px;
     min-height: 560px;
   }
+  @include media-max($xs-break) {
+    width: 100%;
+    height: calc(100vh - 60px);
+    max-height: 625px;
+    min-height: 560px;
+  }
 
   //@include media-max($sm-break) {
   //  width: 100%;

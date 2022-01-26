@@ -38,9 +38,9 @@
 
 
   @include media-max($md-break) {
-    width: 40px;
+    width: 28px;
     top: calc(50% - 20px);
-    height: 40px;
+    height: 28px;
   }
   @include media-max($sm-break) {
     top: 0;
@@ -102,7 +102,7 @@
   flex-shrink: 0;
   overflow: visible;
   @include media-max($lg-break) {
-    width: calc(100% - 13em);
+    width: calc(100% - 10em);
     //width: calc(100% - 15em);
   }
   @include media-max($md-break) {
@@ -110,7 +110,7 @@
     min-width: 300px;
   }
   @include media-max($sm-break) {
-    width: calc(100% - 17em);
+    width: calc(100% - 12em);
   }
   @include media-max($xs-break) {
     width: 100%;

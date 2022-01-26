@@ -287,12 +287,12 @@ h2 {
 
 .contentWrap-login.start-rotate {
   transform: rotateY(-90deg);
-  transition: transform 400ms 0s;
+  transition: transform 400ms 0s cubic-bezier(.63,-0.32,.4,1.39);
 }
 
 .cardWrap.customRotate {
   transition: none !important;
-  animation: rotate .4s;
+  animation: rotate .4s cubic-bezier(.63,-1,.4,1);
   animation-fill-mode: forwards;
 }
 
