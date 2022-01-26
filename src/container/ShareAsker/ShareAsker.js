@@ -273,7 +273,7 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
     } else if (typeShare === 'create') {
       return (
         <>
-          <div ref={cardRef} className={`card ${isLeft ? 'card--back' : 'card--backLeft'} ${(type === 'edit-share') ? styles.activeShare : ''} ${type==='menu-share' ? styles.suka : ''}  ${styles.cardBg}  ${location?.pathname === '/view-asker' ? styles.withAbsoluteAndTop : ''} ${styles.cardWrap}`}>
+          <div ref={cardRef} className={`card ${isLeft ? 'card--back' : 'card--backLeft'} ${(type === 'edit-share') ? styles.activeShare : ''} ${type==='menu-share' ? styles.menuEditShare : ''}  ${styles.cardBg}  ${location?.pathname === '/view-asker' ? styles.withAbsoluteAndTop : ''} ${styles.cardWrap}`}>
             <div className={`${styles.cardBg}`}>
               {shareBox()}
             </div>

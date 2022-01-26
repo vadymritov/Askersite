@@ -41,7 +41,7 @@ const CarouselAskerItem = ({state, item, data, index, nextQuestionList, viewAske
     autoplaySpeed: 15000,
   };
 
-  console.log('location.state', location.state, viewAsker);
+  // console.log('location.state', location.state, viewAsker);
 
   const onchange = (e, type) => {
     // e.preventDefault();
