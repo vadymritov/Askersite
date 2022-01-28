@@ -160,8 +160,8 @@
 
 /// for green back bigger
 .scaleUpHorLeft {
-  -webkit-animation: scaleUpHorLeft 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: scaleUpHorLeft 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: scaleUpHorLeft .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scaleUpHorLeft .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 @-webkit-keyframes scaleUpHorLeft {
   0% {
@@ -226,8 +226,8 @@
   100% {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
-    -webkit-transform-origin: 70% 70%;
-    transform-origin: 70% 70%;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
   }
 }
 

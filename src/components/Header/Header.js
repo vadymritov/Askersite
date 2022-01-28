@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Header.module.scss'
 import Logo from "../UI/icons/Logo";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 
 const Header = (props) => {
+  const navigate = useNavigate();
+  const {pathname} = useLocation();
   const [blockLinks, setBlockLinks] = useState([
     {
       href: '/',
@@ -32,20 +34,51 @@ const Header = (props) => {
       <div className={styles.tabBox}>
         {
           blockLinks.map((link, index) =>
-            <NavLink key={index} className={styles.linkWrap} to={link.href} activeclassname={styles.active} >
+            <NavLink
+              key={index} className={styles.linkWrap} to={link.href} activeclassname={styles.active}>
               <span className={styles.itemLink}>{link.text}</span>
-            </NavLink>
+             </NavLink>
           )
         }
-        {!token ? <NavLink className={styles.linkWrap} to={'/log-in'} activeclassname={styles.active} >
-          <span className={styles.itemLink}>Log In</span>
-        </NavLink> : null}
+        {!token ?
+          <NavLink className={styles.linkWrap}
 
-        {!token ? <NavLink className={styles.joinWrap} to={'/sign-up'} activeclassname={styles.active}>
-          <span className={styles.joinLink}>Join</span>
-        </NavLink>  :  <NavLink className={styles.joinWrap} to={'/'} activeclassname={styles.active} onClick={logoutFn} >
-          <span className={styles.joinLink}>Logout</span>
-        </NavLink> }
+              onClick={event => {
+              if(pathname === '/'){
+                // event.stopPropagation();
+                event.preventDefault();
+                const navigationRef = event.currentTarget.href;
+                // console.log(event)
+                setTimeout(()=>{
+                  navigate('/log-in');
+                },400)
+
+              }
+
+            }}
+
+                   to={'/log-in'} activeclassname={styles.active}>
+            <span className={styles.itemLink}>Log In</span>
+          </NavLink>
+          : null}
+        {!token ?
+          <NavLink className={styles.joinWrap} to={'/sign-up'}    onClick={event => {
+            if(pathname === '/'){
+              // event.stopPropagation();
+              event.preventDefault();
+              const navigationRef = event.currentTarget.href;
+              // console.log(event)
+              setTimeout(()=>{
+                navigate('/sign-up');
+              },400)
+
+            }
+
+          }} activeclassname={styles.active}>
+            <span className={styles.joinLink}>Join</span>
+          </NavLink> : <NavLink className={styles.joinWrap} to={'/'} activeclassname={styles.active} onClick={logoutFn}>
+            <span className={styles.joinLink}>Logout</span>
+          </NavLink>}
 
       </div>
 
@@ -54,3 +87,18 @@ const Header = (props) => {
 };
 
 export default Header;
+
+
+//   onClick={event => {
+//   if(pathname === '/'){
+//     // event.stopPropagation();
+//     event.preventDefault();
+//     const navigationRef = event.currentTarget.href;
+//     // console.log(event)
+//     setTimeout(()=>{
+//       navigate('/log-in');
+//     },400)
+//
+//   }
+//
+// }}
