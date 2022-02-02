@@ -47,7 +47,7 @@
   align-items: center;
   height: 100%;
   max-width: 100%;
-  width: 400px;
+  width: 450px;
   margin: 0 auto;
   //align-items: center;
   & span{
@@ -59,7 +59,7 @@
 }
 
 .greenIcon {
-  width: 105px;
+  width: 90px;
   height: 120px;
   position: absolute;
   top: 80px;
@@ -99,7 +99,7 @@
   position: absolute;
   top: -42px;
   right: -50px;
-  width: 105px;
+  width: 90px;
   height: 120px;
   @include animationJS();
   @include media-max($lg-break) {
@@ -136,10 +136,10 @@
 
   .typedText {
     width: 430px;
-    font-size: 55px;
-    color: #0F0222;
+    font-size: 56px;
+    color: #4b494b;
     font-family: "Roboto", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.2;
     @include media-max($lg-break) {
       font-size: 45px;
@@ -182,7 +182,7 @@
     align-items: center;
 
     &:hover, &:active {
-      opacity: 0.8;
+      background: #1f47d6;
       transition: $transition;
     }
 
