@@ -3,8 +3,8 @@
 
 .askerWrapper {
   width: 100%;
-  height: 100%;
-  padding-top: 115px;
+  // height: 100%;
+  padding-top: 0;
   @include media-max($sm-break) {
     padding-top: 55px;
     //padding-top: 55px;
@@ -15,7 +15,6 @@
     padding-top: 0;
   }
 }
-
 
 .askerRow {
   display: flex;
@@ -37,13 +36,16 @@
   height: 100%;
   border-radius: 26px;
   position: relative;
+  min-height: 623px;
   @include media-max($md-break) {
-    height: 45vh;
+    // height: 45vh;
+    height: auto;
+    min-height: 300px;
   }
   @include media-max($xs-break) {
-    height: 45vh;
+    height: auto;
+    min-height: 300px;
   }
-
 }
 
 .withPadding {
@@ -80,7 +82,7 @@
   }
   @include media-max($xs-break) {
     min-width: 180px;
-    left: 10px
+    left: 10px;
   }
   @include media-max($l-break) {
     min-width: 158px;
@@ -176,7 +178,7 @@
   padding: 0 22px;
   min-width: 315px;
   //max-height: 622px;
-  min-height: 490px;
+  min-height: 623px;
   top: 35px;
   @include animationJS();
   @include media-max($lg-break) {
@@ -203,7 +205,6 @@
     height: 45vh;
     min-height: 330px;
   }
-
 }
 
 .question {
@@ -245,7 +246,6 @@
   }
 }
 
-
 .imgCreatePhone {
   background-image: url("../../image/svg/CreatePhone.svg");
   left: 3em;
@@ -259,8 +259,6 @@
   width: calc(50% + 95px);
   top: -115px;
   position: relative;
-
-
 
   &:hover {
     overflow-y: auto;
@@ -313,7 +311,6 @@
     font-size: 15px;
     width: 191px;
   }
-
 }
 
 .createBox {
@@ -331,7 +328,8 @@
   border-radius: 15px;
   margin: 0px 0 17px;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     opacity: 0.8;
     transition: $transition;
   }
@@ -345,7 +343,7 @@
     text-align: center;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .addIcon {
@@ -419,10 +417,10 @@
     border-radius: 9px;
   }
   @include media-max($md-break) {
-    top: 7em;
+    top: 0;
   }
   @include media-max($xs-break) {
-    top: 2em;
+    top: 0;
     left: -138px;
     width: 191px;
     height: 50px;
@@ -432,13 +430,13 @@
     min-width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 4px solid #AEB8FF;
+    border: 4px solid #aeb8ff;
     margin-right: 13px;
     @include media-max($lg-break) {
       min-width: 30px;
       height: 30px;
       margin-right: 9px;
-      border: 3px solid #AEB8FF;
+      border: 3px solid #aeb8ff;
     }
     @include media-max($xs-break) {
       min-width: 25px;
@@ -465,7 +463,6 @@
     @include media-max($xs-break) {
       padding: 10px;
     }
-
   }
 
   .floatingText {
@@ -497,7 +494,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1;
-    color: #7685FE;
+    color: #7685fe;
     position: absolute;
     right: -3px;
     top: -2px;
@@ -513,11 +510,10 @@
       top: -6px;
     }
 
-    span{
+    span {
       position: relative;
-      top: - 14px;
+      top: -14px;
       @include media-max($lg-break) {
-
       }
     }
   }
@@ -525,7 +521,7 @@
   .iconClock {
     min-width: 59px;
     height: 59px;
-    stroke: #7685FE;
+    stroke: #7685fe;
     position: relative;
 
     @include media-max($lg-break) {
@@ -537,7 +533,6 @@
       height: 48px;
     }
   }
-
 }
 
 .floatingBoxTop {
@@ -564,18 +559,17 @@
     height: 49px;
   }
 
-
   .circleBox {
     min-width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 4px solid #AEB8FF;
+    border: 4px solid #aeb8ff;
     margin-right: 13px;
     @include media-max($lg-break) {
       min-width: 26px;
       height: 26px;
       border-radius: 50%;
-      border: 3px solid #AEB8FF;
+      border: 3px solid #aeb8ff;
       margin-right: 9px;
     }
   }
@@ -597,7 +591,6 @@
       padding: 10px;
       border-radius: 9px;
     }
-
   }
 
   .floatingText {
@@ -629,7 +622,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1;
-    color: #7685FE;
+    color: #7685fe;
     position: absolute;
     right: -3px;
     top: -2px;
@@ -643,16 +636,16 @@
       min-width: 36px;
     }
 
-    span{
+    span {
       position: relative;
-      top: - 14px
+      top: -14px;
     }
   }
 
   .iconClock {
     min-width: 59px;
     height: 59px;
-    stroke: #7685FE;
+    stroke: #7685fe;
     position: relative;
     @include media-max($lg-break) {
       min-width: 50px;
@@ -664,4 +657,3 @@
     }
   }
 }
-

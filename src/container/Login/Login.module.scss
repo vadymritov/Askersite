@@ -16,9 +16,9 @@
     padding: 20px 20px 19px;
   }
 
-  @media screen and (max-height: 690px) {
-    padding: 25px 20px 19px;
-  }
+  // @media screen and (max-height: 690px) {
+  //   padding: 25px 20px 19px;
+  // }
   @include media-max($xs-break) {
     padding: 20px 20px 19px;
   }
@@ -89,22 +89,21 @@
   justify-content: center;
   @include media-max($sm-break) {
     input {
-     height: 35px;
+      height: 35px;
     }
   }
-
 }
 
 .emailIcon {
   width: 18px;
   height: 14px;
-  fill: #ADB8FA;
+  fill: #adb8fa;
 }
 
 .lockIcon {
   width: 15px;
   height: 18px;
-  fill: #ADB8FA;
+  fill: #adb8fa;
 }
 
 .title {
@@ -127,8 +126,8 @@
   text-decoration: none;
 
   &:hover {
-    opacity: .8;
-    transition: $transition
+    opacity: 0.8;
+    transition: $transition;
   }
 }
 
@@ -150,8 +149,8 @@
     text-decoration: none;
 
     &:hover {
-      opacity: .8;
-      transition: $transition
+      opacity: 0.8;
+      transition: $transition;
     }
   }
 }
@@ -168,7 +167,7 @@
   height: 5px;
   margin-top: 11px;
   fill: $white;
-  opacity: .2
+  opacity: 0.2;
 }
 
 .arrowBtn {
@@ -177,16 +176,16 @@
   min-width: 30px;
   height: 30px;
   top: 14px;
-  fill: #324ADD;
+  fill: #324add;
   right: 14px;
 }
-.HomeStartContainer{
+.HomeStartContainer {
   position: absolute;
   //top: 50%;
   //left: 50%;
   //transform: translate(-80%,-80%);
 }
-.HomeStartContainerMain{
+.HomeStartContainerMain {
   position: revert;
   display: flex;
   justify-content: center;

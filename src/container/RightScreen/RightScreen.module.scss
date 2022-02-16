@@ -1,7 +1,6 @@
 @import "../../scss/settings";
 @import "../../scss/mixins";
 
-
 .rightContainer {
   position: relative;
   display: flex;
@@ -11,7 +10,6 @@
   max-width: 100%;
   border-radius: 19px;
   background-color: #f8faff;
-
 }
 
 .homeWrap {
@@ -20,7 +18,7 @@
     display: none;
   }
 }
-.dashboardHideButtomHeader{
+.dashboardHideButtomHeader {
   @include media-max($md-break) {
     display: none;
   }
@@ -35,8 +33,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @include media-max($lg-break) {
+    height: auto;
+  }
   @include media-max($md-break) {
     padding-top: 60px;
+    height: auto;
   }
 }
 
@@ -50,10 +52,10 @@
   width: 450px;
   margin: 0 auto;
   //align-items: center;
-  & span{
+  & span {
     line-height: 1;
   }
-  @include media-max($md-break){
+  @include media-max($md-break) {
     width: 250px;
   }
 }
@@ -81,9 +83,8 @@
   @include media-max($xs-break) {
     display: none;
   }
-
 }
-.MoveOnBottomInDashboard{
+.MoveOnBottomInDashboard {
   @include media-max($md-break) {
     top: 8px;
     width: 79px;
@@ -91,7 +92,7 @@
   }
 }
 
-.wrapIcon{
+.wrapIcon {
   position: relative;
   width: 100%;
 }
@@ -132,8 +133,6 @@
     height: 260px;
   }
 
-
-
   .typedText {
     width: 430px;
     font-size: 56px;
@@ -169,19 +168,20 @@
     @include btn-reset();
     font-size: 20px;
     line-height: 1;
-    background: #FF5A00;
+    background: #ff5a00;
     height: 57px;
     width: 197px;
-    border-radius: 45px;;
+    border-radius: 45px;
     border: none;
     display: flex;
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     color: #ffffff;
     justify-content: center;
     align-items: center;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background: #1f47d6;
       transition: $transition;
     }
@@ -202,8 +202,12 @@
   justify-content: flex-start;
   padding-bottom: 45px;
 
+  @include media-max($lg-break) {
+    margin-top: 30px;
+  }
   @include media-max($md-break) {
     width: 250px;
+    margin-top: 30px;
   }
   @include media-max($sm-break) {
     justify-content: center;
@@ -221,7 +225,8 @@
     background-position: left;
     cursor: pointer;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       opacity: 0.8;
       transition: $transition;
     }
