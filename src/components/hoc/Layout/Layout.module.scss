@@ -37,6 +37,7 @@
   display: flex;
   justify-content: space-between;
   min-height: 560px;
+
   @include media-max($sm-break) {
     flex-direction: column;
     padding: 0 12px 12px;
@@ -160,6 +161,7 @@
   height: 100%;
   min-height: 523px;
   border-radius: 19px;
+  // justify-content: flex-start;
 
   @include media-max($md-break) {
     padding: 30px 0;
@@ -270,5 +272,27 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+}
+.dashBoxCstm {
+  position: relative;
+  flex-direction: column;
+  background-image: linear-gradient(25deg, #d6fec0, #d0cdeb 80%);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 523px;
+  border-radius: 19px;
+  justify-content: flex-start;
+
+  @include media-max($md-break) {
+    padding: 30px 0;
+    min-height: 460px;
+  }
+  @include media-max($sm-break) {
+    padding: 10px 0;
+    min-height: 470px;
   }
 }

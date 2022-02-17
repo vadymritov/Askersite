@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import MenIcon from "../../components/UI/icons/MenIcon";
 import { http } from "../../http/http";
 import SelectPickerPhone from "../../components/UI/SelectPickerPhone/SelectPickerPhone";
+import CheckIcon from "../../components/UI/icons/CheckIcon";
 
 const CreateAccount = ({ setNewUser, ...props }) => {
   const navigate = useNavigate();
@@ -23,6 +24,15 @@ const CreateAccount = ({ setNewUser, ...props }) => {
   const [countryData, setCountryData] = useState();
   const countryCodeRef = useRef("+1");
 
+  const handleFocus = (e) => {
+    e.target.parentNode.classList.add("myClass");
+    let val = document.querySelector(".myClass");
+    val.children[0].children[1].style.backgroundColor = "#00D9CD";
+  };
+  const handleBlur = (e) => {
+    let val = document.querySelector(".myClass");
+    val.children[0].children[1].style.backgroundColor = "#c7cdfb";
+  };
   const onSendData = (data) => {
     const form = new FormData();
     form.append("name", data.name);
@@ -76,7 +86,7 @@ const CreateAccount = ({ setNewUser, ...props }) => {
         <form className={styles.loginForm} onSubmit={handleSubmit(onSendData)}>
           <div className={styles.title}>Create Account</div>
           <div className={styles.text}>Enter your name & mobile number</div>
-          <div className={styles.inputBox}>
+          <div className={styles.inputBox} onBlur={handleBlur}>
             <Input
               name="name"
               type="text"
@@ -85,8 +95,10 @@ const CreateAccount = ({ setNewUser, ...props }) => {
               errors={errors}
               addPadding={true}
               register={register("name")}
+              onFocus={handleFocus}
             >
               <MenIcon className={styles.menIcon} />
+              <CheckIcon className={styles.CheckIcon} />
             </Input>
 
             {countryData && (

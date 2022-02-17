@@ -4,13 +4,15 @@ import styles from "./Dashboard.module.scss";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import Logo from "../../components/UI/icons/Logo";
 import GrayyTringleIcon from "../../components/UI/icons/GrayyTrangleIcon";
-import MenuBurgerIcon from "../../components/UI/icons/MenuBurgerIcon";
+// import MenuBurgerIcon from "../../components/UI/icons/MenuBurgerIcon";
 import LinePhone from "../../components/UI/icons/LinePhone";
 import DashbordLogoIcon from "../../components/UI/icons/DashbordLogoIcon";
 import AddQuestion from "../../components/UI/icons/AddQuestion";
 import PlusIcon from "../../components/UI/icons/Create/PlusIcon";
 import { http } from "../../http/http";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
+import { Scrollbars } from "react-custom-scrollbars";
+
 const Dashboard = (props) => {
   const [typeTab, setTypeTab] = useState("all");
   const [arrAsker, setArrAsker] = useState([1, 2, 3, 4, 5, 6, 7]);
@@ -123,102 +125,109 @@ const Dashboard = (props) => {
           <div className={styles.contantWrap}>
             <div className={styles.topBox}>
               <GrayyTringleIcon className={styles.grayBg} />
-              <div className={styles.menuWBox}>
-                <NavLink to={"/"}>
-                  <Logo className={styles.logo} />
-                </NavLink>
-                {/* <button type="button" className={styles.burgerBtn}>
+              <div className={styles.menuOne}>
+                <div className={styles.menuWBox}>
+                  <NavLink to={"/"}>
+                    <Logo className={styles.logo} />
+                  </NavLink>
+                  {/* <button type="button" className={styles.burgerBtn}>
                   <MenuBurgerIcon className={styles.burgerIcon} />
                 </button>
                  */}
-              </div>
-              {/* <div className={styles.headBox}> */}
-              <div className={`${styles.headBox} tab-wrapper`}>
-                <button
-                  type="button"
-                  className={`${styles.tabBox} ${styles.tabLeft} ${
-                    typeTab === "all" ? styles.active : ""
-                  }`}
-                  onClick={(event) => handleTabChange(event, "all")}
-                >
-                  All
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.tabBox} ${
-                    typeTab === "active" ? styles.active : ""
-                  }`}
-                  onClick={(event) => handleTabChange(event, "active")}
-                >
-                  ACTIVE
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.tabBox} ${styles.tabright} ${
-                    typeTab === "inactive" ? styles.active : ""
-                  }`}
-                  onClick={(event) => handleTabChange(event, "inactive")}
-                >
-                  INACTIVE
-                </button>
-              </div>
-
-              <div className={styles.row}>
-                <div className={styles.rowAnswers}>
-                  {arrAsker &&
-                    arrAsker?.map((item, index) => {
-                      return (
-                        <div key={index} className={styles.cardWrap}>
-                          <div className={styles.answersContainer}>
-                            <DashbordLogoIcon className={styles.createLogo} />
-                            <div className={` ${styles.questionBlock}`}>
-                              <div className={styles.textBox}>
-                                <div className={styles.title}>{item.title}</div>
-                                <div className={styles.text}>{item.author}</div>
-                              </div>
-                            </div>
-                            <div className={`${styles.buttonBox}`}>
-                              {item?.watch_answer === "n" ? (
-                                <button
-                                  type="submit"
-                                  className={`continue-btn ${styles.buttonItem} ${styles.shareButtonItem}`}
-                                  onClick={(e) => handleLink(e, item)}
-                                >
-                                  <span>Share Asker</span>
-                                  <div
-                                    className={`${styles.plusIconBox} ${styles.shareIconBox}  `}
-                                  >
-                                    <ShareIcon
-                                      className={`${styles.shareIcon}`}
-                                    />
-                                  </div>
-                                </button>
-                              ) : (
-                                <button
-                                  type="submit"
-                                  className={`continue-btn ${styles.buttonItem}`}
-                                  onClick={(e) => handleLink(e, item)}
-                                >
-                                  <span>NEW ANSWERS</span>
-                                  <div className={styles.plusIconBox}>
-                                    <ArrowBtn
-                                      className={`${styles.shareIcon}`}
-                                    />
-                                  </div>
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  <div className={styles.cardWrap}>
-                    <button type="button" className={styles.addAskerBtn}>
-                      <PlusIcon className={styles.plusIcon} />
-                    </button>
-                  </div>
+                </div>
+                {/* <div className={styles.headBox}> */}
+                <div className={`${styles.headBox} tab-wrapper`}>
+                  <button
+                    type="button"
+                    className={`${styles.tabBox} ${styles.tabLeft} ${
+                      typeTab === "all" ? styles.active : ""
+                    }`}
+                    onClick={(event) => handleTabChange(event, "all")}
+                  >
+                    All
+                  </button>
+                  <button
+                    type="button"
+                    className={`${styles.tabBox} ${
+                      typeTab === "active" ? styles.active : ""
+                    }`}
+                    onClick={(event) => handleTabChange(event, "active")}
+                  >
+                    ACTIVE
+                  </button>
+                  <button
+                    type="button"
+                    className={`${styles.tabBox} ${styles.tabright} ${
+                      typeTab === "inactive" ? styles.active : ""
+                    }`}
+                    onClick={(event) => handleTabChange(event, "inactive")}
+                  >
+                    INACTIVE
+                  </button>
                 </div>
               </div>
+              <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={400}>
+                <div className={styles.row}>
+                  <div className={styles.rowAnswers}>
+                    {arrAsker &&
+                      arrAsker?.map((item, index) => {
+                        return (
+                          <div key={index} className={styles.cardWrap}>
+                            <div className={styles.answersContainer}>
+                              <DashbordLogoIcon className={styles.createLogo} />
+                              <div className={` ${styles.questionBlock}`}>
+                                <div className={styles.textBox}>
+                                  <div className={styles.title}>
+                                    {item.title}
+                                  </div>
+                                  <div className={styles.text}>
+                                    {item.author}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={`${styles.buttonBox}`}>
+                                {item?.watch_answer === "n" ? (
+                                  <button
+                                    type="submit"
+                                    className={`continue-btn ${styles.buttonItem} ${styles.shareButtonItem}`}
+                                    onClick={(e) => handleLink(e, item)}
+                                  >
+                                    <span>Share Asker</span>
+                                    <div
+                                      className={`${styles.plusIconBox} ${styles.shareIconBox}  `}
+                                    >
+                                      <ShareIcon
+                                        className={`${styles.shareIcon}`}
+                                      />
+                                    </div>
+                                  </button>
+                                ) : (
+                                  <button
+                                    type="submit"
+                                    className={`continue-btn ${styles.buttonItem}`}
+                                    onClick={(e) => handleLink(e, item)}
+                                  >
+                                    <span>NEW ANSWERS</span>
+                                    <div className={styles.plusIconBox}>
+                                      <ArrowBtn
+                                        className={`${styles.shareIcon}`}
+                                      />
+                                    </div>
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    <div className={styles.cardWrap}>
+                      <button type="button" className={styles.addAskerBtn}>
+                        <PlusIcon className={styles.plusIcon} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Scrollbars>
             </div>
 
             <div className={`${styles.buttonBox}`}>

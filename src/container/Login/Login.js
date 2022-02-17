@@ -13,8 +13,33 @@ import LinePhone from "../../components/UI/icons/LinePhone";
 import { regexEmail } from "../../utils/helpers";
 import { http } from "../../http/http";
 import HomeStart from "../Home/HomeStart";
+import CheckIcon from "../../components/UI/icons/CheckIcon";
 
 const Login = (props) => {
+  const handleFocus = (e) => {
+    e.target.parentNode.classList.add("myClass");
+    var val = document.querySelector(".myClass");
+    try {
+      console.log(val.children);
+      val.children[0].children[1].style.backgroundColor = "#00D9CD";
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handlePwdFocus = (e) => {
+    e.target.parentNode.classList.add("myPwdClass");
+    let val = document.querySelector(".myPwdClass");
+    console.log(val.children[0]);
+    val.children[0].children[0].style.backgroundColor = "#00D9CD";
+  };
+  const handleBlur = (e) => {
+    let pwdVal = document.querySelector(".myPwdClass");
+    if (e.target.type === "password") {
+      pwdVal.children[0].children[0].style.backgroundColor = "#c7cdfb";
+    }
+    let val = document.querySelector(".myClass");
+    val.children[0].children[1].style.backgroundColor = "#c7cdfb";
+  };
   const {
     register,
     handleSubmit,
@@ -78,7 +103,7 @@ const Login = (props) => {
               >
                 <div className={styles.title}>Log in</div>
                 <div className={styles.text}>Enter your login details.</div>
-                <div className={styles.inputBox}>
+                <div className={styles.inputBox} onBlur={handleBlur}>
                   <Input
                     name="email"
                     type="email"
@@ -90,8 +115,10 @@ const Login = (props) => {
                       pattern: regexEmail,
                     })}
                     addPadding={true}
+                    onFocus={handleFocus}
                   >
                     <EmailIcon className={styles.emailIcon} />
+                    <CheckIcon className={styles.CheckIcon} />
                   </Input>
                   <Input
                     name="password"
@@ -102,7 +129,9 @@ const Login = (props) => {
                       required: true,
                       maxLength: 255,
                     })}
+                    onFocus={handlePwdFocus}
                   >
+                    <CheckIcon className={styles.CheckIcon} />
                     <LockIcon className={styles.lockIcon} />
                   </Input>
                 </div>

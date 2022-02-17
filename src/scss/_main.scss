@@ -6,12 +6,13 @@
 @import "modal";
 //@import "slige";
 
-
 * {
   outline: none !important;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -50,7 +51,6 @@ body {
     max-width: 100%;
     padding: 0;
     width: 1440px;
-
   }
 
   a {
@@ -73,10 +73,9 @@ body {
   position: relative;
   z-index: 1;
   @include media-max($sm-break) {
-    height:auto;
+    height: auto;
   }
 }
-
 
 h1 {
   font-size: 29px;
@@ -122,7 +121,10 @@ select:-webkit-autofill:focus {
   //font-size: 16px!important;
 }
 
-input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disabled::placeholder {
+input:disabled,
+textarea:disabled,
+input:disabled::placeholder,
+textarea:disabled::placeholder {
   -webkit-text-fill-color: $themeColorText; /* 1. sets text fill to current `color` for safari */
   opacity: 1; /* 2. correct opacity on iOS */
 }
@@ -131,17 +133,16 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
   Removing arrows on the right of the input type number
 */
 // for firefox
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield !important;
 }
 
 // for others
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
   margin: 0;
 }
-
 
 .col-padding {
   padding-left: 6px;
@@ -162,7 +163,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 5px;
   font-weight: 700;
   font-size: 56px;
-  background-color: #ADB8FA;
+  background-color: #adb8fa;
   line-height: 0;
 }
 
@@ -170,7 +171,7 @@ h2 {
   font-size: 41px;
 
   span {
-    color: #0F0222;
+    color: #0f0222;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     line-height: 1.3;
@@ -196,18 +197,18 @@ h2 {
   line-height: 1;
   font-weight: 700;
   backdrop-filter: blur(25px);
-  background: #3D56F0;
+  background: #3d56f0;
   border-radius: 18px;
   text-transform: uppercase;
   color: $white;
 
   &:hover {
-    opacity: .8;
-    transition: $transition
+    opacity: 0.8;
+    transition: $transition;
   }
 
   &:disabled {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 .continue-btn > span {
@@ -229,20 +230,19 @@ h2 {
 }
 
 .ease-in-effect {
-  animation: dissolveInLeft .5s ease-in-out;
-  -webkit-animation: dissolveInLeft .5s ease-in-out;
+  animation: dissolveInLeft 0.5s ease-in-out;
+  -webkit-animation: dissolveInLeft 0.5s ease-in-out;
   //animation: dissolveInLeft 1s ease-in-out;
   //-webkit-animation: dissolveInLeft 1s ease-in-out;
 }
 
 .ease-out-effect {
-  animation: dissolveInRight 1s ease-in-out ;
+  animation: dissolveInRight 1s ease-in-out;
   //animation-delay: 10s;
-  -webkit-animation: dissolveInRight 1s ease-in-out ;
+  -webkit-animation: dissolveInRight 1s ease-in-out;
   //animation: dissolveInRight 0.5s ease-in-out;
   //-webkit-animation: dissolveInRight 0.5s ease-in-out;
 }
-
 
 // style for login/signup containers --------------------------------------------------//
 .container-login {
@@ -255,19 +255,29 @@ h2 {
   max-width: 100%;
   padding: 70px 20px;
   perspective: 200vmin;
-  animation:1s ease .3s normal forwards 1 fadein;
-  -webkit-animation:1s ease .3s normal forwards 1 fadein;
-  opacity:0;
+  animation: 1s ease 0.3s normal forwards 1 fadein;
+  -webkit-animation: 1s ease 0.3s normal forwards 1 fadein;
+  opacity: 0;
   @media screen and (max-height: 690px) {
     padding: 35px 20px;
   }
 }
-@keyframes fadein{from{opacity:0}
-  to{opacity:1}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@-webkit-keyframes fadein{from{opacity:0}
-  to{opacity:1}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .contentWrap-login {
@@ -296,20 +306,18 @@ h2 {
     background-size: cover;
     background-position: center top;
 
-  ;
     //background-size: 100% 100%;
   }
 }
 
-
 .contentWrap-login.start-rotate {
   transform: rotateY(-90deg);
-  transition: transform 400ms 0s cubic-bezier(.63,-0.32,.4,1.39);
+  transition: transform 400ms 0s cubic-bezier(0.63, -0.32, 0.4, 1.39);
 }
 
 .cardWrap.customRotate {
   transition: none !important;
-  animation: rotate .4s cubic-bezier(.63,-1,.4,1);
+  animation: rotate 0.4s cubic-bezier(0.63, -1, 0.4, 1);
   animation-fill-mode: forwards;
 }
 
@@ -335,7 +343,6 @@ h2 {
   background: rgba(84, 104, 255, 0.85);
   box-shadow: 0px 4px 54px rgba(84, 104, 255, 0.3);
   backdrop-filter: blur(5px);
-
 }
 
 // button ---------------------//
@@ -354,7 +361,7 @@ h2 {
   height: 30px;
   top: 14px;
   right: 14px;
-  fill: #324ADD;
+  fill: #324add;
 }
 
 .blur-box {
@@ -381,7 +388,6 @@ h2 {
   }
 }
 
-
 /***************************** WATCH ANSWER : START *****************************/
 .watch-answer-box {
   width: 100%;
@@ -400,9 +406,9 @@ h2 {
     height: 610px;
     margin: auto;
     background-image: linear-gradient(
-        239.12deg,
-        #5468ff -90.88%,
-        #f8f9ff 261.21%
+      239.12deg,
+      #5468ff -90.88%,
+      #f8f9ff 261.21%
     );
     border-radius: 30px;
 
@@ -549,9 +555,9 @@ h2 {
   height: 610px;
   margin: auto;
   background-image: linear-gradient(
-      239.12deg,
-      #5468ff -90.88%,
-      #f8f9ff 261.21%
+    239.12deg,
+    #5468ff -90.88%,
+    #f8f9ff 261.21%
   );
   border-radius: 30px;
 
@@ -641,9 +647,9 @@ h2 {
   height: 100%;
   border-radius: 30px;
   background-image: linear-gradient(
-      216.78deg,
-      rgba(100, 118, 255, 1) 62.09%,
-      rgba(84, 104, 255, 0.632) 103.06%
+    216.78deg,
+    rgba(100, 118, 255, 1) 62.09%,
+    rgba(84, 104, 255, 0.632) 103.06%
   );
   backdrop-filter: blur(4px);
   z-index: 9;
@@ -1131,7 +1137,6 @@ h2 {
     }
   }
 }
-
 
 .wth-ans-outer-single-slide {
   &.slick-current {
