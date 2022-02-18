@@ -18,9 +18,8 @@ import CheckIcon from "../../components/UI/icons/CheckIcon";
 const Login = (props) => {
   const handleFocus = (e) => {
     e.target.parentNode.classList.add("myClass");
-    var val = document.querySelector(".myClass");
+    let val = document.querySelector(".myClass");
     try {
-      console.log(val.children);
       val.children[0].children[1].style.backgroundColor = "#00D9CD";
     } catch (err) {
       console.log(err);
@@ -29,8 +28,11 @@ const Login = (props) => {
   const handlePwdFocus = (e) => {
     e.target.parentNode.classList.add("myPwdClass");
     let val = document.querySelector(".myPwdClass");
-    console.log(val.children[0]);
-    val.children[0].children[0].style.backgroundColor = "#00D9CD";
+    try {
+      val.children[0].children[0].style.backgroundColor = "#00D9CD";
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleBlur = (e) => {
     let pwdVal = document.querySelector(".myPwdClass");
