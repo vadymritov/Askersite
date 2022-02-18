@@ -1,14 +1,13 @@
 @import "../../scss/settings";
 @import "../../scss/mixins";
 
-
 .mainContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
-  padding: 0 28px;
+  padding: 15px 0 0 15px;
   z-index: 1;
   width: 100%;
   max-width: 100%;
@@ -77,9 +76,8 @@
   font-size: 12px;
   line-height: 1.2;
   color: $darkText;
-
 }
-.answersSpace{
+.answersSpace {
   width: 100%;
   height: 100px;
 }
@@ -95,7 +93,7 @@
   color: $white;
 }
 
-.answersWrapper{
+.answersWrapper {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -109,21 +107,23 @@
   height: 100%;
   overflow: auto;
   width: 100%;
-  @include media-max($lg-break){
+  margin: 0 -8px;
+  @include media-max($lg-break) {
     width: 80%;
   }
-  @include media-max($md-break){
+  @include media-max($md-break) {
     width: 75%;
   }
-  @include media-max($sm-break){
+  @include media-max($sm-break) {
     width: 100%;
   }
 }
 
 .cardWrap {
   display: block;
-  padding: 0 9px;
+  padding: 0 8px;
   margin-bottom: 10px;
+  width: 20%;
 }
 
 .answersContainer {
@@ -147,5 +147,185 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
+}
 
+.dropcstm {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  mix-blend-mode: normal;
+  padding: 0;
+  width: calc(100% - 24px);
+  a {
+    font-size: 14px;
+  }
+  button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: normal;
+    padding: 0;
+    background-color: transparent;
+    &:hover {
+      color: #fff;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+    span {
+      width: 262px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.dropwrapper {
+  background: rgba(84, 104, 255, 0.05);
+  backdrop-filter: blur(40px);
+  border-radius: 36.9543px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1px 4px 1px 1px;
+  transition: ease-in-out 0.5s;
+  &:hover {
+    background: rgb(84 104 255 / 30%);
+  }
+  &:focus {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:active {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:visited {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:focus-within {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:focus-visible {
+    background: rgb(84 104 255 / 60%);
+  }
+
+  .infoIcon {
+    width: 24px;
+    height: 24px;
+    min-width: initial;
+    top: 0;
+    left: 0;
+  }
+}
+
+.infoBlock {
+  width: auto;
+  position: relative;
+  top: 0;
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 15px;
+}
+.dateTime {
+  margin-left: 6px;
+  input {
+    backdrop-filter: blur(40px);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: normal;
+    padding: 0;
+    background: rgba(84, 104, 255, 0.05);
+    min-height: 28px;
+    text-align: center;
+    padding-right: 8px;
+    width: 124px;
+    padding: 0 10px;
+  }
+}
+
+// ::-webkit-calendar-picker-indicator {
+//   filter: invert(1);
+// }
+
+.searchinfo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  input {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(84, 104, 255, 0.05);
+    backdrop-filter: blur(30px);
+    border-radius: 30px;
+    min-height: 28px;
+    padding: 0 10px;
+    width: 145px;
+    text-align: left;
+    padding-right: 30px;
+  }
+  svg {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+}
+
+input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+  text-align: center;
+}
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+  text-align: center;
+}
+input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+  text-align: center;
+}
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+  text-align: center;
+}
+
+.settingIc {
+  color: #000;
+  background: rgba(84, 104, 255, 0.05);
+  width: 29px;
+  height: 29px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+.aright {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
