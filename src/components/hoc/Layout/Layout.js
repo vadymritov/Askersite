@@ -78,6 +78,10 @@ const Layout = ({ children }) => {
                 pathname === "/dashboard" ? styles.dashboardMainCol : ""
               } ${!smallView ? styles.scaleUpHorLeft : null} ${
                 smallView ? styles.mainColSmall : null
+              } ${
+                pathname === "/all-answers" || pathname === "/watch-answer"
+                  ? styles.allans
+                  : ""
               }`}
             >
               <div
@@ -112,6 +116,10 @@ const Layout = ({ children }) => {
                 pathname === "/dashboard" ? styles.dashboardStaticCol : ""
               } ${!smallView ? styles.scaleUpHorRight : null}  ${
                 smallView ? styles.staticColSmall : styles.staticCol
+              }  ${
+                pathname === "/all-answers" || pathname === "/watch-answer"
+                  ? styles.statcolcstm
+                  : ""
               }`}
 
               //      onClick={()=>{
