@@ -95,7 +95,6 @@
   font-size: 12px;
   line-height: 1.2;
   color: $darkText;
-
 }
 
 .contentContainer {
@@ -104,10 +103,12 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-end;
+  // align-items: center;
   height: 850px;
   width: 100%;
-  padding-bottom: 60px;
+  padding-bottom: 90px;
   //overflow: hidden;
   @include media-max($lg-break) {
     align-items: center;
@@ -162,11 +163,10 @@
   @include media-max($sm-break) {
     left: -10em;
   }
-
 }
 .cardRight {
   position: absolute;
-  top:0;
+  top: 0;
   background-color: $themeColorOrange;
   background-image: none;
   //right: -16em;
@@ -179,7 +179,6 @@
   //@include media-max($sm-break) {
   //  right: -10em;
   //}
-
 }
 
 .cardContainer {
@@ -199,5 +198,185 @@
   @include media-max($xs-break) {
     left: 1px;
   }
- }
+}
 
+.dropcstm {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  mix-blend-mode: normal;
+  padding: 0;
+  width: calc(100% - 24px);
+  a {
+    font-size: 14px;
+  }
+  button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: normal;
+    padding: 0;
+    background-color: transparent;
+    &:hover {
+      color: #fff;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+    span {
+      width: 262px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.dropwrapper {
+  background: rgba(84, 104, 255, 0.05);
+  backdrop-filter: blur(40px);
+  border-radius: 36.9543px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1px 4px 1px 1px;
+  transition: ease-in-out 0.5s;
+  &:hover {
+    background: rgb(84 104 255 / 30%);
+  }
+  &:focus {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:active {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:visited {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:focus-within {
+    background: rgb(84 104 255 / 60%);
+  }
+  &:focus-visible {
+    background: rgb(84 104 255 / 60%);
+  }
+
+  .infoIcon {
+    width: 24px;
+    height: 24px;
+    min-width: initial;
+    top: 0;
+    left: 0;
+  }
+}
+
+.infoBlock {
+  width: auto;
+  position: relative;
+  top: 0;
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 15px;
+}
+.dateTime {
+  margin-left: 6px;
+  input {
+    backdrop-filter: blur(40px);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: normal;
+    padding: 0;
+    background: rgba(84, 104, 255, 0.05);
+    min-height: 28px;
+    text-align: center;
+    padding-right: 8px;
+    width: 124px;
+    padding: 0 10px;
+  }
+}
+
+// ::-webkit-calendar-picker-indicator {
+//   filter: invert(1);
+// }
+
+.searchinfo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  input {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(84, 104, 255, 0.05);
+    backdrop-filter: blur(30px);
+    border-radius: 30px;
+    min-height: 28px;
+    padding: 0 10px;
+    width: 145px;
+    text-align: left;
+    padding-right: 30px;
+  }
+  svg {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+}
+
+input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+  text-align: center;
+}
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+  text-align: center;
+}
+input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+  text-align: center;
+}
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+  text-align: center;
+}
+
+.settingIc {
+  color: #000;
+  background: rgba(84, 104, 255, 0.05);
+  width: 29px;
+  height: 29px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+.aright {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
