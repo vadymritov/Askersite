@@ -299,7 +299,21 @@
 
 .allans {
   width: 50%;
+  @include media-max($sm-break) {
+    width: 100%;
+  }
+  .contentWrapper {
+    @include media-max($md-break) {
+      padding: 0px 0;
+    }
+    @include media-max($sm-break) {
+      padding: 0px 0;
+    }
+  }
 }
 .statcolcstm {
   width: calc(50% - 10px);
+  @include media-max($sm-break) {
+    display: none;
+  }
 }

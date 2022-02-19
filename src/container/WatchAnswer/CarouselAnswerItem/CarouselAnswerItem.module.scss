@@ -176,12 +176,12 @@
   perspective: 200vmin;
   @include media-max($lg-break) {
     //align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 0;
     height: 470px;
   }
   @include media-max($md-break) {
     //align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 0;
     margin-top: 20px;
   }
   @include media-max($xs-break) {
@@ -271,7 +271,7 @@
     //height: calc(100% - 26px);
   }
   @include media-max($lg-break) {
-    height: calc(100% - 28px);
+    height: calc(100% - 8px);
     border-radius: 18px;
   }
   @include media-max($xs-break) {
@@ -810,7 +810,7 @@
     bottom: -20px;
   }
   @include media-max($lg-break) {
-    bottom: 0;
+    bottom: -18px;
   }
 }
 

@@ -109,10 +109,10 @@
   width: 100%;
   margin: 0 -8px;
   @include media-max($lg-break) {
-    width: 80%;
+    width: 100%;
   }
   @include media-max($md-break) {
-    width: 75%;
+    width: 100%;
   }
   @include media-max($sm-break) {
     width: 100%;
@@ -124,6 +124,18 @@
   padding: 0 8px;
   margin-bottom: 10px;
   width: 20%;
+  @include media-max($lg-break) {
+    width: 25%;
+  }
+  @include media-max($md-break) {
+    width: 33.33%;
+  }
+  @include media-max($sm-break) {
+    width: 20%;
+  }
+  @include media-max($xs-break) {
+    width: 33.33%;
+  }
 }
 
 .answersContainer {
@@ -185,6 +197,9 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      @media (min-width: 1200px) and (max-width: 1320px) {
+        width: 202px;
+      }
     }
   }
 }
@@ -223,6 +238,12 @@
     top: 0;
     left: 0;
   }
+  @include media-max($md-break) {
+    width: 100%;
+  }
+  @include media-max($sm-break) {
+    width: 100%;
+  }
 }
 
 .infoBlock {
@@ -234,6 +255,15 @@
   margin-bottom: 15px;
   width: 100%;
   padding-right: 15px;
+  @include media-max($md-break) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @include media-max($sm-break) {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
 }
 .dateTime {
   margin-left: 6px;
@@ -328,4 +358,16 @@ input:-moz-placeholder {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  @include media-max($md-break) {
+    margin-top: 3px;
+  }
+  @include media-max($sm-break) {
+    margin-top: 3px;
+  }
+  @include media-max($xs-break) {
+    margin-top: 3px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1320px) {
 }

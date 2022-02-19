@@ -49,6 +49,10 @@
   @include media-max($md-break) {
     margin-bottom: 0;
   }
+  @include media-max($sm-break) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   @include media-max($xs-break) {
     margin-bottom: 20px;
     margin-top: 5px;
@@ -111,12 +115,12 @@
   padding-bottom: 90px;
   //overflow: hidden;
   @include media-max($lg-break) {
-    align-items: center;
-    margin-bottom: 60px;
+    align-items: flex-end;
+    margin-bottom: 0;
   }
   @include media-max($md-break) {
-    align-items: center;
-    margin-bottom: 40px;
+    align-items: flex-end;
+    margin-bottom: 0;
   }
 }
 
@@ -238,6 +242,9 @@
       text-overflow: ellipsis;
     }
   }
+  @media (min-width: 1200px) and (max-width: 1320px) {
+    width: 202px;
+  }
 }
 .dropwrapper {
   background: rgba(84, 104, 255, 0.05);
@@ -285,6 +292,17 @@
   margin-bottom: 15px;
   width: 100%;
   padding-right: 15px;
+  @include media-max($lg-break) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @include media-max($md-break) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @include media-max($sm-break) {
+    padding-right: 0;
+  }
 }
 .dateTime {
   margin-left: 6px;
@@ -379,4 +397,7 @@ input:-moz-placeholder {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  @include media-max($xs-break) {
+    margin-top: 3px;
+  }
 }
