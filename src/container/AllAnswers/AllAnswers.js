@@ -39,16 +39,16 @@ const AllAnswers = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item href="#/action-1">
-                <AllAnswerIcon className={styles.infoIcon} /> Asker Subject is
-                here Asker Subject is here Asker..
+                <AllAnswerIcon className={styles.infoIcon} />{" "}
+                <span>Asker Subject is here Asker Subject is here Asker..</span>
               </Dropdown.Item>
               <Dropdown.Item href="#/action-2">
-                <AllAnswerIcon className={styles.infoIcon} /> Asker Subject is
-                here Asker Subject is here Asker..
+                <AllAnswerIcon className={styles.infoIcon} />{" "}
+                <span>Asker Subject is here Asker Subject is here Asker..</span>
               </Dropdown.Item>
               <Dropdown.Item href="#/action-3">
-                <AllAnswerIcon className={styles.infoIcon} /> Asker Subject is
-                here Asker Subject is here Asker..
+                <AllAnswerIcon className={styles.infoIcon} />{" "}
+                <span>Asker Subject is here Asker Subject is here Asker..</span>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

@@ -172,6 +172,52 @@
   mix-blend-mode: normal;
   padding: 0;
   width: calc(100% - 24px);
+
+  > div {
+    margin-left: -24px;
+    background: transparent;
+    margin-top: 5px;
+    width: calc(100% + 26px);
+    border: 0;
+    a {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      background: rgb(84 104 255 / 10%);
+      padding: 2px 6px;
+      border-radius: 36px;
+      color: #fff !important;
+      margin-bottom: 4px;
+      font-weight: 400;
+      &:hover {
+        background: rgba(84, 104, 255, 0.3);
+        backdrop-filter: blur(40px);
+      }
+      &:focus {
+        background: rgb(84 104 255 / 60%);
+      }
+      &:active {
+        background: rgb(84 104 255 / 60%);
+      }
+      &:visited {
+        background: rgb(84 104 255 / 60%);
+      }
+      &:focus-within {
+        background: rgb(84 104 255 / 60%);
+      }
+      &:focus-visible {
+        background: rgb(84 104 255 / 60%);
+      }
+      span {
+        width: calc(100% - 24px);
+        overflow: hidden;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 0px;
+      }
+    }
+  }
   a {
     font-size: 14px;
   }
