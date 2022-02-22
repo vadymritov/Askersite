@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import styles from "./RightScreen.module.scss";
 import Typed from "typed.js";
 import Header from "../../components/Header/Header";
-import { ReactComponent as QuestionGreen } from "../../image/svg/QuestionGreen.svg";
-import { ReactComponent as QuestionViolet } from "../../image/svg/QuestionViolet.svg";
+import QuestionGreen from "../../image/RightScree/QuestionGreen.png";
+import QuestionViolet from "../../image/RightScree/QuestionViolet.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const RightScreen = (props) => {
@@ -59,7 +59,8 @@ const RightScreen = (props) => {
         <Header />
       </div>
       <div className={styles.rightContent}>
-        <QuestionGreen
+        <img
+          src={QuestionGreen}
           className={`${styles.greenIcon} ${
             pathname === "/dashboard" ? styles.MoveOnBottomInDashboard : ""
           }`}
@@ -82,7 +83,7 @@ const RightScreen = (props) => {
             </button>
           </div>
           <div className={styles.wrapIcon}>
-            <QuestionViolet className={styles.violetIcon} />
+            <img src={QuestionViolet} className={styles.violetIcon} />
           </div>
         </div>
         <div className={styles.linkBlock}>

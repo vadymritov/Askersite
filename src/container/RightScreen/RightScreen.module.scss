@@ -61,12 +61,14 @@
 }
 
 .greenIcon {
-  width: 90px;
-  height: 120px;
+  width: 80px;
+  height: auto;
   position: absolute;
   top: 80px;
   right: 72px;
-  @include animationJS();
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  @include greeniconanimationJS();
   @include media-max($lg-break) {
     top: 0;
     width: 95px;
@@ -100,9 +102,9 @@
   position: absolute;
   top: -42px;
   right: -50px;
-  width: 90px;
-  height: 120px;
-  @include animationJS();
+  width: 80px;
+  height: auto;
+  @include violeticonanimationJS();
   @include media-max($lg-break) {
     top: -79px;
     right: 28px;

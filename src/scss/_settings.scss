@@ -1,4 +1,4 @@
-@import 'import-fonts';
+@import "import-fonts";
 @import "animation";
 
 $transition: 600ms;
@@ -6,7 +6,7 @@ $transition: 600ms;
 //// fonts --------------------------------------------------//
 
 //$fontText: 'HK Grotesk';
-$main-font: 'HK Grotesk', sans-serif;
+$main-font: "HK Grotesk", sans-serif;
 $fontRoboto: "Roboto", sans-serif;
 
 // break points (px)
@@ -18,10 +18,10 @@ $l-break: 426;
 $xxs-break: 359;
 
 // --------------------------------------------------//
-$modal-fade-transform:              translate(0, -50px) !default;
-$modal-show-transform:              none !default;
-$modal-transition:                  transform .3s ease-out !default;
-$modal-scale-transform:             scale(1.02) !default;
+$modal-fade-transform: translate(0, -50px) !default;
+$modal-show-transform: none !default;
+$modal-transition: transform 0.3s ease-out !default;
+$modal-scale-transform: scale(1.02) !default;
 //$modal-title-line-height:           $line-height-base !default;
 
 //$modal-content-color:               null !default;
@@ -43,20 +43,19 @@ $modal-scale-transform:             scale(1.02) !default;
 ////$modal-header-padding-x:            1rem !default;
 ////$modal-header-padding:
 
-  // colors --------------------------------------------------//
+// colors --------------------------------------------------//
 
 /*
     THEME : START =>
     FOR -- Color, ColorYellow, ColorRed, ColorGreen, ColorText;
 */
 
-
-$themeColor: #5468FF;
+$themeColor: #5468ff;
 $themeColorSimilar: #7686ff;
-$themeColorBase: #00D9CD;
-$themeColorOrange: #FF5A00;
-$themeColorText: #4B494B;
-$themeBlue: #1F47D6;
+$themeColorBase: #00d9cd;
+$themeColorOrange: #ff5a00;
+$themeColorText: #4b494b;
+$themeBlue: #1f47d6;
 $text: #626262;
 $white: #ffffff;
 $red: #f22340;
@@ -66,8 +65,9 @@ $themeBootstrapContainer: 1440px;
 $themeBootstrapRow: -6px;
 $themeBootstrapCol: 6px;
 
-$homeAnimation: homeAnimation
-
+$homeAnimation: homeAnimation;
+$greeniconAnimation: greeniconAnimation;
+$violeticonAnimation: violeticonAnimation;
 
 //font-family: "Roboto", sans-serif;
 //font-style: normal;
