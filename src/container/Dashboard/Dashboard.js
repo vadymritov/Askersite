@@ -166,7 +166,7 @@ const Dashboard = (props) => {
                   </button>
                 </div>
               </div>
-              <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={400}>
+              <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={900}>
                 <div className={styles.row}>
                   <div className={styles.rowAnswers}>
                     {arrAsker &&
