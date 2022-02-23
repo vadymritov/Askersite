@@ -138,7 +138,7 @@
 
 .mainColSmall {
   .contentWrapper {
-    min-height: 856px;
+    min-height: 746px;
     @include media-max($md-break) {
       min-height: 500px;
       height: auto;
@@ -315,5 +315,21 @@
   width: calc(50% - 10px);
   @include media-max($sm-break) {
     display: none;
+  }
+}
+
+@media (max-height: 760px) {
+  .mainColSmall {
+    .contentWrapper {
+      min-height: 656px;
+    }
+  }
+}
+
+@media (max-height: 700px) {
+  .mainColSmall {
+    .contentWrapper {
+      min-height: 596px;
+    }
   }
 }
