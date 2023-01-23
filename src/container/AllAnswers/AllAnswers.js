@@ -13,11 +13,23 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const AllAnswers = (props) => {
   let navigate = useNavigate();
-  const [arrAsker, setArrAsker] = useState([]);
+  // const [arrAsker, setArrAsker] = useState([]);
 
+  const arrAsker = [
+    { asker_id: 1 },
+    { asker_id: 2 },
+    { asker_id: 3 },
+    { asker_id: 4 },
+    { asker_id: 5 },
+    { asker_id: 6 },
+    { asker_id: 7 },
+    { asker_id: 8 },
+    { asker_id: 9 },
+  ];
   const answersArray = arrAsker;
-  const userID = JSON.parse(localStorage.getItem("UserID"));
-  useEffect(() => {
+  // const userID = JSON.parse(localStorage.getItem("UserID"));
+  const userID = 1;
+  /*   useEffect(() => {
     http
       .post("allAsker", `user_id=${userID}`)
       .then((resp) => resp.data)
@@ -25,7 +37,7 @@ const AllAnswers = (props) => {
         setArrAsker(askersData.asker.filter((o) => o.watch_answer === "y"))
       );
   }, [userID]);
-
+ */
   return (
     <div className={`fade-out ${styles.mainContainer}`}>
       <div className={styles.infoBlock}>

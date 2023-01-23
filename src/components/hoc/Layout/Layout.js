@@ -14,7 +14,8 @@ const Layout = ({ children }) => {
   const { pathname } = useLocation();
   const [smallView, setSmallView] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
-  const user = JSON.parse(localStorage.getItem("User"));
+  // const user = JSON.parse(localStorage.getItem("User"));
+  const user = { name: "John", email: "john@example.com" };
 
   useEffect(() => {
     const hideSettingsToggle = (e) => {

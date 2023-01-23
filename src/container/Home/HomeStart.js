@@ -23,19 +23,19 @@ const HomeStart = (props) => {
     // // console.log(e, e.path.some(item =>item))
     //
 
-    if (
-      e.path.some((item) => {
-        if (item.href != null && locationRef !== item.href) {
-          return true;
-        }
-      })
-    ) {
-      setTimeout(() => {
-        // console.log('this timeout')
-        // navigate('/log-in');
-      }, 400);
-      setIsMounted(!isMounted);
-    }
+    // if (
+    //   e.path.some((item) => {
+    //     if (item.href != null && locationRef !== item.href) {
+    //       return true;
+    //     }
+    //   })
+    // ) {
+    //   setTimeout(() => {
+    //     // console.log('this timeout')
+    //     // navigate('/log-in');
+    //   }, 400);
+    //   setIsMounted(!isMounted);
+    // }
     //////one variant
 
     //////two variant

@@ -1,66 +1,75 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./ShareAsker.module.scss";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ArrowBtn from "../../components/UI/icons/ArrowBtn";
 import ShareIcon from "../../components/UI/icons/ShareIcon";
 import ContactLink from "../../components/UI/icons/Contact/ContactLink";
 import LetterIcon from "../../components/UI/icons/LetterIcon";
 import CloseIcon from "../../components/UI/icons/CloseIcon";
-import {Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import EmailIcon from "../../components/UI/icons/EmailIcon";
-import {http} from "../../http/http";
+import { http } from "../../http/http";
 import copy from "copy-html-to-clipboard";
 // import {ReactComponent as ArrowDown}  from '../../image/svg/arow-down.svg';
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import ArrowDown from "../../components/UI/icons/ArrowDown";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
-const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,  ...props}) => {
+const ShareAsker = ({
+  closeOption,
+  isLeft,
+  setType,
+  type,
+  askerCode,
+  createType,
+  ...props
+}) => {
   // console.log(askerCode)
-  console.log(isLeft);
   const [show, setShow] = useState(false);
-  const [typeShare, setTypeShare] = useState('share');
+  const [typeShare, setTypeShare] = useState("share");
   const location = useLocation();
   const [sharedAskerId, setSharedAskerId] = useState();
   const [locationShare, setLocationShare] = useState();
   let navigate = useNavigate();
   const cardRef = useRef(null);
   const [EmailID, setEmailID] = useState("");
-  const {register, handleSubmit, formState: {errors}} = useForm();
-
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
-    if (createType === 'create') {
-      setTypeShare(createType)
+    if (createType === "create") {
+      setTypeShare(createType);
     } else {
-      setTypeShare('share')
+      setTypeShare("share");
     }
-  }, [createType])
+  }, [createType]);
 
   useEffect(() => {
     if (location.state.sharedAskerId != null) {
-      setSharedAskerId(location.state.sharedAskerId)
+      setSharedAskerId(location.state.sharedAskerId);
     } else if (askerCode) {
-      setSharedAskerId(askerCode)
+      setSharedAskerId(askerCode);
     }
-  }, [location.state.sharedAskerId, askerCode])
+  }, [location.state.sharedAskerId, askerCode]);
 
   useEffect(() => {
     if (location != null) {
-      setLocationShare(location.state)
+      setLocationShare(location.state);
     } else if (props.location) {
-      setLocationShare(props.location)
+      setLocationShare(props.location);
     }
-  }, [location, props.location])
+  }, [location, props.location]);
 
   useEffect(async () => {
     if (cardRef?.current?.classList.contains("start-rotate")) {
-      cardRef?.current?.classList.remove("start-rotate")
+      cardRef?.current?.classList.remove("start-rotate");
     }
 
     const timer = setTimeout(() => {
-      cardRef?.current?.classList.add("start-rotate")
+      cardRef?.current?.classList.add("start-rotate");
     }, 1);
 
     return () => clearTimeout(timer);
@@ -72,35 +81,40 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
 
   const changeType = (e, type) => {
     e.preventDefault();
-    setType(type)
-  }
+    setType(type);
+  };
 
   const handleShow = () => {
     setShow(true);
   };
   const sendEmail = async () => {
-    http.post('share-asker-send-mail-api', `email=${EmailID}&asker_code=${sharedAskerId || askerCode}`)
-      .then(resp => resp.data)
-      .then((res) => {
-        console.log('setShow', res);
-        setShow(false);
-        // if (res.status === true) {
-        //   setViewAsker(res.data);
-        // }
-      })
-      .catch((err) => {
-        setShow(false);
-        console.log(err);
-      })
+    setShow(false);
+    // http
+    //   .post(
+    //     "share-asker-send-mail-api",
+    //     `email=${EmailID}&asker_code=${sharedAskerId || askerCode}`
+    //   )
+    //   .then((resp) => resp.data)
+    //   .then((res) => {
+    //     console.log("setShow", res);
+    //     setShow(false);
+    //     // if (res.status === true) {
+    //     //   setViewAsker(res.data);
+    //     // }
+    //   })
+    //   .catch((err) => {
+    //     setShow(false);
+    //     console.log(err);
+    //   });
   };
 
   const onCopy = (e, type) => {
     e.preventDefault();
-    if (type === 'email') {
+    if (type === "email") {
       copy(`<span>${`askerapp.com/${sharedAskerId || askerCode}`}</span>`, {
         asHtml: true,
       });
-    } else if (type === 'code') {
+    } else if (type === "code") {
       copy(`<span>${sharedAskerId || askerCode}</span>`, {
         asHtml: true,
       });
@@ -108,59 +122,82 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
   };
 
   const closeBox = (e) => {
-    if (typeShare === 'share') {
-      navigate('/dashboard')
-    } else if (typeShare === 'create') {
-      closeOption(e)
+    if (typeShare === "share") {
+      navigate("/dashboard");
+    } else if (typeShare === "create") {
+      closeOption(e);
     }
-  }
+  };
 
   const shareBox = () => {
     return (
       <>
         <button className={styles.btnClose} onClick={(e) => closeBox(e)}>
-          <CloseIcon className={styles.closeIcon}/>
+          <CloseIcon className={styles.closeIcon} />
         </button>
         <div className={styles.cardContainer}>
           <div className={styles.logoBox}>
-            <LetterIcon className={styles.letterIcon}/>
+            <LetterIcon className={styles.letterIcon} />
           </div>
           <div className={styles.titleBox}>
-            <ShareIcon className={styles.shareLink}/>
+            <ShareIcon className={styles.shareLink} />
             Share Asker
           </div>
-          <div className={styles.text}>Invite people to answer using this Asker’s unique access code or via direct link:</div>
+          <div className={styles.text}>
+            Invite people to answer using this Asker’s unique access code or via
+            direct link:
+          </div>
 
           <div className={styles.inputBox}>
             <div className={`${styles.inputBlock} `}>
               <div className={styles.textBox}>
-                <input name={'name'} readOnly="readonly" defaultValue={sharedAskerId}/>
+                <input
+                  name={"name"}
+                  readOnly="readonly"
+                  defaultValue={sharedAskerId}
+                />
               </div>
-              <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'code')}>
-                <ContactLink className={styles.linkIcon}/>
+              <button
+                type="button"
+                className={styles.linkIconWrap}
+                onClick={(e) => onCopy(e, "code")}
+              >
+                <ContactLink className={styles.linkIcon} />
               </button>
             </div>
             <div className={`${styles.inputBlock} `}>
               <div className={styles.textBox}>
-                <input name={'name'} readOnly="readonly" placeholder={`askerapp.com/${sharedAskerId}`}/>
+                <input
+                  name={"name"}
+                  readOnly="readonly"
+                  placeholder={`askerapp.com/${sharedAskerId}`}
+                />
               </div>
-              <button type='button' className={styles.linkIconWrap} onClick={(e) => onCopy(e, 'email')}>
-                <ContactLink className={styles.linkIcon}/>
+              <button
+                type="button"
+                className={styles.linkIconWrap}
+                onClick={(e) => onCopy(e, "email")}
+              >
+                <ContactLink className={styles.linkIcon} />
               </button>
             </div>
           </div>
           <div className={`button-box ${styles.buttonBox}`}>
-            <button type="button" className={`continue-btn  ${styles.buttonStylePublich}`} onClick={handleShow}>
+            <button
+              type="button"
+              className={`continue-btn  ${styles.buttonStylePublich}`}
+              onClick={handleShow}
+            >
               <span>SHARE NOW</span>
               <div className={styles.plusIconBox}>
-                <ShareIcon className={`${styles.shareIcon}`}/>
+                <ShareIcon className={`${styles.shareIcon}`} />
               </div>
             </button>
           </div>
         </div>
       </>
-    )
-  }
+    );
+  };
 
   const modalBlock = () => {
     return (
@@ -170,13 +207,20 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
         dialogClassName="share-email-modal"
       >
         <Modal.Body>
-          <div id="shareAskerModal" className={`share-email-modal ${styles.shareEmailModal}`}>
-            <a href="#" className="shareAskerModalClose"/>
+          <div
+            id="shareAskerModal"
+            className={`share-email-modal ${styles.shareEmailModal}`}
+          >
+            <a href="#" className="shareAskerModalClose" />
             <div className="center-box theme-bg">
               <div className="center-box-inner">
                 <div className="log-reg-form">
                   {/*<form method="POST" action="{{route('asker.send_mail')}}" >*/}
-                  <form method="POST" onSubmit={handleSubmit(sendEmail)} role={'form'}>
+                  <form
+                    method="POST"
+                    onSubmit={handleSubmit(sendEmail)}
+                    role={"form"}
+                  >
                     {/* @csrf */}
                     <div className="head">
                       <h4>Share Code</h4>
@@ -187,7 +231,9 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
                     </div>
                     <div className="cust-form-row">
                       <div className="cust-form-col">
-                        <div className={`text-filled-modal with-icon ${styles.inputBlock}`}>
+                        <div
+                          className={`text-filled-modal with-icon ${styles.inputBlock}`}
+                        >
                           <input
                             type="hidden"
                             // value="{{$asker}}"
@@ -195,7 +241,7 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
                           />
 
                           <div className="icon">
-                            <EmailIcon className={styles.emailIcon}/>
+                            <EmailIcon className={styles.emailIcon} />
                           </div>
                           <input
                             type="email"
@@ -206,11 +252,12 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
                         </div>
                       </div>
                     </div>
-                    <div className="cust-form-row" >
-                    {/*<div className="cust-form-row" onClick={() => sendEmail()}>*/}
+                    <div className="cust-form-row">
+                      {/*<div className="cust-form-row" onClick={() => sendEmail()}>*/}
                       <div className="cust-form-col">
-
-                        <div className={`submit-filled with-icon button-box ${styles.buttonBox}`}>
+                        <div
+                          className={`submit-filled with-icon button-box ${styles.buttonBox}`}
+                        >
                           <input
                             type="submit"
                             // type="button"
@@ -220,7 +267,7 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
                           />
                           <div className="icon">
                             <div className={styles.shareIconBox}>
-                              <ArrowBtn className={`${styles.shareIcon}`}/>
+                              <ArrowBtn className={`${styles.shareIcon}`} />
                             </div>
                           </div>
                         </div>
@@ -233,65 +280,68 @@ const ShareAsker = ({closeOption, isLeft, setType, type, askerCode, createType ,
           </div>
         </Modal.Body>
       </Modal>
-    )
-  }
+    );
+  };
 
   const renderContent = () => {
-    if (typeShare === 'share') {
+    if (typeShare === "share") {
       return (
         <>
           <div className={styles.mainContainer}>
             <div className={`${styles.contentContainer}`}>
               <div className={`${styles.cardWrap} ${styles.cardLeft}`}>
                 <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
-                  <div className={styles.cardContainer}>
-                  </div>
+                  <div className={styles.cardContainer}></div>
                 </div>
               </div>
-              <div ref={cardRef} className={`default-flip flip-card-inner ${styles.cardWrap}`}>
-                <div className={`${styles.cardBg}`}>
-                  {shareBox()}
-                </div>
+              <div
+                ref={cardRef}
+                className={`default-flip flip-card-inner ${styles.cardWrap}`}
+              >
+                <div className={`${styles.cardBg}`}>{shareBox()}</div>
                 {/*<div className={styles.rotate}>*/}
-                  <TriangleSearchSm className={`${styles.rotateT}`}/>
-                  {/*<div className="triangle-violet"/>*/}
+                <TriangleSearchSm className={`${styles.rotateT}`} />
+                {/*<div className="triangle-violet"/>*/}
                 {/*</div>*/}
               </div>
               <div className={`${styles.cardWrap} ${styles.cardRight}`}>
                 <div className={`${styles.cardBg} ${styles.cardBgSide}`}>
-                  <div className={styles.cardContainer}>
-                  </div>
+                  <div className={styles.cardContainer}></div>
                 </div>
               </div>
             </div>
 
             {modalBlock()}
-
           </div>
         </>
-      )
-    } else if (typeShare === 'create') {
+      );
+    } else if (typeShare === "create") {
       return (
         <>
-          <div ref={cardRef} className={`card ${isLeft ? 'card--back' : 'card--backLeft'} ${(type === 'edit-share') ? styles.activeShare : ''} ${type==='menu-share' ? styles.menuEditShare : ''}  ${styles.cardBg}  ${location?.pathname === '/view-asker' ? styles.withAbsoluteAndTop : ''} ${styles.cardWrap}`}>
-            <div className={`${styles.cardBg}`}>
-              {shareBox()}
-            </div>
-            <TriangleSearchSm className={`${styles.rotateT}`}/>
-              {/*<ArrowDown className={styles.rotateT}/>*/}
+          <div
+            ref={cardRef}
+            className={`card ${isLeft ? "card--back" : "card--backLeft"} ${
+              type === "edit-share" ? styles.activeShare : ""
+            } ${type === "menu-share" ? styles.menuEditShare : ""}  ${
+              styles.cardBg
+            }  ${
+              location?.pathname === "/view-asker"
+                ? styles.withAbsoluteAndTop
+                : ""
+            } ${styles.cardWrap}`}
+          >
+            <div className={`${styles.cardBg}`}>{shareBox()}</div>
+            <TriangleSearchSm className={`${styles.rotateT}`} />
+            {/*<ArrowDown className={styles.rotateT}/>*/}
           </div>
 
           {modalBlock()}
         </>
-      )
+      );
     }
-  }
+  };
 
-  return (
-    <>
-      {renderContent()}
-    </>
-  )
+  return <>{renderContent()}</>;
 };
 
 export default ShareAsker;

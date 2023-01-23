@@ -42,11 +42,12 @@ const RightScreen = (props) => {
   }, []);
 
   const onCreateAsker = () => {
-    if (token) {
-      navigate("/create-asker");
-    } else {
-      navigate("/log-in");
-    }
+    navigate("/create-asker");
+    // if (token) {
+    //   navigate("/create-asker");
+    // } else {
+    //   navigate("/log-in");
+    // }
   };
 
   return (

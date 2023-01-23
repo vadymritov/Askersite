@@ -1,8 +1,8 @@
-import './App.scss';
-import { Route, Routes} from "react-router-dom";
+import "./App.scss";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/hoc/Layout/Layout";
 import Home from "./container/Home/Home";
-import './App.scss';
+import "./App.scss";
 import Login from "./container/Login/Login";
 import SignUp from "./container/SignUp/SignUp";
 import AllAnswers from "./container/AllAnswers/AllAnswers";
@@ -31,30 +31,30 @@ const App = () => {
     <Layout>
       <Routes>
         {/* Log in Routes start*/}
-        <Route path={"/"} element={<Home />}/>
-        <Route path="/log-in" element={<Login />}/>
-        <Route path="/sign-up" element={<SignUp />}/>
-        <Route path="/all-answers" element={<AllAnswers />}/>
-        <Route path="/watch-answer" element={<WatchAnswer />}/>
-        <Route path="/contact-card" element={<ContactCard />}/>
-        <Route path="/create-asker" element={<CreateAsker />}/>
-        <Route path="/share-asker" element={<ShareAsker />}/>
-        <Route path="/view-asker" element={<ViewAsker />}/>
-        <Route path="/edit-asker" element={<EditAsker />}/>
-        <Route path="/asker-option" element={<AskerOption />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/asker-search" element={<AskerSearch />}/>
-        <Route path="/start-asker" element={<StartAsker />}/>
-        <Route path="/next-question" element={<NextQuestion />}/>
-        <Route path="/asker-complete" element={<AskerComplete />}/>
-        <Route path="/record-again" element={<RecordAgain />}/>
-        <Route path="/progress" element={<Progress />}/>
-        <Route path="/settings" element={<Settings />}/>
-        <Route path="/answer" element={<Answer />}/>
-        <Route path="/spin" element={<SpinEffect />}/>
+        <Route path={"/"} element={<Home />} />
+        <Route path="/log-in" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/all-answers" element={<AllAnswers />} />
+        <Route path="/watch-answer" element={<WatchAnswer />} />
+        <Route path="/contact-card" element={<ContactCard />} /> {/* no */}
+        <Route path="/create-asker" element={<CreateAsker />} />
+        <Route path="/share-asker" element={<ShareAsker />} />
+        <Route path="/view-asker" element={<ViewAsker />} />
+        <Route path="/edit-asker" element={<EditAsker />} /> {/* no */}
+        <Route path="/asker-option" element={<AskerOption />} /> {/* no */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/asker-search" element={<AskerSearch />} />
+        <Route path="/start-asker" element={<StartAsker />} />
+        <Route path="/next-question" element={<NextQuestion />} />
+        <Route path="/asker-complete" element={<AskerComplete />} />
+        <Route path="/record-again" element={<RecordAgain />} /> {/* no */}
+        <Route path="/progress" element={<Progress />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/answer" element={<Answer />} />
+        <Route path="/spin" element={<SpinEffect />} /> {/* no */}
       </Routes>
     </Layout>
   );
-}
+};
 
 export default App;

@@ -54,6 +54,8 @@ const Login = (props) => {
     form.append("email", data.email);
     form.append("password", data.password);
 
+    navigate("/dashboard"); // added code
+
     http
       .post("loginEmail", form)
       .then((resp) => resp.data)

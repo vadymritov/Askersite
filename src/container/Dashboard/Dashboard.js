@@ -47,7 +47,6 @@ const Dashboard = (props) => {
     const refRoot = document.getElementById("root");
     refRoot.classList.add(styles.fixHeigthAuto);
     return () => {
-      console.log(12);
       clearTimeout(timer);
       window.removeEventListener("beforeunload", reloadListener);
       refRoot.classList.remove(styles.fixHeigthAuto);
@@ -124,7 +123,7 @@ const Dashboard = (props) => {
         <div className={styles.bgContainer}>
           <div className={styles.contantWrap}>
             <div className={styles.topBox}>
-              <GrayyTringleIcon className={styles.grayBg} />
+              {/* <GrayyTringleIcon className={styles.grayBg} /> */}
               <div className={styles.menuOne}>
                 <div className={styles.menuWBox}>
                   <NavLink to={"/"}>

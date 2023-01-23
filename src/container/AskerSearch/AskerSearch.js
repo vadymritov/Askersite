@@ -1,20 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./AskerSearch.module.scss";
 import AllAnswerIcon from "../../components/UI/icons/AllAnswerIcon";
 import SearchBgTriangle from "../../components/UI/icons/SearchBgTriangle";
 import QuestionOption from "../../components/UI/icons/QuestionOption";
 import SearchIcon from "../../components/UI/icons/SearchIcon";
-import {http} from "../../http/http";
-import {ReactComponent as ArrowDown} from '../../image/svg/arow-down.svg';
+import { http } from "../../http/http";
+import { ReactComponent as ArrowDown } from "../../image/svg/arow-down.svg";
 import TriangleSearchSm from "../../components/UI/icons/TriangleSearchSm";
 
 const AskerSearch = (props) => {
   const cardRef = useRef(null);
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [asker, setAsker] = useState('');
-
+  const [asker, setAsker] = useState("");
 
   const hendaleingFormSubmit = async () => {
     // var parameter =
@@ -38,65 +37,111 @@ const AskerSearch = (props) => {
     //     }
     //   });
 
-    http.post('askerCode', `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`)
-      .then(resp => resp.data)
-      .then(res => {
+    navigate("/start-asker", {
+      state: {
+        foundAsker: [
+          {
+            asker_id: 1,
+            title: "Title",
+            author: "Author",
+            time: "time",
+            question: "What's this ?",
+          },
+          {
+            asker_id: 2,
+            title: "Title",
+            author: "Author",
+            time: "time",
+            question: "What's this ?",
+          },
+          {
+            asker_id: 3,
+            title: "Title",
+            author: "Author",
+            time: "time",
+            question: "What's this ?",
+          },
+          {
+            asker_id: 4,
+            title: "Title",
+            author: "Author",
+            time: "time",
+            question: "What's this ?",
+          },
+        ],
+        askerCode: search,
+        from: "asker-search",
+      },
+    });
+
+    /*
+    http
+      .post(
+        "askerCode",
+        `asker_code=${search}&user_id=${localStorage.getItem("UserID")}`
+      )
+      .then((resp) => resp.data)
+      .then((res) => {
         // console.log(res)
         if (res != null) {
           // await setAsker(res.asker)
 
-          cardRef?.current?.classList.add("customRotate")
+          cardRef?.current?.classList.add("customRotate");
           setTimeout(() => {
-            navigate('/start-asker', {
+            navigate("/start-asker", {
               state: {
                 foundAsker: res.asker,
                 askerCode: search,
-                from: 'asker-search'
-              }
-            })
+                from: "asker-search",
+              },
+            });
           }, 400);
-
-
 
           // if (respJson.status === true) {
           //   history.push({ pathname: "/SatrtAnswer", state: respJson });
           // }
         }
-      })
+      });
+ */
   };
 
   useEffect(async () => {
     if (cardRef?.current?.classList.contains("start-rotate")) {
-      console.log('true');
-      cardRef?.current?.classList.remove("start-rotate")
+      console.log("true");
+      cardRef?.current?.classList.remove("start-rotate");
     }
 
     const timer = setTimeout(() => {
-      cardRef?.current?.classList.add("start-rotate")
+      cardRef?.current?.classList.add("start-rotate");
     }, 1);
 
     return () => clearTimeout(timer);
   }, [props]);
 
   const showViewAnswer = () => {
-    console.log('onc');
-    navigate('/watch-answer')
-  }
+    console.log("onc");
+    navigate("/watch-answer");
+  };
 
   return (
     <div className={styles.mainContainer}>
       <div className={`${styles.contentContainer}`}>
-        <div ref={cardRef} className={`default-flip flip-card-inner cardWrap ${styles.cardWrapContact}`}>
-            <div className={styles.cardContainerContact}>
-          <div className={styles.triangleWrap}>
+        <div
+          ref={cardRef}
+          className={`default-flip flip-card-inner cardWrap ${styles.cardWrapContact}`}
+        >
+          <div className={styles.cardContainerContact}>
+            <div className={styles.triangleWrap}>
               <div className={styles.contentBox}>
-                <SearchBgTriangle className={styles.triangleBgIcon}/>
+                <SearchBgTriangle className={styles.triangleBgIcon} />
                 <div className={styles.searchBox}>
                   <div className={styles.titleBox}>
-                    <QuestionOption className={styles.questionOption}/>
+                    <QuestionOption className={styles.questionOption} />
                     Asker Search
                   </div>
-                  <div className={styles.text}>Enter Asker Access Code below.</div>
+                  <div className={styles.text}>
+                    Enter Asker Access Code below.
+                  </div>
 
                   <div className={`search-filled ${styles.searchFilled}`}>
                     <input
@@ -110,20 +155,19 @@ const AskerSearch = (props) => {
                       className={styles.searchBtn}
                       onClick={() => hendaleingFormSubmit()}
                     >
-                      <SearchIcon className={styles.serchIcon}/>
+                      <SearchIcon className={styles.serchIcon} />
                     </button>
                   </div>
                 </div>
                 {/*<ArrowDown className={styles.arrowDown}/>*/}
               </div>
-            {/*<TriangleSearchSm className={styles.rotateT}/>*/}
+              {/*<TriangleSearchSm className={styles.rotateT}/>*/}
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  )
+  );
 };
 
 export default AskerSearch;

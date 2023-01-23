@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.blur{
+.blur {
   position: absolute;
   overflow: hidden;
   z-index: 1000;
@@ -29,7 +29,7 @@
   backdrop-filter: blur(0px);
   //pointer-events: auto;
 }
-.blur_active{
+.blur_active {
   background: rgba(90, 109, 254, 0.15);
   //background-color: transparent;
   backdrop-filter: blur(10px);
@@ -51,9 +51,8 @@
   border-radius: 20px;
 }
 
-.settingActive{
+.settingActive {
   right: 0 !important;
-
 }
 .settingsBar {
   display: flex;
@@ -61,7 +60,7 @@
   position: absolute;
   flex-direction: column;
   height: 100%;
-  transition: all 0.25s cubic-bezier(.25,.46,.45,.94);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   background: rgba(84, 104, 255, 0.8);
   opacity: 0.9;
   border-radius: 0px 10px 10px 0px;
@@ -70,6 +69,7 @@
   //width: calc(100% - 12em);
   min-width: 350px;
   padding: 0 40px 40px 50px;
+
   overflow-y: auto;
   overflow-x: hidden;
   @include media-max($md-break) {
@@ -111,7 +111,6 @@
     font-size: 18px;
     line-height: 23px;
     margin-left: 5px;
-
   }
   .icon {
     fill: $white;
@@ -119,7 +118,6 @@
     height: 21px;
     margin-bottom: 5px;
   }
-
 }
 
 .infoCard {
@@ -150,7 +148,6 @@
     margin-bottom: 47px;
     margin-top: 20px;
   }
-
 }
 
 .infoBox {
@@ -179,7 +176,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #ADB8FA;
+    background-color: #adb8fa;
     @include media-max($xs-break) {
       min-width: 25px;
       height: 25px;
@@ -192,7 +189,6 @@
     fill: $white;
     @include media-max($xs-break) {
       height: 15px;
-
     }
   }
   .menIcon {
@@ -201,7 +197,6 @@
     fill: $white;
     @include media-max($xs-break) {
       height: 13px;
-
     }
   }
   .emailIcon {
@@ -263,14 +258,13 @@
     min-width: 165px;
     max-width: 100%;
 
-
     .titleInfo {
       font-family: "Roboto", sans-serif;
       font-weight: 700;
       font-size: 16px;
       line-height: 1.1;
       text-align: center;
-      color: #FFFFFF;
+      color: #ffffff;
       @include media-max($md-break) {
         font-size: 18px;
       }
@@ -286,7 +280,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 1.2;
-      color: #FFFFFF;
+      color: #ffffff;
       @include media-max($md-break) {
         font-size: 13px;
       }

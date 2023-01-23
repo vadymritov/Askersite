@@ -18,7 +18,7 @@ const WatchAnswer = (props) => {
   let navigate = useNavigate();
   const cardRef = useRef(null);
   const location = useLocation();
-  const { asker_id, user_id } = location?.state;
+  // const { asker_id, user_id } = location?.state;
   const [userProfile, setUserProfile] = useState([]);
   const [askerData, setAskerData] = useState([]);
   const [answerData, setAnswerData] = useState([]);
@@ -38,7 +38,7 @@ const WatchAnswer = (props) => {
   //   return () => clearTimeout(timer)
   // }, []);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("User"));
     if (user) {
       setUserProfile(user);
@@ -60,6 +60,8 @@ const WatchAnswer = (props) => {
         console.log(err);
       });
   };
+ */
+
   //
   //  const askerDeatilsAll = async (user_id) => {
   //       http.post('viewAnswers', `user_id=${user_id}`)
@@ -90,7 +92,7 @@ const WatchAnswer = (props) => {
   //     askerDeatilsAsker(asker_id)
   //   }, []);
 
-  const answerList = async (asker_id, user_id) => {
+  /*   const answerList = async (asker_id, user_id) => {
     // http.post('answerList', `asker_id=${asker_id}`)
     http
       .post("answerList", `candidate_user_id=${user_id}&asker_id=${asker_id}`)
@@ -109,7 +111,7 @@ const WatchAnswer = (props) => {
   const showContact = () => {
     navigate("/contact-card");
   };
-
+ */
   const images = [1, 2, 3];
 
   return (
